@@ -1,6 +1,7 @@
-# 高砂市議会 会議録検索システムの「調査用B2」
-# 目的: (1) 日別の本文ページ (2) 発言のダウンロード機能 (3) 閲覧画面の階層(年→会議→日) の構造を確認する。
-# 守ること: 1件ごとに5秒空ける / 取得は最大7件 / robots.txtで禁止なら停止 / CAPTCHAがあれば停止
+# 高砂市議会 会議録検索システム B3: 前任期(2022年9月10日〜2026年9月9日)の会議日を列挙する
+# 本文は取得しない。閲覧画面(年→会議→日)をたどり、会議日の一覧(CSV)を作るだけ。
+# 守ること: 1件ごとに5秒空ける / 取得は最大120件 / robots.txtで禁止なら停止 / CAPTCHAがあれば停止
+import csv
 import datetime
 import pathlib
 import re
@@ -13,13 +14,20 @@ from urllib.robotparser import RobotFileParser
 
 BASE = "http://www.kensakusystem.jp/takasago/"
 INDEX = BASE + "index.html"
-CGI = BASE + "cgi-bin2/"
+SEE = BASE + "cgi-bin2/See.exe"
 ROBOTS = "http://www.kensakusystem.jp/robots.txt"
-UA = "takasago-giin-map-research/0.3 (civic data research, low rate)"
+UA = "takasago-giin-map-research/0.4 (civic data research, low rate)"
 WAIT = 5
+MAX_REQUESTS = 120
+TERM_START = datetime.date(2022, 9, 10)
+TERM_END = datetime.date(2026, 9, 9)
+YEARS = [4, 5, 6, 7, 8]  # 令和4〜8年
 OUT = pathlib.Path("raw")
-OUT.mkdir(exist_ok=True)
+PAGES = OUT / "b3"
+PAGES.mkdir(parents=True, exist_ok=True)
 LOG = []
+REQUESTS = 0
+ERRORS_IN_ROW = 0
 
 
 def log(msg):
@@ -29,7 +37,7 @@ def log(msg):
 
 
 def finish(code):
-    (OUT / "log_b2.txt").write_text("\n".join(LOG) + "\n", encoding="utf-8")
+    (OUT / "log_b3.txt").write_text("\n".join(LOG) + "\n", encoding="utf-8")
     sys.exit(code)
 
 
@@ -49,78 +57,116 @@ except Exception as e:
     log("robots.txt の取得に失敗(許可として扱います): " + str(e))
 
 
-def request(url, name, data=None, soft=True):
+def fetch(url, name, data=None):
+    """成功すれば本文(文字列)、失敗すれば None。"""
+    global REQUESTS, ERRORS_IN_ROW
+    if REQUESTS >= MAX_REQUESTS:
+        log("取得件数の上限に達したため停止")
+        finish(1)
     if not rp.can_fetch(UA, url):
         log("robots.txt で禁止されているため停止: " + url)
         finish(1)
+    REQUESTS += 1
     time.sleep(WAIT)
     headers = {"User-Agent": UA}
     body = None
     if data is not None:
         body = urlencode(data, encoding="cp932").encode("ascii")
         headers["Content-Type"] = "application/x-www-form-urlencoded"
-        headers["Referer"] = BASE + "cgi-bin2/See.exe"
+        headers["Referer"] = SEE
     req = urllib.request.Request(url, data=body, headers=headers)
     try:
-        with urllib.request.urlopen(req, timeout=90) as r:
+        with urllib.request.urlopen(req, timeout=60) as r:
             raw = r.read()
             status = r.status
-            ctype = r.headers.get("Content-Type")
-            disp = r.headers.get("Content-Disposition")
-    except urllib.error.HTTPError as e:
-        log("HTTP %s: %s" % (e.code, url))
-        if soft:
-            return None
-        finish(1)
     except Exception as e:
-        log("ERROR %s: %s" % (e, url))
-        if soft:
-            return None
-        finish(1)
+        ERRORS_IN_ROW += 1
+        log("ERROR %s: %s %s" % (e, url, data))
+        if ERRORS_IN_ROW >= 3:
+            log("3回続けて失敗したため停止")
+            finish(1)
+        return None
+    ERRORS_IN_ROW = 0
     text = decode(raw)
-    (OUT / name).write_bytes(raw)
-    (OUT / (name + ".utf8.txt")).write_text(text, encoding="utf-8")
-    log("OK %s %s disp=%s %d bytes %s %s -> %s" % (status, ctype, disp, len(raw), "POST" if data is not None else "GET", url, name))
+    (PAGES / (name + ".txt")).write_text(text, encoding="utf-8")
+    log("OK %s %d bytes -> %s" % (status, len(raw), name))
     if "captcha" in text.lower():
         log("CAPTCHA らしき記述があるため停止")
         finish(1)
     return text
 
 
-idx = request(INDEX, "b2_index.html", soft=False)
-m = re.search(r"Code=([A-Za-z0-9]+)", idx)
-if not m:
+def see(treedepth, name):
+    return fetch(SEE, name, data=[("Code", CODE), ("treedepth", treedepth), ("page", ""), ("fileName", "")])
+
+
+def parse_date(file_name):
+    m = re.match(r"^R(\d{2})(\d{2})(\d{2})", file_name)
+    if not m:
+        return None
+    y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
+    try:
+        return datetime.date(2018 + y, mo, d)
+    except ValueError:
+        return None
+
+
+idx = fetch(INDEX, "index")
+if idx is None:
+    log("トップページが取得できないため停止")
+    finish(1)
+mc = re.search(r"Code=([A-Za-z0-9]+)", idx)
+if not mc:
     log("Code が見つからないため停止")
     finish(1)
-code = m.group(1)
-day = "R080312A"  # 令和8年3月12日(B1で確認した本会議の日)
+CODE = mc.group(1)
 
-# 1. 日別の本文(B1のフレームに書かれていたURLと同じ形)
-request(CGI + "GetText3.exe?%s/%s/83190/10/1//1/%%50%%43%%42/0" % (code, day), "b2_gettext3.html")
+rows = []
+seen = set()
+for y in YEARS:
+    year_label = "令和 %d年" % y
+    page = see(year_label, "year_R%02d" % y)
+    if page is None:
+        continue
+    values = []
+    for v in re.findall(r"treedepth\.value='([^']*)'", page):
+        if v.startswith(year_label) and len(v.strip()) > len(year_label) and ("定例会" in v or "臨時会" in v or "委員会" in v):
+            if v not in values:
+                values.append(v)
+    log("%s: 会議の数 %d" % (year_label, len(values)))
+    for k, v in enumerate(values, 1):
+        mm = re.search(r"(\d+)月(定例会|臨時会)", v)
+        kind = "本会議" if mm else "委員会"
+        if y == 4 and mm and int(mm.group(1)) < 9:
+            continue  # 令和4年の9月より前は前任期の前
+        if y == 4 and not mm:
+            continue
+        sp = see(v, "sess_R%02d_%02d" % (y, k))
+        if sp is None:
+            continue
+        pat = re.compile(r"fileName=([A-Za-z0-9]+)&startPos=0[\"'][^>]*>(.*?)</A>", re.S | re.I)
+        n = 0
+        for fn, inner in pat.findall(sp):
+            label = re.sub(r"<[^>]+>", "", inner)
+            label = re.sub(r"\s+", " ", label).strip()
+            if fn in seen:
+                continue
+            seen.add(fn)
+            dt = parse_date(fn)
+            inside = "Y" if dt and TERM_START <= dt <= TERM_END else "N"
+            rows.append([kind, v.strip(), year_label, fn, dt.isoformat() if dt else "", label, inside])
+            n += 1
+        log("  %s -> 会議日 %d" % (v.strip(), n))
 
-# 2. ページ単位の表示(P.651)
-request(CGI + "r_PageFrame.exe?%s/%s/651/10/1/1/%%50%%43%%42/0/0" % (code, day), "b2_pageframe651.html")
+rows.sort(key=lambda r: (r[4], r[3]))
+with open(OUT / "meeting_days.csv", "w", newline="", encoding="utf-8-sig") as f:
+    w = csv.writer(f)
+    w.writerow(["区分", "会議名", "年", "fileName", "日付", "表示ラベル", "前任期内"])
+    w.writerows(rows)
 
-# 3. 発言のダウンロード機能(画面の「ダウンロード」と同じ送信。発言の位置を2件だけ指定)
-request(
-    CGI + "GetPerson.exe",
-    "b2_getperson.txt",
-    data=[("Code", code), ("fileName", day), ("downloadPos", "7794"), ("downloadPos", "8464")],
-)
-
-# 4. 閲覧画面の階層: 令和元年〜令和4年のタブ
-request(
-    CGI + "See.exe",
-    "b2_see_r4.html",
-    data=[("Code", code), ("treedepth", "令和 4年"), ("page", ""), ("fileName", "")],
-)
-
-# 5. 閲覧画面の階層: 令和8年3月定例会(会議日の一覧)
-request(
-    CGI + "See.exe",
-    "b2_see_r8_mar.html",
-    data=[("Code", code), ("treedepth", "令和 8年  3月定例会 "), ("page", ""), ("fileName", "")],
-)
-
+inside = [r for r in rows if r[6] == "Y"]
+log("会議日の合計 %d(うち前任期内 %d: 本会議 %d、委員会 %d)" % (
+    len(rows), len(inside), sum(1 for r in inside if r[0] == "本会議"), sum(1 for r in inside if r[0] == "委員会")))
+log("取得回数 %d" % REQUESTS)
 log("完了")
 finish(0)
