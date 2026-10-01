@@ -1,0 +1,7 @@
+2026-10-01T10:09:03.701882Z robots.txt を確認しました
+2026-10-01T10:09:09.409716Z OK 200 text/html 22779 bytes GET http://www.kensakusystem.jp/takasago/index.html -> b1_index.html
+2026-10-01T10:09:15.040008Z OK 200 text/html; charset=shift-jis 980 bytes POST http://www.kensakusystem.jp/takasago/cgi-bin2/ResultFrame.exe -> b1_day_R080312A.html
+2026-10-01T10:09:15.040296Z フレーム数: 2
+2026-10-01T10:09:21.647003Z OK 200 text/html; charset=shift-jis 211420 bytes GET http://www.kensakusystem.jp/takasago/cgi-bin2/r_Speakers.exe?h52lmgenyzsjmkcxck/R080312A/83190/0//10/1/2:0/1505/1//1/%50%43%42/0/0 -> b1_frame1.html
+2026-10-01T10:09:27.428749Z OK 200 text/html; charset=shift-jis 633 bytes GET http://www.kensakusystem.jp/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080312A/83190/0//10/1/1505//1/%50%43%42/0/0 -> b1_frame2.html
+2026-10-01T10:09:27.428774Z 完了
