@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=x-sjis">
+	<title>高砂市議会/会議録検索システム</title>
+	<meta name="robots" CONTENT="follow,index">
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+</head>
+
+<body>
+
+
+<map name="head">
+
+<area shape="rect" alt="" coords="600, 35, 770, 65" href="http://www.city.takasago.lg.jp/">
+<area href="https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/index.html" shape="rect" coords="413, 36, 587, 65">
+</map>
+<center>
+<div id="wrapper">
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="image/head.gif" width="788" height="73" alt="高砂市議会/会議録検索システム" usemap="#head"></td>
+	</tr>
+	<tr>
+		<td width="5"><img src="image/leftdice.gif" width="5" height="38"></td>
+		<td background="image/hbgg.gif" width="778" height="38" bgcolor="#ffffff" align="center" valign="bottom">
+
+
+<a href="index.html"><img src="image/menu01.gif" width="190" height="33" alt="会議録検索システムトップ"></a><a href="cgi-bin2/See.exe?Code=h52lmgenyzsjmkcxck"><img src="image/menu02.gif" width="190" height="33" alt="会議録の閲覧"></a><a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&sTarget=2"><img src="image/menu03.gif" width="190" height="33" alt="会議録の検索"></a><a
+href="help/help_top.html" target="_blank"><img src="image/menu04.gif" width="185" height="33" alt="操作説明"></a>
+
+
+		</td>
+		<td width="5"><img src="image/rightdice.gif" width="5" height="38"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="image/topbottom.gif" width="788" height="18"></td>
+	</tr>
+</table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="image/head01.gif" width="788" height="50" alt=""></td>
+	</tr>
+	<tr>
+		<td width="2" background="image/leftbit.gif"><img src="image/leftbit.gif" width="2" height="2"></td>
+		<td bgcolor="#ffffff" align="center" width="784">
+
+
+
+				<img src="image/bit.gif" width="730" height="10" alt=""><br>
+
+
+
+		<div class="content4">
+
+			<div class="content1_1"><img src="image/bit.gif" width="1" height="1" alt=""></div>
+			<div class="content2_1">
+
+
+	<img src="image/bit.gif" width="15" height="1" alt=""><br>
+
+
+	<div class="titlebox"><span class="blue">ご覧になれるのは平成12年3月定例会以降の本会議録・令和5年3月以降の委員会会議録です。</span></div>
+
+</center>
+
+<div align="left">
+<img src="image/bit.gif" width="20" height="8" alt=""><BR>
+<FONT CLASS="TEXT"><font color="#FF0000">
+<b>トピック検索</b></font><br>
+　最近の話題を令和7年、8年会議録の中から検索します。<br>
+　探したい言葉をクリックして下さい。施策分野ごとに表示しています。</font> 
+	<img src="image/bit.gif" width="730" height="10" alt=""><br>      
+</div>  
+<center>  
+			<div class="content1_1"><img src="image/bit.gif" width="20" height="1" alt=""></div>  
+			<div class="content2_1">  
+  
+  
+  
+  
+<TABLE border="1" cellspacing="0" cellpadding="2" BORDERCOLOR="#336699">  
+  <TR>  
+      <TD align="center" bgcolor="#9dddff" width="188"><FONT CLASS="TEXT2">総務関係</FONT></TD>  
+      <TD align="center" bgcolor="#9dddff" width="190"><font class="TEXT2">文教厚生関係</font></TD>  
+      <TD align="center" bgcolor="#9dddff" width="198"><font class="TEXT2">建設環境経済関係</font></TD>  
+      <TD align="center" bgcolor="#9dddff" width="198"><font class="TEXT2">特別委員会関係</font></TD>  
+    </TR>  
+  <TR>  
+      <TD align="left" bgcolor="#EEEEEE" style="background-color : #eeeeee;" valign="top" height="130" width="198"><FONT CLASS="TEXT2">  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%88%C0%91S%88%C0%90S&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1">安全安心<br>  
+        </a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8Ds%8D%E0%90%AD%89%FC%8Av&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1">行財政改革<br>  
+        </a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8C%DD%8F%95%89%EF&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">互助会<br>  
+        </a>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8D%E0%90%AD%92%B2%90%AE%8A%EE%8B%E0&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">財政調整基金<br>  
+        </a>  
+        ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8Ew%92%E8%8A%C7%97%9D&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">指定管理<br>  
+        </a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%91%8D%8D%87%8Cv%89%E6&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">総合計画<br>  
+        </a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%91%D8%94%5B&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">滞納  
+        </a>  
+        <br>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%92%86%8A%FA%8D%E0%90%AD%8Cv%89%E6&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">中期財政計画<br>  
+        </a>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%92%E8%88%F5%93K%90%B3%89%BB%8Cv%89%E6&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">定員適正化計画<br>  
+        </a>  
+       ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%93y%92n%8AJ%94%AD%8C%F6%8E%D0&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">土地開発公社  
+        </a>  
+        </FONT></TD>  
+      <TD bgcolor="#EEEEEE" width="190" valign="top" height="130"><FONT CLASS="TEXT2">  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%88%A2%96%ED%91%C9%8F%AC%8Aw%8DZ&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">阿弥陀小学校  
+        </a>  
+        <br>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%89%EE%8C%EC%95%DB%8C%AF&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">介護保険<br>  
+        </a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8C%E3%8A%FA%8D%82%97%EE%8E%D2&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">後期高齢者  
+        </a><br>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8D%91%96%AF%8C%92%8DN%95%DB%8C%AF&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">国民健康保険<br>  
+        </a>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8Eq%82%C7%82%E0%8E%E8%93%96&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">子ども手当<br>  
+        </a>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8Es%96%AF%95a%89@&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">市民病院<br>  
+        </a>  
+       ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%90%B6%8A%88%95%DB%8C%EC&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">生活保護  
+       <br></a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%92%86%8Aw%8DZ%8B%8B%90H&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">中学校給食<br>  
+        </a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%90%7D%8F%91%8A%D9&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">図書館<br>  
+        </a>  
+       ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%95%B6%89%BB&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">文化  
+        </a>  
+        </FONT>  
+      <TD bgcolor="#EEEEEE" align="left" valign="top" width="188" height="130"><FONT CLASS="TEXT2">  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%89%BA%90%85%93%B9&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">下水道<br>  
+        </a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%83R%83%7E%83%85%83j%83e%83B%83o%83X&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">コミュニティバス<br>  
+        </a>  
+        ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8Es%89c%8FZ%91%EE&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">市営住宅<br>  
+        </a>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=JR%91%5D%8D%AA%89w&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">JR曽根駅</a><br>  
+        ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8F%C4%8Bp%8E%7B%90%DD&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">焼却施設<br>  
+        </a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%90Z%90%85%91%CE%8D%F4&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">浸水対策<br>  
+        </a>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%90%85%93%B9&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">水道<br></a>  
+      ・<a target="_top" href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%91%CF%90k&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5">耐震<br>  
+        </a>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%92n%8B%85%89%B7%92g%89%BB&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">地球温暖化</a><br>  
+      ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%82%DD%82%C8%82%C6%82%DC%82%BF%82%C3%82%AD%82%E8&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">みなとまちづくり</a></FONT></TD>  
+      <TD bgcolor="#EEEEEE" align="left" valign="top" width="188" height="130">  
+        <FONT class="TEXT2">  
+            ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%91%E5%96%D8%91%5D%90%85%98H&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">大木曽水路<br>  
+        </a>  
+            ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%8EY%8B%C6%94p%8A%FC%95%A8%8F%88%97%9D%8E%7B%90%DD&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">産業廃棄物処理施設<br>  
+        </a>  
+            ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=%90%BC%8D%60&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">西港<br>  
+        </a>  
+            ・<a href="cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=PCB&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5" target="_top">PCB</a></FONT>  
+      </TD>  
+    </TR>  
+    
+</TABLE>  
+  
+				<img src="image/bit.gif" width="730" height="15" alt=""><br>  
+  
+  
+  
+  
+  
+				<div class="content5_1">  
+  
+					<table class="table02">  
+						<tr>  
+							<td align="center" bgcolor="#eeeeee" colspan="2">このページに関するお問い合わせはこちら</td>  
+						</tr>  
+						<tr>  
+							<td>担当</td>  
+							<td>高砂市議会事務局</td>  
+						</tr>  
+						<tr>  
+							<td>住所</td>  
+							<td>〒676-8501　<br>
+                              兵庫県高砂市荒井町千鳥1丁目1番1号</td>          
+						</tr>
+                        <tr>
+							<td>電話</td>
+							<td>079-443-9051</td>
+                        </tr>
+						<tr>
+							<td>ファックス</td>
+							<td>079-442-2617</td>
+						</tr>
+					</table>
+
+
+				</div>
+				<div class="content5_2">
+
+					<table class="table02">
+						<tr>
+							<td align="center" bgcolor="#eeeeee">＜ご注意＞</td>
+						</tr>
+						<tr>
+							<td>※ 漢字表記については、汎用性を考慮し、JIS第2水準までの漢字を使用しています。このため人名や地名など、会議録原本と異なる場合があります。<br>        
+  
+  
+  
+							※ この会議録検索システムは、高砂市議会の公式の記録ではありません。</td>        
+						</tr>  
+					</table>  
+  
+				</div>  
+  
+				<div class="content5_2">  
+</center>  
+  
+  
+  
+					<table class="table03">  
+						<tr>  
+							<td>  
+	</td>  
+						</tr>  
+					</table>  
+  
+				</div>  
+  
+  
+<center>  
+  
+  
+			<img src="image/bit.gif" width="730" height="1" alt=""><br>  
+			</div>  
+  
+			<div class="content1_1"><img src="image/bit.gif" width="20" height="1" alt=""></div>  
+  
+  
+  
+  
+  
+  
+  
+  
+		</div>  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+		</td>  
+		<td width="2" background="image/rightbit.gif"><img src="image/rightbit.gif" width="2" height="2"></td>  
+	</tr>  
+	<tr>  
+		<td colspan="3"><img src="image/bottom.gif" width="788" height="35"></td>  
+	</tr>  
+</table>  
+  
+  
+  
+</div>  
+  
+  
+  
+</body>  
+</html>  

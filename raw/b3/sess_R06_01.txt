@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=x-sjis">
+	<title>高砂市議会/会議録検索システム</title>
+	<meta name="robots" CONTENT="follow,index">
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" type="text/css" href="/takasago/css/base.css">
+
+</head>
+<body>
+
+
+<map name="head">
+
+<area shape="rect" alt="" coords="600,35,770,65" href="http://www.city.takasago.lg.jp/">
+<area href="https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/index.html"  shape="rect" coords="413, 36, 587, 65">
+</map>
+<center>
+<div id="wrapper">
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<form name="viewtree" action="/takasago/cgi-bin2/See.exe" method="POST">
+<input type="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<input type="hidden" name="treedepth" value="令和 6年  2月臨時会 ">
+<input type="hidden" name="page">
+<input type="hidden" name="fileName">
+</form>
+<tr>
+		<td colspan="3"><img src="/takasago/image/head.gif" width="788" height="73" alt="高砂市議会/会議録検索システム" usemap="#head"></td>
+	</tr>
+	<tr>
+		<td width="5"><img src="/takasago/image/leftdice.gif" width="5" height="38"></td>
+		<td background="/takasago/image/hbgg.gif" width="778" height="38" bgcolor="#ffffff" align="center" valign="bottom">
+
+
+<a href="/takasago/index.html"><img src="/takasago/image/menu01.gif" width="190" height="33" alt="会議録検索システムトップ"></a><a href="/takasago/cgi-bin2/See.exe?Code=h52lmgenyzsjmkcxck"><img src="/takasago/image/menu02.gif" width="190" height="33" alt="会議録の閲覧"></a><a href="/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&sTarget=2"><img src="/takasago/image/menu03.gif" width="190" height="33" alt="会議録の検索"></a><a href="/takasago/help/help_top.html" target="_blank"><img src="/takasago/image/menu04.gif" width="185" height="33" alt="操作マニュアル"></a>
+
+
+		</td>
+		<td width="5"><img src="/takasago/image/rightdice.gif" width="5" height="38"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="/takasago/image/topbottom.gif" width="788" height="18"></td>
+	</tr>
+</table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="/takasago/image/head02.gif" width="788" height="50" alt=""></td>
+	</tr>
+	<tr>
+		<td width="2" background="/takasago/image/leftbit.gif"><img src="/takasago/image/leftbit.gif" width="2" height="2"></td>
+		<td bgcolor="#ffffff" align="center" width="784">
+
+
+
+				<img src="/takasago/image/bit.gif" width="730" height="10" alt=""><br>
+
+
+
+		<div class="content4">
+
+
+
+			<div class="content1_1"><img src="/takasago/image/bit.gif" width="20" height="1" alt=""></div>
+			<div class="content2_1">
+
+
+	<img src="/takasago/image/bit.gif" width="15" height="1" alt=""><br>
+
+
+	<div class="titlebox"><span class="blue">ご覧になれるのは平成12年3月定例会以降の本会議録・令和5年3月以降の委員会会議録です。</span></div><br>
+
+	<img src="/takasago/image/bit.gif" width="730" height="8" alt=""><br>
+
+
+
+
+
+				<table border="0" cellpadding="2" cellspacing="1" bgcolor="#cccccc" width="730">
+
+					<tr>
+						<td bgcolor="#ffffff">
+
+<!----------------------------------このに本文が入ります------------------------------------------->
+<br> 
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="671"><!-- 2+ -->
+						<TR>
+							<TD ALIGN="CENTER">
+
+
+
+
+							<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="671"><!-- 3+ -->
+								<TR>
+									<TD BACKGROUND="/takasago/image/line-a.gif" WIDTH="150" VALIGN="TOP" ROWSPAN="3" HEIGHT="100%">
+										<TABLE bgcolor="white" border="0" cellpadding="0" cellspacing="0" WIDTH="150"><TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 8年'"><IMG SRC="/takasago/image/tab-R08-1.gif" BORDER="0" ALT="令和 8年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 7年'"><IMG SRC="/takasago/image/tab-R07-1.gif" BORDER="0" ALT="令和 7年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 6年'"><IMG SRC="/takasago/image/tab-R06.gif" BORDER="0" ALT="令和 6年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 5年'"><IMG SRC="/takasago/image/tab-R05-1.gif" BORDER="0" ALT="令和 5年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 4年'"><IMG SRC="/takasago/image/tab-R04-R01.gif" BORDER="0" ALT="令和元年～令和 4年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成31年'"><IMG SRC="/takasago/image/tab-H31-H28.gif" BORDER="0" ALT="平成28年～平成31年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成27年'"><IMG SRC="/takasago/image/tab-H27-H24.gif" BORDER="0" ALT="平成24年～平成27年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成23年'"><IMG SRC="/takasago/image/tab-H23-H20.gif" BORDER="0" ALT="平成20年～平成23年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成19年'"><IMG SRC="/takasago/image/tab-H19-H16.gif" BORDER="0" ALT="平成16年～平成19年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成15年'"><IMG SRC="/takasago/image/tab-H15-H12.gif" BORDER="0" ALT="平成12年～平成15年"></A></TD></TR>
+  
+<!--											<TR>
+												<TD><A HREF="17.html"><IMG SRC="/takasago/image/13-17-1.gif" WIDTH="150" HEIGHT="25" BORDER="0"></A></TD>
+											</TR>
+											<TR>
+												<TD><A HREF="12.html"><IMG SRC="/takasago/image/6-12-1.gif" WIDTH="150" HEIGHT="25" BORDER="0"></A></TD>
+											</TR>
+											<TR>
+												<TD><A HREF="5.html"><IMG SRC="/takasago/image/61-5-1.gif" WIDTH="150" HEIGHT="25" BORDER="0"></A></TD>
+											</TR>
+											<TR>
+												<TD BGCOLOR="#989898"><IMG SRC="/takasago/image/bit.gif" WIDTH="1" HEIGHT="1" BORDER="0"></TD>
+											</TR>
+-->
+</TABLE>
+
+
+
+									<!--H240416	<TABLE border="0" cellpadding="0" cellspacing="0" WIDTH="150" HEIGHT="100%">
+											<TR>
+												<TD BGCOLOR="#989898" BACKGROUND="/takasago/image/line-a.gif"><IMG SRC="/takasago/image/line-a.gif" WIDTH="150" HEIGHT="25" BORDER="0"></TD>
+											</TR>
+										</TABLE>K240416-->
+
+
+									</TD>
+									<TD bgcolor="white" WIDTH="520" VALIGN="TOP">
+
+										<TABLE bgcolor="white" border="0" cellpadding="0" cellspacing="0" WIDTH="520"><!-- 4+ -->
+											<TR>
+												<TD BGCOLOR="#989898" WIDTH="520"><IMG SRC="/takasago/image/bit.gif" WIDTH="1" HEIGHT="1"></TD>
+											</TR>
+										</TABLE><!-- 4- -->
+
+									</TD>
+									<TD WIDTH="1" BGCOLOR="#989898" ROWSPAN="3"><IMG SRC="/takasago/image/bit.gif" WIDTH="1" HEIGHT="1"></TD>
+
+								</TR>
+								<TR>
+									<TD VALIGN="TOP">
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- 
+１．tabを単年度表示する場合
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 8年'"><IMG SRC="/takasago/image/tab-R08-1.gif" BORDER="0" ALT="令和 8年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 7年'"><IMG SRC="/takasago/image/tab-R07-1.gif" BORDER="0" ALT="令和 7年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 6年'"><IMG SRC="/takasago/image/tab-R06.gif" BORDER="0" ALT="令和 6年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 5年'"><IMG SRC="/takasago/image/tab-R05-1.gif" BORDER="0" ALT="令和 5年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 4年'"><IMG SRC="/takasago/image/tab-R04-R01.gif" BORDER="0" ALT="令和元年～令和 4年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成31年'"><IMG SRC="/takasago/image/tab-H31-H28.gif" BORDER="0" ALT="平成28年～平成31年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成27年'"><IMG SRC="/takasago/image/tab-H27-H24.gif" BORDER="0" ALT="平成24年～平成27年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成23年'"><IMG SRC="/takasago/image/tab-H23-H20.gif" BORDER="0" ALT="平成20年～平成23年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成19年'"><IMG SRC="/takasago/image/tab-H19-H16.gif" BORDER="0" ALT="平成16年～平成19年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成15年'"><IMG SRC="/takasago/image/tab-H15-H12.gif" BORDER="0" ALT="平成12年～平成15年"></A></TD></TR>
+
+２．tabを複数年度グループ表示する場合(例：兵庫県議会)
+<table><TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 8年'"><IMG SRC="/takasago/image/tab-R08-1.gif" BORDER="0" ALT="令和 8年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 7年'"><IMG SRC="/takasago/image/tab-R07-1.gif" BORDER="0" ALT="令和 7年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 6年'"><IMG SRC="/takasago/image/tab-R06.gif" BORDER="0" ALT="令和 6年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 5年'"><IMG SRC="/takasago/image/tab-R05-1.gif" BORDER="0" ALT="令和 5年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='令和 4年'"><IMG SRC="/takasago/image/tab-R04-R01.gif" BORDER="0" ALT="令和元年～令和 4年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成31年'"><IMG SRC="/takasago/image/tab-H31-H28.gif" BORDER="0" ALT="平成28年～平成31年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成27年'"><IMG SRC="/takasago/image/tab-H27-H24.gif" BORDER="0" ALT="平成24年～平成27年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成23年'"><IMG SRC="/takasago/image/tab-H23-H20.gif" BORDER="0" ALT="平成20年～平成23年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成19年'"><IMG SRC="/takasago/image/tab-H19-H16.gif" BORDER="0" ALT="平成16年～平成19年"></A></TD></TR>
+<TR><TD><A HREF="javascript:document.viewtree.submit()"onClick="document.viewtree.treedepth.value='平成15年'"><IMG SRC="/takasago/image/tab-H15-H12.gif" BORDER="0" ALT="平成12年～平成15年"></A></TD></TR>
+</table>
+-->
+<BR>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+										<TABLE border="0" cellpadding="0" cellspacing="0" WIDTH="520"><!-- 4+ -->
+											<TR>
+												<TD WIDTH="520" BGCOLOR="#FFFFFF" VALIGN="TOP" ALIGN="RIGHT">
+													<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" WIDTH="510"><!-- 5+ -->
+														<TR>
+															<TD>
+
+				<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年  2月臨時会 '"><IMG SRC="/takasago/image/down.gif" WIDTH="12" HEIGHT="12" BORDER="0">令和 6年  2月臨時会</A><BR>
+<OL>
+<A href="ResultFrame.exe?Code=h52lmgenyzsjmkcxck&fileName=R060205A&startPos=0">
+<IMG SRC="/takasago/image/r2.gif" WIDTH="12" HEIGHT="12" BORDER="0">（第 1日 2月 5日）</A><BR>
+</OL>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年  3月定例会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">令和 6年  3月定例会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年  6月定例会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">令和 6年  6月定例会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年  9月定例会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">令和 6年  9月定例会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 12月定例会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">令和 6年 12月定例会</A><BR>
+<br>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 総務常任委員会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">総務常任委員会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 文教厚生常任委員会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">文教厚生常任委員会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 建設環境経済常任委員会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">建設環境経済常任委員会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 議会運営委員会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">議会運営委員会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 高砂市民病院経営改善対策特別委員会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">高砂市民病院経営改善対策特別委員会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 決算特別委員会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">決算特別委員会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 行政課題等調査検討特別委員会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">行政課題等調査検討特別委員会</A><BR>
+<A HREF="javascript:document.viewtree.submit()" onClick="document.viewtree.treedepth.value='令和 6年 建設環境経済常任委員会・総務常任委員会合同委員会 '"><IMG SRC="/takasago/image/r.gif" WIDTH="12" HEIGHT="12" BORDER="0">建設環境経済常任委員会・総務常任委員会合同委員会</A><BR>
+<BR>
+<br>
+
+															</TD>
+														</TR>
+													</TABLE>
+													<!-- 5- -->
+												</TD>
+											</TR>
+										</TABLE><!-- 4- -->
+</div>
+
+<!------------------------------------------------------------------------本文終了---------------------------------------------------------------------------------------------------------------->
+
+
+									</TD>
+								</TR>
+								<TR>
+									<TD VALIGN="BOTTOM">
+										<TABLE border="0" cellpadding="0" cellspacing="0" WIDTH="520"><!-- 4+ -->
+											<TR>
+												<TD BGCOLOR="#989898" WIDTH="520"><IMG SRC="/takasago/image/bit.gif" WIDTH="1" HEIGHT="1"></TD>
+											</TR>
+										</TABLE><!-- 4- -->
+									</TD>
+								</TR>
+							</TABLE><!-- 3- -->
+
+
+							</TD>
+						</TR>
+					</TABLE><!-- 2- -->
+
+<br> 
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------------以上-------------------------------------------------->
+
+						</td>
+					</tr>
+				</table>
+
+			<img src="/takasago/image/bit.gif" width="730" height="1" alt=""><br>
+			</div>
+
+			<div class="content1_1"><img src="/takasago/image/bit.gif" width="20" height="1" alt=""></div>
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</td>
+		<td width="2" background="/takasago/image/rightbit.gif"><img src="/takasago/image/rightbit.gif" width="2" height="2"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="/takasago/image/bottom.gif" width="788" height="35"></td>
+	</tr>
+</table>
+
+
+
+</div>
+
+</center>
+
+
+
+</body>
+</html>
+
