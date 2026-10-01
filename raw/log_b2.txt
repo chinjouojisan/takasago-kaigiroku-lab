@@ -1,0 +1,8 @@
+2026-10-01T11:03:23.650608Z robots.txt を確認しました
+2026-10-01T11:03:29.517679Z OK 200 text/html disp=None 22779 bytes GET http://www.kensakusystem.jp/takasago/index.html -> b2_index.html
+2026-10-01T11:03:35.399121Z OK 200 text/html; charset=shift-jis disp=None 1485 bytes GET http://www.kensakusystem.jp/takasago/cgi-bin2/GetText3.exe?h52lmgenyzsjmkcxck/R080312A/83190/10/1//1/%50%43%42/0 -> b2_gettext3.html
+2026-10-01T11:03:40.959984Z OK 200 text/html; charset=shift-jis disp=None 474 bytes GET http://www.kensakusystem.jp/takasago/cgi-bin2/r_PageFrame.exe?h52lmgenyzsjmkcxck/R080312A/651/10/1/1/%50%43%42/0/0 -> b2_pageframe651.html
+2026-10-01T11:03:46.838537Z OK 200 text/plain disp=attachment; filename=download.doc 978 bytes POST http://www.kensakusystem.jp/takasago/cgi-bin2/GetPerson.exe -> b2_getperson.txt
+2026-10-01T11:03:52.778952Z OK 200 text/html; charset=shift-jis disp=None 14715 bytes POST http://www.kensakusystem.jp/takasago/cgi-bin2/See.exe -> b2_see_r4.html
+2026-10-01T11:03:58.373778Z OK 200 text/html; charset=shift-jis disp=None 18319 bytes POST http://www.kensakusystem.jp/takasago/cgi-bin2/See.exe -> b2_see_r8_mar.html
+2026-10-01T11:03:58.373952Z 完了
