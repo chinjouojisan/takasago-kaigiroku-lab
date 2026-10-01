@@ -1,0 +1,8 @@
+2026-10-01T03:35:27.076559Z robots.txt を確認しました
+2026-10-01T03:35:32.585404Z OK 200 text/html 22779 bytes http://www.kensakusystem.jp/takasago/index.html -> index.html
+2026-10-01T03:35:32.586976Z 見つかったリンク: 閲覧=True / 検索画面=True / トピック=True
+2026-10-01T03:35:38.050733Z OK 200 text/html; charset=shift-jis 13909 bytes http://www.kensakusystem.jp/takasago/cgi-bin2/See.exe?Code=h52lmgenyzsjmkcxck -> see_top.html
+2026-10-01T03:35:43.895907Z OK 200 text/html; charset=shift-jis 62519 bytes http://www.kensakusystem.jp/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&sTarget=2 -> search_form.html
+2026-10-01T03:35:50.788167Z OK 200 text/html; charset=shift-jis 83028 bytes http://www.kensakusystem.jp/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=PCB&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5 -> search_topic.html
+2026-10-01T03:35:50.789159Z 日別ページへのリンクが見つかりませんでした(検索結果の構造は raw/search_topic.html で確認)
+2026-10-01T03:35:50.789164Z 完了

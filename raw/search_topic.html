@@ -1,0 +1,1809 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=x-sjis">
+	<title>高砂市議会/会議録検索システム</title>
+	<meta name="robots" CONTENT="follow,index">
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" type="text/css" href="/takasago/css/base.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function checkalltarget(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.search.alltarget.checked;
+    }
+}
+
+function setType(){
+	var type_f = new Array(4);
+	var i=1;
+	var hrefopt='';
+	
+	for (var j=0;i<=3 && j<document.search.elements.length;j++){
+    var e = document.search.elements[j];
+		if (e.name == 'eTarget'){
+      if( e.checked ) hrefopt += '&eTarget='+i;
+      type_f[i++] = e.checked;
+    }
+	}
+}
+//--->
+</SCRIPT>
+<STYLE type="text/css">
+
+<!--
+A:link{color:#0066CC;text-decoration: none}
+A:visited{text-decoration: none}
+A:hover{color:#FF7700;text-decoration: underline;}
+
+input.sbutton{
+background-color:#fad1e0;
+width: 100;
+height: 32;
+font-size: 90%;
+line-height: 25px;
+width: 100px;
+font-weight: bold;
+color: #991144;
+}
+input.rbutton{
+background-color:#eeeeee;
+width: 100;
+height: 32;
+font-size: 90%;
+line-height: 25px;
+width: 100px;
+font-weight: bold;
+color: #032832;
+
+}
+-->
+</STYLE>
+</head>
+
+
+<body>
+
+
+<!-- Begin JAVASCRIPT -->
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+OS = "";
+if(navigator.appVersion.indexOf("Mac",0) != -1){
+	OS = "Mac";
+}
+if(navigator.appVersion.indexOf("Windows",0) != -1){
+	OS = "Windows";
+}
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+
+if( browserName == "Microsoft Internet Explorer" ){
+	n = navigator.appVersion.indexOf("MSIE",0);
+	browserVer = parseInt(navigator.appVersion.substring(n+4));	
+}
+function yearChange(){
+	document.search.action='/takasago/cgi-bin2/Search2.exe#res';
+	document.search.target='';
+	document.search.submit();
+}
+function setSpeaker(sel){
+	i = sel.selectedIndex;
+	document.search.speaker1.selectedIndex=1;
+	document.search.speaker2.selectedIndex=1;
+	document.search.speaker3.selectedIndex=1;
+	sel.selectedIndex=i;
+	if( i>0 ){
+		document.search.speaker.value=sel.options[i].value;
+	}
+	else{
+		document.search.speaker.value='';
+	}
+}
+function checkalltarget(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.search.alltarget.checked;
+    }
+}
+function GTargetChangeAll(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'gTarget')
+	      e.checked = document.search.gTargetAll.checked;
+    }
+}
+function GTargetChange(){
+	var ca=true;
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'gTarget')
+	      ca = ca && e.checked;
+	    document.search.gTargetAll.checked = ca;
+    }
+}
+var fromCallValue = new Array(182);
+var fromCallText = new Array(182);
+var fromCallType = new Array(182);
+fromCallValue[0] = "令和 7年行政課題等調査検討特別委員会（ 1月 9日）";
+fromCallText[0] = "行政課題等調査検討特別委員会（ 1月 9日）";
+fromCallType[0] = 8;
+fromCallValue[1] = "令和 7年議会運営委員会（ 1月15日）";
+fromCallText[1] = "議会運営委員会（ 1月15日）";
+fromCallType[1] = 5;
+fromCallValue[2] = "令和 7年 1月臨時会（第 1日 1月21日）";
+fromCallText[2] = " 1月臨時会（第 1日 1月21日）";
+fromCallType[2] = 1;
+fromCallValue[3] = "令和 7年総務常任委員会（ 1月21日）";
+fromCallText[3] = "総務常任委員会（ 1月21日）";
+fromCallType[3] = 2;
+fromCallValue[4] = "令和 7年文教厚生常任委員会（ 1月21日）";
+fromCallText[4] = "文教厚生常任委員会（ 1月21日）";
+fromCallType[4] = 3;
+fromCallValue[5] = "令和 7年文教厚生常任委員会（ 1月22日）";
+fromCallText[5] = "文教厚生常任委員会（ 1月22日）";
+fromCallType[5] = 3;
+fromCallValue[6] = "令和 7年建設環境経済常任委員会（ 1月23日）";
+fromCallText[6] = "建設環境経済常任委員会（ 1月23日）";
+fromCallType[6] = 4;
+fromCallValue[7] = "令和 7年行政課題等調査検討特別委員会（ 1月24日）";
+fromCallText[7] = "行政課題等調査検討特別委員会（ 1月24日）";
+fromCallType[7] = 8;
+fromCallValue[8] = "令和 7年議会運営委員会（ 1月28日）";
+fromCallText[8] = "議会運営委員会（ 1月28日）";
+fromCallType[8] = 5;
+fromCallValue[9] = "令和 7年総務常任委員会（ 1月29日）";
+fromCallText[9] = "総務常任委員会（ 1月29日）";
+fromCallType[9] = 2;
+fromCallValue[10] = "令和 7年行政課題等調査検討特別委員会（ 2月12日）";
+fromCallText[10] = "行政課題等調査検討特別委員会（ 2月12日）";
+fromCallType[10] = 8;
+fromCallValue[11] = "令和 7年議会運営委員会（ 2月14日）";
+fromCallText[11] = "議会運営委員会（ 2月14日）";
+fromCallType[11] = 5;
+fromCallValue[12] = "令和 7年 3月定例会（第 1日 2月25日）";
+fromCallText[12] = " 3月定例会（第 1日 2月25日）";
+fromCallType[12] = 1;
+fromCallValue[13] = "令和 7年議会運営委員会（ 2月25日）";
+fromCallText[13] = "議会運営委員会（ 2月25日）";
+fromCallType[13] = 5;
+fromCallValue[14] = "令和 7年 3月定例会（第 2日 2月26日）";
+fromCallText[14] = " 3月定例会（第 2日 2月26日）";
+fromCallType[14] = 1;
+fromCallValue[15] = "令和 7年 3月定例会（第 3日 2月27日）";
+fromCallText[15] = " 3月定例会（第 3日 2月27日）";
+fromCallType[15] = 1;
+fromCallValue[16] = "令和 7年議会運営委員会（ 2月27日）";
+fromCallText[16] = "議会運営委員会（ 2月27日）";
+fromCallType[16] = 5;
+fromCallValue[17] = "令和 7年総務常任委員会（ 2月28日）";
+fromCallText[17] = "総務常任委員会（ 2月28日）";
+fromCallType[17] = 2;
+fromCallValue[18] = "令和 7年文教厚生常任委員会（ 2月28日）";
+fromCallText[18] = "文教厚生常任委員会（ 2月28日）";
+fromCallType[18] = 3;
+fromCallValue[19] = "令和 7年建設環境経済常任委員会（ 2月28日）";
+fromCallText[19] = "建設環境経済常任委員会（ 2月28日）";
+fromCallType[19] = 4;
+fromCallValue[20] = "令和 7年総務常任委員会（ 3月 3日）";
+fromCallText[20] = "総務常任委員会（ 3月 3日）";
+fromCallType[20] = 2;
+fromCallValue[21] = "令和 7年議会運営委員会（ 3月 3日）";
+fromCallText[21] = "議会運営委員会（ 3月 3日）";
+fromCallType[21] = 5;
+fromCallValue[22] = "令和 7年 3月定例会（第 4日 3月 4日）";
+fromCallText[22] = " 3月定例会（第 4日 3月 4日）";
+fromCallType[22] = 1;
+fromCallValue[23] = "令和 7年議会運営委員会（ 3月 4日）";
+fromCallText[23] = "議会運営委員会（ 3月 4日）";
+fromCallType[23] = 5;
+fromCallValue[24] = "令和 7年 3月定例会（第 5日 3月 5日）";
+fromCallText[24] = " 3月定例会（第 5日 3月 5日）";
+fromCallType[24] = 1;
+fromCallValue[25] = "令和 7年 3月定例会（第 6日 3月 6日）";
+fromCallText[25] = " 3月定例会（第 6日 3月 6日）";
+fromCallType[25] = 1;
+fromCallValue[26] = "令和 7年 3月定例会（第 7日 3月 7日）";
+fromCallText[26] = " 3月定例会（第 7日 3月 7日）";
+fromCallType[26] = 1;
+fromCallValue[27] = "令和 7年議会運営委員会（ 3月 7日）";
+fromCallText[27] = "議会運営委員会（ 3月 7日）";
+fromCallType[27] = 5;
+fromCallValue[28] = "令和 7年 3月定例会（第 8日 3月10日）";
+fromCallText[28] = " 3月定例会（第 8日 3月10日）";
+fromCallType[28] = 1;
+fromCallValue[29] = "令和 7年 3月定例会（第 9日 3月11日）";
+fromCallText[29] = " 3月定例会（第 9日 3月11日）";
+fromCallType[29] = 1;
+fromCallValue[30] = "令和 7年議会運営委員会（ 3月11日）";
+fromCallText[30] = "議会運営委員会（ 3月11日）";
+fromCallType[30] = 5;
+fromCallValue[31] = "令和 7年 3月定例会（第10日 3月12日）";
+fromCallText[31] = " 3月定例会（第10日 3月12日）";
+fromCallType[31] = 1;
+fromCallValue[32] = "令和 7年 3月定例会（第11日 3月13日）";
+fromCallText[32] = " 3月定例会（第11日 3月13日）";
+fromCallType[32] = 1;
+fromCallValue[33] = "令和 7年 3月定例会（第12日 3月14日）";
+fromCallText[33] = " 3月定例会（第12日 3月14日）";
+fromCallType[33] = 1;
+fromCallValue[34] = "令和 7年議会運営委員会（ 3月14日）";
+fromCallText[34] = "議会運営委員会（ 3月14日）";
+fromCallType[34] = 5;
+fromCallValue[35] = "令和 7年 3月定例会（第13日 3月17日）";
+fromCallText[35] = " 3月定例会（第13日 3月17日）";
+fromCallType[35] = 1;
+fromCallValue[36] = "令和 7年 3月定例会（第14日 3月18日）";
+fromCallText[36] = " 3月定例会（第14日 3月18日）";
+fromCallType[36] = 1;
+fromCallValue[37] = "令和 7年文教厚生常任委員会（ 3月18日）";
+fromCallText[37] = "文教厚生常任委員会（ 3月18日）";
+fromCallType[37] = 3;
+fromCallValue[38] = "令和 7年総務常任委員会（ 3月19日）";
+fromCallText[38] = "総務常任委員会（ 3月19日）";
+fromCallType[38] = 2;
+fromCallValue[39] = "令和 7年文教厚生常任委員会（ 3月19日）";
+fromCallText[39] = "文教厚生常任委員会（ 3月19日）";
+fromCallType[39] = 3;
+fromCallValue[40] = "令和 7年建設環境経済常任委員会（ 3月19日）";
+fromCallText[40] = "建設環境経済常任委員会（ 3月19日）";
+fromCallType[40] = 4;
+fromCallValue[41] = "令和 7年行政課題等調査検討特別委員会（ 3月19日）";
+fromCallText[41] = "行政課題等調査検討特別委員会（ 3月19日）";
+fromCallType[41] = 8;
+fromCallValue[42] = "令和 7年総務常任委員会（ 3月21日）";
+fromCallText[42] = "総務常任委員会（ 3月21日）";
+fromCallType[42] = 2;
+fromCallValue[43] = "令和 7年文教厚生常任委員会（ 3月21日）";
+fromCallText[43] = "文教厚生常任委員会（ 3月21日）";
+fromCallType[43] = 3;
+fromCallValue[44] = "令和 7年建設環境経済常任委員会（ 3月21日）";
+fromCallText[44] = "建設環境経済常任委員会（ 3月21日）";
+fromCallType[44] = 4;
+fromCallValue[45] = "令和 7年総務常任委員会（ 3月24日）";
+fromCallText[45] = "総務常任委員会（ 3月24日）";
+fromCallType[45] = 2;
+fromCallValue[46] = "令和 7年文教厚生常任委員会（ 3月24日）";
+fromCallText[46] = "文教厚生常任委員会（ 3月24日）";
+fromCallType[46] = 3;
+fromCallValue[47] = "令和 7年建設環境経済常任委員会（ 3月24日）";
+fromCallText[47] = "建設環境経済常任委員会（ 3月24日）";
+fromCallType[47] = 4;
+fromCallValue[48] = "令和 7年総務常任委員会（ 3月25日）";
+fromCallText[48] = "総務常任委員会（ 3月25日）";
+fromCallType[48] = 2;
+fromCallValue[49] = "令和 7年文教厚生常任委員会（ 3月25日）";
+fromCallText[49] = "文教厚生常任委員会（ 3月25日）";
+fromCallType[49] = 3;
+fromCallValue[50] = "令和 7年建設環境経済常任委員会（ 3月25日）";
+fromCallText[50] = "建設環境経済常任委員会（ 3月25日）";
+fromCallType[50] = 4;
+fromCallValue[51] = "令和 7年 3月定例会（第15日 3月27日）";
+fromCallText[51] = " 3月定例会（第15日 3月27日）";
+fromCallType[51] = 1;
+fromCallValue[52] = "令和 7年総務常任委員会（ 3月27日）";
+fromCallText[52] = "総務常任委員会（ 3月27日）";
+fromCallType[52] = 2;
+fromCallValue[53] = "令和 7年文教厚生常任委員会（ 3月27日）";
+fromCallText[53] = "文教厚生常任委員会（ 3月27日）";
+fromCallType[53] = 3;
+fromCallValue[54] = "令和 7年議会運営委員会（ 3月27日）";
+fromCallText[54] = "議会運営委員会（ 3月27日）";
+fromCallType[54] = 5;
+fromCallValue[55] = "令和 7年議会運営委員会（ 4月 4日）";
+fromCallText[55] = "議会運営委員会（ 4月 4日）";
+fromCallType[55] = 5;
+fromCallValue[56] = "令和 7年行政課題等調査検討特別委員会（ 4月11日）";
+fromCallText[56] = "行政課題等調査検討特別委員会（ 4月11日）";
+fromCallType[56] = 8;
+fromCallValue[57] = "令和 7年総務常任委員会（ 4月22日）";
+fromCallText[57] = "総務常任委員会（ 4月22日）";
+fromCallType[57] = 2;
+fromCallValue[58] = "令和 7年文教厚生常任委員会（ 4月22日）";
+fromCallText[58] = "文教厚生常任委員会（ 4月22日）";
+fromCallType[58] = 3;
+fromCallValue[59] = "令和 7年建設環境経済常任委員会（ 4月24日）";
+fromCallText[59] = "建設環境経済常任委員会（ 4月24日）";
+fromCallType[59] = 4;
+fromCallValue[60] = "令和 7年行政課題等調査検討特別委員会（ 5月 9日）";
+fromCallText[60] = "行政課題等調査検討特別委員会（ 5月 9日）";
+fromCallType[60] = 8;
+fromCallValue[61] = "令和 7年議会運営委員会（ 5月19日）";
+fromCallText[61] = "議会運営委員会（ 5月19日）";
+fromCallType[61] = 5;
+fromCallValue[62] = "令和 7年総務常任委員会（ 5月26日）";
+fromCallText[62] = "総務常任委員会（ 5月26日）";
+fromCallType[62] = 2;
+fromCallValue[63] = "令和 7年文教厚生常任委員会（ 5月27日）";
+fromCallText[63] = "文教厚生常任委員会（ 5月27日）";
+fromCallType[63] = 3;
+fromCallValue[64] = "令和 7年建設環境経済常任委員会（ 5月30日）";
+fromCallText[64] = "建設環境経済常任委員会（ 5月30日）";
+fromCallType[64] = 4;
+fromCallValue[65] = "令和 7年行政課題等調査検討特別委員会（ 6月 2日）";
+fromCallText[65] = "行政課題等調査検討特別委員会（ 6月 2日）";
+fromCallType[65] = 8;
+fromCallValue[66] = "令和 7年議会運営委員会（ 6月 5日）";
+fromCallText[66] = "議会運営委員会（ 6月 5日）";
+fromCallType[66] = 5;
+fromCallValue[67] = "令和 7年 6月定例会（第 1日 6月12日）";
+fromCallText[67] = " 6月定例会（第 1日 6月12日）";
+fromCallType[67] = 1;
+fromCallValue[68] = "令和 7年総務常任委員会（ 6月12日）";
+fromCallText[68] = "総務常任委員会（ 6月12日）";
+fromCallType[68] = 2;
+fromCallValue[69] = "令和 7年文教厚生常任委員会（ 6月12日）";
+fromCallText[69] = "文教厚生常任委員会（ 6月12日）";
+fromCallType[69] = 3;
+fromCallValue[70] = "令和 7年議会運営委員会（ 6月12日）";
+fromCallText[70] = "議会運営委員会（ 6月12日）";
+fromCallType[70] = 5;
+fromCallValue[71] = "令和 7年 6月定例会（第 2日 6月13日）";
+fromCallText[71] = " 6月定例会（第 2日 6月13日）";
+fromCallType[71] = 1;
+fromCallValue[72] = "令和 7年 6月定例会（第 3日 6月16日）";
+fromCallText[72] = " 6月定例会（第 3日 6月16日）";
+fromCallType[72] = 1;
+fromCallValue[73] = "令和 7年議会運営委員会（ 6月16日）";
+fromCallText[73] = "議会運営委員会（ 6月16日）";
+fromCallType[73] = 5;
+fromCallValue[74] = "令和 7年議会運営委員会（ 6月16日）";
+fromCallText[74] = "議会運営委員会（ 6月16日）";
+fromCallType[74] = 5;
+fromCallValue[75] = "令和 7年 6月定例会（第 4日 6月18日）";
+fromCallText[75] = " 6月定例会（第 4日 6月18日）";
+fromCallType[75] = 1;
+fromCallValue[76] = "令和 7年 6月定例会（第 5日 6月19日）";
+fromCallText[76] = " 6月定例会（第 5日 6月19日）";
+fromCallType[76] = 1;
+fromCallValue[77] = "令和 7年総務常任委員会（ 6月20日）";
+fromCallText[77] = "総務常任委員会（ 6月20日）";
+fromCallType[77] = 2;
+fromCallValue[78] = "令和 7年文教厚生常任委員会（ 6月20日）";
+fromCallText[78] = "文教厚生常任委員会（ 6月20日）";
+fromCallType[78] = 3;
+fromCallValue[79] = "令和 7年建設環境経済常任委員会（ 6月20日）";
+fromCallText[79] = "建設環境経済常任委員会（ 6月20日）";
+fromCallType[79] = 4;
+fromCallValue[80] = "令和 7年行政課題等調査検討特別委員会（ 6月20日）";
+fromCallText[80] = "行政課題等調査検討特別委員会（ 6月20日）";
+fromCallType[80] = 8;
+fromCallValue[81] = "令和 7年総務常任委員会（ 6月23日）";
+fromCallText[81] = "総務常任委員会（ 6月23日）";
+fromCallType[81] = 2;
+fromCallValue[82] = "令和 7年文教厚生常任委員会（ 6月23日）";
+fromCallText[82] = "文教厚生常任委員会（ 6月23日）";
+fromCallType[82] = 3;
+fromCallValue[83] = "令和 7年建設環境経済常任委員会（ 6月23日）";
+fromCallText[83] = "建設環境経済常任委員会（ 6月23日）";
+fromCallType[83] = 4;
+fromCallValue[84] = "令和 7年総務常任委員会（ 6月24日）";
+fromCallText[84] = "総務常任委員会（ 6月24日）";
+fromCallType[84] = 2;
+fromCallValue[85] = "令和 7年議会運営委員会（ 6月24日）";
+fromCallText[85] = "議会運営委員会（ 6月24日）";
+fromCallType[85] = 5;
+fromCallValue[86] = "令和 7年 6月定例会（第 6日 6月25日）";
+fromCallText[86] = " 6月定例会（第 6日 6月25日）";
+fromCallType[86] = 1;
+fromCallValue[87] = "令和 7年総務常任委員会（ 6月25日）";
+fromCallText[87] = "総務常任委員会（ 6月25日）";
+fromCallType[87] = 2;
+fromCallValue[88] = "令和 7年文教厚生常任委員会（ 6月25日）";
+fromCallText[88] = "文教厚生常任委員会（ 6月25日）";
+fromCallType[88] = 3;
+fromCallValue[89] = "令和 7年議会運営委員会（ 6月25日）";
+fromCallText[89] = "議会運営委員会（ 6月25日）";
+fromCallType[89] = 5;
+fromCallValue[90] = "令和 7年議会運営委員会（ 7月 1日）";
+fromCallText[90] = "議会運営委員会（ 7月 1日）";
+fromCallType[90] = 5;
+fromCallValue[91] = "令和 7年行政課題等調査検討特別委員会（ 7月 2日）";
+fromCallText[91] = "行政課題等調査検討特別委員会（ 7月 2日）";
+fromCallType[91] = 8;
+fromCallValue[92] = "令和 7年議会運営委員会（ 7月14日）";
+fromCallText[92] = "議会運営委員会（ 7月14日）";
+fromCallType[92] = 5;
+fromCallValue[93] = "令和 7年行政課題等調査検討特別委員会（ 7月16日）";
+fromCallText[93] = "行政課題等調査検討特別委員会（ 7月16日）";
+fromCallType[93] = 8;
+fromCallValue[94] = "令和 7年 7月臨時会（第 1日 7月17日）";
+fromCallText[94] = " 7月臨時会（第 1日 7月17日）";
+fromCallType[94] = 1;
+fromCallValue[95] = "令和 7年文教厚生常任委員会（ 7月17日）";
+fromCallText[95] = "文教厚生常任委員会（ 7月17日）";
+fromCallType[95] = 3;
+fromCallValue[96] = "令和 7年議会運営委員会（ 7月17日）";
+fromCallText[96] = "議会運営委員会（ 7月17日）";
+fromCallType[96] = 5;
+fromCallValue[97] = "令和 7年総務常任委員会（ 7月29日）";
+fromCallText[97] = "総務常任委員会（ 7月29日）";
+fromCallType[97] = 2;
+fromCallValue[98] = "令和 7年建設環境経済常任委員会（ 7月29日）";
+fromCallText[98] = "建設環境経済常任委員会（ 7月29日）";
+fromCallType[98] = 4;
+fromCallValue[99] = "令和 7年文教厚生常任委員会（ 7月30日）";
+fromCallText[99] = "文教厚生常任委員会（ 7月30日）";
+fromCallType[99] = 3;
+fromCallValue[100] = "令和 7年行政課題等調査検討特別委員会（ 8月 4日）";
+fromCallText[100] = "行政課題等調査検討特別委員会（ 8月 4日）";
+fromCallType[100] = 8;
+fromCallValue[101] = "令和 7年議会運営委員会（ 8月 7日）";
+fromCallText[101] = "議会運営委員会（ 8月 7日）";
+fromCallType[101] = 5;
+fromCallValue[102] = "令和 7年行政課題等調査検討特別委員会（ 8月18日）";
+fromCallText[102] = "行政課題等調査検討特別委員会（ 8月18日）";
+fromCallType[102] = 8;
+fromCallValue[103] = "令和 7年総務常任委員会（ 8月25日）";
+fromCallText[103] = "総務常任委員会（ 8月25日）";
+fromCallType[103] = 2;
+fromCallValue[104] = "令和 7年文教厚生常任委員会（ 8月25日）";
+fromCallText[104] = "文教厚生常任委員会（ 8月25日）";
+fromCallType[104] = 3;
+fromCallValue[105] = "令和 7年建設環境経済常任委員会（ 8月29日）";
+fromCallText[105] = "建設環境経済常任委員会（ 8月29日）";
+fromCallType[105] = 4;
+fromCallValue[106] = "令和 7年議会運営委員会（ 9月 2日）";
+fromCallText[106] = "議会運営委員会（ 9月 2日）";
+fromCallType[106] = 5;
+fromCallValue[107] = "令和 7年 9月定例会（第 1日 9月 9日）";
+fromCallText[107] = " 9月定例会（第 1日 9月 9日）";
+fromCallType[107] = 1;
+fromCallValue[108] = "令和 7年総務常任委員会（ 9月 9日）";
+fromCallText[108] = "総務常任委員会（ 9月 9日）";
+fromCallType[108] = 2;
+fromCallValue[109] = "令和 7年議会運営委員会（ 9月 9日）";
+fromCallText[109] = "議会運営委員会（ 9月 9日）";
+fromCallType[109] = 5;
+fromCallValue[110] = "令和 7年文教厚生常任委員会（ 9月10日）";
+fromCallText[110] = "文教厚生常任委員会（ 9月10日）";
+fromCallType[110] = 3;
+fromCallValue[111] = "令和 7年 9月定例会（第 2日 9月10日）";
+fromCallText[111] = " 9月定例会（第 2日 9月10日）";
+fromCallType[111] = 1;
+fromCallValue[112] = "令和 7年総務常任委員会（ 9月10日）";
+fromCallText[112] = "総務常任委員会（ 9月10日）";
+fromCallType[112] = 2;
+fromCallValue[113] = "令和 7年建設環境経済常任委員会（ 9月10日）";
+fromCallText[113] = "建設環境経済常任委員会（ 9月10日）";
+fromCallType[113] = 4;
+fromCallValue[114] = "令和 7年議会運営委員会（ 9月10日）";
+fromCallText[114] = "議会運営委員会（ 9月10日）";
+fromCallType[114] = 5;
+fromCallValue[115] = "令和 7年議会運営委員会（ 9月10日）";
+fromCallText[115] = "議会運営委員会（ 9月10日）";
+fromCallType[115] = 5;
+fromCallValue[116] = "令和 7年議会運営委員会（ 9月10日）";
+fromCallText[116] = "議会運営委員会（ 9月10日）";
+fromCallType[116] = 5;
+fromCallValue[117] = "令和 7年行政課題等調査検討特別委員会（ 9月10日）";
+fromCallText[117] = "行政課題等調査検討特別委員会（ 9月10日）";
+fromCallType[117] = 8;
+fromCallValue[118] = "令和 7年 9月定例会（第 3日 9月11日）";
+fromCallText[118] = " 9月定例会（第 3日 9月11日）";
+fromCallType[118] = 1;
+fromCallValue[119] = "令和 7年議会運営委員会（ 9月11日）";
+fromCallText[119] = "議会運営委員会（ 9月11日）";
+fromCallType[119] = 5;
+fromCallValue[120] = "令和 7年 9月定例会（第 4日 9月12日）";
+fromCallText[120] = " 9月定例会（第 4日 9月12日）";
+fromCallType[120] = 1;
+fromCallValue[121] = "令和 7年議会運営委員会（ 9月12日）";
+fromCallText[121] = "議会運営委員会（ 9月12日）";
+fromCallType[121] = 5;
+fromCallValue[122] = "令和 7年 9月定例会（第 5日 9月17日）";
+fromCallText[122] = " 9月定例会（第 5日 9月17日）";
+fromCallType[122] = 1;
+fromCallValue[123] = "令和 7年 9月定例会（第 6日 9月18日）";
+fromCallText[123] = " 9月定例会（第 6日 9月18日）";
+fromCallType[123] = 1;
+fromCallValue[124] = "令和 7年総務常任委員会（ 9月19日）";
+fromCallText[124] = "総務常任委員会（ 9月19日）";
+fromCallType[124] = 2;
+fromCallValue[125] = "令和 7年建設環境経済常任委員会（ 9月19日）";
+fromCallText[125] = "建設環境経済常任委員会（ 9月19日）";
+fromCallType[125] = 4;
+fromCallValue[126] = "令和 7年文教厚生常任委員会（ 9月19日）";
+fromCallText[126] = "文教厚生常任委員会（ 9月19日）";
+fromCallType[126] = 3;
+fromCallValue[127] = "令和 7年行政課題等調査検討特別委員会（ 9月19日）";
+fromCallText[127] = "行政課題等調査検討特別委員会（ 9月19日）";
+fromCallType[127] = 8;
+fromCallValue[128] = "令和 7年総務常任委員会（ 9月22日）";
+fromCallText[128] = "総務常任委員会（ 9月22日）";
+fromCallType[128] = 2;
+fromCallValue[129] = "令和 7年建設環境経済常任委員会（ 9月22日）";
+fromCallText[129] = "建設環境経済常任委員会（ 9月22日）";
+fromCallType[129] = 4;
+fromCallValue[130] = "令和 7年文教厚生常任委員会（ 9月22日）";
+fromCallText[130] = "文教厚生常任委員会（ 9月22日）";
+fromCallType[130] = 3;
+fromCallValue[131] = "令和 7年議会運営委員会（ 9月24日）";
+fromCallText[131] = "議会運営委員会（ 9月24日）";
+fromCallType[131] = 5;
+fromCallValue[132] = "令和 7年 9月定例会（第 7日 9月26日）";
+fromCallText[132] = " 9月定例会（第 7日 9月26日）";
+fromCallType[132] = 1;
+fromCallValue[133] = "令和 7年議会運営委員会（ 9月26日）";
+fromCallText[133] = "議会運営委員会（ 9月26日）";
+fromCallType[133] = 5;
+fromCallValue[134] = "令和 7年決算特別委員会（ 9月26日）";
+fromCallText[134] = "決算特別委員会（ 9月26日）";
+fromCallType[134] = 7;
+fromCallValue[135] = "令和 7年議会運営委員会（10月 8日）";
+fromCallText[135] = "議会運営委員会（10月 8日）";
+fromCallType[135] = 5;
+fromCallValue[136] = "令和 7年決算特別委員会（10月 8日）";
+fromCallText[136] = "決算特別委員会（10月 8日）";
+fromCallType[136] = 7;
+fromCallValue[137] = "令和 7年議会運営委員会（10月21日）";
+fromCallText[137] = "議会運営委員会（10月21日）";
+fromCallType[137] = 5;
+fromCallValue[138] = "令和 7年決算特別委員会（10月21日）";
+fromCallText[138] = "決算特別委員会（10月21日）";
+fromCallType[138] = 7;
+fromCallValue[139] = "令和 7年行政課題等調査検討特別委員会（10月22日）";
+fromCallText[139] = "行政課題等調査検討特別委員会（10月22日）";
+fromCallType[139] = 8;
+fromCallValue[140] = "令和 7年決算特別委員会（10月27日）";
+fromCallText[140] = "決算特別委員会（10月27日）";
+fromCallType[140] = 7;
+fromCallValue[141] = "令和 7年建設環境経済常任委員会（10月28日）";
+fromCallText[141] = "建設環境経済常任委員会（10月28日）";
+fromCallType[141] = 4;
+fromCallValue[142] = "令和 7年総務常任委員会（10月29日）";
+fromCallText[142] = "総務常任委員会（10月29日）";
+fromCallType[142] = 2;
+fromCallValue[143] = "令和 7年文教厚生常任委員会（10月30日）";
+fromCallText[143] = "文教厚生常任委員会（10月30日）";
+fromCallType[143] = 3;
+fromCallValue[144] = "令和 7年決算特別委員会（10月31日）";
+fromCallText[144] = "決算特別委員会（10月31日）";
+fromCallType[144] = 7;
+fromCallValue[145] = "令和 7年決算特別委員会（11月 4日）";
+fromCallText[145] = "決算特別委員会（11月 4日）";
+fromCallType[145] = 7;
+fromCallValue[146] = "令和 7年決算特別委員会（11月 5日）";
+fromCallText[146] = "決算特別委員会（11月 5日）";
+fromCallType[146] = 7;
+fromCallValue[147] = "令和 7年決算特別委員会（11月12日）";
+fromCallText[147] = "決算特別委員会（11月12日）";
+fromCallType[147] = 7;
+fromCallValue[148] = "令和 7年議会運営委員会（11月17日）";
+fromCallText[148] = "議会運営委員会（11月17日）";
+fromCallType[148] = 5;
+fromCallValue[149] = "令和 7年決算特別委員会（11月17日）";
+fromCallText[149] = "決算特別委員会（11月17日）";
+fromCallType[149] = 7;
+fromCallValue[150] = "令和 7年総務常任委員会（11月20日）";
+fromCallText[150] = "総務常任委員会（11月20日）";
+fromCallType[150] = 2;
+fromCallValue[151] = "令和 7年建設環境経済常任委員会（11月20日）";
+fromCallText[151] = "建設環境経済常任委員会（11月20日）";
+fromCallType[151] = 4;
+fromCallValue[152] = "令和 7年決算特別委員会（11月25日）";
+fromCallText[152] = "決算特別委員会（11月25日）";
+fromCallType[152] = 7;
+fromCallValue[153] = "令和 7年文教厚生常任委員会（11月26日）";
+fromCallText[153] = "文教厚生常任委員会（11月26日）";
+fromCallType[153] = 3;
+fromCallValue[154] = "令和 7年決算特別委員会（11月27日）";
+fromCallText[154] = "決算特別委員会（11月27日）";
+fromCallType[154] = 7;
+fromCallValue[155] = "令和 7年議会運営委員会（11月28日）";
+fromCallText[155] = "議会運営委員会（11月28日）";
+fromCallType[155] = 5;
+fromCallValue[156] = "令和 7年決算特別委員会（11月28日）";
+fromCallText[156] = "決算特別委員会（11月28日）";
+fromCallType[156] = 7;
+fromCallValue[157] = "令和 7年行政課題等調査検討特別委員会（12月 1日）";
+fromCallText[157] = "行政課題等調査検討特別委員会（12月 1日）";
+fromCallType[157] = 8;
+fromCallValue[158] = "令和 7年12月定例会（第 1日12月 5日）";
+fromCallText[158] = "12月定例会（第 1日12月 5日）";
+fromCallType[158] = 1;
+fromCallValue[159] = "令和 7年議会運営委員会（12月 5日）";
+fromCallText[159] = "議会運営委員会（12月 5日）";
+fromCallType[159] = 5;
+fromCallValue[160] = "令和 7年12月定例会（第 2日12月 8日）";
+fromCallText[160] = "12月定例会（第 2日12月 8日）";
+fromCallType[160] = 1;
+fromCallValue[161] = "令和 7年議会運営委員会（12月 8日）";
+fromCallText[161] = "議会運営委員会（12月 8日）";
+fromCallType[161] = 5;
+fromCallValue[162] = "令和 7年議会運営委員会（12月 8日）";
+fromCallText[162] = "議会運営委員会（12月 8日）";
+fromCallType[162] = 5;
+fromCallValue[163] = "令和 7年12月定例会（第 3日12月 9日）";
+fromCallText[163] = "12月定例会（第 3日12月 9日）";
+fromCallType[163] = 1;
+fromCallValue[164] = "令和 7年12月定例会（第 4日12月10日）";
+fromCallText[164] = "12月定例会（第 4日12月10日）";
+fromCallType[164] = 1;
+fromCallValue[165] = "令和 7年議会運営委員会（12月10日）";
+fromCallText[165] = "議会運営委員会（12月10日）";
+fromCallType[165] = 5;
+fromCallValue[166] = "令和 7年12月定例会（第 5日12月11日）";
+fromCallText[166] = "12月定例会（第 5日12月11日）";
+fromCallType[166] = 1;
+fromCallValue[167] = "令和 7年12月定例会（第 6日12月12日）";
+fromCallText[167] = "12月定例会（第 6日12月12日）";
+fromCallType[167] = 1;
+fromCallValue[168] = "令和 7年総務常任委員会（12月15日）";
+fromCallText[168] = "総務常任委員会（12月15日）";
+fromCallType[168] = 2;
+fromCallValue[169] = "令和 7年文教厚生常任委員会（12月15日）";
+fromCallText[169] = "文教厚生常任委員会（12月15日）";
+fromCallType[169] = 3;
+fromCallValue[170] = "令和 7年建設環境経済常任委員会（12月15日）";
+fromCallText[170] = "建設環境経済常任委員会（12月15日）";
+fromCallType[170] = 4;
+fromCallValue[171] = "令和 7年総務常任委員会（12月16日）";
+fromCallText[171] = "総務常任委員会（12月16日）";
+fromCallType[171] = 2;
+fromCallValue[172] = "令和 7年建設環境経済常任委員会（12月16日）";
+fromCallText[172] = "建設環境経済常任委員会（12月16日）";
+fromCallType[172] = 4;
+fromCallValue[173] = "令和 7年文教厚生常任委員会（12月17日）";
+fromCallText[173] = "文教厚生常任委員会（12月17日）";
+fromCallType[173] = 3;
+fromCallValue[174] = "令和 7年12月定例会（第 7日12月18日）";
+fromCallText[174] = "12月定例会（第 7日12月18日）";
+fromCallType[174] = 1;
+fromCallValue[175] = "令和 7年議会運営委員会（12月18日）";
+fromCallText[175] = "議会運営委員会（12月18日）";
+fromCallType[175] = 5;
+fromCallValue[176] = "令和 7年12月定例会（第 8日12月19日）";
+fromCallText[176] = "12月定例会（第 8日12月19日）";
+fromCallType[176] = 1;
+fromCallValue[177] = "令和 7年総務常任委員会（12月19日）";
+fromCallText[177] = "総務常任委員会（12月19日）";
+fromCallType[177] = 2;
+fromCallValue[178] = "令和 7年文教厚生常任委員会（12月19日）";
+fromCallText[178] = "文教厚生常任委員会（12月19日）";
+fromCallType[178] = 3;
+fromCallValue[179] = "令和 7年行政課題等調査検討特別委員会（12月19日）";
+fromCallText[179] = "行政課題等調査検討特別委員会（12月19日）";
+fromCallType[179] = 8;
+fromCallValue[180] = "令和 7年12月定例会（第 9日12月22日）";
+fromCallText[180] = "12月定例会（第 9日12月22日）";
+fromCallType[180] = 1;
+fromCallValue[181] = "令和 7年議会運営委員会（12月22日）";
+fromCallText[181] = "議会運営委員会（12月22日）";
+fromCallType[181] = 5;
+var tillCallValue = new Array(64);
+var tillCallText = new Array(64);
+var tillCallType = new Array(64);
+tillCallValue[0] = "令和 8年議会運営委員会（ 1月 8日）";
+tillCallText[0] = "議会運営委員会（ 1月 8日）";
+tillCallType[0] = 5;
+tillCallValue[1] = "令和 8年議会運営委員会（ 1月14日）";
+tillCallText[1] = "議会運営委員会（ 1月14日）";
+tillCallType[1] = 5;
+tillCallValue[2] = "令和 8年 1月臨時会（第 1日 1月16日）";
+tillCallText[2] = " 1月臨時会（第 1日 1月16日）";
+tillCallType[2] = 1;
+tillCallValue[3] = "令和 8年総務常任委員会（ 1月16日）";
+tillCallText[3] = "総務常任委員会（ 1月16日）";
+tillCallType[3] = 2;
+tillCallValue[4] = "令和 8年総務常任委員会（ 1月16日）";
+tillCallText[4] = "総務常任委員会（ 1月16日）";
+tillCallType[4] = 2;
+tillCallValue[5] = "令和 8年文教厚生常任委員会（ 1月16日）";
+tillCallText[5] = "文教厚生常任委員会（ 1月16日）";
+tillCallType[5] = 3;
+tillCallValue[6] = "令和 8年建設環境経済常任委員会（ 1月16日）";
+tillCallText[6] = "建設環境経済常任委員会（ 1月16日）";
+tillCallType[6] = 4;
+tillCallValue[7] = "令和 8年文教厚生常任委員会（ 1月26日）";
+tillCallText[7] = "文教厚生常任委員会（ 1月26日）";
+tillCallType[7] = 3;
+tillCallValue[8] = "令和 8年行政課題等調査検討特別委員会（ 1月26日）";
+tillCallText[8] = "行政課題等調査検討特別委員会（ 1月26日）";
+tillCallType[8] = 8;
+tillCallValue[9] = "令和 8年建設環境経済常任委員会（ 1月27日）";
+tillCallText[9] = "建設環境経済常任委員会（ 1月27日）";
+tillCallType[9] = 4;
+tillCallValue[10] = "令和 8年議会運営委員会（ 1月28日）";
+tillCallText[10] = "議会運営委員会（ 1月28日）";
+tillCallType[10] = 5;
+tillCallValue[11] = "令和 8年議会運営委員会（ 2月 2日）";
+tillCallText[11] = "議会運営委員会（ 2月 2日）";
+tillCallType[11] = 5;
+tillCallValue[12] = "令和 8年議会運営委員会（ 2月 5日）";
+tillCallText[12] = "議会運営委員会（ 2月 5日）";
+tillCallType[12] = 5;
+tillCallValue[13] = "令和 8年議会運営委員会（ 2月13日）";
+tillCallText[13] = "議会運営委員会（ 2月13日）";
+tillCallType[13] = 5;
+tillCallValue[14] = "令和 8年 3月定例会（第 1日 2月24日）";
+tillCallText[14] = " 3月定例会（第 1日 2月24日）";
+tillCallType[14] = 1;
+tillCallValue[15] = "令和 8年議会運営委員会（ 2月24日）";
+tillCallText[15] = "議会運営委員会（ 2月24日）";
+tillCallType[15] = 5;
+tillCallValue[16] = "令和 8年 3月定例会（第 2日 2月25日）";
+tillCallText[16] = " 3月定例会（第 2日 2月25日）";
+tillCallType[16] = 1;
+tillCallValue[17] = "令和 8年 3月定例会（第 3日 2月26日）";
+tillCallText[17] = " 3月定例会（第 3日 2月26日）";
+tillCallType[17] = 1;
+tillCallValue[18] = "令和 8年議会運営委員会（ 2月26日）";
+tillCallText[18] = "議会運営委員会（ 2月26日）";
+tillCallType[18] = 5;
+tillCallValue[19] = "令和 8年総務常任委員会（ 2月27日）";
+tillCallText[19] = "総務常任委員会（ 2月27日）";
+tillCallType[19] = 2;
+tillCallValue[20] = "令和 8年文教厚生常任委員会（ 2月27日）";
+tillCallText[20] = "文教厚生常任委員会（ 2月27日）";
+tillCallType[20] = 3;
+tillCallValue[21] = "令和 8年建設環境経済常任委員会（ 2月27日）";
+tillCallText[21] = "建設環境経済常任委員会（ 2月27日）";
+tillCallType[21] = 4;
+tillCallValue[22] = "令和 8年総務常任委員会（ 3月 2日）";
+tillCallText[22] = "総務常任委員会（ 3月 2日）";
+tillCallType[22] = 2;
+tillCallValue[23] = "令和 8年議会運営委員会（ 3月 2日）";
+tillCallText[23] = "議会運営委員会（ 3月 2日）";
+tillCallType[23] = 5;
+tillCallValue[24] = "令和 8年 3月定例会（第 4日 3月 3日）";
+tillCallText[24] = " 3月定例会（第 4日 3月 3日）";
+tillCallType[24] = 1;
+tillCallValue[25] = "令和 8年 3月定例会（第 5日 3月 4日）";
+tillCallText[25] = " 3月定例会（第 5日 3月 4日）";
+tillCallType[25] = 1;
+tillCallValue[26] = "令和 8年総務常任委員会（ 3月 4日）";
+tillCallText[26] = "総務常任委員会（ 3月 4日）";
+tillCallType[26] = 2;
+tillCallValue[27] = "令和 8年 3月定例会（第 6日 3月 5日）";
+tillCallText[27] = " 3月定例会（第 6日 3月 5日）";
+tillCallType[27] = 1;
+tillCallValue[28] = "令和 8年議会運営委員会（ 3月 5日）";
+tillCallText[28] = "議会運営委員会（ 3月 5日）";
+tillCallType[28] = 5;
+tillCallValue[29] = "令和 8年 3月定例会（第 7日 3月 6日）";
+tillCallText[29] = " 3月定例会（第 7日 3月 6日）";
+tillCallType[29] = 1;
+tillCallValue[30] = "令和 8年 3月定例会（第 8日 3月 9日）";
+tillCallText[30] = " 3月定例会（第 8日 3月 9日）";
+tillCallType[30] = 1;
+tillCallValue[31] = "令和 8年議会運営委員会（ 3月 9日）";
+tillCallText[31] = "議会運営委員会（ 3月 9日）";
+tillCallType[31] = 5;
+tillCallValue[32] = "令和 8年 3月定例会（第 9日 3月10日）";
+tillCallText[32] = " 3月定例会（第 9日 3月10日）";
+tillCallType[32] = 1;
+tillCallValue[33] = "令和 8年議会運営委員会（ 3月10日）";
+tillCallText[33] = "議会運営委員会（ 3月10日）";
+tillCallType[33] = 5;
+tillCallValue[34] = "令和 8年 3月定例会（第10日 3月11日）";
+tillCallText[34] = " 3月定例会（第10日 3月11日）";
+tillCallType[34] = 1;
+tillCallValue[35] = "令和 8年議会運営委員会（ 3月11日）";
+tillCallText[35] = "議会運営委員会（ 3月11日）";
+tillCallType[35] = 5;
+tillCallValue[36] = "令和 8年 3月定例会（第11日 3月12日）";
+tillCallText[36] = " 3月定例会（第11日 3月12日）";
+tillCallType[36] = 1;
+tillCallValue[37] = "令和 8年 3月定例会（第12日 3月13日）";
+tillCallText[37] = " 3月定例会（第12日 3月13日）";
+tillCallType[37] = 1;
+tillCallValue[38] = "令和 8年議会運営委員会（ 3月13日）";
+tillCallText[38] = "議会運営委員会（ 3月13日）";
+tillCallType[38] = 5;
+tillCallValue[39] = "令和 8年 3月定例会（第13日 3月16日）";
+tillCallText[39] = " 3月定例会（第13日 3月16日）";
+tillCallType[39] = 1;
+tillCallValue[40] = "令和 8年 3月定例会（第14日 3月17日）";
+tillCallText[40] = " 3月定例会（第14日 3月17日）";
+tillCallType[40] = 1;
+tillCallValue[41] = "令和 8年総務常任委員会（ 3月18日）";
+tillCallText[41] = "総務常任委員会（ 3月18日）";
+tillCallType[41] = 2;
+tillCallValue[42] = "令和 8年建設環境経済常任委員会（ 3月18日）";
+tillCallText[42] = "建設環境経済常任委員会（ 3月18日）";
+tillCallType[42] = 4;
+tillCallValue[43] = "令和 8年行政課題等調査検討特別委員会（ 3月18日）";
+tillCallText[43] = "行政課題等調査検討特別委員会（ 3月18日）";
+tillCallType[43] = 8;
+tillCallValue[44] = "令和 8年文教厚生常任委員会（ 3月19日）";
+tillCallText[44] = "文教厚生常任委員会（ 3月19日）";
+tillCallType[44] = 3;
+tillCallValue[45] = "令和 8年建設環境経済常任委員会（ 3月19日）";
+tillCallText[45] = "建設環境経済常任委員会（ 3月19日）";
+tillCallType[45] = 4;
+tillCallValue[46] = "令和 8年文教厚生常任委員会（ 3月23日）";
+tillCallText[46] = "文教厚生常任委員会（ 3月23日）";
+tillCallType[46] = 3;
+tillCallValue[47] = "令和 8年文教厚生常任委員会（ 3月24日）";
+tillCallText[47] = "文教厚生常任委員会（ 3月24日）";
+tillCallType[47] = 3;
+tillCallValue[48] = "令和 8年 3月定例会（第15日 3月26日）";
+tillCallText[48] = " 3月定例会（第15日 3月26日）";
+tillCallType[48] = 1;
+tillCallValue[49] = "令和 8年議会運営委員会（ 3月26日）";
+tillCallText[49] = "議会運営委員会（ 3月26日）";
+tillCallType[49] = 5;
+tillCallValue[50] = "令和 8年議会運営委員会（ 4月15日）";
+tillCallText[50] = "議会運営委員会（ 4月15日）";
+tillCallType[50] = 5;
+tillCallValue[51] = "令和 8年議会運営委員会（ 5月12日）";
+tillCallText[51] = "議会運営委員会（ 5月12日）";
+tillCallType[51] = 5;
+tillCallValue[52] = "令和 8年 5月臨時会（第 1日 5月19日）";
+tillCallText[52] = " 5月臨時会（第 1日 5月19日）";
+tillCallType[52] = 1;
+tillCallValue[53] = "令和 8年議会運営委員会（ 5月19日）";
+tillCallText[53] = "議会運営委員会（ 5月19日）";
+tillCallType[53] = 5;
+tillCallValue[54] = "令和 8年 5月臨時会（第 2日 5月20日）";
+tillCallText[54] = " 5月臨時会（第 2日 5月20日）";
+tillCallType[54] = 1;
+tillCallValue[55] = "令和 8年議会運営委員会（ 6月 2日）";
+tillCallText[55] = "議会運営委員会（ 6月 2日）";
+tillCallType[55] = 5;
+tillCallValue[56] = "令和 8年 6月定例会（第 1日 6月 9日）";
+tillCallText[56] = " 6月定例会（第 1日 6月 9日）";
+tillCallType[56] = 1;
+tillCallValue[57] = "令和 8年議会運営委員会（ 6月 9日）";
+tillCallText[57] = "議会運営委員会（ 6月 9日）";
+tillCallType[57] = 5;
+tillCallValue[58] = "令和 8年 6月定例会（第 2日 6月10日）";
+tillCallText[58] = " 6月定例会（第 2日 6月10日）";
+tillCallType[58] = 1;
+tillCallValue[59] = "令和 8年議会運営委員会（ 6月10日）";
+tillCallText[59] = "議会運営委員会（ 6月10日）";
+tillCallType[59] = 5;
+tillCallValue[60] = "令和 8年 6月定例会（第 3日 6月15日）";
+tillCallText[60] = " 6月定例会（第 3日 6月15日）";
+tillCallType[60] = 1;
+tillCallValue[61] = "令和 8年 6月定例会（第 4日 6月16日）";
+tillCallText[61] = " 6月定例会（第 4日 6月16日）";
+tillCallType[61] = 1;
+tillCallValue[62] = "令和 8年 6月定例会（第 5日 6月22日）";
+tillCallText[62] = " 6月定例会（第 5日 6月22日）";
+tillCallType[62] = 1;
+tillCallValue[63] = "令和 8年議会運営委員会（ 6月22日）";
+tillCallText[63] = "議会運営委員会（ 6月22日）";
+tillCallType[63] = 5;
+function setType(){
+	var type_f = new Array(10);
+	var i=1;
+	var hrefopt='';
+	
+	for (var j=0;j<document.search.elements.length;j++){
+    var e = document.search.elements[j];
+		if (e.name == 'eTarget'){
+      if( e.checked ) hrefopt += '&eTarget='+e.value;
+      type_f[e.value] = e.checked;
+    }
+	}
+
+  document.search.fromDate.length = 0;
+  document.search.tillDate.length = 0;
+  if( browserVer>=5 ){
+	  i = 1;
+	  for( j=0; j<182; j++ ){
+		  if( type_f[fromCallType[j]] ){
+			  document.search.fromDate.length = i;
+		    document.search.fromDate.options[i-1].value = fromCallValue[j];
+			  document.search.fromDate.options[i-1].text = fromCallText[j];
+			  i++;
+		  }
+	  }
+	  i = 1;
+	  for( j=0; j<64; j++ ){
+		  if( type_f[tillCallType[j]] ){
+			  document.search.tillDate.length = i;
+		    document.search.tillDate.options[i-1].value = tillCallValue[j];
+			  document.search.tillDate.options[i-1].text = tillCallText[j];
+			  i++;
+		  }
+	  }
+	  document.search.tillDate.selectedIndex = i-2;
+  }
+  else{
+    yearChange();
+  }
+
+
+
+}
+function go(context){
+    document.goview.context.value = context;
+    document.goview.submit();
+}
+function changeyear(year){
+    document.chyear.treedepth.value = year;
+    document.chyear.target = '';
+    document.chyear.FUNC.value = '';
+    document.chyear.submit();
+}
+function printres(){
+    document.chyear.target = '_blank';
+    document.chyear.FUNC.value = 'print';
+    document.chyear.submit();
+}
+function optaction(){
+    var opt = document.opt.action.value;
+    if( opt=='printspeak' ){
+        printspeak();
+    }
+    else if(opt=='printres'){
+        printres();
+    }
+    else if(opt=='order_by_count'){
+        order_by('count','');
+        document.chyear.submit();
+    }
+    else if(opt=='order_by_date'){
+        order_by('date','');        document.chyear.submit();
+    }
+}
+function printspeak(){
+    document.chyear.action = 'AllSpeak.exe';
+    document.chyear.treedepth.value = 'all';
+    document.chyear.target = '_blank';
+    document.chyear.FUNC.value = 'printspeak';
+    document.chyear.submit();
+}
+function order_by(v,year){
+    document.chyear.action = '#res';
+    document.chyear.treedepth.value = year;
+    document.chyear.sort.value = v;
+    document.chyear.target = '';
+    document.chyear.FUNC.value = '';
+    document.chyear.submit();
+}
+//--->
+</SCRIPT>
+<!-- End JAVASCRIPT -->
+   
+
+
+<map name="head">
+
+<area shape="rect" alt="" coords="600,35,770,65" href="http://www.city.takasago.lg.jp/">
+<area href="https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/index.html" shape="rect" coords="413, 36, 587, 65">
+</map>
+<center>
+<div id="wrapper">
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="/takasago/image/head.gif" width="788" height="73" alt="高砂市議会/会議録検索システム" usemap="#head"></td>
+	</tr>
+	<tr>
+		<td width="5"><img src="/takasago/image/leftdice.gif" width="5" height="38"></td>
+		<td background="/takasago/image/hbgg.gif" width="778" height="38" bgcolor="#ffffff" align="center" valign="bottom">
+
+
+<a href="/takasago/index.html"><img src="/takasago/image/menu01.gif" width="190" height="33" alt="会議録検索システムトップ"></a><a href="/takasago/cgi-bin2/See.exe?Code=h52lmgenyzsjmkcxck"><img src="/takasago/image/menu02.gif" width="190" height="33" alt="会議録の閲覧"></a><a href="/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&sTarget=2"><img src="/takasago/image/menu03.gif" width="190" height="33" alt="会議録の検索"></a><a href="/takasago/help/help_top.html" target="_blank"><img src="/takasago/image/menu04.gif" width="185" height="33" alt="操作マニュアル"></a>
+
+
+		</td>
+		<td width="5"><img src="/takasago/image/rightdice.gif" width="5" height="38"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="/takasago/image/topbottom.gif" width="788" height="18"></td>
+	</tr>
+</table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="/takasago/image/head03.gif" width="788" height="50" alt=""></td>
+	</tr>
+	<tr>
+		<td width="2" background="/takasago/image/leftbit.gif"><img src="/takasago/image/leftbit.gif" width="2" height="2"></td>
+		<td bgcolor="#ffffff" align="center" width="784">
+
+
+
+				<img src="/takasago/image/bit.gif" width="730" height="10" alt=""><br>
+
+
+
+		<div class="content4">
+
+
+
+			<div class="content1_1"><img src="/takasago/image/bit.gif" width="20" height="1" alt=""></div>
+			<div class="content2_1">
+
+
+	<img src="/takasago/image/bit.gif" width="15" height="1" alt=""><br>
+
+
+	<div class="titlebox"><span class="blue">ご覧になれるのは平成12年3月定例会以降の本会議録・令和5年3月以降の委員会会議録です。</span></div><br>
+
+	<img src="/takasago/image/bit.gif" width="730" height="8" alt=""><br>
+
+
+
+
+
+<!-- Begin BEGIN_FORM -->
+<FORM name="search" method="POST" action="/takasago/cgi-bin2/Search2.exe#res" target="_top">
+<INPUT TYPE="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT TYPE="hidden" name="dMode" value="0">
+<!-- End BEGIN_FORM -->
+
+						<table class="table03">
+							<tr valign="middle">
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">検索語と検索条件の指定</td>    
+								<td><!-- Begin FORM_KEYWORD -->
+<INPUT CLASS=textbox TYPE="TEXT" NAME="KeyWord" SIZE="70" VALUE="PCB"><!-- End FORM_KEYWORD -->
+<BR><!-- Begin FORM_SEARCHMODE -->
+<SELECT size="1" name="searchMode">
+    <option value="1" selected>すべての検索語を含みます
+    <option value="3" >いずれかの検索語を含みます
+</SELECT>
+<!-- End FORM_SEARCHMODE -->
+ <!-- Begin FORM_KEYMODE -->
+<SELECT size="1" name="keyMode">
+  <option value="10" selected>同義語検索
+  <option value="0" >完全一致検索
+  <option value="11" >近傍一致検索
+  <option value="12" >あいまい検索
+</SELECT>
+<!-- End FORM_KEYMODE -->
+</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">会議期間の指定</td>
+								<td>
+<!-- Begin FORM_TERM_FROM -->
+<SELECT SIZE="1" NAME="fromYear" onChange="yearChange()">
+  <OPTION VALUE="令和 8年" >令和 8年
+  <OPTION VALUE="令和 7年" selected>令和 7年
+  <OPTION VALUE="令和 6年" >令和 6年
+  <OPTION VALUE="令和 5年" >令和 5年
+  <OPTION VALUE="令和 4年" >令和 4年
+  <OPTION VALUE="令和 3年" >令和 3年
+  <OPTION VALUE="令和 2年" >令和 2年
+  <OPTION VALUE="令和元年" >令和元年
+  <OPTION VALUE="平成31年" >平成31年
+  <OPTION VALUE="平成30年" >平成30年
+  <OPTION VALUE="平成29年" >平成29年
+  <OPTION VALUE="平成28年" >平成28年
+  <OPTION VALUE="平成27年" >平成27年
+  <OPTION VALUE="平成26年" >平成26年
+  <OPTION VALUE="平成25年" >平成25年
+  <OPTION VALUE="平成24年" >平成24年
+  <OPTION VALUE="平成23年" >平成23年
+  <OPTION VALUE="平成22年" >平成22年
+  <OPTION VALUE="平成21年" >平成21年
+  <OPTION VALUE="平成20年" >平成20年
+  <OPTION VALUE="平成19年" >平成19年
+  <OPTION VALUE="平成18年" >平成18年
+  <OPTION VALUE="平成17年" >平成17年
+  <OPTION VALUE="平成16年" >平成16年
+  <OPTION VALUE="平成15年" >平成15年
+  <OPTION VALUE="平成14年" >平成14年
+  <OPTION VALUE="平成13年" >平成13年
+  <OPTION VALUE="平成12年" >平成12年
+</SELECT><SELECT SIZE="1" NAME="fromDate">
+  <OPTION VALUE="令和 7年 1月臨時会（第 1日 1月21日）"> 1月臨時会（第 1日 1月21日）
+  <OPTION VALUE="令和 7年 3月定例会（第 1日 2月25日）"> 3月定例会（第 1日 2月25日）
+  <OPTION VALUE="令和 7年 3月定例会（第 2日 2月26日）"> 3月定例会（第 2日 2月26日）
+  <OPTION VALUE="令和 7年 3月定例会（第 3日 2月27日）"> 3月定例会（第 3日 2月27日）
+  <OPTION VALUE="令和 7年 3月定例会（第 4日 3月 4日）"> 3月定例会（第 4日 3月 4日）
+  <OPTION VALUE="令和 7年 3月定例会（第 5日 3月 5日）"> 3月定例会（第 5日 3月 5日）
+  <OPTION VALUE="令和 7年 3月定例会（第 6日 3月 6日）"> 3月定例会（第 6日 3月 6日）
+  <OPTION VALUE="令和 7年 3月定例会（第 7日 3月 7日）"> 3月定例会（第 7日 3月 7日）
+  <OPTION VALUE="令和 7年 3月定例会（第 8日 3月10日）"> 3月定例会（第 8日 3月10日）
+  <OPTION VALUE="令和 7年 3月定例会（第 9日 3月11日）"> 3月定例会（第 9日 3月11日）
+  <OPTION VALUE="令和 7年 3月定例会（第10日 3月12日）"> 3月定例会（第10日 3月12日）
+  <OPTION VALUE="令和 7年 3月定例会（第11日 3月13日）"> 3月定例会（第11日 3月13日）
+  <OPTION VALUE="令和 7年 3月定例会（第12日 3月14日）"> 3月定例会（第12日 3月14日）
+  <OPTION VALUE="令和 7年 3月定例会（第13日 3月17日）"> 3月定例会（第13日 3月17日）
+  <OPTION VALUE="令和 7年 3月定例会（第14日 3月18日）"> 3月定例会（第14日 3月18日）
+  <OPTION VALUE="令和 7年 3月定例会（第15日 3月27日）"> 3月定例会（第15日 3月27日）
+  <OPTION VALUE="令和 7年 6月定例会（第 1日 6月12日）"> 6月定例会（第 1日 6月12日）
+  <OPTION VALUE="令和 7年 6月定例会（第 2日 6月13日）"> 6月定例会（第 2日 6月13日）
+  <OPTION VALUE="令和 7年 6月定例会（第 3日 6月16日）"> 6月定例会（第 3日 6月16日）
+  <OPTION VALUE="令和 7年 6月定例会（第 4日 6月18日）"> 6月定例会（第 4日 6月18日）
+  <OPTION VALUE="令和 7年 6月定例会（第 5日 6月19日）"> 6月定例会（第 5日 6月19日）
+  <OPTION VALUE="令和 7年 6月定例会（第 6日 6月25日）"> 6月定例会（第 6日 6月25日）
+  <OPTION VALUE="令和 7年 7月臨時会（第 1日 7月17日）"> 7月臨時会（第 1日 7月17日）
+  <OPTION VALUE="令和 7年 9月定例会（第 1日 9月 9日）"> 9月定例会（第 1日 9月 9日）
+  <OPTION VALUE="令和 7年 9月定例会（第 2日 9月10日）"> 9月定例会（第 2日 9月10日）
+  <OPTION VALUE="令和 7年 9月定例会（第 3日 9月11日）"> 9月定例会（第 3日 9月11日）
+  <OPTION VALUE="令和 7年 9月定例会（第 4日 9月12日）"> 9月定例会（第 4日 9月12日）
+  <OPTION VALUE="令和 7年 9月定例会（第 5日 9月17日）"> 9月定例会（第 5日 9月17日）
+  <OPTION VALUE="令和 7年 9月定例会（第 6日 9月18日）"> 9月定例会（第 6日 9月18日）
+  <OPTION VALUE="令和 7年 9月定例会（第 7日 9月26日）"> 9月定例会（第 7日 9月26日）
+  <OPTION VALUE="令和 7年12月定例会（第 1日12月 5日）">12月定例会（第 1日12月 5日）
+  <OPTION VALUE="令和 7年12月定例会（第 2日12月 8日）">12月定例会（第 2日12月 8日）
+  <OPTION VALUE="令和 7年12月定例会（第 3日12月 9日）">12月定例会（第 3日12月 9日）
+  <OPTION VALUE="令和 7年12月定例会（第 4日12月10日）">12月定例会（第 4日12月10日）
+  <OPTION VALUE="令和 7年12月定例会（第 5日12月11日）">12月定例会（第 5日12月11日）
+  <OPTION VALUE="令和 7年12月定例会（第 6日12月12日）">12月定例会（第 6日12月12日）
+  <OPTION VALUE="令和 7年12月定例会（第 7日12月18日）">12月定例会（第 7日12月18日）
+  <OPTION VALUE="令和 7年12月定例会（第 8日12月19日）">12月定例会（第 8日12月19日）
+  <OPTION VALUE="令和 7年12月定例会（第 9日12月22日）">12月定例会（第 9日12月22日）
+</SELECT>から<!-- End FORM_TERM_FROM -->
+<BR><!-- Begin FORM_TERM_TO -->
+<SELECT SIZE="1" NAME="tillYear" onChange="yearChange()">
+  <OPTION VALUE="令和 8年" selected>令和 8年
+  <OPTION VALUE="令和 7年" >令和 7年
+  <OPTION VALUE="令和 6年" >令和 6年
+  <OPTION VALUE="令和 5年" >令和 5年
+  <OPTION VALUE="令和 4年" >令和 4年
+  <OPTION VALUE="令和 3年" >令和 3年
+  <OPTION VALUE="令和 2年" >令和 2年
+  <OPTION VALUE="令和元年" >令和元年
+  <OPTION VALUE="平成31年" >平成31年
+  <OPTION VALUE="平成30年" >平成30年
+  <OPTION VALUE="平成29年" >平成29年
+  <OPTION VALUE="平成28年" >平成28年
+  <OPTION VALUE="平成27年" >平成27年
+  <OPTION VALUE="平成26年" >平成26年
+  <OPTION VALUE="平成25年" >平成25年
+  <OPTION VALUE="平成24年" >平成24年
+  <OPTION VALUE="平成23年" >平成23年
+  <OPTION VALUE="平成22年" >平成22年
+  <OPTION VALUE="平成21年" >平成21年
+  <OPTION VALUE="平成20年" >平成20年
+  <OPTION VALUE="平成19年" >平成19年
+  <OPTION VALUE="平成18年" >平成18年
+  <OPTION VALUE="平成17年" >平成17年
+  <OPTION VALUE="平成16年" >平成16年
+  <OPTION VALUE="平成15年" >平成15年
+  <OPTION VALUE="平成14年" >平成14年
+  <OPTION VALUE="平成13年" >平成13年
+  <OPTION VALUE="平成12年" >平成12年
+</SELECT><SELECT SIZE="1" NAME="tillDate">
+  <OPTION VALUE="令和 8年 1月臨時会（第 1日 1月16日）"> 1月臨時会（第 1日 1月16日）
+  <OPTION VALUE="令和 8年 3月定例会（第 1日 2月24日）"> 3月定例会（第 1日 2月24日）
+  <OPTION VALUE="令和 8年 3月定例会（第 2日 2月25日）"> 3月定例会（第 2日 2月25日）
+  <OPTION VALUE="令和 8年 3月定例会（第 3日 2月26日）"> 3月定例会（第 3日 2月26日）
+  <OPTION VALUE="令和 8年 3月定例会（第 4日 3月 3日）"> 3月定例会（第 4日 3月 3日）
+  <OPTION VALUE="令和 8年 3月定例会（第 5日 3月 4日）"> 3月定例会（第 5日 3月 4日）
+  <OPTION VALUE="令和 8年 3月定例会（第 6日 3月 5日）"> 3月定例会（第 6日 3月 5日）
+  <OPTION VALUE="令和 8年 3月定例会（第 7日 3月 6日）"> 3月定例会（第 7日 3月 6日）
+  <OPTION VALUE="令和 8年 3月定例会（第 8日 3月 9日）"> 3月定例会（第 8日 3月 9日）
+  <OPTION VALUE="令和 8年 3月定例会（第 9日 3月10日）"> 3月定例会（第 9日 3月10日）
+  <OPTION VALUE="令和 8年 3月定例会（第10日 3月11日）"> 3月定例会（第10日 3月11日）
+  <OPTION VALUE="令和 8年 3月定例会（第11日 3月12日）"> 3月定例会（第11日 3月12日）
+  <OPTION VALUE="令和 8年 3月定例会（第12日 3月13日）"> 3月定例会（第12日 3月13日）
+  <OPTION VALUE="令和 8年 3月定例会（第13日 3月16日）"> 3月定例会（第13日 3月16日）
+  <OPTION VALUE="令和 8年 3月定例会（第14日 3月17日）"> 3月定例会（第14日 3月17日）
+  <OPTION VALUE="令和 8年 3月定例会（第15日 3月26日）"> 3月定例会（第15日 3月26日）
+  <OPTION VALUE="令和 8年 5月臨時会（第 1日 5月19日）"> 5月臨時会（第 1日 5月19日）
+  <OPTION VALUE="令和 8年 5月臨時会（第 2日 5月20日）"> 5月臨時会（第 2日 5月20日）
+  <OPTION VALUE="令和 8年 6月定例会（第 1日 6月 9日）"> 6月定例会（第 1日 6月 9日）
+  <OPTION VALUE="令和 8年 6月定例会（第 2日 6月10日）"> 6月定例会（第 2日 6月10日）
+  <OPTION VALUE="令和 8年 6月定例会（第 3日 6月15日）"> 6月定例会（第 3日 6月15日）
+  <OPTION VALUE="令和 8年 6月定例会（第 4日 6月16日）"> 6月定例会（第 4日 6月16日）
+  <OPTION VALUE="令和 8年 6月定例会（第 5日 6月22日）" selected> 6月定例会（第 5日 6月22日）
+</SELECT>まで<!-- End FORM_TERM_TO -->
+
+								</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">発言者</td>
+								<td>
+<!-- Begin FORM_SPEAKER -->
+<INPUT TYPE="hidden" NAME="speaker">
+<SELECT NAME="speaker1" onChange="setSpeaker(this)">
+<OPTION value="">期間内の発言者を選んでください
+<OPTION value="">
+<OPTION value="石﨑徹">石﨑徹
+<OPTION value="石﨑委員">石﨑委員
+<OPTION value="今竹大祐">今竹大祐
+<OPTION value="今竹委員">今竹委員
+<OPTION value="入江啓太">入江啓太
+<OPTION value="入江委員">入江委員
+<OPTION value="入江委員長">入江委員長
+<OPTION value="岩見明">岩見明
+<OPTION value="岩見委員">岩見委員
+<OPTION value="岩見委員長">岩見委員長
+<OPTION value="大西由紀">大西由紀
+<OPTION value="大西委員">大西委員
+<OPTION value="川端宏明">川端宏明
+<OPTION value="川端委員">川端委員
+<OPTION value="川端副委員長">川端副委員長
+<OPTION value="北野誠一郎">北野誠一郎
+<OPTION value="北野委員">北野委員
+<OPTION value="北野委員長">北野委員長
+<OPTION value="北野座長">北野座長
+<OPTION value="坂本まり">坂本まり
+<OPTION value="坂本委員">坂本委員
+<OPTION value="迫川高行">迫川高行
+<OPTION value="迫川議長">迫川議長
+<OPTION value="迫川委員長">迫川委員長
+<OPTION value="迫川委員">迫川委員
+<OPTION value="芝本鎮彰">芝本鎮彰
+<OPTION value="芝本委員">芝本委員
+<OPTION value="芝本委員長">芝本委員長
+<OPTION value="島津明香">島津明香
+<OPTION value="島津委員長">島津委員長
+<OPTION value="島津副議長">島津副議長
+<OPTION value="鈴木利信">鈴木利信
+<OPTION value="鈴木委員">鈴木委員
+<OPTION value="鷹尾治久">鷹尾治久
+<OPTION value="鷹尾委員">鷹尾委員
+<OPTION value="鷹尾委員長">鷹尾委員長
+<OPTION value="春増勝利">春増勝利
+<OPTION value="春増委員">春増委員
+<OPTION value="藤森誠">藤森誠
+<OPTION value="藤森委員">藤森委員
+<OPTION value="藤森副委員長">藤森副委員長
+<OPTION value="松野優也">松野優也
+<OPTION value="松野委員">松野委員
+<OPTION value="松野副委員長">松野副委員長
+<OPTION value="森秀樹">森秀樹
+<OPTION value="森委員">森委員
+<OPTION value="山田光昭">山田光昭
+<OPTION value="山田委員">山田委員
+<OPTION value="山田委員長">山田委員長
+<OPTION value="山田副委員長">山田副委員長
+<OPTION value="横田英樹">横田英樹
+<OPTION value="横田委員">横田委員
+</SELECT>
+<!-- End FORM_SPEAKER -->
+
+								</td>
+							</tr>
+<td><img src="/takasago/image/arrow.gif" width="9" height="9">会派名</FONT></TD>
+								<TD>
+<!-- Begin FORM_KAIHA -->
+<SELECT NAME="kaiha" onChange="setSpeaker(this)">
+<OPTION value="">会派を選んでください
+<OPTION value="">
+<OPTION value="@政友会">政友会
+<OPTION value="@民主クラブ">民主クラブ
+<OPTION value="@政和会">政和会
+<OPTION value="@公明党">公明党
+<OPTION value="@新社会">新社会
+<OPTION value="@日本共産党">日本共産党
+<OPTION value="@いきいきネットワーク">いきいきネットワーク
+<OPTION value="@自由クラブ">自由クラブ
+<OPTION value="@志政クラブ">志政クラブ
+<OPTION value="@市民クラブ">市民クラブ
+<OPTION value="@市民ネットワーク">市民ネットワーク
+<OPTION value="@平成会">平成会
+<OPTION value="@財政・福祉ネット">財政・福祉ネット
+<OPTION value="@新政会">新政会
+<OPTION value="@高砂再起動">高砂再起動
+<OPTION value="@自彊">自彊
+<OPTION value="@なかにしかずとも">なかにしかずとも
+<OPTION value="@未来ネット">未来ネット
+<OPTION value="@明風会">明風会
+<OPTION value="@緑の党グリーンズジャパン">緑の党グリーンズジャパン
+<OPTION value="@無所属">無所属
+</SELECT>
+<!-- End FORM_KAIHA -->
+
+								</TD>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">答弁者</td>
+								<td>
+<!-- Begin FORM_SPEAKER2 -->
+<SELECT NAME="speaker2" onChange="setSpeaker(this)">
+<OPTION value="">期間内の答弁者を選んでください
+<OPTION value="">
+<OPTION value="市長">市長
+<OPTION value="副市長">副市長
+<OPTION value="主幹">主幹
+<OPTION value="理事">理事
+<OPTION value="会計課長">会計課長
+<OPTION value="会計管理者">会計管理者
+<OPTION value="監査委員">監査委員
+<OPTION value="監査委員・公平委員会事務局長">監査委員・公平委員会事務局長
+<OPTION value="監査委員・公平委員会事務局主幹">監査委員・公平委員会事務局主幹
+<OPTION value="監査委員事務局長">監査委員事務局長
+<OPTION value="議会事務局長">議会事務局長
+<OPTION value="議会事務局次長">議会事務局次長
+<OPTION value="議会事務局議事課長">議会事務局議事課長
+<OPTION value="技監">技監
+<OPTION value="教育委員会教育部長">教育委員会教育部長
+<OPTION value="教育委員会教育センター所長">教育委員会教育センター所長
+<OPTION value="教育委員会教育部学校教育室長">教育委員会教育部学校教育室長
+<OPTION value="教育委員会教育部学校教育室学校給食課長">教育委員会教育部学校教育室学校給食課長
+<OPTION value="教育委員会教育部学校教育室学校教育課長">教育委員会教育部学校教育室学校教育課長
+<OPTION value="教育委員会教育部学校教育室学校教育課主幹">教育委員会教育部学校教育室学校教育課主幹
+<OPTION value="教育委員会教育部学校教育室学校給食課学校給食センター所長">教育委員会教育部学校教育室学校給食課学校給食センター所長
+<OPTION value="教育委員会教育部学校教育室学校教育課青少年センター所長">教育委員会教育部学校教育室学校教育課青少年センター所長
+<OPTION value="教育委員会教育部教育推進室教育総務課長">教育委員会教育部教育推進室教育総務課長
+<OPTION value="教育委員会教育部教育推進室教育総務課主幹">教育委員会教育部教育推進室教育総務課主幹
+<OPTION value="教育委員会教育部教育推進室生涯学習課長">教育委員会教育部教育推進室生涯学習課長
+<OPTION value="教育委員会教育部教育推進室生涯学習課主幹">教育委員会教育部教育推進室生涯学習課主幹
+<OPTION value="教育委員会教育部教育推進室長">教育委員会教育部教育推進室長
+<OPTION value="教育長">教育長
+<OPTION value="教育部長">教育部長
+<OPTION value="教育部学校教育室長">教育部学校教育室長
+<OPTION value="教育部学校教育室学校教育課長">教育部学校教育室学校教育課長
+<OPTION value="教育部教育推進室長">教育部教育推進室長
+<OPTION value="教育部教育推進室教育センター所長">教育部教育推進室教育センター所長
+<OPTION value="教育部教育推進室教育総務課主幹（新たな学校づくり推進担当）">教育部教育推進室教育総務課主幹（新たな学校づくり推進担当）
+<OPTION value="協働部長">協働部長
+<OPTION value="経営企画室長">経営企画室長
+<OPTION value="下水道部長">下水道部長
+<OPTION value="健康こども部長">健康こども部長
+<OPTION value="健康こども部健康文化室長">健康こども部健康文化室長
+<OPTION value="健康こども部健康文化室健康増進課長">健康こども部健康文化室健康増進課長
+<OPTION value="健康こども部健康文化室文化スポーツ課長">健康こども部健康文化室文化スポーツ課長
+<OPTION value="健康こども部健康文化室文化スポーツ課主幹">健康こども部健康文化室文化スポーツ課主幹
+<OPTION value="健康こども部子育て支援室子育て支援課長">健康こども部子育て支援室子育て支援課長
+<OPTION value="健康こども部子育て支援室こども窓口課長">健康こども部子育て支援室こども窓口課長
+<OPTION value="健康こども部子育て支援室こども窓口課副課長">健康こども部子育て支援室こども窓口課副課長
+<OPTION value="健康こども部子育て支援室長">健康こども部子育て支援室長
+<OPTION value="健康こども部子育て支援室幼児保育課長">健康こども部子育て支援室幼児保育課長
+<OPTION value="健康こども部子育て支援室幼児保育課副課長">健康こども部子育て支援室幼児保育課副課長
+<OPTION value="健康こども部子育て支援室幼児保育課副課長兼学校教育課副課長">健康こども部子育て支援室幼児保育課副課長兼学校教育課副課長
+<OPTION value="監査委員事務局長兼公平委員会事務局長">監査委員事務局長兼公平委員会事務局長
+<OPTION value="工事検査室長">工事検査室長
+<OPTION value="こども部長">こども部長
+<OPTION value="財務部契約担当主幹">財務部契約担当主幹
+<OPTION value="財務部財務室長">財務部財務室長
+<OPTION value="財務部財務室契約管財課長">財務部財務室契約管財課長
+<OPTION value="財務部財務室契約管財課主幹">財務部財務室契約管財課主幹
+<OPTION value="財務部財務室契約管財課主幹（契約担当）">財務部財務室契約管財課主幹（契約担当）
+<OPTION value="財務部財務室財政課長">財務部財務室財政課長
+<OPTION value="財務部税務室長">財務部税務室長
+<OPTION value="財務部税務室長（兼給付金事務担当）">財務部税務室長（兼給付金事務担当）
+<OPTION value="財務部税務室課税課長">財務部税務室課税課長
+<OPTION value="財務部税務室債権管理課長">財務部税務室債権管理課長
+<OPTION value="財務部税務室債権管理課主幹">財務部税務室債権管理課主幹
+<OPTION value="財務部長">財務部長
+<OPTION value="参事">参事
+<OPTION value="市民部長">市民部長
+<OPTION value="市民病院事務局長">市民病院事務局長
+<OPTION value="市民病院事務局次長">市民病院事務局次長
+<OPTION value="市民病院事務局参事">市民病院事務局参事
+<OPTION value="市民病院事務局主幹">市民病院事務局主幹
+<OPTION value="市民病院事務局医事課長">市民病院事務局医事課長
+<OPTION value="市民病院事務局総務課長">市民病院事務局総務課長
+<OPTION value="市民病院事務局総務課副課長">市民病院事務局総務課副課長
+<OPTION value="市民部市民窓口室市民窓口課長">市民部市民窓口室市民窓口課長
+<OPTION value="市民部市民窓口室市民窓口課主幹">市民部市民窓口室市民窓口課主幹
+<OPTION value="市民部市民窓口室地域振興課長">市民部市民窓口室地域振興課長
+<OPTION value="市民部市民窓口室地域振興課主幹">市民部市民窓口室地域振興課主幹
+<OPTION value="市民部市民窓口室長">市民部市民窓口室長
+<OPTION value="市民部市民窓口室参事">市民部市民窓口室参事
+<OPTION value="市民部保険年金室介護保険課長">市民部保険年金室介護保険課長
+<OPTION value="市民部保険年金室国保年金課長">市民部保険年金室国保年金課長
+<OPTION value="市民部保険年金室長">市民部保険年金室長
+<OPTION value="市民部保険年金室賦課収納課長">市民部保険年金室賦課収納課長
+<OPTION value="上下水道部長">上下水道部長
+<OPTION value="上下水道事業管理者">上下水道事業管理者
+<OPTION value="上下水道部技術管理室管きょ課長">上下水道部技術管理室管きょ課長
+<OPTION value="上下水道部技術管理室管きょ課主幹">上下水道部技術管理室管きょ課主幹
+<OPTION value="上下水道部技術管理室管きょ課主幹（給排水設備・補償事務担当）">上下水道部技術管理室管きょ課主幹（給排水設備・補償事務担当）
+<OPTION value="上下水道部技術管理室施設課主幹">上下水道部技術管理室施設課主幹
+<OPTION value="上下水道部技術管理室施設課主幹（伊保浄化センター担当）">上下水道部技術管理室施設課主幹（伊保浄化センター担当）
+<OPTION value="上下水道部技術管理室施設課長">上下水道部技術管理室施設課長
+<OPTION value="上下水道部技術管理室治水対策課主幹">上下水道部技術管理室治水対策課主幹
+<OPTION value="上下水道部技術管理室治水対策課主幹（ため池水路担当）">上下水道部技術管理室治水対策課主幹（ため池水路担当）
+<OPTION value="上下水道部技術管理室治水対策課長">上下水道部技術管理室治水対策課長
+<OPTION value="上下水道部技術管理室長">上下水道部技術管理室長
+<OPTION value="上下水道部経営総務室主幹">上下水道部経営総務室主幹
+<OPTION value="上下水道部経営総務室主幹（企画調整事務担当）">上下水道部経営総務室主幹（企画調整事務担当）
+<OPTION value="上下水道部経営総務室主幹（経理事務担当）">上下水道部経営総務室主幹（経理事務担当）
+<OPTION value="上下水道部経営総務室主幹（庶務料金事務担当）">上下水道部経営総務室主幹（庶務料金事務担当）
+<OPTION value="上下水道部経営総務室長">上下水道部経営総務室長
+<OPTION value="消防長">消防長
+<OPTION value="消防本部次長">消防本部次長
+<OPTION value="消防本部消防課長">消防本部消防課長
+<OPTION value="消防本部消防第１部主幹">消防本部消防第１部主幹
+<OPTION value="消防本部消防第２部主幹">消防本部消防第２部主幹
+<OPTION value="消防本部消防団担当課長">消防本部消防団担当課長
+<OPTION value="消防本部総務課長">消防本部総務課長
+<OPTION value="消防本部総務課主幹">消防本部総務課主幹
+<OPTION value="消防本部予防課長">消防本部予防課長
+<OPTION value="水道事業管理者">水道事業管理者
+<OPTION value="生活環境部長">生活環境部長
+<OPTION value="生活環境部エコクリーンピアはりま主幹">生活環境部エコクリーンピアはりま主幹
+<OPTION value="生活環境部エコクリーンピアはりま主幹（業務担当）">生活環境部エコクリーンピアはりま主幹（業務担当）
+<OPTION value="生活環境部エコクリーンピアはりま主幹（計画管理担当）">生活環境部エコクリーンピアはりま主幹（計画管理担当）
+<OPTION value="生活環境部エコクリーンピアはりま主幹（施設担当）">生活環境部エコクリーンピアはりま主幹（施設担当）
+<OPTION value="生活環境部エコクリーンピアはりま所長">生活環境部エコクリーンピアはりま所長
+<OPTION value="生活環境部環境経済室環境政策課主幹">生活環境部環境経済室環境政策課主幹
+<OPTION value="生活環境部環境経済室環境政策課主幹（環境対策担当）">生活環境部環境経済室環境政策課主幹（環境対策担当）
+<OPTION value="生活環境部環境経済室環境政策課主幹（ゼロカーボン担当）">生活環境部環境経済室環境政策課主幹（ゼロカーボン担当）
+<OPTION value="生活環境部環境経済室環境政策課主幹（電力地産地消推進担当）">生活環境部環境経済室環境政策課主幹（電力地産地消推進担当）
+<OPTION value="生活環境部環境経済室環境政策課長">生活環境部環境経済室環境政策課長
+<OPTION value="生活環境部環境経済室産業振興課主幹兼農業委員会事務局主幹">生活環境部環境経済室産業振興課主幹兼農業委員会事務局主幹
+<OPTION value="生活環境部環境経済室産業振興課長">生活環境部環境経済室産業振興課長
+<OPTION value="生活環境部環境経済室参事">生活環境部環境経済室参事
+<OPTION value="生活環境部環境経済室参事兼農業委員会事務局長">生活環境部環境経済室参事兼農業委員会事務局長
+<OPTION value="生活環境部環境経済室長">生活環境部環境経済室長
+<OPTION value="政策部長">政策部長
+<OPTION value="政策部次長">政策部次長
+<OPTION value="政策部参事">政策部参事
+<OPTION value="政策部参事（市民病院将来構想推進担当）">政策部参事（市民病院将来構想推進担当）
+<OPTION value="政策部経営企画室長">政策部経営企画室長
+<OPTION value="政策部経営企画室長兼ＩＣＴ推進課長">政策部経営企画室長兼ＩＣＴ推進課長
+<OPTION value="政策部経営企画室参事">政策部経営企画室参事
+<OPTION value="政策部経営企画室参事兼ＩＣＴ推進課長">政策部経営企画室参事兼ＩＣＴ推進課長
+<OPTION value="政策部経営企画室企画課長">政策部経営企画室企画課長
+<OPTION value="政策部経営企画室企画課主幹">政策部経営企画室企画課主幹
+<OPTION value="政策部公共施設マネジメント室長">政策部公共施設マネジメント室長
+<OPTION value="政策部公共施設マネジメント室主幹">政策部公共施設マネジメント室主幹
+<OPTION value="政策部公共施設マネジメント室主幹（営繕担当）">政策部公共施設マネジメント室主幹（営繕担当）
+<OPTION value="政策部公共施設マネジメント室主幹（公共施設・庁舎担当）">政策部公共施設マネジメント室主幹（公共施設・庁舎担当）
+<OPTION value="政策部シティプロモーション室長">政策部シティプロモーション室長
+<OPTION value="政策部シティプロモーション室主幹">政策部シティプロモーション室主幹
+<OPTION value="政策部シティプロモーション室主幹（移住・定住・観光担当）">政策部シティプロモーション室主幹（移住・定住・観光担当）
+<OPTION value="政策部シティプロモーション室主幹（広報広聴担当）">政策部シティプロモーション室主幹（広報広聴担当）
+<OPTION value="政策部市民病院将来構想推進室主幹">政策部市民病院将来構想推進室主幹
+<OPTION value="政策部市民病院将来構想推進室長">政策部市民病院将来構想推進室長
+<OPTION value="選挙管理委員会事務局長">選挙管理委員会事務局長
+<OPTION value="選挙管理委員会事務局主幹">選挙管理委員会事務局主幹
+<OPTION value="総務部長">総務部長
+<OPTION value="総務部危機管理室長">総務部危機管理室長
+<OPTION value="総務部危機管理室主幹">総務部危機管理室主幹
+<OPTION value="総務部危機管理室主幹（地域安全対策担当）">総務部危機管理室主幹（地域安全対策担当）
+<OPTION value="総務部危機管理室主幹（防災担当）">総務部危機管理室主幹（防災担当）
+<OPTION value="総務部総務室長">総務部総務室長
+<OPTION value="総務部総務室長（兼市民病院将来構想推進担当）">総務部総務室長（兼市民病院将来構想推進担当）
+<OPTION value="総務部総務室参事兼選挙管理委員会事務局長">総務部総務室参事兼選挙管理委員会事務局長
+<OPTION value="総務部総務室参事兼選挙管理委員会事務局主幹">総務部総務室参事兼選挙管理委員会事務局主幹
+<OPTION value="総務部総務室人事課長">総務部総務室人事課長
+<OPTION value="総務部総務室総務課主幹">総務部総務室総務課主幹
+<OPTION value="総務部総務室総務課主幹（文書・統計調査担当）">総務部総務室総務課主幹（文書・統計調査担当）
+<OPTION value="総務部総務室総務課主幹兼選挙管理委員会事務局主幹">総務部総務室総務課主幹兼選挙管理委員会事務局主幹
+<OPTION value="総務部総務室総務課長">総務部総務室総務課長
+<OPTION value="総務部秘書室長">総務部秘書室長
+<OPTION value="総務部秘書室主幹">総務部秘書室主幹
+<OPTION value="都市創造部長">都市創造部長
+<OPTION value="都市創造部都市住宅室建築住宅課主幹">都市創造部都市住宅室建築住宅課主幹
+<OPTION value="都市創造部都市住宅室建築住宅課主幹（住宅政策・空家対策担当）">都市創造部都市住宅室建築住宅課主幹（住宅政策・空家対策担当）
+<OPTION value="都市創造部都市住宅室建築住宅課長">都市創造部都市住宅室建築住宅課長
+<OPTION value="都市創造部都市住宅室長">都市創造部都市住宅室長
+<OPTION value="都市創造部都市住宅室都市政策課主幹">都市創造部都市住宅室都市政策課主幹
+<OPTION value="都市創造部都市住宅室都市政策課主幹（交通施策・播磨臨海地域道路担当）">都市創造部都市住宅室都市政策課主幹（交通施策・播磨臨海地域道路担当）
+<OPTION value="都市創造部都市住宅室都市政策課主幹（まちづくり推進担当兼みなとまちづくり担当）">都市創造部都市住宅室都市政策課主幹（まちづくり推進担当兼みなとまちづくり担当）
+<OPTION value="都市創造部都市住宅室都市政策課主幹（連続立体交差・開発担当）">都市創造部都市住宅室都市政策課主幹（連続立体交差・開発担当）
+<OPTION value="都市創造部都市住宅室都市政策課長">都市創造部都市住宅室都市政策課長
+<OPTION value="都市創造部土木建設室長">都市創造部土木建設室長
+<OPTION value="都市創造部土木建設室道路公園課主幹">都市創造部土木建設室道路公園課主幹
+<OPTION value="都市創造部土木建設室道路公園課主幹（駅前整備担当）">都市創造部土木建設室道路公園課主幹（駅前整備担当）
+<OPTION value="都市創造部土木建設室道路公園課主幹（ＪＲ曽根駅周辺整備・公園担当）">都市創造部土木建設室道路公園課主幹（ＪＲ曽根駅周辺整備・公園担当）
+<OPTION value="都市創造部土木建設室道路公園課主幹（ＪＲ曽根駅周辺整備担当）">都市創造部土木建設室道路公園課主幹（ＪＲ曽根駅周辺整備担当）
+<OPTION value="都市創造部土木建設室道路公園課主幹（道路整備・公園担当）">都市創造部土木建設室道路公園課主幹（道路整備・公園担当）
+<OPTION value="都市創造部土木建設室道路公園課長">都市創造部土木建設室道路公園課長
+<OPTION value="都市創造部土木建設室土木総務課主幹">都市創造部土木建設室土木総務課主幹
+<OPTION value="都市創造部土木建設室土木総務課主幹（法定外公共物担当）">都市創造部土木建設室土木総務課主幹（法定外公共物担当）
+<OPTION value="都市創造部土木建設室土木総務課長">都市創造部土木建設室土木総務課長
+<OPTION value="農業委員会事務局長">農業委員会事務局長
+<OPTION value="農業委員会事務局主幹">農業委員会事務局主幹
+<OPTION value="病院事業管理者">病院事業管理者
+<OPTION value="秘書室長">秘書室長
+<OPTION value="福祉部長">福祉部長
+<OPTION value="福祉部人権福祉室人権推進課長">福祉部人権福祉室人権推進課長
+<OPTION value="福祉部人権福祉室地域福祉課高年福祉担当主幹">福祉部人権福祉室地域福祉課高年福祉担当主幹
+<OPTION value="福祉部人権福祉室地域福祉課地域福祉担当主幹">福祉部人権福祉室地域福祉課地域福祉担当主幹
+<OPTION value="福祉部人権福祉室地域福祉課長">福祉部人権福祉室地域福祉課長
+<OPTION value="福祉部人権福祉室長">福祉部人権福祉室長
+<OPTION value="福祉部人権福祉室参事">福祉部人権福祉室参事
+<OPTION value="福祉部生活福祉室障がい福祉課長">福祉部生活福祉室障がい福祉課長
+<OPTION value="福祉部生活福祉室生活福祉課長">福祉部生活福祉室生活福祉課長
+<OPTION value="福祉部生活福祉室長">福祉部生活福祉室長
+</SELECT>
+<!-- End FORM_SPEAKER2 -->
+
+								</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">議長／委員長</td>
+								<td>
+<!-- Begin FORM_SPEAKER3 -->
+<SELECT NAME="speaker3" onChange="setSpeaker(this)">
+<OPTION value="">期間内の議長／委員長を選んでください
+<OPTION value="">
+<OPTION value="議長">議長
+<OPTION value="新議長">新議長
+<OPTION value="副議長">副議長
+<OPTION value="新副議長">新副議長
+<OPTION value="座長">座長
+<OPTION value="委員長">委員長
+<OPTION value="副委員長">副委員長
+</SELECT>
+<!-- End FORM_SPEAKER3 -->
+
+								</td>
+							</tr>
+
+							<tr valign="middle">
+								<td nowrap><img src="/takasago/image/arrow.gif" width="9" height="9">会議録種類の指定</td>
+<td>
+<div align="left">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><!-- Begin FORM_TARGET -->
+<TR valign="top"><TD colspan="2">
+</TD></TR>
+<TR valign="top"><TD><input class=checkbox type="checkbox" name="alltarget" onClick="checkalltarget();setType();" >すべて</TD></TR>
+<TR valign="top"><TD width="50%">
+<input class=checkbox type=checkbox name="eTarget" value="1" checked onClick="javascript:document.search.alltarget.checked=0;setType();">
+定例会・臨時会<br>
+<input class=checkbox type=checkbox name="eTarget" value="2" onClick="javascript:document.search.alltarget.checked=0;setType();">
+総務常任委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="3" onClick="javascript:document.search.alltarget.checked=0;setType();">
+文教厚生常任委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="4" onClick="javascript:document.search.alltarget.checked=0;setType();">
+建設環境経済常任委員会<br>
+</TD>
+<TD width="50%">
+<input class=checkbox type=checkbox name="eTarget" value="5" onClick="javascript:document.search.alltarget.checked=0;setType();">
+議会運営委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="6" onClick="javascript:document.search.alltarget.checked=0;setType();">
+高砂市民病院経営改善対策特別委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="7" onClick="javascript:document.search.alltarget.checked=0;setType();">
+決算特別委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="8" onClick="javascript:document.search.alltarget.checked=0;setType();">
+行政課題等調査検討特別委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="9" onClick="javascript:document.search.alltarget.checked=0;setType();">
+合同委員会<br>
+</TD></TR>
+<tr><td>
+</tr></td>
+<!-- End FORM_TARGET -->
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+
+<img src="/takasago/image/bit.gif" width="730" height="10" alt=""><br>
+
+<a name="res"></a>
+<!-- Begin END_FORM -->
+<INPUT type="submit" name="AhitResult" value="検索" CLASS="sbutton">
+<INPUT type="button" value="リセット" onClick="javascript:document.location.href='Search2.exe?Code=h52lmgenyzsjmkcxck'" CLASS="rbutton">
+</FORM>
+<!-- End END_FORM -->
+ <!-- Begin RESULT_FORM -->
+<!-- Search Parameters
+Code=h52lmgenyzsjmkcxck&dMode=0&KeyWord=PCB&searchMode=1&keyMode=10&fromYear=%97%DF%98a+7%94N&fromDate=%97%DF%98a+7%94N+1%8C%8E%97%D5%8E%9E%89%EF%81i%91%E6+1%93%FA+1%8C%8E21%93%FA%81j&tillYear=%97%DF%98a+8%94N&tillDate=%97%DF%98a+8%94N+6%8C%8E%92%E8%97%E1%89%EF%81i%91%E6+5%93%FA+6%8C%8E22%93%FA%81j&speaker=&speaker1=&kaiha=&speaker2=&speaker3=&eTarget=1&AhitResult=%8C%9F%8D%F5
+-->
+<FORM name="goview" action="/takasago/cgi-bin2/ResultFrame.exe" method="POST" target="_top">
+<INPUT type="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT type="hidden" name="dMode" value="0">
+<INPUT type="hidden" name="KeyWord" value="PCB">
+<INPUT type="hidden" name="searchMode" value="1">
+<INPUT type="hidden" name="keyMode" value="10">
+<INPUT type="hidden" name="fromYear" value="令和 7年">
+<INPUT type="hidden" name="fromDate" value="令和 7年 1月臨時会（第 1日 1月21日）">
+<INPUT type="hidden" name="tillYear" value="令和 8年">
+<INPUT type="hidden" name="tillDate" value="令和 8年 6月定例会（第 5日 6月22日）">
+<INPUT type="hidden" name="speaker" value="">
+<INPUT type="hidden" name="speaker1" value="">
+<INPUT type="hidden" name="kaiha" value="">
+<INPUT type="hidden" name="speaker2" value="">
+<INPUT type="hidden" name="speaker3" value="">
+<INPUT type="hidden" name="eTarget" value="1">
+<INPUT type="hidden" name="AhitResult" value="検索">
+<INPUT type="hidden" name="speakerMode" value="1">
+<INPUT type="hidden" name="context">
+</FORM>
+<FORM name="chyear" method="POST" action="/takasago/cgi-bin2/Search2.exe#res">
+<INPUT TYPE="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT TYPE="hidden" name="dMode" value="0">
+<INPUT TYPE="hidden" name="fromDate" value="令和 7年 1月臨時会（第 1日 1月21日）">
+<INPUT TYPE="hidden" name="tillDate" value="令和 8年 6月定例会（第 5日 6月22日）">
+<INPUT TYPE="hidden" name="sTarget" value="2:0">
+<INPUT TYPE="hidden" name="KeyWord" value="PCB">
+<INPUT TYPE="hidden" name="searchMode" value="1">
+<INPUT TYPE="hidden" name="keyMode" value="10">
+<INPUT TYPE="hidden" name="speaker" value="">
+<INPUT TYPE="hidden" name="treedepth" value="">
+<INPUT TYPE="hidden" name="FUNC" value="">
+<INPUT TYPE="hidden" name="sort" value="date_r">
+</FORM>
+<!-- End RESULT_FORM -->
+ <!-- Begin CONDITION_MESSAGE -->
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="550">
+
+    <TR>
+      <TD colspan="5">
+        <b>
+<P><SPAN class=pink>令和 7年 1月臨時会（第 1日 1月21日）</SPAN>　から　
+<SPAN class=pink>令和 8年 6月定例会（第 5日 6月22日）</SPAN>までの中で
+　<SPAN class=pink>PCB</SPAN>
+　が含まれている　定例会・臨時会　は　<SPAN class=pink>9件</SPAN>
+　ありました。
+      <BR><BR>
+      </b>
+      </TD>
+    </TR>
+  </TABLE>
+<!-- End CONDITION_MESSAGE -->
+ <!-- Begin RESULT_TABLE -->
+<TABLE id="resulttable" BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="550">
+    <TR>
+      <TD nowrap colspan="5" bgcolor="#b6cefb"><FONT CLASS="font">○検索該当年をクリックすると、該当する年の検索結果を表示します。</FONT></TD>
+    </TR>
+    <TR>
+      <TD colspan="5">
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0"><tr>
+<td  nowrap><A HREF="Javascript:document.chyear.submit()" onClick="changeyear('令和 8年')"><FONT CLASS="font2">令和 8年</FONT></A></td>
+<td nowrap style="padding-right: 14px;"></td>
+<td  nowrap><A HREF="Javascript:document.chyear.submit()" onClick="changeyear('令和 7年')"><FONT CLASS="font2">令和 7年</FONT></A></td>
+<td nowrap style="padding-right: 14px;"></td>
+<td  bgcolor="#eca6e7" nowrap><A HREF="Javascript:document.chyear.submit()" onClick="changeyear('all')"><FONT CLASS="font2">全年</FONT></A></td>
+</tr></table>
+      </TD>
+    </TR>
+    <TR>
+      <TD colspan="5" align="right">
+      <br>
+      </TD>
+    </TR>
+    <TR>
+      <TD colspan="5" align="left" bgcolor="#b6cefb">
+      <FONT CLASS="font">○会議日をクリックすると、発言内容を表示します。</FONT>
+      </TD>
+    </TR>
+    <TR bgcolor="#E1E8E1">
+      <TH nowrap align="left" colspan="2"><A NAME="TAG_TYPE_1"><FONT CLASS="font">定例会・臨時会</FONT></A></TH>
+      <TH nowrap><FONT CLASS="font">Page</FONT></TH>
+      <TH nowrap><FONT CLASS="font">該当</FONT></TH>
+      <TH nowrap><FONT CLASS="font">発言者名</FONT></TH>
+    
+    <TR>
+    </tr>
+    <TR>
+      <TD nowrap>令和 8年 3月定例会</TD>
+      <TD nowrap><A style="text-decoration: underline;" HREF="Javascript:go('R080312A/83190/1505')">（第11日 3月12日）</A></TD>
+      <TD nowrap>p.687</TD>
+      <TD align="center">1</TD>
+      <TD nowrap>大西由紀さん</TD>
+    </tr>
+    <TR>
+      <TD colspan="5" nowrap><FONT color=#808080>　　のかとか、<!-- hitb --><SPAN class="hitkeyword"><!-- hitb --><SPAN class="hitkeyword">ＰＣＢ</SPAN><!-- hite --></SPAN><!-- hite -->の盛土のところには通せないのに住宅地に通す、しかしインターチェ</FONT></TD>
+    </tr>
+    <TR>
+      <TD nowrap>令和 8年 3月定例会</TD>
+      <TD nowrap><A style="text-decoration: underline;" HREF="Javascript:go('R080306A/123245/1498')">（第 7日 3月 6日）</A></TD>
+      <TD nowrap>p.354</TD>
+      <TD align="center">1</TD>
+      <TD nowrap>政策部長（水田ことみさん）</TD>
+    </tr>
+    <TR>
+      <TD colspan="5" nowrap><FONT color=#808080>　　は、低濃度<!-- hitb --><SPAN class="hitkeyword"><!-- hitb --><SPAN class="hitkeyword">ＰＣＢ</SPAN><!-- hite --></SPAN><!-- hite -->の処分に要する経費を計上いたしております。</FONT></TD>
+    </tr>
+    <TR>
+      <TD nowrap>令和 7年12月定例会</TD>
+      <TD nowrap><A style="text-decoration: underline;" HREF="Javascript:go('R071211A/139488/1453')">（第 5日12月11日）</A></TD>
+      <TD nowrap>p.338</TD>
+      <TD align="center">2</TD>
+      <TD nowrap>大西由紀さん</TD>
+    </tr>
+    <TR>
+      <TD colspan="5" nowrap><FONT color=#808080>　　二つ目は、<!-- hitb --><SPAN class="hitkeyword"><!-- hitb --><SPAN class="hitkeyword">ＰＣＢ</SPAN><!-- hite --></SPAN><!-- hite -->の測定など、環境や健康リスクへの対応と情報公開の在り方についてで</FONT></TD>
+    </tr>
+    <TR>
+      <TD nowrap>令和 7年12月定例会</TD>
+      <TD nowrap><A style="text-decoration: underline;" HREF="Javascript:go('R071211A/153876/1453')">（第 5日12月11日）</A></TD>
+      <TD nowrap>p.344</TD>
+      <TD align="center">1</TD>
+      <TD nowrap>都市創造部長（井上陽介君）</TD>
+    </tr>
+    <TR>
+      <TD colspan="5" nowrap><FONT color=#808080>　　ず初めに、<!-- hitb --><SPAN class="hitkeyword"><!-- hitb --><SPAN class="hitkeyword">ＰＣＢ</SPAN><!-- hite --></SPAN><!-- hite -->の測定など、環境や健康リスクへの対応と情報公開の在り方について</FONT></TD>
+    </tr>
+    <TR>
+      <TD nowrap>令和 7年 3月定例会</TD>
+      <TD nowrap><A style="text-decoration: underline;" HREF="Javascript:go('R070327A/35254/1338')">（第15日 3月27日）</A></TD>
+      <TD nowrap>p.990</TD>
+      <TD align="center">1</TD>
+      <TD nowrap>北野誠一郎君</TD>
+    </tr>
+    <TR>
+      <TD colspan="5" nowrap><FONT color=#808080>　　公害問題、<!-- hitb --><SPAN class="hitkeyword"><!-- hitb --><SPAN class="hitkeyword">ＰＣＢ</SPAN><!-- hite --></SPAN><!-- hite -->の公害問題によって地域の方々に貢献してほしいという形で２億円</FONT></TD>
+    </tr>
+    <TR>
+      <TD nowrap>令和 7年 3月定例会</TD>
+      <TD nowrap><A style="text-decoration: underline;" HREF="Javascript:go('R070317A/115411/1322')">（第13日 3月17日）</A></TD>
+      <TD nowrap>p.916</TD>
+      <TD align="center">1</TD>
+      <TD nowrap>市長（都倉達殊君）</TD>
+    </tr>
+    <TR>
+      <TD colspan="5" nowrap><FONT color=#808080>　　ジュール、<!-- hitb --><SPAN class="hitkeyword"><!-- hitb --><SPAN class="hitkeyword">ＰＣＢ</SPAN><!-- hite --></SPAN><!-- hite -->盛立地付近のルートの考え方、住居専用地域に道路を通すこと、トンネ</FONT></TD>
+    </tr>
+    <TR>
+      <TD nowrap>令和 7年 3月定例会</TD>
+      <TD nowrap><A style="text-decoration: underline;" HREF="Javascript:go('R070312A/103310/1318')">（第10日 3月12日）</A></TD>
+      <TD nowrap>p.640</TD>
+      <TD align="center">1</TD>
+      <TD nowrap>都市創造部長（井上陽介君）</TD>
+    </tr>
+    <TR>
+      <TD colspan="5" nowrap><FONT color=#808080>　　ジュール、<!-- hitb --><SPAN class="hitkeyword"><!-- hitb --><SPAN class="hitkeyword">ＰＣＢ</SPAN><!-- hite --></SPAN><!-- hite -->盛立地付近のルートの考え方や、住宅、住居専用地域に道路を通すこと</FONT></TD>
+    </tr>
+    <TR>
+      <TD nowrap>令和 7年 3月定例会</TD>
+      <TD nowrap><A style="text-decoration: underline;" HREF="Javascript:go('R070311A/145757/1316')">（第 9日 3月11日）</A></TD>
+      <TD nowrap>p.563</TD>
+      <TD align="center">1</TD>
+      <TD nowrap>北野誠一郎君</TD>
+    </tr>
+    <TR>
+      <TD colspan="5" nowrap><FONT color=#808080>　　ネカさんの<!-- hitb --><SPAN class="hitkeyword"><!-- hitb --><SPAN class="hitkeyword">ＰＣＢ</SPAN><!-- hite --></SPAN><!-- hite -->の問題で、地域に何か貢献できるような形でということで基金を積んで</FONT></TD>
+    </tr>
+	<TR>
+		<FORM NAME="opt">
+		<TD ALIGN="RIGHT" COLSPAN="5">
+<SELECT NAME="action" onChange="optaction()">
+<OPTION SELECTED>オプション</OPTION>
+<OPTION VALUE="printres" >検索結果印刷画面</OPTION>
+<OPTION VALUE="order_by_count">該当数で並び替える</OPTION>
+<OPTION VALUE="order_by_date">日付順で並び替える</OPTION>
+</SELECT>
+		</TD>
+		</FORM>
+	</TR>
+</TABLE>
+<!-- End RESULT_TABLE -->
+
+
+
+
+
+
+
+			<img src="/takasago/image/bit.gif" width="730" height="1" alt=""><br>    
+			</div>
+
+			<div class="content1_1"><img src="/takasago/image/bit.gif" width="20" height="1" alt=""></div>
+
+
+
+
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</td>
+		<td width="2" background="/takasago/image/rightbit.gif"><img src="/takasago/image/rightbit.gif" width="2" height="2"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="/takasago/image/bottom.gif" width="788" height="35"></td>
+	</tr>
+</table>
+
+
+
+</div>
+
+</center>
+
+
+
+</body>
+</html>
+

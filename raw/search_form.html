@@ -1,0 +1,1349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=x-sjis">
+	<title>‚»s‹c‰ο/‰ο‹c^υƒVƒXƒeƒ€</title>
+	<meta name="robots" CONTENT="follow,index">
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" type="text/css" href="/takasago/css/base.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function checkalltarget(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.search.alltarget.checked;
+    }
+}
+
+function setType(){
+	var type_f = new Array(4);
+	var i=1;
+	var hrefopt='';
+	
+	for (var j=0;i<=3 && j<document.search.elements.length;j++){
+    var e = document.search.elements[j];
+		if (e.name == 'eTarget'){
+      if( e.checked ) hrefopt += '&eTarget='+i;
+      type_f[i++] = e.checked;
+    }
+	}
+}
+//--->
+</SCRIPT>
+<STYLE type="text/css">
+
+<!--
+A:link{color:#0066CC;text-decoration: none}
+A:visited{text-decoration: none}
+A:hover{color:#FF7700;text-decoration: underline;}
+
+input.sbutton{
+background-color:#fad1e0;
+width: 100;
+height: 32;
+font-size: 90%;
+line-height: 25px;
+width: 100px;
+font-weight: bold;
+color: #991144;
+}
+input.rbutton{
+background-color:#eeeeee;
+width: 100;
+height: 32;
+font-size: 90%;
+line-height: 25px;
+width: 100px;
+font-weight: bold;
+color: #032832;
+
+}
+-->
+</STYLE>
+</head>
+
+
+<body>
+
+
+<!-- Begin JAVASCRIPT -->
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+OS = "";
+if(navigator.appVersion.indexOf("Mac",0) != -1){
+	OS = "Mac";
+}
+if(navigator.appVersion.indexOf("Windows",0) != -1){
+	OS = "Windows";
+}
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+
+if( browserName == "Microsoft Internet Explorer" ){
+	n = navigator.appVersion.indexOf("MSIE",0);
+	browserVer = parseInt(navigator.appVersion.substring(n+4));	
+}
+function yearChange(){
+	document.search.action='/takasago/cgi-bin2/Search2.exe#res';
+	document.search.target='';
+	document.search.submit();
+}
+function setSpeaker(sel){
+	i = sel.selectedIndex;
+	document.search.speaker1.selectedIndex=1;
+	document.search.speaker2.selectedIndex=1;
+	document.search.speaker3.selectedIndex=1;
+	sel.selectedIndex=i;
+	if( i>0 ){
+		document.search.speaker.value=sel.options[i].value;
+	}
+	else{
+		document.search.speaker.value='';
+	}
+}
+function checkalltarget(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.search.alltarget.checked;
+    }
+}
+function GTargetChangeAll(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'gTarget')
+	      e.checked = document.search.gTargetAll.checked;
+    }
+}
+function GTargetChange(){
+	var ca=true;
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'gTarget')
+	      ca = ca && e.checked;
+	    document.search.gTargetAll.checked = ca;
+    }
+}
+var fromCallValue = new Array(39);
+var fromCallText = new Array(39);
+var fromCallType = new Array(39);
+fromCallValue[0] = "•½¬12”N 3’θ—α‰οi‘ζ 1“ϊ 3 1“ϊj";
+fromCallText[0] = " 3’θ—α‰οi‘ζ 1“ϊ 3 1“ϊj";
+fromCallType[0] = 1;
+fromCallValue[1] = "•½¬12”N 3’θ—α‰οi‘ζ 2“ϊ 3 6“ϊj";
+fromCallText[1] = " 3’θ—α‰οi‘ζ 2“ϊ 3 6“ϊj";
+fromCallType[1] = 1;
+fromCallValue[2] = "•½¬12”N 3’θ—α‰οi‘ζ 3“ϊ 3 7“ϊj";
+fromCallText[2] = " 3’θ—α‰οi‘ζ 3“ϊ 3 7“ϊj";
+fromCallType[2] = 1;
+fromCallValue[3] = "•½¬12”N 3’θ—α‰οi‘ζ 4“ϊ 310“ϊj";
+fromCallText[3] = " 3’θ—α‰οi‘ζ 4“ϊ 310“ϊj";
+fromCallType[3] = 1;
+fromCallValue[4] = "•½¬12”N 3’θ—α‰οi‘ζ 5“ϊ 313“ϊj";
+fromCallText[4] = " 3’θ—α‰οi‘ζ 5“ϊ 313“ϊj";
+fromCallType[4] = 1;
+fromCallValue[5] = "•½¬12”N 3’θ—α‰οi‘ζ 6“ϊ 314“ϊj";
+fromCallText[5] = " 3’θ—α‰οi‘ζ 6“ϊ 314“ϊj";
+fromCallType[5] = 1;
+fromCallValue[6] = "•½¬12”N 3’θ—α‰οi‘ζ 7“ϊ 315“ϊj";
+fromCallText[6] = " 3’θ—α‰οi‘ζ 7“ϊ 315“ϊj";
+fromCallType[6] = 1;
+fromCallValue[7] = "•½¬12”N 3’θ—α‰οi‘ζ 8“ϊ 316“ϊj";
+fromCallText[7] = " 3’θ—α‰οi‘ζ 8“ϊ 316“ϊj";
+fromCallType[7] = 1;
+fromCallValue[8] = "•½¬12”N 3’θ—α‰οi‘ζ 9“ϊ 317“ϊj";
+fromCallText[8] = " 3’θ—α‰οi‘ζ 9“ϊ 317“ϊj";
+fromCallType[8] = 1;
+fromCallValue[9] = "•½¬12”N 3’θ—α‰οi‘ζ10“ϊ 321“ϊj";
+fromCallText[9] = " 3’θ—α‰οi‘ζ10“ϊ 321“ϊj";
+fromCallType[9] = 1;
+fromCallValue[10] = "•½¬12”N 3’θ—α‰οi‘ζ11“ϊ 322“ϊj";
+fromCallText[10] = " 3’θ—α‰οi‘ζ11“ϊ 322“ϊj";
+fromCallType[10] = 1;
+fromCallValue[11] = "•½¬12”N 3’θ—α‰οi‘ζ12“ϊ 323“ϊj";
+fromCallText[11] = " 3’θ—α‰οi‘ζ12“ϊ 323“ϊj";
+fromCallType[11] = 1;
+fromCallValue[12] = "•½¬12”N 3’θ—α‰οi‘ζ13“ϊ 324“ϊj";
+fromCallText[12] = " 3’θ—α‰οi‘ζ13“ϊ 324“ϊj";
+fromCallType[12] = 1;
+fromCallValue[13] = "•½¬12”N 3’θ—α‰οi‘ζ14“ϊ 325“ϊj";
+fromCallText[13] = " 3’θ—α‰οi‘ζ14“ϊ 325“ϊj";
+fromCallType[13] = 1;
+fromCallValue[14] = "•½¬12”N 3’θ—α‰οi‘ζ15“ϊ 330“ϊj";
+fromCallText[14] = " 3’θ—α‰οi‘ζ15“ϊ 330“ϊj";
+fromCallType[14] = 1;
+fromCallValue[15] = "•½¬12”N 3’θ—α‰οi‘ζ16“ϊ 331“ϊj";
+fromCallText[15] = " 3’θ—α‰οi‘ζ16“ϊ 331“ϊj";
+fromCallType[15] = 1;
+fromCallValue[16] = "•½¬12”N 6’θ—α‰οi‘ζ 1“ϊ 621“ϊj";
+fromCallText[16] = " 6’θ—α‰οi‘ζ 1“ϊ 621“ϊj";
+fromCallType[16] = 1;
+fromCallValue[17] = "•½¬12”N 6’θ—α‰οi‘ζ 2“ϊ 626“ϊj";
+fromCallText[17] = " 6’θ—α‰οi‘ζ 2“ϊ 626“ϊj";
+fromCallType[17] = 1;
+fromCallValue[18] = "•½¬12”N 6’θ—α‰οi‘ζ 3“ϊ 627“ϊj";
+fromCallText[18] = " 6’θ—α‰οi‘ζ 3“ϊ 627“ϊj";
+fromCallType[18] = 1;
+fromCallValue[19] = "•½¬12”N 6’θ—α‰οi‘ζ 4“ϊ 628“ϊj";
+fromCallText[19] = " 6’θ—α‰οi‘ζ 4“ϊ 628“ϊj";
+fromCallType[19] = 1;
+fromCallValue[20] = "•½¬12”N 6’θ—α‰οi‘ζ 5“ϊ 629“ϊj";
+fromCallText[20] = " 6’θ—α‰οi‘ζ 5“ϊ 629“ϊj";
+fromCallType[20] = 1;
+fromCallValue[21] = "•½¬12”N 6’θ—α‰οi‘ζ 6“ϊ 630“ϊj";
+fromCallText[21] = " 6’θ—α‰οi‘ζ 6“ϊ 630“ϊj";
+fromCallType[21] = 1;
+fromCallValue[22] = "•½¬12”N 6’θ—α‰οi‘ζ 7“ϊ 7 4“ϊj";
+fromCallText[22] = " 6’θ—α‰οi‘ζ 7“ϊ 7 4“ϊj";
+fromCallType[22] = 1;
+fromCallValue[23] = "•½¬12”N 6’θ—α‰οi‘ζ 8“ϊ 711“ϊj";
+fromCallText[23] = " 6’θ—α‰οi‘ζ 8“ϊ 711“ϊj";
+fromCallType[23] = 1;
+fromCallValue[24] = "•½¬12”N 9’θ—α‰οi‘ζ 1“ϊ 9 4“ϊj";
+fromCallText[24] = " 9’θ—α‰οi‘ζ 1“ϊ 9 4“ϊj";
+fromCallType[24] = 1;
+fromCallValue[25] = "•½¬12”N 9’θ—α‰οi‘ζ 2“ϊ 9 5“ϊj";
+fromCallText[25] = " 9’θ—α‰οi‘ζ 2“ϊ 9 5“ϊj";
+fromCallType[25] = 1;
+fromCallValue[26] = "•½¬12”N 9’θ—α‰οi‘ζ 3“ϊ 9 8“ϊj";
+fromCallText[26] = " 9’θ—α‰οi‘ζ 3“ϊ 9 8“ϊj";
+fromCallType[26] = 1;
+fromCallValue[27] = "•½¬12”N 9’θ—α‰οi‘ζ 4“ϊ 911“ϊj";
+fromCallText[27] = " 9’θ—α‰οi‘ζ 4“ϊ 911“ϊj";
+fromCallType[27] = 1;
+fromCallValue[28] = "•½¬12”N 9’θ—α‰οi‘ζ 5“ϊ 912“ϊj";
+fromCallText[28] = " 9’θ—α‰οi‘ζ 5“ϊ 912“ϊj";
+fromCallType[28] = 1;
+fromCallValue[29] = "•½¬12”N 9’θ—α‰οi‘ζ 6“ϊ 913“ϊj";
+fromCallText[29] = " 9’θ—α‰οi‘ζ 6“ϊ 913“ϊj";
+fromCallType[29] = 1;
+fromCallValue[30] = "•½¬12”N 9’θ—α‰οi‘ζ 7“ϊ 919“ϊj";
+fromCallText[30] = " 9’θ—α‰οi‘ζ 7“ϊ 919“ϊj";
+fromCallType[30] = 1;
+fromCallValue[31] = "•½¬12”N12’θ—α‰οi‘ζ 1“ϊ12 6“ϊj";
+fromCallText[31] = "12’θ—α‰οi‘ζ 1“ϊ12 6“ϊj";
+fromCallType[31] = 1;
+fromCallValue[32] = "•½¬12”N12’θ—α‰οi‘ζ 2“ϊ1211“ϊj";
+fromCallText[32] = "12’θ—α‰οi‘ζ 2“ϊ1211“ϊj";
+fromCallType[32] = 1;
+fromCallValue[33] = "•½¬12”N12’θ—α‰οi‘ζ 3“ϊ1212“ϊj";
+fromCallText[33] = "12’θ—α‰οi‘ζ 3“ϊ1212“ϊj";
+fromCallType[33] = 1;
+fromCallValue[34] = "•½¬12”N12’θ—α‰οi‘ζ 4“ϊ1213“ϊj";
+fromCallText[34] = "12’θ—α‰οi‘ζ 4“ϊ1213“ϊj";
+fromCallType[34] = 1;
+fromCallValue[35] = "•½¬12”N12’θ—α‰οi‘ζ 5“ϊ1214“ϊj";
+fromCallText[35] = "12’θ—α‰οi‘ζ 5“ϊ1214“ϊj";
+fromCallType[35] = 1;
+fromCallValue[36] = "•½¬12”N12’θ—α‰οi‘ζ 6“ϊ1215“ϊj";
+fromCallText[36] = "12’θ—α‰οi‘ζ 6“ϊ1215“ϊj";
+fromCallType[36] = 1;
+fromCallValue[37] = "•½¬12”N12’θ—α‰οi‘ζ 7“ϊ1221“ϊj";
+fromCallText[37] = "12’θ—α‰οi‘ζ 7“ϊ1221“ϊj";
+fromCallType[37] = 1;
+fromCallValue[38] = "•½¬12”N12’θ—α‰οi‘ζ 8“ϊ1222“ϊj";
+fromCallText[38] = "12’θ—α‰οi‘ζ 8“ϊ1222“ϊj";
+fromCallType[38] = 1;
+var tillCallValue = new Array(64);
+var tillCallText = new Array(64);
+var tillCallType = new Array(64);
+tillCallValue[0] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 1 8“ϊj";
+tillCallText[0] = "‹c‰ο‰^‰cΟυ‰οi 1 8“ϊj";
+tillCallType[0] = 5;
+tillCallValue[1] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 114“ϊj";
+tillCallText[1] = "‹c‰ο‰^‰cΟυ‰οi 114“ϊj";
+tillCallType[1] = 5;
+tillCallValue[2] = "—ίa 8”N 1—Υ‰οi‘ζ 1“ϊ 116“ϊj";
+tillCallText[2] = " 1—Υ‰οi‘ζ 1“ϊ 116“ϊj";
+tillCallType[2] = 1;
+tillCallValue[3] = "—ίa 8”N‘–±ν”CΟυ‰οi 116“ϊj";
+tillCallText[3] = "‘–±ν”CΟυ‰οi 116“ϊj";
+tillCallType[3] = 2;
+tillCallValue[4] = "—ίa 8”N‘–±ν”CΟυ‰οi 116“ϊj";
+tillCallText[4] = "‘–±ν”CΟυ‰οi 116“ϊj";
+tillCallType[4] = 2;
+tillCallValue[5] = "—ίa 8”N•¶‹³ϊ¶ν”CΟυ‰οi 116“ϊj";
+tillCallText[5] = "•¶‹³ϊ¶ν”CΟυ‰οi 116“ϊj";
+tillCallType[5] = 3;
+tillCallValue[6] = "—ίa 8”NέΒ‹«oΟν”CΟυ‰οi 116“ϊj";
+tillCallText[6] = "έΒ‹«oΟν”CΟυ‰οi 116“ϊj";
+tillCallType[6] = 4;
+tillCallValue[7] = "—ίa 8”N•¶‹³ϊ¶ν”CΟυ‰οi 126“ϊj";
+tillCallText[7] = "•¶‹³ϊ¶ν”CΟυ‰οi 126“ϊj";
+tillCallType[7] = 3;
+tillCallValue[8] = "—ίa 8”Ns­‰Ϋ‘θ“™’²Έ“Ά“Α•ΚΟυ‰οi 126“ϊj";
+tillCallText[8] = "s­‰Ϋ‘θ“™’²Έ“Ά“Α•ΚΟυ‰οi 126“ϊj";
+tillCallType[8] = 8;
+tillCallValue[9] = "—ίa 8”NέΒ‹«oΟν”CΟυ‰οi 127“ϊj";
+tillCallText[9] = "έΒ‹«oΟν”CΟυ‰οi 127“ϊj";
+tillCallType[9] = 4;
+tillCallValue[10] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 128“ϊj";
+tillCallText[10] = "‹c‰ο‰^‰cΟυ‰οi 128“ϊj";
+tillCallType[10] = 5;
+tillCallValue[11] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 2 2“ϊj";
+tillCallText[11] = "‹c‰ο‰^‰cΟυ‰οi 2 2“ϊj";
+tillCallType[11] = 5;
+tillCallValue[12] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 2 5“ϊj";
+tillCallText[12] = "‹c‰ο‰^‰cΟυ‰οi 2 5“ϊj";
+tillCallType[12] = 5;
+tillCallValue[13] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 213“ϊj";
+tillCallText[13] = "‹c‰ο‰^‰cΟυ‰οi 213“ϊj";
+tillCallType[13] = 5;
+tillCallValue[14] = "—ίa 8”N 3’θ—α‰οi‘ζ 1“ϊ 224“ϊj";
+tillCallText[14] = " 3’θ—α‰οi‘ζ 1“ϊ 224“ϊj";
+tillCallType[14] = 1;
+tillCallValue[15] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 224“ϊj";
+tillCallText[15] = "‹c‰ο‰^‰cΟυ‰οi 224“ϊj";
+tillCallType[15] = 5;
+tillCallValue[16] = "—ίa 8”N 3’θ—α‰οi‘ζ 2“ϊ 225“ϊj";
+tillCallText[16] = " 3’θ—α‰οi‘ζ 2“ϊ 225“ϊj";
+tillCallType[16] = 1;
+tillCallValue[17] = "—ίa 8”N 3’θ—α‰οi‘ζ 3“ϊ 226“ϊj";
+tillCallText[17] = " 3’θ—α‰οi‘ζ 3“ϊ 226“ϊj";
+tillCallType[17] = 1;
+tillCallValue[18] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 226“ϊj";
+tillCallText[18] = "‹c‰ο‰^‰cΟυ‰οi 226“ϊj";
+tillCallType[18] = 5;
+tillCallValue[19] = "—ίa 8”N‘–±ν”CΟυ‰οi 227“ϊj";
+tillCallText[19] = "‘–±ν”CΟυ‰οi 227“ϊj";
+tillCallType[19] = 2;
+tillCallValue[20] = "—ίa 8”N•¶‹³ϊ¶ν”CΟυ‰οi 227“ϊj";
+tillCallText[20] = "•¶‹³ϊ¶ν”CΟυ‰οi 227“ϊj";
+tillCallType[20] = 3;
+tillCallValue[21] = "—ίa 8”NέΒ‹«oΟν”CΟυ‰οi 227“ϊj";
+tillCallText[21] = "έΒ‹«oΟν”CΟυ‰οi 227“ϊj";
+tillCallType[21] = 4;
+tillCallValue[22] = "—ίa 8”N‘–±ν”CΟυ‰οi 3 2“ϊj";
+tillCallText[22] = "‘–±ν”CΟυ‰οi 3 2“ϊj";
+tillCallType[22] = 2;
+tillCallValue[23] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 3 2“ϊj";
+tillCallText[23] = "‹c‰ο‰^‰cΟυ‰οi 3 2“ϊj";
+tillCallType[23] = 5;
+tillCallValue[24] = "—ίa 8”N 3’θ—α‰οi‘ζ 4“ϊ 3 3“ϊj";
+tillCallText[24] = " 3’θ—α‰οi‘ζ 4“ϊ 3 3“ϊj";
+tillCallType[24] = 1;
+tillCallValue[25] = "—ίa 8”N 3’θ—α‰οi‘ζ 5“ϊ 3 4“ϊj";
+tillCallText[25] = " 3’θ—α‰οi‘ζ 5“ϊ 3 4“ϊj";
+tillCallType[25] = 1;
+tillCallValue[26] = "—ίa 8”N‘–±ν”CΟυ‰οi 3 4“ϊj";
+tillCallText[26] = "‘–±ν”CΟυ‰οi 3 4“ϊj";
+tillCallType[26] = 2;
+tillCallValue[27] = "—ίa 8”N 3’θ—α‰οi‘ζ 6“ϊ 3 5“ϊj";
+tillCallText[27] = " 3’θ—α‰οi‘ζ 6“ϊ 3 5“ϊj";
+tillCallType[27] = 1;
+tillCallValue[28] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 3 5“ϊj";
+tillCallText[28] = "‹c‰ο‰^‰cΟυ‰οi 3 5“ϊj";
+tillCallType[28] = 5;
+tillCallValue[29] = "—ίa 8”N 3’θ—α‰οi‘ζ 7“ϊ 3 6“ϊj";
+tillCallText[29] = " 3’θ—α‰οi‘ζ 7“ϊ 3 6“ϊj";
+tillCallType[29] = 1;
+tillCallValue[30] = "—ίa 8”N 3’θ—α‰οi‘ζ 8“ϊ 3 9“ϊj";
+tillCallText[30] = " 3’θ—α‰οi‘ζ 8“ϊ 3 9“ϊj";
+tillCallType[30] = 1;
+tillCallValue[31] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 3 9“ϊj";
+tillCallText[31] = "‹c‰ο‰^‰cΟυ‰οi 3 9“ϊj";
+tillCallType[31] = 5;
+tillCallValue[32] = "—ίa 8”N 3’θ—α‰οi‘ζ 9“ϊ 310“ϊj";
+tillCallText[32] = " 3’θ—α‰οi‘ζ 9“ϊ 310“ϊj";
+tillCallType[32] = 1;
+tillCallValue[33] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 310“ϊj";
+tillCallText[33] = "‹c‰ο‰^‰cΟυ‰οi 310“ϊj";
+tillCallType[33] = 5;
+tillCallValue[34] = "—ίa 8”N 3’θ—α‰οi‘ζ10“ϊ 311“ϊj";
+tillCallText[34] = " 3’θ—α‰οi‘ζ10“ϊ 311“ϊj";
+tillCallType[34] = 1;
+tillCallValue[35] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 311“ϊj";
+tillCallText[35] = "‹c‰ο‰^‰cΟυ‰οi 311“ϊj";
+tillCallType[35] = 5;
+tillCallValue[36] = "—ίa 8”N 3’θ—α‰οi‘ζ11“ϊ 312“ϊj";
+tillCallText[36] = " 3’θ—α‰οi‘ζ11“ϊ 312“ϊj";
+tillCallType[36] = 1;
+tillCallValue[37] = "—ίa 8”N 3’θ—α‰οi‘ζ12“ϊ 313“ϊj";
+tillCallText[37] = " 3’θ—α‰οi‘ζ12“ϊ 313“ϊj";
+tillCallType[37] = 1;
+tillCallValue[38] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 313“ϊj";
+tillCallText[38] = "‹c‰ο‰^‰cΟυ‰οi 313“ϊj";
+tillCallType[38] = 5;
+tillCallValue[39] = "—ίa 8”N 3’θ—α‰οi‘ζ13“ϊ 316“ϊj";
+tillCallText[39] = " 3’θ—α‰οi‘ζ13“ϊ 316“ϊj";
+tillCallType[39] = 1;
+tillCallValue[40] = "—ίa 8”N 3’θ—α‰οi‘ζ14“ϊ 317“ϊj";
+tillCallText[40] = " 3’θ—α‰οi‘ζ14“ϊ 317“ϊj";
+tillCallType[40] = 1;
+tillCallValue[41] = "—ίa 8”N‘–±ν”CΟυ‰οi 318“ϊj";
+tillCallText[41] = "‘–±ν”CΟυ‰οi 318“ϊj";
+tillCallType[41] = 2;
+tillCallValue[42] = "—ίa 8”NέΒ‹«oΟν”CΟυ‰οi 318“ϊj";
+tillCallText[42] = "έΒ‹«oΟν”CΟυ‰οi 318“ϊj";
+tillCallType[42] = 4;
+tillCallValue[43] = "—ίa 8”Ns­‰Ϋ‘θ“™’²Έ“Ά“Α•ΚΟυ‰οi 318“ϊj";
+tillCallText[43] = "s­‰Ϋ‘θ“™’²Έ“Ά“Α•ΚΟυ‰οi 318“ϊj";
+tillCallType[43] = 8;
+tillCallValue[44] = "—ίa 8”N•¶‹³ϊ¶ν”CΟυ‰οi 319“ϊj";
+tillCallText[44] = "•¶‹³ϊ¶ν”CΟυ‰οi 319“ϊj";
+tillCallType[44] = 3;
+tillCallValue[45] = "—ίa 8”NέΒ‹«oΟν”CΟυ‰οi 319“ϊj";
+tillCallText[45] = "έΒ‹«oΟν”CΟυ‰οi 319“ϊj";
+tillCallType[45] = 4;
+tillCallValue[46] = "—ίa 8”N•¶‹³ϊ¶ν”CΟυ‰οi 323“ϊj";
+tillCallText[46] = "•¶‹³ϊ¶ν”CΟυ‰οi 323“ϊj";
+tillCallType[46] = 3;
+tillCallValue[47] = "—ίa 8”N•¶‹³ϊ¶ν”CΟυ‰οi 324“ϊj";
+tillCallText[47] = "•¶‹³ϊ¶ν”CΟυ‰οi 324“ϊj";
+tillCallType[47] = 3;
+tillCallValue[48] = "—ίa 8”N 3’θ—α‰οi‘ζ15“ϊ 326“ϊj";
+tillCallText[48] = " 3’θ—α‰οi‘ζ15“ϊ 326“ϊj";
+tillCallType[48] = 1;
+tillCallValue[49] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 326“ϊj";
+tillCallText[49] = "‹c‰ο‰^‰cΟυ‰οi 326“ϊj";
+tillCallType[49] = 5;
+tillCallValue[50] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 415“ϊj";
+tillCallText[50] = "‹c‰ο‰^‰cΟυ‰οi 415“ϊj";
+tillCallType[50] = 5;
+tillCallValue[51] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 512“ϊj";
+tillCallText[51] = "‹c‰ο‰^‰cΟυ‰οi 512“ϊj";
+tillCallType[51] = 5;
+tillCallValue[52] = "—ίa 8”N 5—Υ‰οi‘ζ 1“ϊ 519“ϊj";
+tillCallText[52] = " 5—Υ‰οi‘ζ 1“ϊ 519“ϊj";
+tillCallType[52] = 1;
+tillCallValue[53] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 519“ϊj";
+tillCallText[53] = "‹c‰ο‰^‰cΟυ‰οi 519“ϊj";
+tillCallType[53] = 5;
+tillCallValue[54] = "—ίa 8”N 5—Υ‰οi‘ζ 2“ϊ 520“ϊj";
+tillCallText[54] = " 5—Υ‰οi‘ζ 2“ϊ 520“ϊj";
+tillCallType[54] = 1;
+tillCallValue[55] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 6 2“ϊj";
+tillCallText[55] = "‹c‰ο‰^‰cΟυ‰οi 6 2“ϊj";
+tillCallType[55] = 5;
+tillCallValue[56] = "—ίa 8”N 6’θ—α‰οi‘ζ 1“ϊ 6 9“ϊj";
+tillCallText[56] = " 6’θ—α‰οi‘ζ 1“ϊ 6 9“ϊj";
+tillCallType[56] = 1;
+tillCallValue[57] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 6 9“ϊj";
+tillCallText[57] = "‹c‰ο‰^‰cΟυ‰οi 6 9“ϊj";
+tillCallType[57] = 5;
+tillCallValue[58] = "—ίa 8”N 6’θ—α‰οi‘ζ 2“ϊ 610“ϊj";
+tillCallText[58] = " 6’θ—α‰οi‘ζ 2“ϊ 610“ϊj";
+tillCallType[58] = 1;
+tillCallValue[59] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 610“ϊj";
+tillCallText[59] = "‹c‰ο‰^‰cΟυ‰οi 610“ϊj";
+tillCallType[59] = 5;
+tillCallValue[60] = "—ίa 8”N 6’θ—α‰οi‘ζ 3“ϊ 615“ϊj";
+tillCallText[60] = " 6’θ—α‰οi‘ζ 3“ϊ 615“ϊj";
+tillCallType[60] = 1;
+tillCallValue[61] = "—ίa 8”N 6’θ—α‰οi‘ζ 4“ϊ 616“ϊj";
+tillCallText[61] = " 6’θ—α‰οi‘ζ 4“ϊ 616“ϊj";
+tillCallType[61] = 1;
+tillCallValue[62] = "—ίa 8”N 6’θ—α‰οi‘ζ 5“ϊ 622“ϊj";
+tillCallText[62] = " 6’θ—α‰οi‘ζ 5“ϊ 622“ϊj";
+tillCallType[62] = 1;
+tillCallValue[63] = "—ίa 8”N‹c‰ο‰^‰cΟυ‰οi 622“ϊj";
+tillCallText[63] = "‹c‰ο‰^‰cΟυ‰οi 622“ϊj";
+tillCallType[63] = 5;
+function setType(){
+	var type_f = new Array(10);
+	var i=1;
+	var hrefopt='';
+	
+	for (var j=0;j<document.search.elements.length;j++){
+    var e = document.search.elements[j];
+		if (e.name == 'eTarget'){
+      if( e.checked ) hrefopt += '&eTarget='+e.value;
+      type_f[e.value] = e.checked;
+    }
+	}
+
+  document.search.fromDate.length = 0;
+  document.search.tillDate.length = 0;
+  if( browserVer>=5 ){
+	  i = 1;
+	  for( j=0; j<39; j++ ){
+		  if( type_f[fromCallType[j]] ){
+			  document.search.fromDate.length = i;
+		    document.search.fromDate.options[i-1].value = fromCallValue[j];
+			  document.search.fromDate.options[i-1].text = fromCallText[j];
+			  i++;
+		  }
+	  }
+	  i = 1;
+	  for( j=0; j<64; j++ ){
+		  if( type_f[tillCallType[j]] ){
+			  document.search.tillDate.length = i;
+		    document.search.tillDate.options[i-1].value = tillCallValue[j];
+			  document.search.tillDate.options[i-1].text = tillCallText[j];
+			  i++;
+		  }
+	  }
+	  document.search.tillDate.selectedIndex = i-2;
+  }
+  else{
+    yearChange();
+  }
+
+
+
+}
+function go(context){
+    document.goview.context.value = context;
+    document.goview.submit();
+}
+function changeyear(year){
+    document.chyear.treedepth.value = year;
+    document.chyear.target = '';
+    document.chyear.FUNC.value = '';
+    document.chyear.submit();
+}
+function printres(){
+    document.chyear.target = '_blank';
+    document.chyear.FUNC.value = 'print';
+    document.chyear.submit();
+}
+function optaction(){
+    var opt = document.opt.action.value;
+    if( opt=='printspeak' ){
+        printspeak();
+    }
+    else if(opt=='printres'){
+        printres();
+    }
+    else if(opt=='order_by_count'){
+        order_by('count','');
+        document.chyear.submit();
+    }
+    else if(opt=='order_by_date'){
+        order_by('date_r','');        document.chyear.submit();
+    }
+}
+function printspeak(){
+    document.chyear.action = 'AllSpeak.exe';
+    document.chyear.treedepth.value = 'all';
+    document.chyear.target = '_blank';
+    document.chyear.FUNC.value = 'printspeak';
+    document.chyear.submit();
+}
+function order_by(v,year){
+    document.chyear.action = '#res';
+    document.chyear.treedepth.value = year;
+    document.chyear.sort.value = v;
+    document.chyear.target = '';
+    document.chyear.FUNC.value = '';
+    document.chyear.submit();
+}
+//--->
+</SCRIPT>
+<!-- End JAVASCRIPT -->
+   
+
+
+<map name="head">
+
+<area shape="rect" alt="" coords="600,35,770,65" href="http://www.city.takasago.lg.jp/">
+<area href="https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/index.html" shape="rect" coords="413, 36, 587, 65">
+</map>
+<center>
+<div id="wrapper">
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="/takasago/image/head.gif" width="788" height="73" alt="‚»s‹c‰ο/‰ο‹c^υƒVƒXƒeƒ€" usemap="#head"></td>
+	</tr>
+	<tr>
+		<td width="5"><img src="/takasago/image/leftdice.gif" width="5" height="38"></td>
+		<td background="/takasago/image/hbgg.gif" width="778" height="38" bgcolor="#ffffff" align="center" valign="bottom">
+
+
+<a href="/takasago/index.html"><img src="/takasago/image/menu01.gif" width="190" height="33" alt="‰ο‹c^υƒVƒXƒeƒ€ƒgƒbƒv"></a><a href="/takasago/cgi-bin2/See.exe?Code=h52lmgenyzsjmkcxck"><img src="/takasago/image/menu02.gif" width="190" height="33" alt="‰ο‹c^‚Μ‰{——"></a><a href="/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&sTarget=2"><img src="/takasago/image/menu03.gif" width="190" height="33" alt="‰ο‹c^‚Μυ"></a><a href="/takasago/help/help_top.html" target="_blank"><img src="/takasago/image/menu04.gif" width="185" height="33" alt="‘€μƒ}ƒjƒ…ƒAƒ‹"></a>
+
+
+		</td>
+		<td width="5"><img src="/takasago/image/rightdice.gif" width="5" height="38"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="/takasago/image/topbottom.gif" width="788" height="18"></td>
+	</tr>
+</table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="/takasago/image/head03.gif" width="788" height="50" alt=""></td>
+	</tr>
+	<tr>
+		<td width="2" background="/takasago/image/leftbit.gif"><img src="/takasago/image/leftbit.gif" width="2" height="2"></td>
+		<td bgcolor="#ffffff" align="center" width="784">
+
+
+
+				<img src="/takasago/image/bit.gif" width="730" height="10" alt=""><br>
+
+
+
+		<div class="content4">
+
+
+
+			<div class="content1_1"><img src="/takasago/image/bit.gif" width="20" height="1" alt=""></div>
+			<div class="content2_1">
+
+
+	<img src="/takasago/image/bit.gif" width="15" height="1" alt=""><br>
+
+
+	<div class="titlebox"><span class="blue">‚²——‚Ι‚Θ‚κ‚ι‚Μ‚Ν•½¬12”N3’θ—α‰οΘ~‚Μ–{‰ο‹c^E—ίa5”N3Θ~‚ΜΟυ‰ο‰ο‹c^‚Ε‚·B</span></div><br>
+
+	<img src="/takasago/image/bit.gif" width="730" height="8" alt=""><br>
+
+
+
+
+
+<!-- Begin BEGIN_FORM -->
+<FORM name="search" method="POST" action="/takasago/cgi-bin2/Search2.exe#res" target="_top">
+<INPUT TYPE="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT TYPE="hidden" name="dMode" value="0">
+<!-- End BEGIN_FORM -->
+
+						<table class="table03">
+							<tr valign="middle">
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">υκ‚Ζυπ‚Μw’θ</td>    
+								<td><!-- Begin FORM_KEYWORD -->
+<INPUT CLASS=textbox TYPE="TEXT" NAME="KeyWord" SIZE="70" VALUE=""><!-- End FORM_KEYWORD -->
+<BR><!-- Begin FORM_SEARCHMODE -->
+<SELECT size="1" name="searchMode">
+    <option value="1" selected>‚·‚Χ‚Δ‚Μυκ‚πά‚έ‚ά‚·
+    <option value="3" >‚Ά‚Έ‚κ‚©‚Μυκ‚πά‚έ‚ά‚·
+</SELECT>
+<!-- End FORM_SEARCHMODE -->
+ <!-- Begin FORM_KEYMODE -->
+<SELECT size="1" name="keyMode">
+  <option value="10" selected>“―‹`κυ
+  <option value="0" >®‘Sκ’vυ
+  <option value="11" >‹ί–Tκ’vυ
+  <option value="12" >‚ ‚Ά‚ά‚Άυ
+</SELECT>
+<!-- End FORM_KEYMODE -->
+</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">‰ο‹cϊΤ‚Μw’θ</td>
+								<td>
+<!-- Begin FORM_TERM_FROM -->
+<SELECT SIZE="1" NAME="fromYear" onChange="yearChange()">
+  <OPTION VALUE="—ίa 8”N" >—ίa 8”N
+  <OPTION VALUE="—ίa 7”N" >—ίa 7”N
+  <OPTION VALUE="—ίa 6”N" >—ίa 6”N
+  <OPTION VALUE="—ίa 5”N" >—ίa 5”N
+  <OPTION VALUE="—ίa 4”N" >—ίa 4”N
+  <OPTION VALUE="—ίa 3”N" >—ίa 3”N
+  <OPTION VALUE="—ίa 2”N" >—ίa 2”N
+  <OPTION VALUE="—ίa³”N" >—ίa³”N
+  <OPTION VALUE="•½¬31”N" >•½¬31”N
+  <OPTION VALUE="•½¬30”N" >•½¬30”N
+  <OPTION VALUE="•½¬29”N" >•½¬29”N
+  <OPTION VALUE="•½¬28”N" >•½¬28”N
+  <OPTION VALUE="•½¬27”N" >•½¬27”N
+  <OPTION VALUE="•½¬26”N" >•½¬26”N
+  <OPTION VALUE="•½¬25”N" >•½¬25”N
+  <OPTION VALUE="•½¬24”N" >•½¬24”N
+  <OPTION VALUE="•½¬23”N" >•½¬23”N
+  <OPTION VALUE="•½¬22”N" >•½¬22”N
+  <OPTION VALUE="•½¬21”N" >•½¬21”N
+  <OPTION VALUE="•½¬20”N" >•½¬20”N
+  <OPTION VALUE="•½¬19”N" >•½¬19”N
+  <OPTION VALUE="•½¬18”N" >•½¬18”N
+  <OPTION VALUE="•½¬17”N" >•½¬17”N
+  <OPTION VALUE="•½¬16”N" >•½¬16”N
+  <OPTION VALUE="•½¬15”N" >•½¬15”N
+  <OPTION VALUE="•½¬14”N" >•½¬14”N
+  <OPTION VALUE="•½¬13”N" >•½¬13”N
+  <OPTION VALUE="•½¬12”N" selected>•½¬12”N
+</SELECT><SELECT SIZE="1" NAME="fromDate">
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 1“ϊ 3 1“ϊj"> 3’θ—α‰οi‘ζ 1“ϊ 3 1“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 2“ϊ 3 6“ϊj"> 3’θ—α‰οi‘ζ 2“ϊ 3 6“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 3“ϊ 3 7“ϊj"> 3’θ—α‰οi‘ζ 3“ϊ 3 7“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 4“ϊ 310“ϊj"> 3’θ—α‰οi‘ζ 4“ϊ 310“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 5“ϊ 313“ϊj"> 3’θ—α‰οi‘ζ 5“ϊ 313“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 6“ϊ 314“ϊj"> 3’θ—α‰οi‘ζ 6“ϊ 314“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 7“ϊ 315“ϊj"> 3’θ—α‰οi‘ζ 7“ϊ 315“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 8“ϊ 316“ϊj"> 3’θ—α‰οi‘ζ 8“ϊ 316“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ 9“ϊ 317“ϊj"> 3’θ—α‰οi‘ζ 9“ϊ 317“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ10“ϊ 321“ϊj"> 3’θ—α‰οi‘ζ10“ϊ 321“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ11“ϊ 322“ϊj"> 3’θ—α‰οi‘ζ11“ϊ 322“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ12“ϊ 323“ϊj"> 3’θ—α‰οi‘ζ12“ϊ 323“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ13“ϊ 324“ϊj"> 3’θ—α‰οi‘ζ13“ϊ 324“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ14“ϊ 325“ϊj"> 3’θ—α‰οi‘ζ14“ϊ 325“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ15“ϊ 330“ϊj"> 3’θ—α‰οi‘ζ15“ϊ 330“ϊj
+  <OPTION VALUE="•½¬12”N 3’θ—α‰οi‘ζ16“ϊ 331“ϊj"> 3’θ—α‰οi‘ζ16“ϊ 331“ϊj
+  <OPTION VALUE="•½¬12”N 6’θ—α‰οi‘ζ 1“ϊ 621“ϊj"> 6’θ—α‰οi‘ζ 1“ϊ 621“ϊj
+  <OPTION VALUE="•½¬12”N 6’θ—α‰οi‘ζ 2“ϊ 626“ϊj"> 6’θ—α‰οi‘ζ 2“ϊ 626“ϊj
+  <OPTION VALUE="•½¬12”N 6’θ—α‰οi‘ζ 3“ϊ 627“ϊj"> 6’θ—α‰οi‘ζ 3“ϊ 627“ϊj
+  <OPTION VALUE="•½¬12”N 6’θ—α‰οi‘ζ 4“ϊ 628“ϊj"> 6’θ—α‰οi‘ζ 4“ϊ 628“ϊj
+  <OPTION VALUE="•½¬12”N 6’θ—α‰οi‘ζ 5“ϊ 629“ϊj"> 6’θ—α‰οi‘ζ 5“ϊ 629“ϊj
+  <OPTION VALUE="•½¬12”N 6’θ—α‰οi‘ζ 6“ϊ 630“ϊj"> 6’θ—α‰οi‘ζ 6“ϊ 630“ϊj
+  <OPTION VALUE="•½¬12”N 6’θ—α‰οi‘ζ 7“ϊ 7 4“ϊj"> 6’θ—α‰οi‘ζ 7“ϊ 7 4“ϊj
+  <OPTION VALUE="•½¬12”N 6’θ—α‰οi‘ζ 8“ϊ 711“ϊj"> 6’θ—α‰οi‘ζ 8“ϊ 711“ϊj
+  <OPTION VALUE="•½¬12”N 9’θ—α‰οi‘ζ 1“ϊ 9 4“ϊj"> 9’θ—α‰οi‘ζ 1“ϊ 9 4“ϊj
+  <OPTION VALUE="•½¬12”N 9’θ—α‰οi‘ζ 2“ϊ 9 5“ϊj"> 9’θ—α‰οi‘ζ 2“ϊ 9 5“ϊj
+  <OPTION VALUE="•½¬12”N 9’θ—α‰οi‘ζ 3“ϊ 9 8“ϊj"> 9’θ—α‰οi‘ζ 3“ϊ 9 8“ϊj
+  <OPTION VALUE="•½¬12”N 9’θ—α‰οi‘ζ 4“ϊ 911“ϊj"> 9’θ—α‰οi‘ζ 4“ϊ 911“ϊj
+  <OPTION VALUE="•½¬12”N 9’θ—α‰οi‘ζ 5“ϊ 912“ϊj"> 9’θ—α‰οi‘ζ 5“ϊ 912“ϊj
+  <OPTION VALUE="•½¬12”N 9’θ—α‰οi‘ζ 6“ϊ 913“ϊj"> 9’θ—α‰οi‘ζ 6“ϊ 913“ϊj
+  <OPTION VALUE="•½¬12”N 9’θ—α‰οi‘ζ 7“ϊ 919“ϊj"> 9’θ—α‰οi‘ζ 7“ϊ 919“ϊj
+  <OPTION VALUE="•½¬12”N12’θ—α‰οi‘ζ 1“ϊ12 6“ϊj">12’θ—α‰οi‘ζ 1“ϊ12 6“ϊj
+  <OPTION VALUE="•½¬12”N12’θ—α‰οi‘ζ 2“ϊ1211“ϊj">12’θ—α‰οi‘ζ 2“ϊ1211“ϊj
+  <OPTION VALUE="•½¬12”N12’θ—α‰οi‘ζ 3“ϊ1212“ϊj">12’θ—α‰οi‘ζ 3“ϊ1212“ϊj
+  <OPTION VALUE="•½¬12”N12’θ—α‰οi‘ζ 4“ϊ1213“ϊj">12’θ—α‰οi‘ζ 4“ϊ1213“ϊj
+  <OPTION VALUE="•½¬12”N12’θ—α‰οi‘ζ 5“ϊ1214“ϊj">12’θ—α‰οi‘ζ 5“ϊ1214“ϊj
+  <OPTION VALUE="•½¬12”N12’θ—α‰οi‘ζ 6“ϊ1215“ϊj">12’θ—α‰οi‘ζ 6“ϊ1215“ϊj
+  <OPTION VALUE="•½¬12”N12’θ—α‰οi‘ζ 7“ϊ1221“ϊj">12’θ—α‰οi‘ζ 7“ϊ1221“ϊj
+  <OPTION VALUE="•½¬12”N12’θ—α‰οi‘ζ 8“ϊ1222“ϊj">12’θ—α‰οi‘ζ 8“ϊ1222“ϊj
+</SELECT>‚©‚η<!-- End FORM_TERM_FROM -->
+<BR><!-- Begin FORM_TERM_TO -->
+<SELECT SIZE="1" NAME="tillYear" onChange="yearChange()">
+  <OPTION VALUE="—ίa 8”N" selected>—ίa 8”N
+  <OPTION VALUE="—ίa 7”N" >—ίa 7”N
+  <OPTION VALUE="—ίa 6”N" >—ίa 6”N
+  <OPTION VALUE="—ίa 5”N" >—ίa 5”N
+  <OPTION VALUE="—ίa 4”N" >—ίa 4”N
+  <OPTION VALUE="—ίa 3”N" >—ίa 3”N
+  <OPTION VALUE="—ίa 2”N" >—ίa 2”N
+  <OPTION VALUE="—ίa³”N" >—ίa³”N
+  <OPTION VALUE="•½¬31”N" >•½¬31”N
+  <OPTION VALUE="•½¬30”N" >•½¬30”N
+  <OPTION VALUE="•½¬29”N" >•½¬29”N
+  <OPTION VALUE="•½¬28”N" >•½¬28”N
+  <OPTION VALUE="•½¬27”N" >•½¬27”N
+  <OPTION VALUE="•½¬26”N" >•½¬26”N
+  <OPTION VALUE="•½¬25”N" >•½¬25”N
+  <OPTION VALUE="•½¬24”N" >•½¬24”N
+  <OPTION VALUE="•½¬23”N" >•½¬23”N
+  <OPTION VALUE="•½¬22”N" >•½¬22”N
+  <OPTION VALUE="•½¬21”N" >•½¬21”N
+  <OPTION VALUE="•½¬20”N" >•½¬20”N
+  <OPTION VALUE="•½¬19”N" >•½¬19”N
+  <OPTION VALUE="•½¬18”N" >•½¬18”N
+  <OPTION VALUE="•½¬17”N" >•½¬17”N
+  <OPTION VALUE="•½¬16”N" >•½¬16”N
+  <OPTION VALUE="•½¬15”N" >•½¬15”N
+  <OPTION VALUE="•½¬14”N" >•½¬14”N
+  <OPTION VALUE="•½¬13”N" >•½¬13”N
+  <OPTION VALUE="•½¬12”N" >•½¬12”N
+</SELECT><SELECT SIZE="1" NAME="tillDate">
+  <OPTION VALUE="—ίa 8”N 1—Υ‰οi‘ζ 1“ϊ 116“ϊj"> 1—Υ‰οi‘ζ 1“ϊ 116“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 1“ϊ 224“ϊj"> 3’θ—α‰οi‘ζ 1“ϊ 224“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 2“ϊ 225“ϊj"> 3’θ—α‰οi‘ζ 2“ϊ 225“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 3“ϊ 226“ϊj"> 3’θ—α‰οi‘ζ 3“ϊ 226“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 4“ϊ 3 3“ϊj"> 3’θ—α‰οi‘ζ 4“ϊ 3 3“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 5“ϊ 3 4“ϊj"> 3’θ—α‰οi‘ζ 5“ϊ 3 4“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 6“ϊ 3 5“ϊj"> 3’θ—α‰οi‘ζ 6“ϊ 3 5“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 7“ϊ 3 6“ϊj"> 3’θ—α‰οi‘ζ 7“ϊ 3 6“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 8“ϊ 3 9“ϊj"> 3’θ—α‰οi‘ζ 8“ϊ 3 9“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ 9“ϊ 310“ϊj"> 3’θ—α‰οi‘ζ 9“ϊ 310“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ10“ϊ 311“ϊj"> 3’θ—α‰οi‘ζ10“ϊ 311“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ11“ϊ 312“ϊj"> 3’θ—α‰οi‘ζ11“ϊ 312“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ12“ϊ 313“ϊj"> 3’θ—α‰οi‘ζ12“ϊ 313“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ13“ϊ 316“ϊj"> 3’θ—α‰οi‘ζ13“ϊ 316“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ14“ϊ 317“ϊj"> 3’θ—α‰οi‘ζ14“ϊ 317“ϊj
+  <OPTION VALUE="—ίa 8”N 3’θ—α‰οi‘ζ15“ϊ 326“ϊj"> 3’θ—α‰οi‘ζ15“ϊ 326“ϊj
+  <OPTION VALUE="—ίa 8”N 5—Υ‰οi‘ζ 1“ϊ 519“ϊj"> 5—Υ‰οi‘ζ 1“ϊ 519“ϊj
+  <OPTION VALUE="—ίa 8”N 5—Υ‰οi‘ζ 2“ϊ 520“ϊj"> 5—Υ‰οi‘ζ 2“ϊ 520“ϊj
+  <OPTION VALUE="—ίa 8”N 6’θ—α‰οi‘ζ 1“ϊ 6 9“ϊj"> 6’θ—α‰οi‘ζ 1“ϊ 6 9“ϊj
+  <OPTION VALUE="—ίa 8”N 6’θ—α‰οi‘ζ 2“ϊ 610“ϊj"> 6’θ—α‰οi‘ζ 2“ϊ 610“ϊj
+  <OPTION VALUE="—ίa 8”N 6’θ—α‰οi‘ζ 3“ϊ 615“ϊj"> 6’θ—α‰οi‘ζ 3“ϊ 615“ϊj
+  <OPTION VALUE="—ίa 8”N 6’θ—α‰οi‘ζ 4“ϊ 616“ϊj"> 6’θ—α‰οi‘ζ 4“ϊ 616“ϊj
+  <OPTION VALUE="—ίa 8”N 6’θ—α‰οi‘ζ 5“ϊ 622“ϊj" selected> 6’θ—α‰οi‘ζ 5“ϊ 622“ϊj
+</SELECT>‚ά‚Ε<!-- End FORM_TERM_TO -->
+
+								</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">”­ΎÒ</td>
+								<td>
+<!-- Begin FORM_SPEAKER -->
+<INPUT TYPE="hidden" NAME="speaker">
+<SELECT NAME="speaker1" onChange="setSpeaker(this)">
+<OPTION value="">ϊΤ“ΰ‚Μ”­ΎÒ‚π‘I‚ρ‚Ε‚­‚Ύ‚³‚Ά
+<OPTION value="">
+<OPTION value="H“c‚³‚Ζ‚έ">H“c‚³‚Ζ‚έ
+<OPTION value="δ‰‰λχ">δ‰‰λχ
+<OPTION value="¶“—mκ">¶“—mκ
+<OPTION value="’r–{W">’r–{W
+<OPTION value="Ξϊ±“O">Ξϊ±“O
+<OPTION value="Ξϊ±Ου">Ξϊ±Ου
+<OPTION value="Ξϊ±Ου’·">Ξϊ±Ου’·
+<OPTION value="΅’|‘ε—S">΅’|‘ε—S
+<OPTION value="΅’|Ου">΅’|Ου
+<OPTION value="“ό][‘Ύ">“ό][‘Ύ
+<OPTION value="“ό]³l">“ό]³l
+<OPTION value="“ό]Ου">“ό]Ου
+<OPTION value="“ό]Ου’·">“ό]Ου’·
+<OPTION value="β©–Ύ">β©–Ύ
+<OPTION value="β©Ου">β©Ου
+<OPTION value="β©Ου’·">β©Ου’·
+<OPTION value="β©•›Ου’·">β©•›Ου’·
+<OPTION value="‘ε’ΛDq">‘ε’ΛDq
+<OPTION value="‘εΌ—R‹I">‘εΌ—R‹I
+<OPTION value="‘εΌΟυ">‘εΌΟυ
+<OPTION value="‰ª“c³">‰ª“c³
+<OPTION value="‰ª–{O">‰ª–{O
+<OPTION value="‰ΑΓH°">‰ΑΓH°
+<OPTION value="μ’[G–Ύ">μ’[G–Ύ
+<OPTION value="μ’[Ου">μ’[Ου
+<OPTION value="μ’[•›Ου’·">μ’[•›Ου’·
+<OPTION value="μ’[ΐ’·">μ’[ΐ’·
+<OPTION value="–Ψ’JY">–Ψ’JY
+<OPTION value="–k–μ½κY">–k–μ½κY
+<OPTION value="–k–μΟυ">–k–μΟυ
+<OPTION value="–k–μΟυ’·">–k–μΟυ’·
+<OPTION value="–k–μΐ’·">–k–μΐ’·
+<OPTION value="–k”¨“O–η">–k”¨“O–η
+<OPTION value="–k³Y">–k³Y
+<OPTION value="–Ψ‘Ί›Ω">–Ψ‘Ί›Ω
+<OPTION value="¬—Ρ—²‹`">¬—Ρ—²‹`
+<OPTION value="¬Ό”ό‹I]">¬Ό”ό‹I]
+<OPTION value="‹ί“΅΄—²">‹ί“΅΄—²
+<OPTION value="O}—²κ">O}—²κ
+<OPTION value="β‹”ªB">β‹”ªB
+<OPTION value="β•Σ•F">β•Σ•F
+<OPTION value="β–{‚ά‚θ">β–{‚ά‚θ
+<OPTION value="β–{Ου">β–{Ου
+<OPTION value="β–{•›Ου’·">β–{•›Ου’·
+<OPTION value="”—μ‚s">”—μ‚s
+<OPTION value="”—μ‹c’·">”—μ‹c’·
+<OPTION value="”—μΟυ’·">”—μΟυ’·
+<OPTION value="”—μΟυ">”—μΟυ
+<OPTION value="‘ς–μ”">‘ς–μ”
+<OPTION value="Ε–{’Α²">Ε–{’Α²
+<OPTION value="Ε–{Ου">Ε–{Ου
+<OPTION value="Ε–{Ου’·">Ε–{Ου’·
+<OPTION value="Ε–{•›Ου’·">Ε–{•›Ου’·
+<OPTION value="“‡’Γ–Ύ">“‡’Γ–Ύ
+<OPTION value="“‡’ΓΟυ’·">“‡’ΓΟυ’·
+<OPTION value="“‡’Γ•›Ου’·">“‡’Γ•›Ου’·
+<OPTION value="“‡’Γ•›‹c’·">“‡’Γ•›‹c’·
+<OPTION value="—ι–Ψ—M">—ι–Ψ—M
+<OPTION value="—ι–Ψ³“T">—ι–Ψ³“T
+<OPTION value="—ι–ΨΟυ">—ι–ΨΟυ
+<OPTION value="—ι–ΨΟυ’·">—ι–ΨΟυ’·
+<OPTION value="»μ’C‹`">»μ’C‹`
+<OPTION value="‘ι”φ΅‹v">‘ι”φ΅‹v
+<OPTION value="‘ι”φΟυ">‘ι”φΟυ
+<OPTION value="‘ι”φΟυ’·">‘ι”φΟυ’·
+<OPTION value="’†{‘½–ε">’†{‘½–ε
+<OPTION value="’†Όκ’q">’†Όκ’q
+<OPTION value="Ό–μ">Ό–μ
+<OPTION value="–μ‘Ίƒ΅">–μ‘Ίƒ΅
+<OPTION value="‹΄’ά•qN">‹΄’ά•qN
+<OPTION value="‹΄–{–Fa">‹΄–{–Fa
+<OPTION value="΄‹T’j">΄‹T’j
+<OPTION value="t‘—">t‘—
+<OPTION value="t‘Ου">t‘Ου
+<OPTION value="•³Έ">•³Έ
+<OPTION value="“΅X½">“΅X½
+<OPTION value="“΅XΟυ">“΅XΟυ
+<OPTION value="“΅X•›Ου’·">“΅X•›Ου’·
+<OPTION value="‘D“cΊM">‘D“cΊM
+<OPTION value="‘“c“O’j">‘“c“O’j
+<OPTION value="Ό–μ—D–η">Ό–μ—D–η
+<OPTION value="Ό–μΟυ">Ό–μΟυ
+<OPTION value="Ό–μ•›Ου’·">Ό–μ•›Ου’·
+<OPTION value="Ό–{‹Ο">Ό–{‹Ο
+<OPTION value="OγGΊ">OγGΊ
+<OPTION value="‹{–{KO">‹{–{KO
+<OPTION value="XGχ">XGχ
+<OPTION value="XΟυ">XΟυ
+<OPTION value="XΟυ’·">XΟυ’·
+<OPTION value="”ª“c”ό’Γq">”ª“c”ό’Γq
+<OPTION value="R“cυΊ">R“cυΊ
+<OPTION value="R“cΟυ">R“cΟυ
+<OPTION value="R“cΟυ’·">R“cΟυ’·
+<OPTION value="R“c•›Ου’·">R“c•›Ου’·
+<OPTION value="‰΅“c‰pχ">‰΅“c‰pχ
+<OPTION value="‰΅“cΟυ">‰΅“cΟυ
+<OPTION value="‰΅R‹`•v">‰΅R‹`•v
+<OPTION value="δέR’‰•F">δέR’‰•F
+</SELECT>
+<!-- End FORM_SPEAKER -->
+
+								</td>
+							</tr>
+<td><img src="/takasago/image/arrow.gif" width="9" height="9">‰ο”h–Ό</FONT></TD>
+								<TD>
+<!-- Begin FORM_KAIHA -->
+<SELECT NAME="kaiha" onChange="setSpeaker(this)">
+<OPTION value="">‰ο”h‚π‘I‚ρ‚Ε‚­‚Ύ‚³‚Ά
+<OPTION value="">
+<OPTION value="@­—F‰ο">­—F‰ο
+<OPTION value="@–―εƒNƒ‰ƒu">–―εƒNƒ‰ƒu
+<OPTION value="@­a‰ο">­a‰ο
+<OPTION value="@φ–Ύ“}">φ–Ύ“}
+<OPTION value="@VΠ‰ο">VΠ‰ο
+<OPTION value="@“ϊ–{‹¤Y“}">“ϊ–{‹¤Y“}
+<OPTION value="@‚Ά‚«‚Ά‚«ƒlƒbƒgƒ[ƒN">‚Ά‚«‚Ά‚«ƒlƒbƒgƒ[ƒN
+<OPTION value="@©—RƒNƒ‰ƒu">©—RƒNƒ‰ƒu
+<OPTION value="@u­ƒNƒ‰ƒu">u­ƒNƒ‰ƒu
+<OPTION value="@s–―ƒNƒ‰ƒu">s–―ƒNƒ‰ƒu
+<OPTION value="@s–―ƒlƒbƒgƒ[ƒN">s–―ƒlƒbƒgƒ[ƒN
+<OPTION value="@•½¬‰ο">•½¬‰ο
+<OPTION value="@ΰ­E•ƒƒlƒbƒg">ΰ­E•ƒƒlƒbƒg
+<OPTION value="@V­‰ο">V­‰ο
+<OPTION value="@‚»Δ‹N“®">‚»Δ‹N“®
+<OPTION value="@©‹®">©‹®
+<OPTION value="@‚Θ‚©‚Ι‚µ‚©‚Έ‚Ζ‚ΰ">‚Θ‚©‚Ι‚µ‚©‚Έ‚Ζ‚ΰ
+<OPTION value="@–Ά—ƒlƒbƒg">–Ά—ƒlƒbƒg
+<OPTION value="@–Ύ•—‰ο">–Ύ•—‰ο
+<OPTION value="@—Ξ‚Μ“}ƒOƒ[ƒ“ƒYƒWƒƒƒpƒ“">—Ξ‚Μ“}ƒOƒ[ƒ“ƒYƒWƒƒƒpƒ“
+<OPTION value="@–³‘®">–³‘®
+</SELECT>
+<!-- End FORM_KAIHA -->
+
+								</TD>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">“•ΩÒ</td>
+								<td>
+<!-- Begin FORM_SPEAKER2 -->
+<SELECT NAME="speaker2" onChange="setSpeaker(this)">
+<OPTION value="">ϊΤ“ΰ‚Μ“•ΩÒ‚π‘I‚ρ‚Ε‚­‚Ύ‚³‚Ά
+<OPTION value="">
+<OPTION value="s’·">s’·
+<OPTION value="s’·E–±‘γ—Ò•›s’·">s’·E–±‘γ—Ò•›s’·
+<OPTION value="•›s’·">•›s’·
+<OPTION value="•–π">•–π
+<OPTION value="ϋ“ό–π">ϋ“ό–π
+<OPTION value="ε²">ε²
+<OPTION value="—–">—–
+<OPTION value="‰οv‰Ϋ’·">‰οv‰Ϋ’·
+<OPTION value="‰οvΗ—Ò">‰οvΗ—Ò
+<OPTION value="‰οvΊ’·">‰οvΊ’·
+<OPTION value="Β‹«•Ϋ‘S’S“–W’·">Β‹«•Ϋ‘S’S“–W’·
+<OPTION value="ΔΈΟυ">ΔΈΟυ
+<OPTION value="ΔΈΟυEφ•½Ου‰ο––±‹Η’·">ΔΈΟυEφ•½Ου‰ο––±‹Η’·
+<OPTION value="ΔΈΟυEφ•½Ου‰ο––±‹Ηε²">ΔΈΟυEφ•½Ου‰ο––±‹Ηε²
+<OPTION value="ΔΈΟυ––±‹Η’·">ΔΈΟυ––±‹Η’·
+<OPTION value="‹c‰ο––±‹Η’·">‹c‰ο––±‹Η’·
+<OPTION value="‹c‰ο––±‹Η’·">‹c‰ο––±‹Η’·
+<OPTION value="‹c‰ο––±‹Η‹c–‰Ϋ’·">‹c‰ο––±‹Η‹c–‰Ϋ’·
+<OPTION value="‹c‰ο––±‹Η’·“‹c–‰Ϋ’·">‹c‰ο––±‹Η’·“‹c–‰Ϋ’·
+<OPTION value="‹c‰ο––±‹Η’·“‘–±‰Ϋ’·">‹c‰ο––±‹Η’·“‘–±‰Ϋ’·
+<OPTION value="ι‰ζ‘–±•”’·">ι‰ζ‘–±•”’·
+<OPTION value="ι‰ζ‘–±•”’·">ι‰ζ‘–±•”’·
+<OPTION value="ι‰ζ‘–±•”’·“”ι‘L•ρL’®Ί’·">ι‰ζ‘–±•”’·“”ι‘L•ρL’®Ί’·
+<OPTION value="ι‰ζ‘–±•”Q–">ι‰ζ‘–±•”Q–
+<OPTION value="ι‰ζ‘–±•”λ‹@Η—Ί’·">ι‰ζ‘–±•”λ‹@Η—Ί’·
+<OPTION value="ι‰ζ‘–±•”‹³η•”’·">ι‰ζ‘–±•”‹³η•”’·
+<OPTION value="ι‰ζ‘–±•”o‰cι‰ζΊ’·">ι‰ζ‘–±•”o‰cι‰ζΊ’·
+<OPTION value="ι‰ζ‘–±•”o‰cι‰ζΊQ–">ι‰ζ‘–±•”o‰cι‰ζΊQ–
+<OPTION value="ι‰ζ‘–±•”‘–±ΊQ–">ι‰ζ‘–±•”‘–±ΊQ–
+<OPTION value="ι‰ζ•”’·">ι‰ζ•”’·
+<OPTION value="ι‰ζ•”’·">ι‰ζ•”’·
+<OPTION value="‹ZΔ">‹ZΔ
+<OPTION value="‹³ηΟυ’·">‹³ηΟυ’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”’·">‹³ηΟυ‰ο‹³η•”’·
+<OPTION value="‹³ηΟυ‰ο‹³ηw“±•”’·">‹³ηΟυ‰ο‹³ηw“±•”’·
+<OPTION value="‹³ηΟυ‰ο‹³ηw“±•”’·">‹³ηΟυ‰ο‹³ηw“±•”’·
+<OPTION value="‹³ηΟυ‰ο‹³ηƒZƒ“ƒ^[’·">‹³ηΟυ‰ο‹³ηƒZƒ“ƒ^[’·
+<OPTION value="‹³ηΟυ‰ο‹³η‘–±•”’·">‹³ηΟυ‰ο‹³η‘–±•”’·
+<OPTION value="‹³ηΟυ‰ο‹³η’·E–±‘γsÒ">‹³ηΟυ‰ο‹³η’·E–±‘γsÒ
+<OPTION value="‹³ηΟυ‰ο‹³η’·E–±‘γsÒ‹³η•”’·">‹³ηΟυ‰ο‹³η’·E–±‘γsÒ‹³η•”’·
+<OPTION value="‹³ηΟυ‰ο‹³η’·E–±‘γsÒ‹³η‘–±•”’·">‹³ηΟυ‰ο‹³η’·E–±‘γsÒ‹³η‘–±•”’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”wZ‹³ηΊ’·">‹³ηΟυ‰ο‹³η•”wZ‹³ηΊ’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”wZ‹³ηΊQ–">‹³ηΟυ‰ο‹³η•”wZ‹³ηΊQ–
+<OPTION value="‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹‹H‰Ϋ’·">‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹‹H‰Ϋ’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹‹H‰Ϋ’·²">‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹‹H‰Ϋ’·²
+<OPTION value="‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹³η‰Ϋ’·">‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹³η‰Ϋ’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹³η‰Ϋε²">‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹³η‰Ϋε²
+<OPTION value="‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹‹H‰ΫwZ‹‹HƒZƒ“ƒ^[’·">‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹‹H‰ΫwZ‹‹HƒZƒ“ƒ^[’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹³η‰ΫΒ­”NƒZƒ“ƒ^[’·">‹³ηΟυ‰ο‹³η•”wZ‹³ηΊwZ‹³η‰ΫΒ­”NƒZƒ“ƒ^[’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”‹³η„iΊ‹³η{έ’S“–ε²">‹³ηΟυ‰ο‹³η•”‹³η„iΊ‹³η{έ’S“–ε²
+<OPTION value="‹³ηΟυ‰ο‹³η•”‹³η„iΊ‹³η‘–±‰Ϋ’·">‹³ηΟυ‰ο‹³η•”‹³η„iΊ‹³η‘–±‰Ϋ’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”‹³η„iΊ‹³η‘–±‰Ϋε²">‹³ηΟυ‰ο‹³η•”‹³η„iΊ‹³η‘–±‰Ϋε²
+<OPTION value="‹³ηΟυ‰ο‹³η•”‹³η„iΊ¶UwK‰Ϋ’·">‹³ηΟυ‰ο‹³η•”‹³η„iΊ¶UwK‰Ϋ’·
+<OPTION value="‹³ηΟυ‰ο‹³η•”‹³η„iΊ¶UwK‰Ϋε²">‹³ηΟυ‰ο‹³η•”‹³η„iΊ¶UwK‰Ϋε²
+<OPTION value="‹³ηΟυ‰ο‹³η•”‹³η„iΊ’·">‹³ηΟυ‰ο‹³η•”‹³η„iΊ’·
+<OPTION value="‹³ηΟυ‰ο’†‰›φ–―Ω“Ι•Ϋφ–―Ω’·">‹³ηΟυ‰ο’†‰›φ–―Ω“Ι•Ϋφ–―Ω’·
+<OPTION value="‹³η’·">‹³η’·
+<OPTION value="‹³η•”’·">‹³η•”’·
+<OPTION value="‹³η•”wZ‹³ηΊ’·">‹³η•”wZ‹³ηΊ’·
+<OPTION value="‹³η•”wZ‹³ηΊwZ‹³η‰Ϋ’·">‹³η•”wZ‹³ηΊwZ‹³η‰Ϋ’·
+<OPTION value="‹³η•”‹³η„iΊ’·">‹³η•”‹³η„iΊ’·
+<OPTION value="‹³η•”‹³η„iΊ‹³ηƒZƒ“ƒ^[’·">‹³η•”‹³η„iΊ‹³ηƒZƒ“ƒ^[’·
+<OPTION value="‹³η•”‹³η„iΊ‹³η‘–±‰Ϋε²iV‚½‚ΘwZ‚Γ‚­‚θ„i’S“–j">‹³η•”‹³η„iΊ‹³η‘–±‰Ϋε²iV‚½‚ΘwZ‚Γ‚­‚θ„i’S“–j
+<OPTION value="sΰ­‰όv„iΊ’·">sΰ­‰όv„iΊ’·
+<OPTION value="‹¦“­•”’·">‹¦“­•”’·
+<OPTION value="o‰cι‰ζΊ’·">o‰cι‰ζΊ’·
+<OPTION value="‰Ί…“Ή•”’·">‰Ί…“Ή•”’·
+<OPTION value="‰Ί…“Ή•”’·">‰Ί…“Ή•”’·
+<OPTION value="’N‚±‚Η‚ΰ•”’·">’N‚±‚Η‚ΰ•”’·
+<OPTION value="’N‚±‚Η‚ΰ•”Q–">’N‚±‚Η‚ΰ•”Q–
+<OPTION value="’N‚±‚Η‚ΰ•”’N•¶‰»Ί’·">’N‚±‚Η‚ΰ•”’N•¶‰»Ί’·
+<OPTION value="’N‚±‚Η‚ΰ•”’N•¶‰»ΊQ–">’N‚±‚Η‚ΰ•”’N•¶‰»ΊQ–
+<OPTION value="’N‚±‚Η‚ΰ•”’N•¶‰»Ί’N‘i‰Ϋ’·">’N‚±‚Η‚ΰ•”’N•¶‰»Ί’N‘i‰Ϋ’·
+<OPTION value="’N‚±‚Η‚ΰ•”’N•¶‰»Ί’N‘i‰Ϋε²">’N‚±‚Η‚ΰ•”’N•¶‰»Ί’N‘i‰Ϋε²
+<OPTION value="’N‚±‚Η‚ΰ•”’N•¶‰»Ί•¶‰»ƒXƒ|[ƒc‰Ϋ’·">’N‚±‚Η‚ΰ•”’N•¶‰»Ί•¶‰»ƒXƒ|[ƒc‰Ϋ’·
+<OPTION value="’N‚±‚Η‚ΰ•”’N•¶‰»Ί•¶‰»ƒXƒ|[ƒc‰Ϋε²">’N‚±‚Η‚ΰ•”’N•¶‰»Ί•¶‰»ƒXƒ|[ƒc‰Ϋε²
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ίqη‚Δx‰‡‰Ϋ’·">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ίqη‚Δx‰‡‰Ϋ’·
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ίqη‚Δx‰‡‰Ϋε²">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ίqη‚Δx‰‡‰Ϋε²
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί‚±‚Η‚ΰ‘‹ϋ‰Ϋ’·">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί‚±‚Η‚ΰ‘‹ϋ‰Ϋ’·
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί‚±‚Η‚ΰ‘‹ϋ‰Ϋ•›‰Ϋ’·">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί‚±‚Η‚ΰ‘‹ϋ‰Ϋ•›‰Ϋ’·
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί’·">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί’·
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί—c™•Ϋη‰Ϋ’·">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί—c™•Ϋη‰Ϋ’·
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί—c™•Ϋη‰Ϋε²">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί—c™•Ϋη‰Ϋε²
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί—c™•Ϋη‰Ϋ•›‰Ϋ’·">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί—c™•Ϋη‰Ϋ•›‰Ϋ’·
+<OPTION value="’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί—c™•Ϋη‰Ϋ•›‰Ϋ’·“wZ‹³η‰Ϋ•›‰Ϋ’·">’N‚±‚Η‚ΰ•”qη‚Δx‰‡Ί—c™•Ϋη‰Ϋ•›‰Ϋ’·“wZ‹³η‰Ϋ•›‰Ϋ’·
+<OPTION value="’Ns–―•”’·">’Ns–―•”’·
+<OPTION value="’Ns–―•”’·">’Ns–―•”’·
+<OPTION value="’Ns–―•”Q–">’Ns–―•”Q–
+<OPTION value="’N•¶‰»•”’·">’N•¶‰»•”’·
+<OPTION value="’N•¶‰»•”Q–">’N•¶‰»•”Q–
+<OPTION value="’N•¶‰»•”‚­‚η‚µ‚Ζ•¶‰»Ί’·">’N•¶‰»•”‚­‚η‚µ‚Ζ•¶‰»Ί’·
+<OPTION value="’N•¶‰»•”’Ns–―Ί’·">’N•¶‰»•”’Ns–―Ί’·
+<OPTION value="έ•”’·">έ•”’·
+<OPTION value="έ•”’·">έ•”’·
+<OPTION value="’zw“±ε–">’zw“±ε–
+<OPTION value="ΔΈΟυEφ•½Ου‰ο––±‹Η‰Ϋ’·">ΔΈΟυEφ•½Ου‰ο––±‹Η‰Ϋ’·
+<OPTION value="ΔΈΟυ––±‹Η’·“φ•½Ου‰ο––±‹Η’·">ΔΈΟυ––±‹Η’·“φ•½Ου‰ο––±‹Η’·
+<OPTION value="H–ΈΊ’·">H–ΈΊ’·
+<OPTION value="‚±‚Η‚ΰ•”’·">‚±‚Η‚ΰ•”’·
+<OPTION value="‚±‚Η‚ΰ–Ά—•”’·">‚±‚Η‚ΰ–Ά—•”’·
+<OPTION value="ΰ–±•”_–ρ’S“–ε²">ΰ–±•”_–ρ’S“–ε²
+<OPTION value="ΰ–±•”ΰ–±Ί’·">ΰ–±•”ΰ–±Ί’·
+<OPTION value="ΰ–±•”ΰ–±Ί_–ρΗΰ‰Ϋ_–ρ’S“–ε²">ΰ–±•”ΰ–±Ί_–ρΗΰ‰Ϋ_–ρ’S“–ε²
+<OPTION value="ΰ–±•”ΰ–±Ί_–ρΗΰ‰Ϋ’·">ΰ–±•”ΰ–±Ί_–ρΗΰ‰Ϋ’·
+<OPTION value="ΰ–±•”ΰ–±Ί_–ρΗΰ‰Ϋε²">ΰ–±•”ΰ–±Ί_–ρΗΰ‰Ϋε²
+<OPTION value="ΰ–±•”ΰ–±Ί_–ρΗΰ‰Ϋε²i_–ρ’S“–j">ΰ–±•”ΰ–±Ί_–ρΗΰ‰Ϋε²i_–ρ’S“–j
+<OPTION value="ΰ–±•”ΰ–±Ίΰ­‰Ϋ’·">ΰ–±•”ΰ–±Ίΰ­‰Ϋ’·
+<OPTION value="ΰ–±•”Ε–±Ί’·">ΰ–±•”Ε–±Ί’·
+<OPTION value="ΰ–±•”Ε–±Ί’·i“‹‹•t‹ΰ––±’S“–j">ΰ–±•”Ε–±Ί’·i“‹‹•t‹ΰ––±’S“–j
+<OPTION value="ΰ–±•”Ε–±Ί‰ΫΕ‰Ϋ’·">ΰ–±•”Ε–±Ί‰ΫΕ‰Ϋ’·
+<OPTION value="ΰ–±•”Ε–±ΊΒ Η—‰Ϋ’·">ΰ–±•”Ε–±ΊΒ Η—‰Ϋ’·
+<OPTION value="ΰ–±•”Ε–±ΊΒ Η—‰Ϋε²">ΰ–±•”Ε–±ΊΒ Η—‰Ϋε²
+<OPTION value="ΰ–±•”’·">ΰ–±•”’·
+<OPTION value="Q–">Q–
+<OPTION value="s’·φΊ’·">s’·φΊ’·
+<OPTION value="s’·φΊQ–">s’·φΊQ–
+<OPTION value="s’·•tQ–">s’·•tQ–
+<OPTION value="s–―•”’·">s–―•”’·
+<OPTION value="s–―•a‰@––±‹Η’·">s–―•a‰@––±‹Η’·
+<OPTION value="s–―•a‰@––±‹Η’·">s–―•a‰@––±‹Η’·
+<OPTION value="s–―•a‰@––±‹ΗQ–">s–―•a‰@––±‹ΗQ–
+<OPTION value="s–―•a‰@––±‹Ηε²">s–―•a‰@––±‹Ηε²
+<OPTION value="s–―•a‰@––±‹Ηγ–‰Ϋ’·">s–―•a‰@––±‹Ηγ–‰Ϋ’·
+<OPTION value="s–―•a‰@––±‹Η‘–±‰Ϋ’·">s–―•a‰@––±‹Η‘–±‰Ϋ’·
+<OPTION value="s–―•a‰@––±‹Η‘–±‰Ϋ•›‰Ϋ’·">s–―•a‰@––±‹Η‘–±‰Ϋ•›‰Ϋ’·
+<OPTION value="s–―•”s–―‘‹ϋΊs–―‘‹ϋ‰Ϋ’·">s–―•”s–―‘‹ϋΊs–―‘‹ϋ‰Ϋ’·
+<OPTION value="s–―•”s–―‘‹ϋΊs–―‘‹ϋ‰Ϋε²">s–―•”s–―‘‹ϋΊs–―‘‹ϋ‰Ϋε²
+<OPTION value="s–―•”s–―‘‹ϋΊ’nζU‹»‰Ϋ’·">s–―•”s–―‘‹ϋΊ’nζU‹»‰Ϋ’·
+<OPTION value="s–―•”s–―‘‹ϋΊ’nζU‹»‰Ϋε²">s–―•”s–―‘‹ϋΊ’nζU‹»‰Ϋε²
+<OPTION value="s–―•”s–―‘‹ϋΊ’·">s–―•”s–―‘‹ϋΊ’·
+<OPTION value="s–―•”s–―‘‹ϋΊQ–">s–―•”s–―‘‹ϋΊQ–
+<OPTION value="s–―•”•Ϋ―”N‹ΰΊ‰ξμ•Ϋ―‰Ϋ’·">s–―•”•Ϋ―”N‹ΰΊ‰ξμ•Ϋ―‰Ϋ’·
+<OPTION value="s–―•”•Ϋ―”N‹ΰΊ‘•Ϋ”N‹ΰ‰Ϋ’·">s–―•”•Ϋ―”N‹ΰΊ‘•Ϋ”N‹ΰ‰Ϋ’·
+<OPTION value="s–―•”•Ϋ―”N‹ΰΊ’·">s–―•”•Ϋ―”N‹ΰΊ’·
+<OPTION value="s–―•”•Ϋ―”N‹ΰΊ•‰Ϋϋ”[‰Ϋ’·">s–―•”•Ϋ―”N‹ΰΊ•‰Ϋϋ”[‰Ϋ’·
+<OPTION value="s–―•”•Ϋ―”N‹ΰΊ•‰Ϋϋ”[‰Ϋε²">s–―•”•Ϋ―”N‹ΰΊ•‰Ϋϋ”[‰Ϋε²
+<OPTION value="γ‰Ί…“Ή•”’·">γ‰Ί…“Ή•”’·
+<OPTION value="γ‰Ί…“Ή–‹ΖΗ—Ò">γ‰Ί…“Ή–‹ΖΗ—Ò
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—ΊΗ‚«‚ε‰Ϋ’·">γ‰Ί…“Ή•”‹ZpΗ—ΊΗ‚«‚ε‰Ϋ’·
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—ΊΗ‚«‚ε‰Ϋε²">γ‰Ί…“Ή•”‹ZpΗ—ΊΗ‚«‚ε‰Ϋε²
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—ΊΗ‚«‚ε‰Ϋε²i‹‹”r…έ”υE•β––±’S“–j">γ‰Ί…“Ή•”‹ZpΗ—ΊΗ‚«‚ε‰Ϋε²i‹‹”r…έ”υE•β––±’S“–j
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί“•Δ“c…Ή’n’·––±ζµ΅…‘Ξτ‰Ϋ’·">γ‰Ί…“Ή•”‹ZpΗ—Ί“•Δ“c…Ή’n’·––±ζµ΅…‘Ξτ‰Ϋ’·
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋε²">γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋε²
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋε²iΙ•Ϋς‰»ƒZƒ“ƒ^[’S“–j">γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋε²iΙ•Ϋς‰»ƒZƒ“ƒ^[’S“–j
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋε²i•Δ“c…Ή’n’S“–j">γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋε²i•Δ“c…Ή’n’S“–j
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋε²“•Δ“c…Ή’n’·––±ζµ">γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋε²“•Δ“c…Ή’n’·––±ζµ
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋ’·">γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋ’·
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋ’·“Ι•Ϋς‰»ƒZƒ“ƒ^[’·––±ζµ">γ‰Ί…“Ή•”‹ZpΗ—Ί{έ‰Ϋ’·“Ι•Ϋς‰»ƒZƒ“ƒ^[’·––±ζµ
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί΅…‘Ξτ‰Ϋε²">γ‰Ί…“Ή•”‹ZpΗ—Ί΅…‘Ξτ‰Ϋε²
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί΅…‘Ξτ‰Ϋε²i‚½‚ί’r…H’S“–j">γ‰Ί…“Ή•”‹ZpΗ—Ί΅…‘Ξτ‰Ϋε²i‚½‚ί’r…H’S“–j
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί΅…‘Ξτ‰Ϋ’·">γ‰Ί…“Ή•”‹ZpΗ—Ί΅…‘Ξτ‰Ϋ’·
+<OPTION value="γ‰Ί…“Ή•”‹ZpΗ—Ί’·">γ‰Ί…“Ή•”‹ZpΗ—Ί’·
+<OPTION value="γ‰Ί…“Ή•”o‰c‘–±Ίε²">γ‰Ί…“Ή•”o‰c‘–±Ίε²
+<OPTION value="γ‰Ί…“Ή•”o‰c‘–±Ίε²iι‰ζ’²®––±’S“–j">γ‰Ί…“Ή•”o‰c‘–±Ίε²iι‰ζ’²®––±’S“–j
+<OPTION value="γ‰Ί…“Ή•”o‰c‘–±Ίε²io—––±’S“–j">γ‰Ί…“Ή•”o‰c‘–±Ίε²io—––±’S“–j
+<OPTION value="γ‰Ί…“Ή•”o‰c‘–±Ίε²i–±—Ώ‹ΰ––±’S“–j">γ‰Ί…“Ή•”o‰c‘–±Ίε²i–±—Ώ‹ΰ––±’S“–j
+<OPTION value="γ‰Ί…“Ή•”o‰c‘–±Ί’·">γ‰Ί…“Ή•”o‰c‘–±Ί’·
+<OPTION value="Α–h’·">Α–h’·
+<OPTION value="Α–h–{•”’·">Α–h–{•”’·
+<OPTION value="Α–h–{•”Α–h‰Ϋ’·">Α–h–{•”Α–h‰Ϋ’·
+<OPTION value="Α–h–{•”Α–h’·">Α–h–{•”Α–h’·
+<OPTION value="Α–h–{•”Α–h‘ζ‚P•”ε²">Α–h–{•”Α–h‘ζ‚P•”ε²
+<OPTION value="Α–h–{•”Α–h‘ζ‚Q•”•›‰Ϋ’·">Α–h–{•”Α–h‘ζ‚Q•”•›‰Ϋ’·
+<OPTION value="Α–h–{•”Α–h‘ζ‚Q•”ε²">Α–h–{•”Α–h‘ζ‚Q•”ε²
+<OPTION value="Α–h–{•”Α–h’c’S“–‰Ϋ’·">Α–h–{•”Α–h’c’S“–‰Ϋ’·
+<OPTION value="Α–h–{•”‘–±‰Ϋ’·">Α–h–{•”‘–±‰Ϋ’·
+<OPTION value="Α–h–{•”‘–±‰Ϋε²">Α–h–{•”‘–±‰Ϋε²
+<OPTION value="Α–h–{•”‘ζ‚P•”ε²">Α–h–{•”‘ζ‚P•”ε²
+<OPTION value="Α–h–{•”‘ζ‚Q•”•›‰Ϋ’·">Α–h–{•”‘ζ‚Q•”•›‰Ϋ’·
+<OPTION value="Α–h–{•”‘ζ‚Q•”ε²">Α–h–{•”‘ζ‚Q•”ε²
+<OPTION value="Α–h–{•”•ª’·">Α–h–{•”•ª’·
+<OPTION value="Α–h–{•”—\–h‰Ϋ’·">Α–h–{•”—\–h‰Ϋ’·
+<OPTION value="…“Ή–‹Ζ’·">…“Ή–‹Ζ’·
+<OPTION value="…“Ή–‹ΖΗ—Ò">…“Ή–‹ΖΗ—Ò
+<OPTION value="¶Β‹«•”’·">¶Β‹«•”’·
+<OPTION value="¶Β‹«•”’·“Β‹«oΟΊ’·">¶Β‹«•”’·“Β‹«oΟΊ’·
+<OPTION value="¶Β‹«•”Q–">¶Β‹«•”Q–
+<OPTION value="¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²">¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²
+<OPTION value="¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²i‹Ζ–±’S“–j">¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²i‹Ζ–±’S“–j
+<OPTION value="¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²iv‰ζΗ—“‚²‚έΈ—Κ‰»’S“–j">¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²iv‰ζΗ—“‚²‚έΈ—Κ‰»’S“–j
+<OPTION value="¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²iv‰ζΗ—’S“–j">¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²iv‰ζΗ—’S“–j
+<OPTION value="¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²i{έΗ—’S“–j">¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²i{έΗ—’S“–j
+<OPTION value="¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²i{έ’S“–j">¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚άε²i{έ’S“–j
+<OPTION value="¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚ά’·">¶Β‹«•”ƒGƒRƒNƒ[ƒ“ƒsƒA‚Ν‚θ‚ά’·
+<OPTION value="¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰ΫΒ‹«•Ϋ‘S’S“–W’·">¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰ΫΒ‹«•Ϋ‘S’S“–W’·
+<OPTION value="¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋε²">¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋε²
+<OPTION value="¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋε²iΒ‹«‘Ξτ’S“–j">¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋε²iΒ‹«‘Ξτ’S“–j
+<OPTION value="¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋε²iƒ[ƒƒJ[ƒ{ƒ“’S“–j">¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋε²iƒ[ƒƒJ[ƒ{ƒ“’S“–j
+<OPTION value="¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋε²i“d—Ν’nY’nΑ„i’S“–j">¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋε²i“d—Ν’nY’nΑ„i’S“–j
+<OPTION value="¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋ’·">¶Β‹«•”Β‹«oΟΊΒ‹«­τ‰Ϋ’·
+<OPTION value="¶Β‹«•”Β‹«oΟΊY‹ΖU‹»‰Ϋε²“”_‹ΖΟυ‰ο––±‹Ηε²">¶Β‹«•”Β‹«oΟΊY‹ΖU‹»‰Ϋε²“”_‹ΖΟυ‰ο––±‹Ηε²
+<OPTION value="¶Β‹«•”Β‹«oΟΊY‹ΖU‹»‰Ϋ’·">¶Β‹«•”Β‹«oΟΊY‹ΖU‹»‰Ϋ’·
+<OPTION value="¶Β‹«•”Β‹«oΟΊY‹ΖU‹»‰Ϋ’·“¤HJ“­W’·“”_—Ρ…YW’·">¶Β‹«•”Β‹«oΟΊY‹ΖU‹»‰Ϋ’·“¤HJ“­W’·“”_—Ρ…YW’·
+<OPTION value="¶Β‹«•”Β‹«oΟΊQ–">¶Β‹«•”Β‹«oΟΊQ–
+<OPTION value="¶Β‹«•”Β‹«oΟΊQ–“”_‹ΖΟυ‰ο––±‹Η’·">¶Β‹«•”Β‹«oΟΊQ–“”_‹ΖΟυ‰ο––±‹Η’·
+<OPTION value="¶Β‹«•”Β‹«oΟΊ’·">¶Β‹«•”Β‹«oΟΊ’·
+<OPTION value="¶Β‹«•”Lζ‚²‚έ—{έέ„iΊ’·">¶Β‹«•”Lζ‚²‚έ—{έέ„iΊ’·
+<OPTION value="¶Β‹«•””ό‰»ƒZƒ“ƒ^[’·">¶Β‹«•””ό‰»ƒZƒ“ƒ^[’·
+<OPTION value="¶oΟ•”’·">¶oΟ•”’·
+<OPTION value="¶oΟ•”’·">¶oΟ•”’·
+<OPTION value="­τ•”’·">­τ•”’·
+<OPTION value="­τ•”’·">­τ•”’·
+<OPTION value="­τ•”Q–">­τ•”Q–
+<OPTION value="­τ•”Q–is–―•a‰@«—\‘z„i’S“–j">­τ•”Q–is–―•a‰@«—\‘z„i’S“–j
+<OPTION value="­τ•”o‰cι‰ζΊ’·">­τ•”o‰cι‰ζΊ’·
+<OPTION value="­τ•”o‰cι‰ζΊ’·“‚h‚b‚s„i‰Ϋ’·">­τ•”o‰cι‰ζΊ’·“‚h‚b‚s„i‰Ϋ’·
+<OPTION value="­τ•”o‰cι‰ζΊ’·“‚h‚b‚s„i‰Ϋ’·––±ζµ">­τ•”o‰cι‰ζΊ’·“‚h‚b‚s„i‰Ϋ’·––±ζµ
+<OPTION value="­τ•”o‰cι‰ζΊQ–">­τ•”o‰cι‰ζΊQ–
+<OPTION value="­τ•”o‰cι‰ζΊQ–“‚h‚b‚s„i‰Ϋ’·">­τ•”o‰cι‰ζΊQ–“‚h‚b‚s„i‰Ϋ’·
+<OPTION value="­τ•”o‰cι‰ζΊι‰ζ‰Ϋ’·">­τ•”o‰cι‰ζΊι‰ζ‰Ϋ’·
+<OPTION value="­τ•”o‰cι‰ζΊι‰ζ‰Ϋε²">­τ•”o‰cι‰ζΊι‰ζ‰Ϋε²
+<OPTION value="­τ•”o‰cι‰ζΊ‚h‚b‚s„i‰Ϋ’·">­τ•”o‰cι‰ζΊ‚h‚b‚s„i‰Ϋ’·
+<OPTION value="­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊ’·">­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊ’·
+<OPTION value="­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊε²">­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊε²
+<OPTION value="­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊε²i‰c‘U’S“–j">­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊε²i‰c‘U’S“–j
+<OPTION value="­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊε²iφ‹¤{έE’΅Ι’S“–j">­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊε²iφ‹¤{έE’΅Ι’S“–j
+<OPTION value="­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊε²iέ”υ’S“–j">­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊε²iέ”υ’S“–j
+<OPTION value="­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊ‰c‘U’S“–ε²">­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊ‰c‘U’S“–ε²
+<OPTION value="­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊ’΅Ι’S“–ε²">­τ•”φ‹¤{έƒ}ƒlƒWƒƒ“ƒgΊ’΅Ι’S“–ε²
+<OPTION value="­τ•”φ‹¤ƒ}ƒlƒWƒƒ“ƒgΊ’·">­τ•”φ‹¤ƒ}ƒlƒWƒƒ“ƒgΊ’·
+<OPTION value="­τ•”φ‹¤ƒ}ƒlƒWƒƒ“ƒgΊε²">­τ•”φ‹¤ƒ}ƒlƒWƒƒ“ƒgΊε²
+<OPTION value="­τ•”ƒVƒeƒBƒvƒƒ‚[ƒVƒ‡ƒ“Ί’·">­τ•”ƒVƒeƒBƒvƒƒ‚[ƒVƒ‡ƒ“Ί’·
+<OPTION value="­τ•”ƒVƒeƒBƒvƒƒ‚[ƒVƒ‡ƒ“Ίε²">­τ•”ƒVƒeƒBƒvƒƒ‚[ƒVƒ‡ƒ“Ίε²
+<OPTION value="­τ•”ƒVƒeƒBƒvƒƒ‚[ƒVƒ‡ƒ“Ίε²iΪZE’θZEΟυ’S“–j">­τ•”ƒVƒeƒBƒvƒƒ‚[ƒVƒ‡ƒ“Ίε²iΪZE’θZEΟυ’S“–j
+<OPTION value="­τ•”ƒVƒeƒBƒvƒƒ‚[ƒVƒ‡ƒ“Ίε²iL•ρL’®’S“–j">­τ•”ƒVƒeƒBƒvƒƒ‚[ƒVƒ‡ƒ“Ίε²iL•ρL’®’S“–j
+<OPTION value="­τ•”s–―•a‰@«—\‘z„iΊε²">­τ•”s–―•a‰@«—\‘z„iΊε²
+<OPTION value="­τ•”s–―•a‰@«—\‘z„iΊ’·">­τ•”s–―•a‰@«—\‘z„iΊ’·
+<OPTION value="‘I‹“Η—Ου‰οΟυ’·">‘I‹“Η—Ου‰οΟυ’·
+<OPTION value="‘I‹“Η—Ου‰ο––±‹Η’·">‘I‹“Η—Ου‰ο––±‹Η’·
+<OPTION value="‘I‹“Η—Ου‰ο––±‹Ηε²">‘I‹“Η—Ου‰ο––±‹Ηε²
+<OPTION value="‘–±•”’·">‘–±•”’·
+<OPTION value="‘–±•”Q–">‘–±•”Q–
+<OPTION value="‘–±•”λ‹@Η—Ί’·">‘–±•”λ‹@Η—Ί’·
+<OPTION value="‘–±•”λ‹@Η—Ίε²">‘–±•”λ‹@Η—Ίε²
+<OPTION value="‘–±•”λ‹@Η—Ίε²i’nζΐ‘S‘Ξτ’S“–j">‘–±•”λ‹@Η—Ίε²i’nζΐ‘S‘Ξτ’S“–j
+<OPTION value="‘–±•”λ‹@Η—Ίε²i–hΠ’S“–j">‘–±•”λ‹@Η—Ίε²i–hΠ’S“–j
+<OPTION value="‘–±•”‘–±Ί’·">‘–±•”‘–±Ί’·
+<OPTION value="‘–±•”‘–±Ί’·i“s–―•a‰@«—\‘z„i’S“–j">‘–±•”‘–±Ί’·i“s–―•a‰@«—\‘z„i’S“–j
+<OPTION value="‘–±•”‘–±Ί’·“‘I‹“Η—Ου‰ο––±‹Η’·">‘–±•”‘–±Ί’·“‘I‹“Η—Ου‰ο––±‹Η’·
+<OPTION value="‘–±•”‘–±ΊQ–“‘I‹“Η—Ου‰ο––±‹Η’·">‘–±•”‘–±ΊQ–“‘I‹“Η—Ου‰ο––±‹Η’·
+<OPTION value="‘–±•”‘–±ΊQ–“‘I‹“Η—Ου‰ο––±‹Ηε²">‘–±•”‘–±ΊQ–“‘I‹“Η—Ου‰ο––±‹Ηε²
+<OPTION value="‘–±•”‘–±Ίl–‰Ϋ’·">‘–±•”‘–±Ίl–‰Ϋ’·
+<OPTION value="‘–±•”‘–±Ί‘–±‰Ϋε²">‘–±•”‘–±Ί‘–±‰Ϋε²
+<OPTION value="‘–±•”‘–±Ί‘–±‰Ϋε²i•¶‘E“v’²Έ’S“–j">‘–±•”‘–±Ί‘–±‰Ϋε²i•¶‘E“v’²Έ’S“–j
+<OPTION value="‘–±•”‘–±Ί‘–±‰Ϋε²“‘I‹“Η—Ου‰ο––±‹Ηε²">‘–±•”‘–±Ί‘–±‰Ϋε²“‘I‹“Η—Ου‰ο––±‹Ηε²
+<OPTION value="‘–±•”‘–±Ί‘–±‰Ϋ’·">‘–±•”‘–±Ί‘–±‰Ϋ’·
+<OPTION value="‘–±•””ι‘Ί’·">‘–±•””ι‘Ί’·
+<OPTION value="‘–±•””ι‘Ίε²">‘–±•””ι‘Ίε²
+<OPTION value="‘Ψ”[®—„iΊ’·">‘Ψ”[®—„iΊ’·
+<OPTION value="‘γ•\ΔΈΟυ">‘γ•\ΔΈΟυ
+<OPTION value="‚»s–―•a‰@’·">‚»s–―•a‰@’·
+<OPTION value="΅…‘ΞτΊ’·">΅…‘ΞτΊ’·
+<OPTION value="“ss®”υ•”’·">“ss®”υ•”’·
+<OPTION value="“ss‘n‘Ά•”’·">“ss‘n‘Ά•”’·
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ’zZ‘ξ‰Ϋε²">“ss‘n‘Ά•”“ssZ‘ξΊ’zZ‘ξ‰Ϋε²
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ’zZ‘ξ‰Ϋε²iZ‘ξ­τE‹σ‰Ζ‘Ξτ’S“–j">“ss‘n‘Ά•”“ssZ‘ξΊ’zZ‘ξ‰Ϋε²iZ‘ξ­τE‹σ‰Ζ‘Ξτ’S“–j
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ’zZ‘ξ‰Ϋ’·">“ss‘n‘Ά•”“ssZ‘ξΊ’zZ‘ξ‰Ϋ’·
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ’·">“ss‘n‘Ά•”“ssZ‘ξΊ’·
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²">“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²iπ’Κ{τE”d–—ΥC’nζ“ΉH’S“–j">“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²iπ’Κ{τE”d–—ΥC’nζ“ΉH’S“–j
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²i”d–—ΥC’nζ“ΉHEA‘±—§‘Μπ·’S“–j">“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²i”d–—ΥC’nζ“ΉHEA‘±—§‘Μπ·’S“–j
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²i‚ά‚Ώ‚Γ‚­‚θ„i’S“–“‚έ‚Θ‚Ζ‚ά‚Ώ‚Γ‚­‚θ’S“–j">“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²i‚ά‚Ώ‚Γ‚­‚θ„i’S“–“‚έ‚Θ‚Ζ‚ά‚Ώ‚Γ‚­‚θ’S“–j
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²i–Ύ•P²ό“μE‚»‰w“μE‚i‚q‘]ª‰w®”υ’S“–j">“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²i–Ύ•P²ό“μE‚»‰w“μE‚i‚q‘]ª‰w®”υ’S“–j
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²iA‘±—§‘Μπ·EJ”­’S“–j">“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋε²iA‘±—§‘Μπ·EJ”­’S“–j
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋ’·">“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋ’·
+<OPTION value="“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋ’·i“–‹Ζ’²®’S“–j">“ss‘n‘Ά•”“ssZ‘ξΊ“ss­τ‰Ϋ’·i“–‹Ζ’²®’S“–j
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ’·">“ss‘n‘Ά•”“y–ΨέΊ’·
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²">“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²i‰w‘O®”υ’S“–j">“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²i‰w‘O®”υ’S“–j
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²i‚i‚q‘]ª‰wό•Σ®”υEφ‰€’S“–j">“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²i‚i‚q‘]ª‰wό•Σ®”υEφ‰€’S“–j
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²i‚i‚q‘]ª‰wό•Σ®”υ’S“–j">“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²i‚i‚q‘]ª‰wό•Σ®”υ’S“–j
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²i“ΉH®”υEφ‰€’S“–j">“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋε²i“ΉH®”υEφ‰€’S“–j
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋ’·">“ss‘n‘Ά•”“y–ΨέΊ“ΉHφ‰€‰Ϋ’·
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“y–Ψ‘–±‰Ϋε²">“ss‘n‘Ά•”“y–ΨέΊ“y–Ψ‘–±‰Ϋε²
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“y–Ψ‘–±‰Ϋε²i–@’θOφ‹¤•¨’S“–j">“ss‘n‘Ά•”“y–ΨέΊ“y–Ψ‘–±‰Ϋε²i–@’θOφ‹¤•¨’S“–j
+<OPTION value="“ss‘n‘Ά•”“y–ΨέΊ“y–Ψ‘–±‰Ϋ’·">“ss‘n‘Ά•”“y–ΨέΊ“y–Ψ‘–±‰Ϋ’·
+<OPTION value="”_‹ΖΟυ‰ο––±‹Η’·">”_‹ΖΟυ‰ο––±‹Η’·
+<OPTION value="”_‹ΖΟυ‰ο––±‹Ηε²">”_‹ΖΟυ‰ο––±‹Ηε²
+<OPTION value="”ό‰»•”’·">”ό‰»•”’·
+<OPTION value="”ό‰»•”’·">”ό‰»•”’·
+<OPTION value="”ό‰»ƒZƒ“ƒ^[’·">”ό‰»ƒZƒ“ƒ^[’·
+<OPTION value="”ό‰»•”Q–">”ό‰»•”Q–
+<OPTION value="•a‰@–‹ΖΗ—Ò">•a‰@–‹ΖΗ—Ò
+<OPTION value="”ι‘Ί’·">”ι‘Ί’·
+<OPTION value="•ƒ•”’·">•ƒ•”’·
+<OPTION value="•ƒ•”’·">•ƒ•”’·
+<OPTION value="•ƒ•”l •ƒΊl „i‰Ϋ’·">•ƒ•”l •ƒΊl „i‰Ϋ’·
+<OPTION value="•ƒ•”l •ƒΊl „i‰Ϋε²">•ƒ•”l •ƒΊl „i‰Ϋε²
+<OPTION value="•ƒ•”l •ƒΊ’nζ•ƒ‰Ϋ‚”N•ƒ’S“–ε²">•ƒ•”l •ƒΊ’nζ•ƒ‰Ϋ‚”N•ƒ’S“–ε²
+<OPTION value="•ƒ•”l •ƒΊ’nζ•ƒ‰Ϋ’nζ•ƒ’S“–ε²">•ƒ•”l •ƒΊ’nζ•ƒ‰Ϋ’nζ•ƒ’S“–ε²
+<OPTION value="•ƒ•”l •ƒΊ’nζ•ƒ‰Ϋ’·">•ƒ•”l •ƒΊ’nζ•ƒ‰Ϋ’·
+<OPTION value="•ƒ•”l •ƒΊ’·">•ƒ•”l •ƒΊ’·
+<OPTION value="•ƒ•”l •ƒΊQ–">•ƒ•”l •ƒΊQ–
+<OPTION value="•ƒ•”¶•ƒΊα‚ª‚Ά•ƒ‰Ϋ’·">•ƒ•”¶•ƒΊα‚ª‚Ά•ƒ‰Ϋ’·
+<OPTION value="•ƒ•”¶•ƒΊ¶•ƒ‰Ϋ’·">•ƒ•”¶•ƒΊ¶•ƒ‰Ϋ’·
+<OPTION value="•ƒ•”¶•ƒΊ’·">•ƒ•”¶•ƒΊ’·
+<OPTION value="•ƒ•”’nζ•ƒΊQ–">•ƒ•”’nζ•ƒΊQ–
+<OPTION value="‚ά‚Ώ‚Γ‚­‚θ•”’·">‚ά‚Ώ‚Γ‚­‚θ•”’·
+<OPTION value="‚ά‚Ώ‚Γ‚­‚θ•”Q–">‚ά‚Ώ‚Γ‚­‚θ•”Q–
+<OPTION value="‚ά‚Ώ‚Γ‚­‚θ•”΅…‘ΞτΊ’·">‚ά‚Ώ‚Γ‚­‚θ•”΅…‘ΞτΊ’·
+<OPTION value="‚ά‚Ώ‚Γ‚­‚θ•”“y–ΨΗ—Ί’·">‚ά‚Ώ‚Γ‚­‚θ•”“y–ΨΗ—Ί’·
+<OPTION value="‚ά‚Ώ‚Γ‚­‚θ•”‚ά‚Ώ‚Γ‚­‚θ„iΊ’·">‚ά‚Ώ‚Γ‚­‚θ•”‚ά‚Ώ‚Γ‚­‚θ„iΊ’·
+<OPTION value="‚ά‚Ώ‚Γ‚­‚θ•”‚ά‚Ώ‚Γ‚­‚θ„iΊQ–">‚ά‚Ώ‚Γ‚­‚θ•”‚ά‚Ώ‚Γ‚­‚θ„iΊQ–
+<OPTION value="Ώ‹‘γ•\Ò">Ώ‹‘γ•\Ò
+</SELECT>
+<!-- End FORM_SPEAKER2 -->
+
+								</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">‹c’·^Ου’·</td>
+								<td>
+<!-- Begin FORM_SPEAKER3 -->
+<SELECT NAME="speaker3" onChange="setSpeaker(this)">
+<OPTION value="">ϊΤ“ΰ‚Μ‹c’·^Ου’·‚π‘I‚ρ‚Ε‚­‚Ύ‚³‚Ά
+<OPTION value="">
+<OPTION value="‹c’·">‹c’·
+<OPTION value="V‹c’·">V‹c’·
+<OPTION value="•›‹c’·">•›‹c’·
+<OPTION value="V•›‹c’·">V•›‹c’·
+<OPTION value="—Υ‹c’·">—Υ‹c’·
+<OPTION value="ΐ’·">ΐ’·
+<OPTION value="Ου’·">Ου’·
+<OPTION value="•›Ου’·">•›Ου’·
+</SELECT>
+<!-- End FORM_SPEAKER3 -->
+
+								</td>
+							</tr>
+
+							<tr valign="middle">
+								<td nowrap><img src="/takasago/image/arrow.gif" width="9" height="9">‰ο‹c^ν—ή‚Μw’θ</td>
+<td>
+<div align="left">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><!-- Begin FORM_TARGET -->
+<TR valign="top"><TD colspan="2">
+</TD></TR>
+<TR valign="top"><TD><input class=checkbox type="checkbox" name="alltarget" onClick="checkalltarget();setType();" >‚·‚Χ‚Δ</TD></TR>
+<TR valign="top"><TD width="50%">
+<input class=checkbox type=checkbox name="eTarget" value="1" checked onClick="javascript:document.search.alltarget.checked=0;setType();">
+’θ—α‰οE—Υ‰ο<br>
+<input class=checkbox type=checkbox name="eTarget" value="2" onClick="javascript:document.search.alltarget.checked=0;setType();">
+‘–±ν”CΟυ‰ο<br>
+<input class=checkbox type=checkbox name="eTarget" value="3" onClick="javascript:document.search.alltarget.checked=0;setType();">
+•¶‹³ϊ¶ν”CΟυ‰ο<br>
+<input class=checkbox type=checkbox name="eTarget" value="4" onClick="javascript:document.search.alltarget.checked=0;setType();">
+έΒ‹«oΟν”CΟυ‰ο<br>
+</TD>
+<TD width="50%">
+<input class=checkbox type=checkbox name="eTarget" value="5" onClick="javascript:document.search.alltarget.checked=0;setType();">
+‹c‰ο‰^‰cΟυ‰ο<br>
+<input class=checkbox type=checkbox name="eTarget" value="6" onClick="javascript:document.search.alltarget.checked=0;setType();">
+‚»s–―•a‰@o‰c‰ό‘P‘Ξτ“Α•ΚΟυ‰ο<br>
+<input class=checkbox type=checkbox name="eTarget" value="7" onClick="javascript:document.search.alltarget.checked=0;setType();">
+Z“Α•ΚΟυ‰ο<br>
+<input class=checkbox type=checkbox name="eTarget" value="8" onClick="javascript:document.search.alltarget.checked=0;setType();">
+s­‰Ϋ‘θ“™’²Έ“Ά“Α•ΚΟυ‰ο<br>
+<input class=checkbox type=checkbox name="eTarget" value="9" onClick="javascript:document.search.alltarget.checked=0;setType();">
+‡“―Ου‰ο<br>
+</TD></TR>
+<tr><td>
+</tr></td>
+<!-- End FORM_TARGET -->
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+
+<img src="/takasago/image/bit.gif" width="730" height="10" alt=""><br>
+
+<a name="res"></a>
+<!-- Begin END_FORM -->
+<INPUT type="submit" name="AhitResult" value="υ" CLASS="sbutton">
+<INPUT type="button" value="ƒƒZƒbƒg" onClick="javascript:document.location.href='Search2.exe?Code=h52lmgenyzsjmkcxck'" CLASS="rbutton">
+</FORM>
+<!-- End END_FORM -->
+   
+
+
+
+
+
+
+			<img src="/takasago/image/bit.gif" width="730" height="1" alt=""><br>    
+			</div>
+
+			<div class="content1_1"><img src="/takasago/image/bit.gif" width="20" height="1" alt=""></div>
+
+
+
+
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</td>
+		<td width="2" background="/takasago/image/rightbit.gif"><img src="/takasago/image/rightbit.gif" width="2" height="2"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="/takasago/image/bottom.gif" width="788" height="35"></td>
+	</tr>
+</table>
+
+
+
+</div>
+
+</center>
+
+
+
+</body>
+</html>
+

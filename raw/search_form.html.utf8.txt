@@ -1,0 +1,1349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=x-sjis">
+	<title>高砂市議会/会議録検索システム</title>
+	<meta name="robots" CONTENT="follow,index">
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<link rel="stylesheet" type="text/css" href="/takasago/css/base.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+function checkalltarget(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.search.alltarget.checked;
+    }
+}
+
+function setType(){
+	var type_f = new Array(4);
+	var i=1;
+	var hrefopt='';
+	
+	for (var j=0;i<=3 && j<document.search.elements.length;j++){
+    var e = document.search.elements[j];
+		if (e.name == 'eTarget'){
+      if( e.checked ) hrefopt += '&eTarget='+i;
+      type_f[i++] = e.checked;
+    }
+	}
+}
+//--->
+</SCRIPT>
+<STYLE type="text/css">
+
+<!--
+A:link{color:#0066CC;text-decoration: none}
+A:visited{text-decoration: none}
+A:hover{color:#FF7700;text-decoration: underline;}
+
+input.sbutton{
+background-color:#fad1e0;
+width: 100;
+height: 32;
+font-size: 90%;
+line-height: 25px;
+width: 100px;
+font-weight: bold;
+color: #991144;
+}
+input.rbutton{
+background-color:#eeeeee;
+width: 100;
+height: 32;
+font-size: 90%;
+line-height: 25px;
+width: 100px;
+font-weight: bold;
+color: #032832;
+
+}
+-->
+</STYLE>
+</head>
+
+
+<body>
+
+
+<!-- Begin JAVASCRIPT -->
+<SCRIPT LANGUAGE="JavaScript">
+<!---
+OS = "";
+if(navigator.appVersion.indexOf("Mac",0) != -1){
+	OS = "Mac";
+}
+if(navigator.appVersion.indexOf("Windows",0) != -1){
+	OS = "Windows";
+}
+browserName = navigator.appName;
+browserVer = parseInt(navigator.appVersion);
+
+if( browserName == "Microsoft Internet Explorer" ){
+	n = navigator.appVersion.indexOf("MSIE",0);
+	browserVer = parseInt(navigator.appVersion.substring(n+4));	
+}
+function yearChange(){
+	document.search.action='/takasago/cgi-bin2/Search2.exe#res';
+	document.search.target='';
+	document.search.submit();
+}
+function setSpeaker(sel){
+	i = sel.selectedIndex;
+	document.search.speaker1.selectedIndex=1;
+	document.search.speaker2.selectedIndex=1;
+	document.search.speaker3.selectedIndex=1;
+	sel.selectedIndex=i;
+	if( i>0 ){
+		document.search.speaker.value=sel.options[i].value;
+	}
+	else{
+		document.search.speaker.value='';
+	}
+}
+function checkalltarget(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.search.alltarget.checked;
+    }
+}
+function GTargetChangeAll(){
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'gTarget')
+	      e.checked = document.search.gTargetAll.checked;
+    }
+}
+function GTargetChange(){
+	var ca=true;
+	for (var i=0;i<document.search.elements.length;i++){
+	    var e = document.search.elements[i];
+	    if (e.name == 'gTarget')
+	      ca = ca && e.checked;
+	    document.search.gTargetAll.checked = ca;
+    }
+}
+var fromCallValue = new Array(39);
+var fromCallText = new Array(39);
+var fromCallType = new Array(39);
+fromCallValue[0] = "平成12年 3月定例会（第 1日 3月 1日）";
+fromCallText[0] = " 3月定例会（第 1日 3月 1日）";
+fromCallType[0] = 1;
+fromCallValue[1] = "平成12年 3月定例会（第 2日 3月 6日）";
+fromCallText[1] = " 3月定例会（第 2日 3月 6日）";
+fromCallType[1] = 1;
+fromCallValue[2] = "平成12年 3月定例会（第 3日 3月 7日）";
+fromCallText[2] = " 3月定例会（第 3日 3月 7日）";
+fromCallType[2] = 1;
+fromCallValue[3] = "平成12年 3月定例会（第 4日 3月10日）";
+fromCallText[3] = " 3月定例会（第 4日 3月10日）";
+fromCallType[3] = 1;
+fromCallValue[4] = "平成12年 3月定例会（第 5日 3月13日）";
+fromCallText[4] = " 3月定例会（第 5日 3月13日）";
+fromCallType[4] = 1;
+fromCallValue[5] = "平成12年 3月定例会（第 6日 3月14日）";
+fromCallText[5] = " 3月定例会（第 6日 3月14日）";
+fromCallType[5] = 1;
+fromCallValue[6] = "平成12年 3月定例会（第 7日 3月15日）";
+fromCallText[6] = " 3月定例会（第 7日 3月15日）";
+fromCallType[6] = 1;
+fromCallValue[7] = "平成12年 3月定例会（第 8日 3月16日）";
+fromCallText[7] = " 3月定例会（第 8日 3月16日）";
+fromCallType[7] = 1;
+fromCallValue[8] = "平成12年 3月定例会（第 9日 3月17日）";
+fromCallText[8] = " 3月定例会（第 9日 3月17日）";
+fromCallType[8] = 1;
+fromCallValue[9] = "平成12年 3月定例会（第10日 3月21日）";
+fromCallText[9] = " 3月定例会（第10日 3月21日）";
+fromCallType[9] = 1;
+fromCallValue[10] = "平成12年 3月定例会（第11日 3月22日）";
+fromCallText[10] = " 3月定例会（第11日 3月22日）";
+fromCallType[10] = 1;
+fromCallValue[11] = "平成12年 3月定例会（第12日 3月23日）";
+fromCallText[11] = " 3月定例会（第12日 3月23日）";
+fromCallType[11] = 1;
+fromCallValue[12] = "平成12年 3月定例会（第13日 3月24日）";
+fromCallText[12] = " 3月定例会（第13日 3月24日）";
+fromCallType[12] = 1;
+fromCallValue[13] = "平成12年 3月定例会（第14日 3月25日）";
+fromCallText[13] = " 3月定例会（第14日 3月25日）";
+fromCallType[13] = 1;
+fromCallValue[14] = "平成12年 3月定例会（第15日 3月30日）";
+fromCallText[14] = " 3月定例会（第15日 3月30日）";
+fromCallType[14] = 1;
+fromCallValue[15] = "平成12年 3月定例会（第16日 3月31日）";
+fromCallText[15] = " 3月定例会（第16日 3月31日）";
+fromCallType[15] = 1;
+fromCallValue[16] = "平成12年 6月定例会（第 1日 6月21日）";
+fromCallText[16] = " 6月定例会（第 1日 6月21日）";
+fromCallType[16] = 1;
+fromCallValue[17] = "平成12年 6月定例会（第 2日 6月26日）";
+fromCallText[17] = " 6月定例会（第 2日 6月26日）";
+fromCallType[17] = 1;
+fromCallValue[18] = "平成12年 6月定例会（第 3日 6月27日）";
+fromCallText[18] = " 6月定例会（第 3日 6月27日）";
+fromCallType[18] = 1;
+fromCallValue[19] = "平成12年 6月定例会（第 4日 6月28日）";
+fromCallText[19] = " 6月定例会（第 4日 6月28日）";
+fromCallType[19] = 1;
+fromCallValue[20] = "平成12年 6月定例会（第 5日 6月29日）";
+fromCallText[20] = " 6月定例会（第 5日 6月29日）";
+fromCallType[20] = 1;
+fromCallValue[21] = "平成12年 6月定例会（第 6日 6月30日）";
+fromCallText[21] = " 6月定例会（第 6日 6月30日）";
+fromCallType[21] = 1;
+fromCallValue[22] = "平成12年 6月定例会（第 7日 7月 4日）";
+fromCallText[22] = " 6月定例会（第 7日 7月 4日）";
+fromCallType[22] = 1;
+fromCallValue[23] = "平成12年 6月定例会（第 8日 7月11日）";
+fromCallText[23] = " 6月定例会（第 8日 7月11日）";
+fromCallType[23] = 1;
+fromCallValue[24] = "平成12年 9月定例会（第 1日 9月 4日）";
+fromCallText[24] = " 9月定例会（第 1日 9月 4日）";
+fromCallType[24] = 1;
+fromCallValue[25] = "平成12年 9月定例会（第 2日 9月 5日）";
+fromCallText[25] = " 9月定例会（第 2日 9月 5日）";
+fromCallType[25] = 1;
+fromCallValue[26] = "平成12年 9月定例会（第 3日 9月 8日）";
+fromCallText[26] = " 9月定例会（第 3日 9月 8日）";
+fromCallType[26] = 1;
+fromCallValue[27] = "平成12年 9月定例会（第 4日 9月11日）";
+fromCallText[27] = " 9月定例会（第 4日 9月11日）";
+fromCallType[27] = 1;
+fromCallValue[28] = "平成12年 9月定例会（第 5日 9月12日）";
+fromCallText[28] = " 9月定例会（第 5日 9月12日）";
+fromCallType[28] = 1;
+fromCallValue[29] = "平成12年 9月定例会（第 6日 9月13日）";
+fromCallText[29] = " 9月定例会（第 6日 9月13日）";
+fromCallType[29] = 1;
+fromCallValue[30] = "平成12年 9月定例会（第 7日 9月19日）";
+fromCallText[30] = " 9月定例会（第 7日 9月19日）";
+fromCallType[30] = 1;
+fromCallValue[31] = "平成12年12月定例会（第 1日12月 6日）";
+fromCallText[31] = "12月定例会（第 1日12月 6日）";
+fromCallType[31] = 1;
+fromCallValue[32] = "平成12年12月定例会（第 2日12月11日）";
+fromCallText[32] = "12月定例会（第 2日12月11日）";
+fromCallType[32] = 1;
+fromCallValue[33] = "平成12年12月定例会（第 3日12月12日）";
+fromCallText[33] = "12月定例会（第 3日12月12日）";
+fromCallType[33] = 1;
+fromCallValue[34] = "平成12年12月定例会（第 4日12月13日）";
+fromCallText[34] = "12月定例会（第 4日12月13日）";
+fromCallType[34] = 1;
+fromCallValue[35] = "平成12年12月定例会（第 5日12月14日）";
+fromCallText[35] = "12月定例会（第 5日12月14日）";
+fromCallType[35] = 1;
+fromCallValue[36] = "平成12年12月定例会（第 6日12月15日）";
+fromCallText[36] = "12月定例会（第 6日12月15日）";
+fromCallType[36] = 1;
+fromCallValue[37] = "平成12年12月定例会（第 7日12月21日）";
+fromCallText[37] = "12月定例会（第 7日12月21日）";
+fromCallType[37] = 1;
+fromCallValue[38] = "平成12年12月定例会（第 8日12月22日）";
+fromCallText[38] = "12月定例会（第 8日12月22日）";
+fromCallType[38] = 1;
+var tillCallValue = new Array(64);
+var tillCallText = new Array(64);
+var tillCallType = new Array(64);
+tillCallValue[0] = "令和 8年議会運営委員会（ 1月 8日）";
+tillCallText[0] = "議会運営委員会（ 1月 8日）";
+tillCallType[0] = 5;
+tillCallValue[1] = "令和 8年議会運営委員会（ 1月14日）";
+tillCallText[1] = "議会運営委員会（ 1月14日）";
+tillCallType[1] = 5;
+tillCallValue[2] = "令和 8年 1月臨時会（第 1日 1月16日）";
+tillCallText[2] = " 1月臨時会（第 1日 1月16日）";
+tillCallType[2] = 1;
+tillCallValue[3] = "令和 8年総務常任委員会（ 1月16日）";
+tillCallText[3] = "総務常任委員会（ 1月16日）";
+tillCallType[3] = 2;
+tillCallValue[4] = "令和 8年総務常任委員会（ 1月16日）";
+tillCallText[4] = "総務常任委員会（ 1月16日）";
+tillCallType[4] = 2;
+tillCallValue[5] = "令和 8年文教厚生常任委員会（ 1月16日）";
+tillCallText[5] = "文教厚生常任委員会（ 1月16日）";
+tillCallType[5] = 3;
+tillCallValue[6] = "令和 8年建設環境経済常任委員会（ 1月16日）";
+tillCallText[6] = "建設環境経済常任委員会（ 1月16日）";
+tillCallType[6] = 4;
+tillCallValue[7] = "令和 8年文教厚生常任委員会（ 1月26日）";
+tillCallText[7] = "文教厚生常任委員会（ 1月26日）";
+tillCallType[7] = 3;
+tillCallValue[8] = "令和 8年行政課題等調査検討特別委員会（ 1月26日）";
+tillCallText[8] = "行政課題等調査検討特別委員会（ 1月26日）";
+tillCallType[8] = 8;
+tillCallValue[9] = "令和 8年建設環境経済常任委員会（ 1月27日）";
+tillCallText[9] = "建設環境経済常任委員会（ 1月27日）";
+tillCallType[9] = 4;
+tillCallValue[10] = "令和 8年議会運営委員会（ 1月28日）";
+tillCallText[10] = "議会運営委員会（ 1月28日）";
+tillCallType[10] = 5;
+tillCallValue[11] = "令和 8年議会運営委員会（ 2月 2日）";
+tillCallText[11] = "議会運営委員会（ 2月 2日）";
+tillCallType[11] = 5;
+tillCallValue[12] = "令和 8年議会運営委員会（ 2月 5日）";
+tillCallText[12] = "議会運営委員会（ 2月 5日）";
+tillCallType[12] = 5;
+tillCallValue[13] = "令和 8年議会運営委員会（ 2月13日）";
+tillCallText[13] = "議会運営委員会（ 2月13日）";
+tillCallType[13] = 5;
+tillCallValue[14] = "令和 8年 3月定例会（第 1日 2月24日）";
+tillCallText[14] = " 3月定例会（第 1日 2月24日）";
+tillCallType[14] = 1;
+tillCallValue[15] = "令和 8年議会運営委員会（ 2月24日）";
+tillCallText[15] = "議会運営委員会（ 2月24日）";
+tillCallType[15] = 5;
+tillCallValue[16] = "令和 8年 3月定例会（第 2日 2月25日）";
+tillCallText[16] = " 3月定例会（第 2日 2月25日）";
+tillCallType[16] = 1;
+tillCallValue[17] = "令和 8年 3月定例会（第 3日 2月26日）";
+tillCallText[17] = " 3月定例会（第 3日 2月26日）";
+tillCallType[17] = 1;
+tillCallValue[18] = "令和 8年議会運営委員会（ 2月26日）";
+tillCallText[18] = "議会運営委員会（ 2月26日）";
+tillCallType[18] = 5;
+tillCallValue[19] = "令和 8年総務常任委員会（ 2月27日）";
+tillCallText[19] = "総務常任委員会（ 2月27日）";
+tillCallType[19] = 2;
+tillCallValue[20] = "令和 8年文教厚生常任委員会（ 2月27日）";
+tillCallText[20] = "文教厚生常任委員会（ 2月27日）";
+tillCallType[20] = 3;
+tillCallValue[21] = "令和 8年建設環境経済常任委員会（ 2月27日）";
+tillCallText[21] = "建設環境経済常任委員会（ 2月27日）";
+tillCallType[21] = 4;
+tillCallValue[22] = "令和 8年総務常任委員会（ 3月 2日）";
+tillCallText[22] = "総務常任委員会（ 3月 2日）";
+tillCallType[22] = 2;
+tillCallValue[23] = "令和 8年議会運営委員会（ 3月 2日）";
+tillCallText[23] = "議会運営委員会（ 3月 2日）";
+tillCallType[23] = 5;
+tillCallValue[24] = "令和 8年 3月定例会（第 4日 3月 3日）";
+tillCallText[24] = " 3月定例会（第 4日 3月 3日）";
+tillCallType[24] = 1;
+tillCallValue[25] = "令和 8年 3月定例会（第 5日 3月 4日）";
+tillCallText[25] = " 3月定例会（第 5日 3月 4日）";
+tillCallType[25] = 1;
+tillCallValue[26] = "令和 8年総務常任委員会（ 3月 4日）";
+tillCallText[26] = "総務常任委員会（ 3月 4日）";
+tillCallType[26] = 2;
+tillCallValue[27] = "令和 8年 3月定例会（第 6日 3月 5日）";
+tillCallText[27] = " 3月定例会（第 6日 3月 5日）";
+tillCallType[27] = 1;
+tillCallValue[28] = "令和 8年議会運営委員会（ 3月 5日）";
+tillCallText[28] = "議会運営委員会（ 3月 5日）";
+tillCallType[28] = 5;
+tillCallValue[29] = "令和 8年 3月定例会（第 7日 3月 6日）";
+tillCallText[29] = " 3月定例会（第 7日 3月 6日）";
+tillCallType[29] = 1;
+tillCallValue[30] = "令和 8年 3月定例会（第 8日 3月 9日）";
+tillCallText[30] = " 3月定例会（第 8日 3月 9日）";
+tillCallType[30] = 1;
+tillCallValue[31] = "令和 8年議会運営委員会（ 3月 9日）";
+tillCallText[31] = "議会運営委員会（ 3月 9日）";
+tillCallType[31] = 5;
+tillCallValue[32] = "令和 8年 3月定例会（第 9日 3月10日）";
+tillCallText[32] = " 3月定例会（第 9日 3月10日）";
+tillCallType[32] = 1;
+tillCallValue[33] = "令和 8年議会運営委員会（ 3月10日）";
+tillCallText[33] = "議会運営委員会（ 3月10日）";
+tillCallType[33] = 5;
+tillCallValue[34] = "令和 8年 3月定例会（第10日 3月11日）";
+tillCallText[34] = " 3月定例会（第10日 3月11日）";
+tillCallType[34] = 1;
+tillCallValue[35] = "令和 8年議会運営委員会（ 3月11日）";
+tillCallText[35] = "議会運営委員会（ 3月11日）";
+tillCallType[35] = 5;
+tillCallValue[36] = "令和 8年 3月定例会（第11日 3月12日）";
+tillCallText[36] = " 3月定例会（第11日 3月12日）";
+tillCallType[36] = 1;
+tillCallValue[37] = "令和 8年 3月定例会（第12日 3月13日）";
+tillCallText[37] = " 3月定例会（第12日 3月13日）";
+tillCallType[37] = 1;
+tillCallValue[38] = "令和 8年議会運営委員会（ 3月13日）";
+tillCallText[38] = "議会運営委員会（ 3月13日）";
+tillCallType[38] = 5;
+tillCallValue[39] = "令和 8年 3月定例会（第13日 3月16日）";
+tillCallText[39] = " 3月定例会（第13日 3月16日）";
+tillCallType[39] = 1;
+tillCallValue[40] = "令和 8年 3月定例会（第14日 3月17日）";
+tillCallText[40] = " 3月定例会（第14日 3月17日）";
+tillCallType[40] = 1;
+tillCallValue[41] = "令和 8年総務常任委員会（ 3月18日）";
+tillCallText[41] = "総務常任委員会（ 3月18日）";
+tillCallType[41] = 2;
+tillCallValue[42] = "令和 8年建設環境経済常任委員会（ 3月18日）";
+tillCallText[42] = "建設環境経済常任委員会（ 3月18日）";
+tillCallType[42] = 4;
+tillCallValue[43] = "令和 8年行政課題等調査検討特別委員会（ 3月18日）";
+tillCallText[43] = "行政課題等調査検討特別委員会（ 3月18日）";
+tillCallType[43] = 8;
+tillCallValue[44] = "令和 8年文教厚生常任委員会（ 3月19日）";
+tillCallText[44] = "文教厚生常任委員会（ 3月19日）";
+tillCallType[44] = 3;
+tillCallValue[45] = "令和 8年建設環境経済常任委員会（ 3月19日）";
+tillCallText[45] = "建設環境経済常任委員会（ 3月19日）";
+tillCallType[45] = 4;
+tillCallValue[46] = "令和 8年文教厚生常任委員会（ 3月23日）";
+tillCallText[46] = "文教厚生常任委員会（ 3月23日）";
+tillCallType[46] = 3;
+tillCallValue[47] = "令和 8年文教厚生常任委員会（ 3月24日）";
+tillCallText[47] = "文教厚生常任委員会（ 3月24日）";
+tillCallType[47] = 3;
+tillCallValue[48] = "令和 8年 3月定例会（第15日 3月26日）";
+tillCallText[48] = " 3月定例会（第15日 3月26日）";
+tillCallType[48] = 1;
+tillCallValue[49] = "令和 8年議会運営委員会（ 3月26日）";
+tillCallText[49] = "議会運営委員会（ 3月26日）";
+tillCallType[49] = 5;
+tillCallValue[50] = "令和 8年議会運営委員会（ 4月15日）";
+tillCallText[50] = "議会運営委員会（ 4月15日）";
+tillCallType[50] = 5;
+tillCallValue[51] = "令和 8年議会運営委員会（ 5月12日）";
+tillCallText[51] = "議会運営委員会（ 5月12日）";
+tillCallType[51] = 5;
+tillCallValue[52] = "令和 8年 5月臨時会（第 1日 5月19日）";
+tillCallText[52] = " 5月臨時会（第 1日 5月19日）";
+tillCallType[52] = 1;
+tillCallValue[53] = "令和 8年議会運営委員会（ 5月19日）";
+tillCallText[53] = "議会運営委員会（ 5月19日）";
+tillCallType[53] = 5;
+tillCallValue[54] = "令和 8年 5月臨時会（第 2日 5月20日）";
+tillCallText[54] = " 5月臨時会（第 2日 5月20日）";
+tillCallType[54] = 1;
+tillCallValue[55] = "令和 8年議会運営委員会（ 6月 2日）";
+tillCallText[55] = "議会運営委員会（ 6月 2日）";
+tillCallType[55] = 5;
+tillCallValue[56] = "令和 8年 6月定例会（第 1日 6月 9日）";
+tillCallText[56] = " 6月定例会（第 1日 6月 9日）";
+tillCallType[56] = 1;
+tillCallValue[57] = "令和 8年議会運営委員会（ 6月 9日）";
+tillCallText[57] = "議会運営委員会（ 6月 9日）";
+tillCallType[57] = 5;
+tillCallValue[58] = "令和 8年 6月定例会（第 2日 6月10日）";
+tillCallText[58] = " 6月定例会（第 2日 6月10日）";
+tillCallType[58] = 1;
+tillCallValue[59] = "令和 8年議会運営委員会（ 6月10日）";
+tillCallText[59] = "議会運営委員会（ 6月10日）";
+tillCallType[59] = 5;
+tillCallValue[60] = "令和 8年 6月定例会（第 3日 6月15日）";
+tillCallText[60] = " 6月定例会（第 3日 6月15日）";
+tillCallType[60] = 1;
+tillCallValue[61] = "令和 8年 6月定例会（第 4日 6月16日）";
+tillCallText[61] = " 6月定例会（第 4日 6月16日）";
+tillCallType[61] = 1;
+tillCallValue[62] = "令和 8年 6月定例会（第 5日 6月22日）";
+tillCallText[62] = " 6月定例会（第 5日 6月22日）";
+tillCallType[62] = 1;
+tillCallValue[63] = "令和 8年議会運営委員会（ 6月22日）";
+tillCallText[63] = "議会運営委員会（ 6月22日）";
+tillCallType[63] = 5;
+function setType(){
+	var type_f = new Array(10);
+	var i=1;
+	var hrefopt='';
+	
+	for (var j=0;j<document.search.elements.length;j++){
+    var e = document.search.elements[j];
+		if (e.name == 'eTarget'){
+      if( e.checked ) hrefopt += '&eTarget='+e.value;
+      type_f[e.value] = e.checked;
+    }
+	}
+
+  document.search.fromDate.length = 0;
+  document.search.tillDate.length = 0;
+  if( browserVer>=5 ){
+	  i = 1;
+	  for( j=0; j<39; j++ ){
+		  if( type_f[fromCallType[j]] ){
+			  document.search.fromDate.length = i;
+		    document.search.fromDate.options[i-1].value = fromCallValue[j];
+			  document.search.fromDate.options[i-1].text = fromCallText[j];
+			  i++;
+		  }
+	  }
+	  i = 1;
+	  for( j=0; j<64; j++ ){
+		  if( type_f[tillCallType[j]] ){
+			  document.search.tillDate.length = i;
+		    document.search.tillDate.options[i-1].value = tillCallValue[j];
+			  document.search.tillDate.options[i-1].text = tillCallText[j];
+			  i++;
+		  }
+	  }
+	  document.search.tillDate.selectedIndex = i-2;
+  }
+  else{
+    yearChange();
+  }
+
+
+
+}
+function go(context){
+    document.goview.context.value = context;
+    document.goview.submit();
+}
+function changeyear(year){
+    document.chyear.treedepth.value = year;
+    document.chyear.target = '';
+    document.chyear.FUNC.value = '';
+    document.chyear.submit();
+}
+function printres(){
+    document.chyear.target = '_blank';
+    document.chyear.FUNC.value = 'print';
+    document.chyear.submit();
+}
+function optaction(){
+    var opt = document.opt.action.value;
+    if( opt=='printspeak' ){
+        printspeak();
+    }
+    else if(opt=='printres'){
+        printres();
+    }
+    else if(opt=='order_by_count'){
+        order_by('count','');
+        document.chyear.submit();
+    }
+    else if(opt=='order_by_date'){
+        order_by('date_r','');        document.chyear.submit();
+    }
+}
+function printspeak(){
+    document.chyear.action = 'AllSpeak.exe';
+    document.chyear.treedepth.value = 'all';
+    document.chyear.target = '_blank';
+    document.chyear.FUNC.value = 'printspeak';
+    document.chyear.submit();
+}
+function order_by(v,year){
+    document.chyear.action = '#res';
+    document.chyear.treedepth.value = year;
+    document.chyear.sort.value = v;
+    document.chyear.target = '';
+    document.chyear.FUNC.value = '';
+    document.chyear.submit();
+}
+//--->
+</SCRIPT>
+<!-- End JAVASCRIPT -->
+   
+
+
+<map name="head">
+
+<area shape="rect" alt="" coords="600,35,770,65" href="http://www.city.takasago.lg.jp/">
+<area href="https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/index.html" shape="rect" coords="413, 36, 587, 65">
+</map>
+<center>
+<div id="wrapper">
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="/takasago/image/head.gif" width="788" height="73" alt="高砂市議会/会議録検索システム" usemap="#head"></td>
+	</tr>
+	<tr>
+		<td width="5"><img src="/takasago/image/leftdice.gif" width="5" height="38"></td>
+		<td background="/takasago/image/hbgg.gif" width="778" height="38" bgcolor="#ffffff" align="center" valign="bottom">
+
+
+<a href="/takasago/index.html"><img src="/takasago/image/menu01.gif" width="190" height="33" alt="会議録検索システムトップ"></a><a href="/takasago/cgi-bin2/See.exe?Code=h52lmgenyzsjmkcxck"><img src="/takasago/image/menu02.gif" width="190" height="33" alt="会議録の閲覧"></a><a href="/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck&sTarget=2"><img src="/takasago/image/menu03.gif" width="190" height="33" alt="会議録の検索"></a><a href="/takasago/help/help_top.html" target="_blank"><img src="/takasago/image/menu04.gif" width="185" height="33" alt="操作マニュアル"></a>
+
+
+		</td>
+		<td width="5"><img src="/takasago/image/rightdice.gif" width="5" height="38"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="/takasago/image/topbottom.gif" width="788" height="18"></td>
+	</tr>
+</table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="788">
+	<tr>
+		<td colspan="3"><img src="/takasago/image/head03.gif" width="788" height="50" alt=""></td>
+	</tr>
+	<tr>
+		<td width="2" background="/takasago/image/leftbit.gif"><img src="/takasago/image/leftbit.gif" width="2" height="2"></td>
+		<td bgcolor="#ffffff" align="center" width="784">
+
+
+
+				<img src="/takasago/image/bit.gif" width="730" height="10" alt=""><br>
+
+
+
+		<div class="content4">
+
+
+
+			<div class="content1_1"><img src="/takasago/image/bit.gif" width="20" height="1" alt=""></div>
+			<div class="content2_1">
+
+
+	<img src="/takasago/image/bit.gif" width="15" height="1" alt=""><br>
+
+
+	<div class="titlebox"><span class="blue">ご覧になれるのは平成12年3月定例会以降の本会議録・令和5年3月以降の委員会会議録です。</span></div><br>
+
+	<img src="/takasago/image/bit.gif" width="730" height="8" alt=""><br>
+
+
+
+
+
+<!-- Begin BEGIN_FORM -->
+<FORM name="search" method="POST" action="/takasago/cgi-bin2/Search2.exe#res" target="_top">
+<INPUT TYPE="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT TYPE="hidden" name="dMode" value="0">
+<!-- End BEGIN_FORM -->
+
+						<table class="table03">
+							<tr valign="middle">
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">検索語と検索条件の指定</td>    
+								<td><!-- Begin FORM_KEYWORD -->
+<INPUT CLASS=textbox TYPE="TEXT" NAME="KeyWord" SIZE="70" VALUE=""><!-- End FORM_KEYWORD -->
+<BR><!-- Begin FORM_SEARCHMODE -->
+<SELECT size="1" name="searchMode">
+    <option value="1" selected>すべての検索語を含みます
+    <option value="3" >いずれかの検索語を含みます
+</SELECT>
+<!-- End FORM_SEARCHMODE -->
+ <!-- Begin FORM_KEYMODE -->
+<SELECT size="1" name="keyMode">
+  <option value="10" selected>同義語検索
+  <option value="0" >完全一致検索
+  <option value="11" >近傍一致検索
+  <option value="12" >あいまい検索
+</SELECT>
+<!-- End FORM_KEYMODE -->
+</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">会議期間の指定</td>
+								<td>
+<!-- Begin FORM_TERM_FROM -->
+<SELECT SIZE="1" NAME="fromYear" onChange="yearChange()">
+  <OPTION VALUE="令和 8年" >令和 8年
+  <OPTION VALUE="令和 7年" >令和 7年
+  <OPTION VALUE="令和 6年" >令和 6年
+  <OPTION VALUE="令和 5年" >令和 5年
+  <OPTION VALUE="令和 4年" >令和 4年
+  <OPTION VALUE="令和 3年" >令和 3年
+  <OPTION VALUE="令和 2年" >令和 2年
+  <OPTION VALUE="令和元年" >令和元年
+  <OPTION VALUE="平成31年" >平成31年
+  <OPTION VALUE="平成30年" >平成30年
+  <OPTION VALUE="平成29年" >平成29年
+  <OPTION VALUE="平成28年" >平成28年
+  <OPTION VALUE="平成27年" >平成27年
+  <OPTION VALUE="平成26年" >平成26年
+  <OPTION VALUE="平成25年" >平成25年
+  <OPTION VALUE="平成24年" >平成24年
+  <OPTION VALUE="平成23年" >平成23年
+  <OPTION VALUE="平成22年" >平成22年
+  <OPTION VALUE="平成21年" >平成21年
+  <OPTION VALUE="平成20年" >平成20年
+  <OPTION VALUE="平成19年" >平成19年
+  <OPTION VALUE="平成18年" >平成18年
+  <OPTION VALUE="平成17年" >平成17年
+  <OPTION VALUE="平成16年" >平成16年
+  <OPTION VALUE="平成15年" >平成15年
+  <OPTION VALUE="平成14年" >平成14年
+  <OPTION VALUE="平成13年" >平成13年
+  <OPTION VALUE="平成12年" selected>平成12年
+</SELECT><SELECT SIZE="1" NAME="fromDate">
+  <OPTION VALUE="平成12年 3月定例会（第 1日 3月 1日）"> 3月定例会（第 1日 3月 1日）
+  <OPTION VALUE="平成12年 3月定例会（第 2日 3月 6日）"> 3月定例会（第 2日 3月 6日）
+  <OPTION VALUE="平成12年 3月定例会（第 3日 3月 7日）"> 3月定例会（第 3日 3月 7日）
+  <OPTION VALUE="平成12年 3月定例会（第 4日 3月10日）"> 3月定例会（第 4日 3月10日）
+  <OPTION VALUE="平成12年 3月定例会（第 5日 3月13日）"> 3月定例会（第 5日 3月13日）
+  <OPTION VALUE="平成12年 3月定例会（第 6日 3月14日）"> 3月定例会（第 6日 3月14日）
+  <OPTION VALUE="平成12年 3月定例会（第 7日 3月15日）"> 3月定例会（第 7日 3月15日）
+  <OPTION VALUE="平成12年 3月定例会（第 8日 3月16日）"> 3月定例会（第 8日 3月16日）
+  <OPTION VALUE="平成12年 3月定例会（第 9日 3月17日）"> 3月定例会（第 9日 3月17日）
+  <OPTION VALUE="平成12年 3月定例会（第10日 3月21日）"> 3月定例会（第10日 3月21日）
+  <OPTION VALUE="平成12年 3月定例会（第11日 3月22日）"> 3月定例会（第11日 3月22日）
+  <OPTION VALUE="平成12年 3月定例会（第12日 3月23日）"> 3月定例会（第12日 3月23日）
+  <OPTION VALUE="平成12年 3月定例会（第13日 3月24日）"> 3月定例会（第13日 3月24日）
+  <OPTION VALUE="平成12年 3月定例会（第14日 3月25日）"> 3月定例会（第14日 3月25日）
+  <OPTION VALUE="平成12年 3月定例会（第15日 3月30日）"> 3月定例会（第15日 3月30日）
+  <OPTION VALUE="平成12年 3月定例会（第16日 3月31日）"> 3月定例会（第16日 3月31日）
+  <OPTION VALUE="平成12年 6月定例会（第 1日 6月21日）"> 6月定例会（第 1日 6月21日）
+  <OPTION VALUE="平成12年 6月定例会（第 2日 6月26日）"> 6月定例会（第 2日 6月26日）
+  <OPTION VALUE="平成12年 6月定例会（第 3日 6月27日）"> 6月定例会（第 3日 6月27日）
+  <OPTION VALUE="平成12年 6月定例会（第 4日 6月28日）"> 6月定例会（第 4日 6月28日）
+  <OPTION VALUE="平成12年 6月定例会（第 5日 6月29日）"> 6月定例会（第 5日 6月29日）
+  <OPTION VALUE="平成12年 6月定例会（第 6日 6月30日）"> 6月定例会（第 6日 6月30日）
+  <OPTION VALUE="平成12年 6月定例会（第 7日 7月 4日）"> 6月定例会（第 7日 7月 4日）
+  <OPTION VALUE="平成12年 6月定例会（第 8日 7月11日）"> 6月定例会（第 8日 7月11日）
+  <OPTION VALUE="平成12年 9月定例会（第 1日 9月 4日）"> 9月定例会（第 1日 9月 4日）
+  <OPTION VALUE="平成12年 9月定例会（第 2日 9月 5日）"> 9月定例会（第 2日 9月 5日）
+  <OPTION VALUE="平成12年 9月定例会（第 3日 9月 8日）"> 9月定例会（第 3日 9月 8日）
+  <OPTION VALUE="平成12年 9月定例会（第 4日 9月11日）"> 9月定例会（第 4日 9月11日）
+  <OPTION VALUE="平成12年 9月定例会（第 5日 9月12日）"> 9月定例会（第 5日 9月12日）
+  <OPTION VALUE="平成12年 9月定例会（第 6日 9月13日）"> 9月定例会（第 6日 9月13日）
+  <OPTION VALUE="平成12年 9月定例会（第 7日 9月19日）"> 9月定例会（第 7日 9月19日）
+  <OPTION VALUE="平成12年12月定例会（第 1日12月 6日）">12月定例会（第 1日12月 6日）
+  <OPTION VALUE="平成12年12月定例会（第 2日12月11日）">12月定例会（第 2日12月11日）
+  <OPTION VALUE="平成12年12月定例会（第 3日12月12日）">12月定例会（第 3日12月12日）
+  <OPTION VALUE="平成12年12月定例会（第 4日12月13日）">12月定例会（第 4日12月13日）
+  <OPTION VALUE="平成12年12月定例会（第 5日12月14日）">12月定例会（第 5日12月14日）
+  <OPTION VALUE="平成12年12月定例会（第 6日12月15日）">12月定例会（第 6日12月15日）
+  <OPTION VALUE="平成12年12月定例会（第 7日12月21日）">12月定例会（第 7日12月21日）
+  <OPTION VALUE="平成12年12月定例会（第 8日12月22日）">12月定例会（第 8日12月22日）
+</SELECT>から<!-- End FORM_TERM_FROM -->
+<BR><!-- Begin FORM_TERM_TO -->
+<SELECT SIZE="1" NAME="tillYear" onChange="yearChange()">
+  <OPTION VALUE="令和 8年" selected>令和 8年
+  <OPTION VALUE="令和 7年" >令和 7年
+  <OPTION VALUE="令和 6年" >令和 6年
+  <OPTION VALUE="令和 5年" >令和 5年
+  <OPTION VALUE="令和 4年" >令和 4年
+  <OPTION VALUE="令和 3年" >令和 3年
+  <OPTION VALUE="令和 2年" >令和 2年
+  <OPTION VALUE="令和元年" >令和元年
+  <OPTION VALUE="平成31年" >平成31年
+  <OPTION VALUE="平成30年" >平成30年
+  <OPTION VALUE="平成29年" >平成29年
+  <OPTION VALUE="平成28年" >平成28年
+  <OPTION VALUE="平成27年" >平成27年
+  <OPTION VALUE="平成26年" >平成26年
+  <OPTION VALUE="平成25年" >平成25年
+  <OPTION VALUE="平成24年" >平成24年
+  <OPTION VALUE="平成23年" >平成23年
+  <OPTION VALUE="平成22年" >平成22年
+  <OPTION VALUE="平成21年" >平成21年
+  <OPTION VALUE="平成20年" >平成20年
+  <OPTION VALUE="平成19年" >平成19年
+  <OPTION VALUE="平成18年" >平成18年
+  <OPTION VALUE="平成17年" >平成17年
+  <OPTION VALUE="平成16年" >平成16年
+  <OPTION VALUE="平成15年" >平成15年
+  <OPTION VALUE="平成14年" >平成14年
+  <OPTION VALUE="平成13年" >平成13年
+  <OPTION VALUE="平成12年" >平成12年
+</SELECT><SELECT SIZE="1" NAME="tillDate">
+  <OPTION VALUE="令和 8年 1月臨時会（第 1日 1月16日）"> 1月臨時会（第 1日 1月16日）
+  <OPTION VALUE="令和 8年 3月定例会（第 1日 2月24日）"> 3月定例会（第 1日 2月24日）
+  <OPTION VALUE="令和 8年 3月定例会（第 2日 2月25日）"> 3月定例会（第 2日 2月25日）
+  <OPTION VALUE="令和 8年 3月定例会（第 3日 2月26日）"> 3月定例会（第 3日 2月26日）
+  <OPTION VALUE="令和 8年 3月定例会（第 4日 3月 3日）"> 3月定例会（第 4日 3月 3日）
+  <OPTION VALUE="令和 8年 3月定例会（第 5日 3月 4日）"> 3月定例会（第 5日 3月 4日）
+  <OPTION VALUE="令和 8年 3月定例会（第 6日 3月 5日）"> 3月定例会（第 6日 3月 5日）
+  <OPTION VALUE="令和 8年 3月定例会（第 7日 3月 6日）"> 3月定例会（第 7日 3月 6日）
+  <OPTION VALUE="令和 8年 3月定例会（第 8日 3月 9日）"> 3月定例会（第 8日 3月 9日）
+  <OPTION VALUE="令和 8年 3月定例会（第 9日 3月10日）"> 3月定例会（第 9日 3月10日）
+  <OPTION VALUE="令和 8年 3月定例会（第10日 3月11日）"> 3月定例会（第10日 3月11日）
+  <OPTION VALUE="令和 8年 3月定例会（第11日 3月12日）"> 3月定例会（第11日 3月12日）
+  <OPTION VALUE="令和 8年 3月定例会（第12日 3月13日）"> 3月定例会（第12日 3月13日）
+  <OPTION VALUE="令和 8年 3月定例会（第13日 3月16日）"> 3月定例会（第13日 3月16日）
+  <OPTION VALUE="令和 8年 3月定例会（第14日 3月17日）"> 3月定例会（第14日 3月17日）
+  <OPTION VALUE="令和 8年 3月定例会（第15日 3月26日）"> 3月定例会（第15日 3月26日）
+  <OPTION VALUE="令和 8年 5月臨時会（第 1日 5月19日）"> 5月臨時会（第 1日 5月19日）
+  <OPTION VALUE="令和 8年 5月臨時会（第 2日 5月20日）"> 5月臨時会（第 2日 5月20日）
+  <OPTION VALUE="令和 8年 6月定例会（第 1日 6月 9日）"> 6月定例会（第 1日 6月 9日）
+  <OPTION VALUE="令和 8年 6月定例会（第 2日 6月10日）"> 6月定例会（第 2日 6月10日）
+  <OPTION VALUE="令和 8年 6月定例会（第 3日 6月15日）"> 6月定例会（第 3日 6月15日）
+  <OPTION VALUE="令和 8年 6月定例会（第 4日 6月16日）"> 6月定例会（第 4日 6月16日）
+  <OPTION VALUE="令和 8年 6月定例会（第 5日 6月22日）" selected> 6月定例会（第 5日 6月22日）
+</SELECT>まで<!-- End FORM_TERM_TO -->
+
+								</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">発言者</td>
+								<td>
+<!-- Begin FORM_SPEAKER -->
+<INPUT TYPE="hidden" NAME="speaker">
+<SELECT NAME="speaker1" onChange="setSpeaker(this)">
+<OPTION value="">期間内の発言者を選んでください
+<OPTION value="">
+<OPTION value="秋田さとみ">秋田さとみ
+<OPTION value="井奥雅樹">井奥雅樹
+<OPTION value="生嶋洋一">生嶋洋一
+<OPTION value="池本晃">池本晃
+<OPTION value="石﨑徹">石﨑徹
+<OPTION value="石﨑委員">石﨑委員
+<OPTION value="石﨑委員長">石﨑委員長
+<OPTION value="今竹大祐">今竹大祐
+<OPTION value="今竹委員">今竹委員
+<OPTION value="入江啓太">入江啓太
+<OPTION value="入江正人">入江正人
+<OPTION value="入江委員">入江委員
+<OPTION value="入江委員長">入江委員長
+<OPTION value="岩見明">岩見明
+<OPTION value="岩見委員">岩見委員
+<OPTION value="岩見委員長">岩見委員長
+<OPTION value="岩見副委員長">岩見副委員長
+<OPTION value="大塚好子">大塚好子
+<OPTION value="大西由紀">大西由紀
+<OPTION value="大西委員">大西委員
+<OPTION value="岡田正">岡田正
+<OPTION value="岡本勝弘">岡本勝弘
+<OPTION value="加古秋晴">加古秋晴
+<OPTION value="川端宏明">川端宏明
+<OPTION value="川端委員">川端委員
+<OPTION value="川端副委員長">川端副委員長
+<OPTION value="川端座長">川端座長
+<OPTION value="木谷勝郎">木谷勝郎
+<OPTION value="北野誠一郎">北野誠一郎
+<OPTION value="北野委員">北野委員
+<OPTION value="北野委員長">北野委員長
+<OPTION value="北野座長">北野座長
+<OPTION value="北畑徹也">北畑徹也
+<OPTION value="北元次郎">北元次郎
+<OPTION value="木村巍">木村巍
+<OPTION value="小林隆義">小林隆義
+<OPTION value="小松美紀江">小松美紀江
+<OPTION value="近藤清隆">近藤清隆
+<OPTION value="三枝隆一">三枝隆一
+<OPTION value="坂牛八州">坂牛八州
+<OPTION value="坂辺勝彦">坂辺勝彦
+<OPTION value="坂本まり">坂本まり
+<OPTION value="坂本委員">坂本委員
+<OPTION value="坂本副委員長">坂本副委員長
+<OPTION value="迫川高行">迫川高行
+<OPTION value="迫川議長">迫川議長
+<OPTION value="迫川委員長">迫川委員長
+<OPTION value="迫川委員">迫川委員
+<OPTION value="沢野博">沢野博
+<OPTION value="芝本鎮彰">芝本鎮彰
+<OPTION value="芝本委員">芝本委員
+<OPTION value="芝本委員長">芝本委員長
+<OPTION value="芝本副委員長">芝本副委員長
+<OPTION value="島津明香">島津明香
+<OPTION value="島津委員長">島津委員長
+<OPTION value="島津副委員長">島津副委員長
+<OPTION value="島津副議長">島津副議長
+<OPTION value="鈴木利信">鈴木利信
+<OPTION value="鈴木正典">鈴木正典
+<OPTION value="鈴木委員">鈴木委員
+<OPTION value="鈴木委員長">鈴木委員長
+<OPTION value="砂川辰義">砂川辰義
+<OPTION value="鷹尾治久">鷹尾治久
+<OPTION value="鷹尾委員">鷹尾委員
+<OPTION value="鷹尾委員長">鷹尾委員長
+<OPTION value="中須多門">中須多門
+<OPTION value="中西一智">中西一智
+<OPTION value="西野勝">西野勝
+<OPTION value="野村純治">野村純治
+<OPTION value="橋爪敏朗">橋爪敏朗
+<OPTION value="橋本芳和">橋本芳和
+<OPTION value="原亀男">原亀男
+<OPTION value="春増勝利">春増勝利
+<OPTION value="春増委員">春増委員
+<OPTION value="福元昇">福元昇
+<OPTION value="藤森誠">藤森誠
+<OPTION value="藤森委員">藤森委員
+<OPTION value="藤森副委員長">藤森副委員長
+<OPTION value="船田昭信">船田昭信
+<OPTION value="増田徹男">増田徹男
+<OPTION value="松野優也">松野優也
+<OPTION value="松野委員">松野委員
+<OPTION value="松野副委員長">松野副委員長
+<OPTION value="松本均">松本均
+<OPTION value="三上秀昭">三上秀昭
+<OPTION value="宮本幸弘">宮本幸弘
+<OPTION value="森秀樹">森秀樹
+<OPTION value="森委員">森委員
+<OPTION value="森委員長">森委員長
+<OPTION value="八田美津子">八田美津子
+<OPTION value="山田光昭">山田光昭
+<OPTION value="山田委員">山田委員
+<OPTION value="山田委員長">山田委員長
+<OPTION value="山田副委員長">山田副委員長
+<OPTION value="横田英樹">横田英樹
+<OPTION value="横田委員">横田委員
+<OPTION value="横山義夫">横山義夫
+<OPTION value="萬山忠彦">萬山忠彦
+</SELECT>
+<!-- End FORM_SPEAKER -->
+
+								</td>
+							</tr>
+<td><img src="/takasago/image/arrow.gif" width="9" height="9">会派名</FONT></TD>
+								<TD>
+<!-- Begin FORM_KAIHA -->
+<SELECT NAME="kaiha" onChange="setSpeaker(this)">
+<OPTION value="">会派を選んでください
+<OPTION value="">
+<OPTION value="@政友会">政友会
+<OPTION value="@民主クラブ">民主クラブ
+<OPTION value="@政和会">政和会
+<OPTION value="@公明党">公明党
+<OPTION value="@新社会">新社会
+<OPTION value="@日本共産党">日本共産党
+<OPTION value="@いきいきネットワーク">いきいきネットワーク
+<OPTION value="@自由クラブ">自由クラブ
+<OPTION value="@志政クラブ">志政クラブ
+<OPTION value="@市民クラブ">市民クラブ
+<OPTION value="@市民ネットワーク">市民ネットワーク
+<OPTION value="@平成会">平成会
+<OPTION value="@財政・福祉ネット">財政・福祉ネット
+<OPTION value="@新政会">新政会
+<OPTION value="@高砂再起動">高砂再起動
+<OPTION value="@自彊">自彊
+<OPTION value="@なかにしかずとも">なかにしかずとも
+<OPTION value="@未来ネット">未来ネット
+<OPTION value="@明風会">明風会
+<OPTION value="@緑の党グリーンズジャパン">緑の党グリーンズジャパン
+<OPTION value="@無所属">無所属
+</SELECT>
+<!-- End FORM_KAIHA -->
+
+								</TD>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">答弁者</td>
+								<td>
+<!-- Begin FORM_SPEAKER2 -->
+<SELECT NAME="speaker2" onChange="setSpeaker(this)">
+<OPTION value="">期間内の答弁者を選んでください
+<OPTION value="">
+<OPTION value="市長">市長
+<OPTION value="市長職務代理者副市長">市長職務代理者副市長
+<OPTION value="副市長">副市長
+<OPTION value="助役">助役
+<OPTION value="収入役">収入役
+<OPTION value="主幹">主幹
+<OPTION value="理事">理事
+<OPTION value="会計課長">会計課長
+<OPTION value="会計管理者">会計管理者
+<OPTION value="会計室長">会計室長
+<OPTION value="環境保全担当係長">環境保全担当係長
+<OPTION value="監査委員">監査委員
+<OPTION value="監査委員・公平委員会事務局長">監査委員・公平委員会事務局長
+<OPTION value="監査委員・公平委員会事務局主幹">監査委員・公平委員会事務局主幹
+<OPTION value="監査委員事務局長">監査委員事務局長
+<OPTION value="議会事務局長">議会事務局長
+<OPTION value="議会事務局次長">議会事務局次長
+<OPTION value="議会事務局議事課長">議会事務局議事課長
+<OPTION value="議会事務局次長兼議事課長">議会事務局次長兼議事課長
+<OPTION value="議会事務局次長兼総務課長">議会事務局次長兼総務課長
+<OPTION value="企画総務部長">企画総務部長
+<OPTION value="企画総務部次長">企画総務部次長
+<OPTION value="企画総務部次長兼秘書広報広聴室長">企画総務部次長兼秘書広報広聴室長
+<OPTION value="企画総務部参事">企画総務部参事
+<OPTION value="企画総務部危機管理室長">企画総務部危機管理室長
+<OPTION value="企画総務部教育部長">企画総務部教育部長
+<OPTION value="企画総務部経営企画室長">企画総務部経営企画室長
+<OPTION value="企画総務部経営企画室参事">企画総務部経営企画室参事
+<OPTION value="企画総務部総務室参事">企画総務部総務室参事
+<OPTION value="企画部長">企画部長
+<OPTION value="企画部次長">企画部次長
+<OPTION value="技監">技監
+<OPTION value="教育委員長">教育委員長
+<OPTION value="教育委員会教育部長">教育委員会教育部長
+<OPTION value="教育委員会教育指導部長">教育委員会教育指導部長
+<OPTION value="教育委員会教育指導部次長">教育委員会教育指導部次長
+<OPTION value="教育委員会教育センター所長">教育委員会教育センター所長
+<OPTION value="教育委員会教育総務部長">教育委員会教育総務部長
+<OPTION value="教育委員会教育長職務代行者">教育委員会教育長職務代行者
+<OPTION value="教育委員会教育長職務代行者教育部長">教育委員会教育長職務代行者教育部長
+<OPTION value="教育委員会教育長職務代行者教育総務部長">教育委員会教育長職務代行者教育総務部長
+<OPTION value="教育委員会教育部学校教育室長">教育委員会教育部学校教育室長
+<OPTION value="教育委員会教育部学校教育室参事">教育委員会教育部学校教育室参事
+<OPTION value="教育委員会教育部学校教育室学校給食課長">教育委員会教育部学校教育室学校給食課長
+<OPTION value="教育委員会教育部学校教育室学校給食課長幹">教育委員会教育部学校教育室学校給食課長幹
+<OPTION value="教育委員会教育部学校教育室学校教育課長">教育委員会教育部学校教育室学校教育課長
+<OPTION value="教育委員会教育部学校教育室学校教育課主幹">教育委員会教育部学校教育室学校教育課主幹
+<OPTION value="教育委員会教育部学校教育室学校給食課学校給食センター所長">教育委員会教育部学校教育室学校給食課学校給食センター所長
+<OPTION value="教育委員会教育部学校教育室学校教育課青少年センター所長">教育委員会教育部学校教育室学校教育課青少年センター所長
+<OPTION value="教育委員会教育部教育推進室教育施設担当主幹">教育委員会教育部教育推進室教育施設担当主幹
+<OPTION value="教育委員会教育部教育推進室教育総務課長">教育委員会教育部教育推進室教育総務課長
+<OPTION value="教育委員会教育部教育推進室教育総務課主幹">教育委員会教育部教育推進室教育総務課主幹
+<OPTION value="教育委員会教育部教育推進室生涯学習課長">教育委員会教育部教育推進室生涯学習課長
+<OPTION value="教育委員会教育部教育推進室生涯学習課主幹">教育委員会教育部教育推進室生涯学習課主幹
+<OPTION value="教育委員会教育部教育推進室長">教育委員会教育部教育推進室長
+<OPTION value="教育委員会中央公民館兼伊保公民館長">教育委員会中央公民館兼伊保公民館長
+<OPTION value="教育長">教育長
+<OPTION value="教育部長">教育部長
+<OPTION value="教育部学校教育室長">教育部学校教育室長
+<OPTION value="教育部学校教育室学校教育課長">教育部学校教育室学校教育課長
+<OPTION value="教育部教育推進室長">教育部教育推進室長
+<OPTION value="教育部教育推進室教育センター所長">教育部教育推進室教育センター所長
+<OPTION value="教育部教育推進室教育総務課主幹（新たな学校づくり推進担当）">教育部教育推進室教育総務課主幹（新たな学校づくり推進担当）
+<OPTION value="行財政改革推進室長">行財政改革推進室長
+<OPTION value="協働部長">協働部長
+<OPTION value="経営企画室長">経営企画室長
+<OPTION value="下水道部長">下水道部長
+<OPTION value="下水道部次長">下水道部次長
+<OPTION value="健康こども部長">健康こども部長
+<OPTION value="健康こども部参事">健康こども部参事
+<OPTION value="健康こども部健康文化室長">健康こども部健康文化室長
+<OPTION value="健康こども部健康文化室参事">健康こども部健康文化室参事
+<OPTION value="健康こども部健康文化室健康増進課長">健康こども部健康文化室健康増進課長
+<OPTION value="健康こども部健康文化室健康増進課主幹">健康こども部健康文化室健康増進課主幹
+<OPTION value="健康こども部健康文化室文化スポーツ課長">健康こども部健康文化室文化スポーツ課長
+<OPTION value="健康こども部健康文化室文化スポーツ課主幹">健康こども部健康文化室文化スポーツ課主幹
+<OPTION value="健康こども部子育て支援室子育て支援課長">健康こども部子育て支援室子育て支援課長
+<OPTION value="健康こども部子育て支援室子育て支援課主幹">健康こども部子育て支援室子育て支援課主幹
+<OPTION value="健康こども部子育て支援室こども窓口課長">健康こども部子育て支援室こども窓口課長
+<OPTION value="健康こども部子育て支援室こども窓口課副課長">健康こども部子育て支援室こども窓口課副課長
+<OPTION value="健康こども部子育て支援室長">健康こども部子育て支援室長
+<OPTION value="健康こども部子育て支援室幼児保育課長">健康こども部子育て支援室幼児保育課長
+<OPTION value="健康こども部子育て支援室幼児保育課主幹">健康こども部子育て支援室幼児保育課主幹
+<OPTION value="健康こども部子育て支援室幼児保育課副課長">健康こども部子育て支援室幼児保育課副課長
+<OPTION value="健康こども部子育て支援室幼児保育課副課長兼学校教育課副課長">健康こども部子育て支援室幼児保育課副課長兼学校教育課副課長
+<OPTION value="健康市民部長">健康市民部長
+<OPTION value="健康市民部次長">健康市民部次長
+<OPTION value="健康市民部参事">健康市民部参事
+<OPTION value="健康文化部長">健康文化部長
+<OPTION value="健康文化部参事">健康文化部参事
+<OPTION value="健康文化部くらしと文化室長">健康文化部くらしと文化室長
+<OPTION value="健康文化部健康市民室長">健康文化部健康市民室長
+<OPTION value="建設部長">建設部長
+<OPTION value="建設部次長">建設部次長
+<OPTION value="建築指導主事">建築指導主事
+<OPTION value="監査委員・公平委員会事務局課長">監査委員・公平委員会事務局課長
+<OPTION value="監査委員事務局長兼公平委員会事務局長">監査委員事務局長兼公平委員会事務局長
+<OPTION value="工事検査室長">工事検査室長
+<OPTION value="こども部長">こども部長
+<OPTION value="こども未来部長">こども未来部長
+<OPTION value="財務部契約担当主幹">財務部契約担当主幹
+<OPTION value="財務部財務室長">財務部財務室長
+<OPTION value="財務部財務室契約管財課契約担当主幹">財務部財務室契約管財課契約担当主幹
+<OPTION value="財務部財務室契約管財課長">財務部財務室契約管財課長
+<OPTION value="財務部財務室契約管財課主幹">財務部財務室契約管財課主幹
+<OPTION value="財務部財務室契約管財課主幹（契約担当）">財務部財務室契約管財課主幹（契約担当）
+<OPTION value="財務部財務室財政課長">財務部財務室財政課長
+<OPTION value="財務部税務室長">財務部税務室長
+<OPTION value="財務部税務室長（兼給付金事務担当）">財務部税務室長（兼給付金事務担当）
+<OPTION value="財務部税務室課税課長">財務部税務室課税課長
+<OPTION value="財務部税務室債権管理課長">財務部税務室債権管理課長
+<OPTION value="財務部税務室債権管理課主幹">財務部税務室債権管理課主幹
+<OPTION value="財務部長">財務部長
+<OPTION value="参事">参事
+<OPTION value="市長公室長">市長公室長
+<OPTION value="市長公室参事">市長公室参事
+<OPTION value="市長付参事">市長付参事
+<OPTION value="市民部長">市民部長
+<OPTION value="市民病院事務局長">市民病院事務局長
+<OPTION value="市民病院事務局次長">市民病院事務局次長
+<OPTION value="市民病院事務局参事">市民病院事務局参事
+<OPTION value="市民病院事務局主幹">市民病院事務局主幹
+<OPTION value="市民病院事務局医事課長">市民病院事務局医事課長
+<OPTION value="市民病院事務局総務課長">市民病院事務局総務課長
+<OPTION value="市民病院事務局総務課副課長">市民病院事務局総務課副課長
+<OPTION value="市民部市民窓口室市民窓口課長">市民部市民窓口室市民窓口課長
+<OPTION value="市民部市民窓口室市民窓口課主幹">市民部市民窓口室市民窓口課主幹
+<OPTION value="市民部市民窓口室地域振興課長">市民部市民窓口室地域振興課長
+<OPTION value="市民部市民窓口室地域振興課主幹">市民部市民窓口室地域振興課主幹
+<OPTION value="市民部市民窓口室長">市民部市民窓口室長
+<OPTION value="市民部市民窓口室参事">市民部市民窓口室参事
+<OPTION value="市民部保険年金室介護保険課長">市民部保険年金室介護保険課長
+<OPTION value="市民部保険年金室国保年金課長">市民部保険年金室国保年金課長
+<OPTION value="市民部保険年金室長">市民部保険年金室長
+<OPTION value="市民部保険年金室賦課収納課長">市民部保険年金室賦課収納課長
+<OPTION value="市民部保険年金室賦課収納課主幹">市民部保険年金室賦課収納課主幹
+<OPTION value="上下水道部長">上下水道部長
+<OPTION value="上下水道事業管理者">上下水道事業管理者
+<OPTION value="上下水道部技術管理室管きょ課長">上下水道部技術管理室管きょ課長
+<OPTION value="上下水道部技術管理室管きょ課主幹">上下水道部技術管理室管きょ課主幹
+<OPTION value="上下水道部技術管理室管きょ課主幹（給排水設備・補償事務担当）">上下水道部技術管理室管きょ課主幹（給排水設備・補償事務担当）
+<OPTION value="上下水道部技術管理室兼米田水源地所長事務取扱治水対策課長">上下水道部技術管理室兼米田水源地所長事務取扱治水対策課長
+<OPTION value="上下水道部技術管理室施設課主幹">上下水道部技術管理室施設課主幹
+<OPTION value="上下水道部技術管理室施設課主幹（伊保浄化センター担当）">上下水道部技術管理室施設課主幹（伊保浄化センター担当）
+<OPTION value="上下水道部技術管理室施設課主幹（米田水源地担当）">上下水道部技術管理室施設課主幹（米田水源地担当）
+<OPTION value="上下水道部技術管理室施設課主幹兼米田水源地所長事務取扱">上下水道部技術管理室施設課主幹兼米田水源地所長事務取扱
+<OPTION value="上下水道部技術管理室施設課長">上下水道部技術管理室施設課長
+<OPTION value="上下水道部技術管理室施設課長兼伊保浄化センター所長事務取扱">上下水道部技術管理室施設課長兼伊保浄化センター所長事務取扱
+<OPTION value="上下水道部技術管理室治水対策課主幹">上下水道部技術管理室治水対策課主幹
+<OPTION value="上下水道部技術管理室治水対策課主幹（ため池水路担当）">上下水道部技術管理室治水対策課主幹（ため池水路担当）
+<OPTION value="上下水道部技術管理室治水対策課長">上下水道部技術管理室治水対策課長
+<OPTION value="上下水道部技術管理室長">上下水道部技術管理室長
+<OPTION value="上下水道部経営総務室主幹">上下水道部経営総務室主幹
+<OPTION value="上下水道部経営総務室主幹（企画調整事務担当）">上下水道部経営総務室主幹（企画調整事務担当）
+<OPTION value="上下水道部経営総務室主幹（経理事務担当）">上下水道部経営総務室主幹（経理事務担当）
+<OPTION value="上下水道部経営総務室主幹（庶務料金事務担当）">上下水道部経営総務室主幹（庶務料金事務担当）
+<OPTION value="上下水道部経営総務室長">上下水道部経営総務室長
+<OPTION value="消防長">消防長
+<OPTION value="消防本部次長">消防本部次長
+<OPTION value="消防本部消防課長">消防本部消防課長
+<OPTION value="消防本部消防署長">消防本部消防署長
+<OPTION value="消防本部消防第１部主幹">消防本部消防第１部主幹
+<OPTION value="消防本部消防第２部副課長">消防本部消防第２部副課長
+<OPTION value="消防本部消防第２部主幹">消防本部消防第２部主幹
+<OPTION value="消防本部消防団担当課長">消防本部消防団担当課長
+<OPTION value="消防本部総務課長">消防本部総務課長
+<OPTION value="消防本部総務課主幹">消防本部総務課主幹
+<OPTION value="消防本部第１部主幹">消防本部第１部主幹
+<OPTION value="消防本部第２部副課長">消防本部第２部副課長
+<OPTION value="消防本部第２部主幹">消防本部第２部主幹
+<OPTION value="消防本部分署長">消防本部分署長
+<OPTION value="消防本部予防課長">消防本部予防課長
+<OPTION value="水道事業所長">水道事業所長
+<OPTION value="水道事業管理者">水道事業管理者
+<OPTION value="生活環境部長">生活環境部長
+<OPTION value="生活環境部長兼環境経済室長">生活環境部長兼環境経済室長
+<OPTION value="生活環境部参事">生活環境部参事
+<OPTION value="生活環境部エコクリーンピアはりま主幹">生活環境部エコクリーンピアはりま主幹
+<OPTION value="生活環境部エコクリーンピアはりま主幹（業務担当）">生活環境部エコクリーンピアはりま主幹（業務担当）
+<OPTION value="生活環境部エコクリーンピアはりま主幹（計画管理兼ごみ減量化担当）">生活環境部エコクリーンピアはりま主幹（計画管理兼ごみ減量化担当）
+<OPTION value="生活環境部エコクリーンピアはりま主幹（計画管理担当）">生活環境部エコクリーンピアはりま主幹（計画管理担当）
+<OPTION value="生活環境部エコクリーンピアはりま主幹（施設管理担当）">生活環境部エコクリーンピアはりま主幹（施設管理担当）
+<OPTION value="生活環境部エコクリーンピアはりま主幹（施設担当）">生活環境部エコクリーンピアはりま主幹（施設担当）
+<OPTION value="生活環境部エコクリーンピアはりま所長">生活環境部エコクリーンピアはりま所長
+<OPTION value="生活環境部環境経済室環境政策課環境保全担当係長">生活環境部環境経済室環境政策課環境保全担当係長
+<OPTION value="生活環境部環境経済室環境政策課主幹">生活環境部環境経済室環境政策課主幹
+<OPTION value="生活環境部環境経済室環境政策課主幹（環境対策担当）">生活環境部環境経済室環境政策課主幹（環境対策担当）
+<OPTION value="生活環境部環境経済室環境政策課主幹（ゼロカーボン担当）">生活環境部環境経済室環境政策課主幹（ゼロカーボン担当）
+<OPTION value="生活環境部環境経済室環境政策課主幹（電力地産地消推進担当）">生活環境部環境経済室環境政策課主幹（電力地産地消推進担当）
+<OPTION value="生活環境部環境経済室環境政策課長">生活環境部環境経済室環境政策課長
+<OPTION value="生活環境部環境経済室産業振興課主幹兼農業委員会事務局主幹">生活環境部環境経済室産業振興課主幹兼農業委員会事務局主幹
+<OPTION value="生活環境部環境経済室産業振興課長">生活環境部環境経済室産業振興課長
+<OPTION value="生活環境部環境経済室産業振興課長兼商工労働係長兼農林水産係長">生活環境部環境経済室産業振興課長兼商工労働係長兼農林水産係長
+<OPTION value="生活環境部環境経済室参事">生活環境部環境経済室参事
+<OPTION value="生活環境部環境経済室参事兼農業委員会事務局長">生活環境部環境経済室参事兼農業委員会事務局長
+<OPTION value="生活環境部環境経済室長">生活環境部環境経済室長
+<OPTION value="生活環境部広域ごみ処理施設建設推進室長">生活環境部広域ごみ処理施設建設推進室長
+<OPTION value="生活環境部美化センター所長">生活環境部美化センター所長
+<OPTION value="生活経済部長">生活経済部長
+<OPTION value="生活経済部次長">生活経済部次長
+<OPTION value="政策部長">政策部長
+<OPTION value="政策部次長">政策部次長
+<OPTION value="政策部参事">政策部参事
+<OPTION value="政策部参事（市民病院将来構想推進担当）">政策部参事（市民病院将来構想推進担当）
+<OPTION value="政策部経営企画室長">政策部経営企画室長
+<OPTION value="政策部経営企画室長兼ＩＣＴ推進課長">政策部経営企画室長兼ＩＣＴ推進課長
+<OPTION value="政策部経営企画室長兼ＩＣＴ推進課長事務取扱">政策部経営企画室長兼ＩＣＴ推進課長事務取扱
+<OPTION value="政策部経営企画室参事">政策部経営企画室参事
+<OPTION value="政策部経営企画室参事兼ＩＣＴ推進課長">政策部経営企画室参事兼ＩＣＴ推進課長
+<OPTION value="政策部経営企画室企画課長">政策部経営企画室企画課長
+<OPTION value="政策部経営企画室企画課主幹">政策部経営企画室企画課主幹
+<OPTION value="政策部経営企画室ＩＣＴ推進課長">政策部経営企画室ＩＣＴ推進課長
+<OPTION value="政策部公共施設マネジメント室長">政策部公共施設マネジメント室長
+<OPTION value="政策部公共施設マネジメント室主幹">政策部公共施設マネジメント室主幹
+<OPTION value="政策部公共施設マネジメント室主幹（営繕担当）">政策部公共施設マネジメント室主幹（営繕担当）
+<OPTION value="政策部公共施設マネジメント室主幹（公共施設・庁舎担当）">政策部公共施設マネジメント室主幹（公共施設・庁舎担当）
+<OPTION value="政策部公共施設マネジメント室主幹（設備担当）">政策部公共施設マネジメント室主幹（設備担当）
+<OPTION value="政策部公共施設マネジメント室営繕担当主幹">政策部公共施設マネジメント室営繕担当主幹
+<OPTION value="政策部公共施設マネジメント室庁舎担当主幹">政策部公共施設マネジメント室庁舎担当主幹
+<OPTION value="政策部公共マネジメント室長">政策部公共マネジメント室長
+<OPTION value="政策部公共マネジメント室主幹">政策部公共マネジメント室主幹
+<OPTION value="政策部シティプロモーション室長">政策部シティプロモーション室長
+<OPTION value="政策部シティプロモーション室主幹">政策部シティプロモーション室主幹
+<OPTION value="政策部シティプロモーション室主幹（移住・定住・観光担当）">政策部シティプロモーション室主幹（移住・定住・観光担当）
+<OPTION value="政策部シティプロモーション室主幹（広報広聴担当）">政策部シティプロモーション室主幹（広報広聴担当）
+<OPTION value="政策部市民病院将来構想推進室主幹">政策部市民病院将来構想推進室主幹
+<OPTION value="政策部市民病院将来構想推進室長">政策部市民病院将来構想推進室長
+<OPTION value="選挙管理委員会委員長">選挙管理委員会委員長
+<OPTION value="選挙管理委員会事務局長">選挙管理委員会事務局長
+<OPTION value="選挙管理委員会事務局主幹">選挙管理委員会事務局主幹
+<OPTION value="総務部長">総務部長
+<OPTION value="総務部参事">総務部参事
+<OPTION value="総務部危機管理室長">総務部危機管理室長
+<OPTION value="総務部危機管理室主幹">総務部危機管理室主幹
+<OPTION value="総務部危機管理室主幹（地域安全対策担当）">総務部危機管理室主幹（地域安全対策担当）
+<OPTION value="総務部危機管理室主幹（防災担当）">総務部危機管理室主幹（防災担当）
+<OPTION value="総務部総務室長">総務部総務室長
+<OPTION value="総務部総務室長（兼市民病院将来構想推進担当）">総務部総務室長（兼市民病院将来構想推進担当）
+<OPTION value="総務部総務室長兼選挙管理委員会事務局長">総務部総務室長兼選挙管理委員会事務局長
+<OPTION value="総務部総務室参事兼選挙管理委員会事務局長">総務部総務室参事兼選挙管理委員会事務局長
+<OPTION value="総務部総務室参事兼選挙管理委員会事務局主幹">総務部総務室参事兼選挙管理委員会事務局主幹
+<OPTION value="総務部総務室人事課長">総務部総務室人事課長
+<OPTION value="総務部総務室総務課主幹">総務部総務室総務課主幹
+<OPTION value="総務部総務室総務課主幹（文書・統計調査担当）">総務部総務室総務課主幹（文書・統計調査担当）
+<OPTION value="総務部総務室総務課主幹兼選挙管理委員会事務局主幹">総務部総務室総務課主幹兼選挙管理委員会事務局主幹
+<OPTION value="総務部総務室総務課長">総務部総務室総務課長
+<OPTION value="総務部秘書室長">総務部秘書室長
+<OPTION value="総務部秘書室主幹">総務部秘書室主幹
+<OPTION value="滞納整理推進室長">滞納整理推進室長
+<OPTION value="代表監査委員">代表監査委員
+<OPTION value="高砂市民病院長">高砂市民病院長
+<OPTION value="治水対策室長">治水対策室長
+<OPTION value="都市整備部長">都市整備部長
+<OPTION value="都市創造部長">都市創造部長
+<OPTION value="都市創造部都市住宅室建築住宅課主幹">都市創造部都市住宅室建築住宅課主幹
+<OPTION value="都市創造部都市住宅室建築住宅課主幹（住宅政策・空家対策担当）">都市創造部都市住宅室建築住宅課主幹（住宅政策・空家対策担当）
+<OPTION value="都市創造部都市住宅室建築住宅課長">都市創造部都市住宅室建築住宅課長
+<OPTION value="都市創造部都市住宅室長">都市創造部都市住宅室長
+<OPTION value="都市創造部都市住宅室都市政策課主幹">都市創造部都市住宅室都市政策課主幹
+<OPTION value="都市創造部都市住宅室都市政策課主幹（交通施策・播磨臨海地域道路担当）">都市創造部都市住宅室都市政策課主幹（交通施策・播磨臨海地域道路担当）
+<OPTION value="都市創造部都市住宅室都市政策課主幹（播磨臨海地域道路・連続立体交差担当）">都市創造部都市住宅室都市政策課主幹（播磨臨海地域道路・連続立体交差担当）
+<OPTION value="都市創造部都市住宅室都市政策課主幹（まちづくり推進担当兼みなとまちづくり担当）">都市創造部都市住宅室都市政策課主幹（まちづくり推進担当兼みなとまちづくり担当）
+<OPTION value="都市創造部都市住宅室都市政策課主幹（明姫幹線南・高砂駅南・ＪＲ曽根駅整備担当）">都市創造部都市住宅室都市政策課主幹（明姫幹線南・高砂駅南・ＪＲ曽根駅整備担当）
+<OPTION value="都市創造部都市住宅室都市政策課主幹（連続立体交差・開発担当）">都市創造部都市住宅室都市政策課主幹（連続立体交差・開発担当）
+<OPTION value="都市創造部都市住宅室都市政策課長">都市創造部都市住宅室都市政策課長
+<OPTION value="都市創造部都市住宅室都市政策課長（兼事業調整担当）">都市創造部都市住宅室都市政策課長（兼事業調整担当）
+<OPTION value="都市創造部土木建設室長">都市創造部土木建設室長
+<OPTION value="都市創造部土木建設室道路公園課主幹">都市創造部土木建設室道路公園課主幹
+<OPTION value="都市創造部土木建設室道路公園課主幹（駅前整備担当）">都市創造部土木建設室道路公園課主幹（駅前整備担当）
+<OPTION value="都市創造部土木建設室道路公園課主幹（ＪＲ曽根駅周辺整備・公園担当）">都市創造部土木建設室道路公園課主幹（ＪＲ曽根駅周辺整備・公園担当）
+<OPTION value="都市創造部土木建設室道路公園課主幹（ＪＲ曽根駅周辺整備担当）">都市創造部土木建設室道路公園課主幹（ＪＲ曽根駅周辺整備担当）
+<OPTION value="都市創造部土木建設室道路公園課主幹（道路整備・公園担当）">都市創造部土木建設室道路公園課主幹（道路整備・公園担当）
+<OPTION value="都市創造部土木建設室道路公園課長">都市創造部土木建設室道路公園課長
+<OPTION value="都市創造部土木建設室土木総務課主幹">都市創造部土木建設室土木総務課主幹
+<OPTION value="都市創造部土木建設室土木総務課主幹（法定外公共物担当）">都市創造部土木建設室土木総務課主幹（法定外公共物担当）
+<OPTION value="都市創造部土木建設室土木総務課長">都市創造部土木建設室土木総務課長
+<OPTION value="農業委員会事務局長">農業委員会事務局長
+<OPTION value="農業委員会事務局主幹">農業委員会事務局主幹
+<OPTION value="美化部長">美化部長
+<OPTION value="美化部次長">美化部次長
+<OPTION value="美化センター所長">美化センター所長
+<OPTION value="美化部参事">美化部参事
+<OPTION value="病院事業管理者">病院事業管理者
+<OPTION value="秘書室長">秘書室長
+<OPTION value="福祉部長">福祉部長
+<OPTION value="福祉部次長">福祉部次長
+<OPTION value="福祉部人権福祉室人権推進課長">福祉部人権福祉室人権推進課長
+<OPTION value="福祉部人権福祉室人権推進課主幹">福祉部人権福祉室人権推進課主幹
+<OPTION value="福祉部人権福祉室地域福祉課高年福祉担当主幹">福祉部人権福祉室地域福祉課高年福祉担当主幹
+<OPTION value="福祉部人権福祉室地域福祉課地域福祉担当主幹">福祉部人権福祉室地域福祉課地域福祉担当主幹
+<OPTION value="福祉部人権福祉室地域福祉課長">福祉部人権福祉室地域福祉課長
+<OPTION value="福祉部人権福祉室長">福祉部人権福祉室長
+<OPTION value="福祉部人権福祉室参事">福祉部人権福祉室参事
+<OPTION value="福祉部生活福祉室障がい福祉課長">福祉部生活福祉室障がい福祉課長
+<OPTION value="福祉部生活福祉室生活福祉課長">福祉部生活福祉室生活福祉課長
+<OPTION value="福祉部生活福祉室長">福祉部生活福祉室長
+<OPTION value="福祉部地域福祉室参事">福祉部地域福祉室参事
+<OPTION value="まちづくり部長">まちづくり部長
+<OPTION value="まちづくり部参事">まちづくり部参事
+<OPTION value="まちづくり部治水対策室長">まちづくり部治水対策室長
+<OPTION value="まちづくり部土木管理室長">まちづくり部土木管理室長
+<OPTION value="まちづくり部まちづくり推進室長">まちづくり部まちづくり推進室長
+<OPTION value="まちづくり部まちづくり推進室参事">まちづくり部まちづくり推進室参事
+<OPTION value="請求代表者">請求代表者
+</SELECT>
+<!-- End FORM_SPEAKER2 -->
+
+								</td>
+							</tr>
+							<tr>
+								<td><img src="/takasago/image/arrow.gif" width="9" height="9">議長／委員長</td>
+								<td>
+<!-- Begin FORM_SPEAKER3 -->
+<SELECT NAME="speaker3" onChange="setSpeaker(this)">
+<OPTION value="">期間内の議長／委員長を選んでください
+<OPTION value="">
+<OPTION value="議長">議長
+<OPTION value="新議長">新議長
+<OPTION value="副議長">副議長
+<OPTION value="新副議長">新副議長
+<OPTION value="臨時議長">臨時議長
+<OPTION value="座長">座長
+<OPTION value="委員長">委員長
+<OPTION value="副委員長">副委員長
+</SELECT>
+<!-- End FORM_SPEAKER3 -->
+
+								</td>
+							</tr>
+
+							<tr valign="middle">
+								<td nowrap><img src="/takasago/image/arrow.gif" width="9" height="9">会議録種類の指定</td>
+<td>
+<div align="left">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><!-- Begin FORM_TARGET -->
+<TR valign="top"><TD colspan="2">
+</TD></TR>
+<TR valign="top"><TD><input class=checkbox type="checkbox" name="alltarget" onClick="checkalltarget();setType();" >すべて</TD></TR>
+<TR valign="top"><TD width="50%">
+<input class=checkbox type=checkbox name="eTarget" value="1" checked onClick="javascript:document.search.alltarget.checked=0;setType();">
+定例会・臨時会<br>
+<input class=checkbox type=checkbox name="eTarget" value="2" onClick="javascript:document.search.alltarget.checked=0;setType();">
+総務常任委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="3" onClick="javascript:document.search.alltarget.checked=0;setType();">
+文教厚生常任委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="4" onClick="javascript:document.search.alltarget.checked=0;setType();">
+建設環境経済常任委員会<br>
+</TD>
+<TD width="50%">
+<input class=checkbox type=checkbox name="eTarget" value="5" onClick="javascript:document.search.alltarget.checked=0;setType();">
+議会運営委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="6" onClick="javascript:document.search.alltarget.checked=0;setType();">
+高砂市民病院経営改善対策特別委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="7" onClick="javascript:document.search.alltarget.checked=0;setType();">
+決算特別委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="8" onClick="javascript:document.search.alltarget.checked=0;setType();">
+行政課題等調査検討特別委員会<br>
+<input class=checkbox type=checkbox name="eTarget" value="9" onClick="javascript:document.search.alltarget.checked=0;setType();">
+合同委員会<br>
+</TD></TR>
+<tr><td>
+</tr></td>
+<!-- End FORM_TARGET -->
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+
+<img src="/takasago/image/bit.gif" width="730" height="10" alt=""><br>
+
+<a name="res"></a>
+<!-- Begin END_FORM -->
+<INPUT type="submit" name="AhitResult" value="検索" CLASS="sbutton">
+<INPUT type="button" value="リセット" onClick="javascript:document.location.href='Search2.exe?Code=h52lmgenyzsjmkcxck'" CLASS="rbutton">
+</FORM>
+<!-- End END_FORM -->
+   
+
+
+
+
+
+
+			<img src="/takasago/image/bit.gif" width="730" height="1" alt=""><br>    
+			</div>
+
+			<div class="content1_1"><img src="/takasago/image/bit.gif" width="20" height="1" alt=""></div>
+
+
+
+
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</td>
+		<td width="2" background="/takasago/image/rightbit.gif"><img src="/takasago/image/rightbit.gif" width="2" height="2"></td>
+	</tr>
+	<tr>
+		<td colspan="3"><img src="/takasago/image/bottom.gif" width="788" height="35"></td>
+	</tr>
+</table>
+
+
+
+</div>
+
+</center>
+
+
+
+</body>
+</html>
+
