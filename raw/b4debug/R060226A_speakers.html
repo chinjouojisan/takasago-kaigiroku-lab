@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<TITLE>会議録の閲覧と検索</TITLE>
+<script language="javaScript" src="/takasago/style2.js?"></script>
+<script language="javascript">
+<!--
+function goList(){
+	if( parent.opener!=null ){
+		parent.opener.top.location.href='/takasago/cgi-bin2/ResultFrame.exe?Code=h52lmgenyzsjmkcxck';
+		window.top.close();
+	}
+	else{
+		window.top.location.href='/takasago/cgi-bin2/ResultFrame.exe?Code=h52lmgenyzsjmkcxck';
+	}
+}
+function checkall(){
+  var chen = -1;
+	for (var i=0;i<document.download.elements.length;i++){
+	    var e = document.download.elements[i];
+	    if (e.name == 'downloadPos'){
+	      if( chen<0 ){
+	        e.checked = ! e.checked;
+	        chen = i;
+	      }
+	      else{
+	        e.checked = document.download.elements[chen].checked;
+	      }
+      }
+    }
+}
+function checkalltarget(){
+	for (var i=0;i<document.viewtree.elements.length;i++){
+	    var e = document.viewtree.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.viewtree.alltarget.checked;
+  }
+}
+var view=0;
+function viewTop(){
+  browserName = navigator.appName;
+  browserVer = parseInt(navigator.appVersion);
+  
+  if( browserName == "Microsoft Internet Explorer" ){
+  	n = navigator.appVersion.indexOf("MSIE",0);
+  	browserVer = parseInt(navigator.appVersion.substring(n+4));	
+  }
+  if( browserVer<5 ){
+		return;
+  }
+  var v;
+  if( view ){
+    v = 'none';
+    view = 0;
+    document.swbutton.src='/takasago/image/button34.gif';
+  }
+  else{
+    v = 'block';
+    view = 1;
+    document.swbutton.src='/takasago/image/button35.gif';
+  }
+  for (var i=1;i<13;i++){
+	  setVisible(document.getElementById('span'+i),v);
+  }
+}
+function setVisible(obj,v){
+  if(obj){
+    obj.style.display = v;
+  }
+}
+function downloadcheck(){
+  var ret = 0;
+	for (var i=0;i<document.download.elements.length;i++){
+	    var e = document.download.elements[i];
+	    if (e.name == 'downloadPos' && e.checked )
+	      ret = 1;
+  }
+  if( ret ){
+    document.download.submit();
+  }
+  else{
+    alert("ダウンロード対象を選択してください。");
+  }
+}
+//-->
+</script>
+</HEAD>
+<BODY bgColor=#ffffff>
+<table width=100%><tr>
+<td nowrap></td>
+<td nowrap align=right><A href="/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck" target="_top"><IMG src="/takasago/image/button02.gif" alt="検索画面へ" border=0></a></td>
+</tr></table>
+<FORM NAME="download" ACTION="/takasago/cgi-bin2/GetPerson.exe" METHOD="POST" target="_top">
+<INPUT type="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT type="hidden" name="fileName" value="R060226A">
+<A href="javascript:downloadcheck()">
+<IMG src="/takasago/image/button06.gif" alt="ダウンロード" border=0></a>
+<A href="javascript:checkall()">
+<IMG src="/takasago/image/button22.gif" alt="すべてチェック" border=0></a>
+<br>
+<a href="javascript:viewTop()"><img name="swbutton" src="/takasago/image/button34.gif" alt="冒頭表示切替" border=0></a><br>
+<table>
+<tr><td nowrap>
+<IMG src="/takasago/image/point.gif" border=0></td>
+<td nowrap colspan=3><A href="/takasago/cgi-bin2/r_Speakers.exe?Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0&treedepth=%97%DF%98%61%20%36%94%4E">
+<font class="TEXT5">令和 6年</font></a></td></tr>
+<tr><td></td><td nowrap>
+<IMG src="/takasago/image/point2.gif" border=0></td>
+<td nowrap colspan=2><A href="/takasago/cgi-bin2/r_Speakers.exe?Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0&treedepth=%97%DF%98%61%20%36%94%4E%20%97%DF%98%61%20%36%94%4E%20%33%8C%8E%92%E8%97%E1%89%EF%20">
+<font class="TEXT5"> 3月定例会</font></a><tr><td colspan=2></td><td nowrap>
+<IMG src="/takasago/image/point2.gif" border=0></td>
+<td nowrap><A href="/takasago/cgi-bin2/r_Speakers.exe?h52lmgenyzsjmkcxck/R060226A/0/0//10/1/1023:0/1135/1//0/0/0">
+<font class="TEXT5">（第 1日 2月26日）</font></a><br></td></tr>
+</table>
+<table>
+<tr>
+<td></td>
+<td><input type="checkbox" name="downloadPos" value="172" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R060226A/1/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.1</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/172/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議事日程<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr>
+<td nowrap><font class="TEXT5">No.1</font></td><td><input type="checkbox" name="downloadPos" value="6778" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R060226A/4/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.4</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/6778/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span1" style="color:#808080;display:none;">　ただいまから３月定例市議会を開会いたします。
+　直ちに日程</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.2</font></td><td><input type="checkbox" name="downloadPos" value="7292" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/7292/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span2" style="color:#808080;display:none;">　ご異議なしと認めます。
+　したがって、会期は１７日間と決定</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.3</font></td><td><input type="checkbox" name="downloadPos" value="7846" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/7846/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">市長（都倉達殊君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span3" style="color:#808080;display:none;">　皆さんおはようございます。令和６年３月定例会の開会に当たり</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.4</font></td><td><input type="checkbox" name="downloadPos" value="32342" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R060226A/14/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.14</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/32342/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span4" style="color:#808080;display:none;">　以上で、市長の提案理由の説明は終わりました。
+　日程第４、</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.5</font></td><td><input type="checkbox" name="downloadPos" value="32554" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/32554/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">市民部長（川平貴儀君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span5" style="color:#808080;display:none;">　３月定例会議案、条例議案１、令和５年度補正予算関係１ページ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.6</font></td><td><input type="checkbox" name="downloadPos" value="34345" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R060226A/15/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.15</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/34345/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span6" style="color:#808080;display:none;">　説明は終わりました。
+　本案に対し、ご質疑ありませんか。
+　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.7</font></td><td><input type="checkbox" name="downloadPos" value="34477" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/34477/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span7" style="color:#808080;display:none;">　ご質疑ありませんので、本案の質疑を終わります。
+　それでは</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.8</font></td><td><input type="checkbox" name="downloadPos" value="34825" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/34825/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span8" style="color:#808080;display:none;">　再開いたします。
+　休憩前に引き続き議事を進めます。
+　日程</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.9</font></td><td><input type="checkbox" name="downloadPos" value="35116" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R060226A/16/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.16</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/35116/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">山田光昭君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span9" style="color:#808080;display:none;">　文教厚生常任委員会に付託されました高議第１号、高砂市手数料</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.10</font></td><td><input type="checkbox" name="downloadPos" value="35318" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/35318/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span10" style="color:#808080;display:none;">　委員長報告は終わりました。
+　ご質疑並びにご意見ありません</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.11</font></td><td><input type="checkbox" name="downloadPos" value="35456" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/35456/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span11" style="color:#808080;display:none;">　ご質疑並びにご意見なしと認め、質疑を打ち切り採決いたします</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.12</font></td><td><input type="checkbox" name="downloadPos" value="35654" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/35654/0//10/1/1135//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（藤森誠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span12" style="color:#808080;display:none;">　ご異議なしと認めます。
+　したがって、本案、委員長報告どお</div>
+</td></tr>
+</TABLE>
+<A href="javascript:downloadcheck()">
+<IMG src="/takasago/image/button06.gif" alt="ダウンロード" border=0></a><br><br>
+</FORM>
+<script language="javascript">
+<!--
+parent.TEXTW.location.href='/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R060226A/0/0//10/1/1135//0/0/0';
+//-->
+</script>
+<A HREF="/takasago/sapphire.html" target="_top"><IMG src="/takasago/image/button21.gif" alt="ホームへ戻る" border=0></a><br>
+<A HREF="javascript:history.back()" target="_top"><IMG src="/takasago/image/button31.gif" alt="前へ戻る" border=0></a><br>
+</BODY>
+</HTML>
