@@ -1,0 +1,1368 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<TITLE>会議録の閲覧と検索</TITLE>
+<script language="javaScript" src="/takasago/style2.js?"></script>
+<script language="javascript">
+<!--
+function goList(){
+	if( parent.opener!=null ){
+		parent.opener.top.location.href='/takasago/cgi-bin2/ResultFrame.exe?Code=h52lmgenyzsjmkcxck';
+		window.top.close();
+	}
+	else{
+		window.top.location.href='/takasago/cgi-bin2/ResultFrame.exe?Code=h52lmgenyzsjmkcxck';
+	}
+}
+function checkall(){
+  var chen = -1;
+	for (var i=0;i<document.download.elements.length;i++){
+	    var e = document.download.elements[i];
+	    if (e.name == 'downloadPos'){
+	      if( chen<0 ){
+	        e.checked = ! e.checked;
+	        chen = i;
+	      }
+	      else{
+	        e.checked = document.download.elements[chen].checked;
+	      }
+      }
+    }
+}
+function checkalltarget(){
+	for (var i=0;i<document.viewtree.elements.length;i++){
+	    var e = document.viewtree.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.viewtree.alltarget.checked;
+  }
+}
+var view=0;
+function viewTop(){
+  browserName = navigator.appName;
+  browserVer = parseInt(navigator.appVersion);
+  
+  if( browserName == "Microsoft Internet Explorer" ){
+  	n = navigator.appVersion.indexOf("MSIE",0);
+  	browserVer = parseInt(navigator.appVersion.substring(n+4));	
+  }
+  if( browserVer<5 ){
+		return;
+  }
+  var v;
+  if( view ){
+    v = 'none';
+    view = 0;
+    document.swbutton.src='/takasago/image/button34.gif';
+  }
+  else{
+    v = 'block';
+    view = 1;
+    document.swbutton.src='/takasago/image/button35.gif';
+  }
+  for (var i=1;i<96;i++){
+	  setVisible(document.getElementById('span'+i),v);
+  }
+}
+function setVisible(obj,v){
+  if(obj){
+    obj.style.display = v;
+  }
+}
+function downloadcheck(){
+  var ret = 0;
+	for (var i=0;i<document.download.elements.length;i++){
+	    var e = document.download.elements[i];
+	    if (e.name == 'downloadPos' && e.checked )
+	      ret = 1;
+  }
+  if( ret ){
+    document.download.submit();
+  }
+  else{
+    alert("ダウンロード対象を選択してください。");
+  }
+}
+//-->
+</script>
+</HEAD>
+<BODY bgColor=#ffffff>
+<table width=100%><tr>
+<td nowrap></td>
+<td nowrap align=right><A href="/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck" target="_top"><IMG src="/takasago/image/button02.gif" alt="検索画面へ" border=0></a></td>
+</tr></table>
+<FORM NAME="download" ACTION="/takasago/cgi-bin2/GetPerson.exe" METHOD="POST" target="_top">
+<INPUT type="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT type="hidden" name="fileName" value="R070616A">
+<A href="javascript:downloadcheck()">
+<IMG src="/takasago/image/button06.gif" alt="ダウンロード" border=0></a>
+<A href="javascript:checkall()">
+<IMG src="/takasago/image/button22.gif" alt="すべてチェック" border=0></a>
+<br>
+<a href="javascript:viewTop()"><img name="swbutton" src="/takasago/image/button34.gif" alt="冒頭表示切替" border=0></a><br>
+<table>
+<tr><td nowrap>
+<IMG src="/takasago/image/point.gif" border=0></td>
+<td nowrap colspan=3><A href="/takasago/cgi-bin2/r_Speakers.exe?Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0&treedepth=%97%DF%98%61%20%37%94%4E">
+<font class="TEXT5">令和 7年</font></a></td></tr>
+<tr><td></td><td nowrap>
+<IMG src="/takasago/image/point2.gif" border=0></td>
+<td nowrap colspan=2><A href="/takasago/cgi-bin2/r_Speakers.exe?Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0&treedepth=%97%DF%98%61%20%37%94%4E%20%97%DF%98%61%20%37%94%4E%20%36%8C%8E%92%E8%97%E1%89%EF%20">
+<font class="TEXT5"> 6月定例会</font></a><tr><td colspan=2></td><td nowrap>
+<IMG src="/takasago/image/point2.gif" border=0></td>
+<td nowrap><A href="/takasago/cgi-bin2/r_Speakers.exe?h52lmgenyzsjmkcxck/R070616A/0/0//10/1/1023:0/1359/1//0/0/0">
+<font class="TEXT5">（第 3日 6月16日）</font></a><br></td></tr>
+</table>
+<table>
+<tr>
+<td></td>
+<td><input type="checkbox" name="downloadPos" value="174" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/131/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.131</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/174/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議事日程<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr>
+<td nowrap><font class="TEXT5">No.1</font></td><td><input type="checkbox" name="downloadPos" value="7436" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/135/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.135</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/7436/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span1" style="color:#808080;display:none;">　ただいまから６月定例市議会を再開いたします。
+　直ちに日程</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.2</font></td><td><input type="checkbox" name="downloadPos" value="8214" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/8214/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">入江啓太君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span2" style="color:#808080;display:none;">　教育振興事業の体力運動能力向上事業について質問させてもらい</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.3</font></td><td><input type="checkbox" name="downloadPos" value="8746" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/8746/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span3" style="color:#808080;display:none;">　教育長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.4</font></td><td><input type="checkbox" name="downloadPos" value="8780" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/8780/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育長（玉野有彦君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span4" style="color:#808080;display:none;">　サポーターの導入・派遣についてでございますが、体力アップサ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.5</font></td><td><input type="checkbox" name="downloadPos" value="9412" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/136/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.136</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/9412/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span5" style="color:#808080;display:none;">　３番、入江議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.6</font></td><td><input type="checkbox" name="downloadPos" value="9454" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/9454/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">入江啓太君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span6" style="color:#808080;display:none;">　ありがとうございます。私ごとなんですけども、私の息子が小学</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.7</font></td><td><input type="checkbox" name="downloadPos" value="10620" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/10620/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span7" style="color:#808080;display:none;">　教育長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.8</font></td><td><input type="checkbox" name="downloadPos" value="10654" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/10654/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育長（玉野有彦君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span8" style="color:#808080;display:none;">　先ほど入江議員がおっしゃられた器械運動につきましては、補助</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.9</font></td><td><input type="checkbox" name="downloadPos" value="11534" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/11534/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span9" style="color:#808080;display:none;">　他にありませんか。
+　８番、芝本議員。
+<PAGE="137"></div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.10</font></td><td><input type="checkbox" name="downloadPos" value="11610" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/137/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.137</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/11610/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">芝本鎮彰君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span10" style="color:#808080;display:none;">　私も体力運動能力向上事業についてお伺いさせていただきます。</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.11</font></td><td><input type="checkbox" name="downloadPos" value="12714" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/12714/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span11" style="color:#808080;display:none;">　教育長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.12</font></td><td><input type="checkbox" name="downloadPos" value="12748" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/12748/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育長（玉野有彦君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span12" style="color:#808080;display:none;">　全国体力・運動能力、運動習慣等調査の報告書に基づいてお話し</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.13</font></td><td><input type="checkbox" name="downloadPos" value="14246" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/138/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.138</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/14246/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span13" style="color:#808080;display:none;">　８番、芝本議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.14</font></td><td><input type="checkbox" name="downloadPos" value="14288" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/14288/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">芝本鎮彰君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span14" style="color:#808080;display:none;">　そういった形で、教育長がおっしゃられたように、今現在、子ど</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.15</font></td><td><input type="checkbox" name="downloadPos" value="15568" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/15568/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span15" style="color:#808080;display:none;">　教育長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.16</font></td><td><input type="checkbox" name="downloadPos" value="15602" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/15602/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育長（玉野有彦君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span16" style="color:#808080;display:none;">　本事業の目的の中には、市内の教職員への波及といいますか、展</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.17</font></td><td><input type="checkbox" name="downloadPos" value="16182" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/16182/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span17" style="color:#808080;display:none;">　他にありませんか。
+　５番、坂本議員。
+<PAGE="139"></div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.18</font></td><td><input type="checkbox" name="downloadPos" value="16258" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/139/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.139</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/16258/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">坂本まりさん<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span18" style="color:#808080;display:none;">　私も体力・運動能力向上事業についてお伺いしたいと思うんです</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.19</font></td><td><input type="checkbox" name="downloadPos" value="18708" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/18708/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span19" style="color:#808080;display:none;">　教育長。
+<PAGE="140"></div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.20</font></td><td><input type="checkbox" name="downloadPos" value="18754" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/140/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.140</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/18754/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育長（玉野有彦君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span20" style="color:#808080;display:none;">　高砂市の状況につきまして、再度お話しさせていただくんですが</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.21</font></td><td><input type="checkbox" name="downloadPos" value="20382" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/20382/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span21" style="color:#808080;display:none;">　５番、坂本議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.22</font></td><td><input type="checkbox" name="downloadPos" value="20424" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/20424/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">坂本まりさん<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span22" style="color:#808080;display:none;">　教育長、すみません、私は体力であったり持久力といったところ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.23</font></td><td><input type="checkbox" name="downloadPos" value="21524" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/141/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.141</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/21524/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span23" style="color:#808080;display:none;">　教育長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.24</font></td><td><input type="checkbox" name="downloadPos" value="21558" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/21558/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育長（玉野有彦君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span24" style="color:#808080;display:none;">　答弁がちょっと違うことを話してしまいまして、申し訳ございま</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.25</font></td><td><input type="checkbox" name="downloadPos" value="22456" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/22456/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span25" style="color:#808080;display:none;">　他にありませんか。
+　１４番、春増議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.26</font></td><td><input type="checkbox" name="downloadPos" value="22522" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/22522/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">春増勝利君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span26" style="color:#808080;display:none;">　先ほど、教育長のほうから、遊びの中でというお話があったんで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.27</font></td><td><input type="checkbox" name="downloadPos" value="24010" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/142/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.142</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/24010/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span27" style="color:#808080;display:none;">　教育長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.28</font></td><td><input type="checkbox" name="downloadPos" value="24044" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/24044/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育長（玉野有彦君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span28" style="color:#808080;display:none;">　伊保南小学校を中心にしながら、子どもたちの体力・運動能力を</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.29</font></td><td><input type="checkbox" name="downloadPos" value="24750" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/24750/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span29" style="color:#808080;display:none;">　１４番、春増議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.30</font></td><td><input type="checkbox" name="downloadPos" value="24794" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/24794/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">春増勝利君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span30" style="color:#808080;display:none;">　体育に限らず、ほかの教科や教育活動にしても、これまでは各学</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.31</font></td><td><input type="checkbox" name="downloadPos" value="25560" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/25560/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span31" style="color:#808080;display:none;">　教育長。
+<PAGE="143"></div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.32</font></td><td><input type="checkbox" name="downloadPos" value="25606" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/143/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.143</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/25606/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育長（玉野有彦君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span32" style="color:#808080;display:none;">　本当に機械が発達しております。教員の働き方、子どもたちの活</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.33</font></td><td><input type="checkbox" name="downloadPos" value="25988" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/25988/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span33" style="color:#808080;display:none;">　他にありませんか。
+　１９番、北野議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.34</font></td><td><input type="checkbox" name="downloadPos" value="26054" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/26054/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">北野誠一郎君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span34" style="color:#808080;display:none;">　私は教育費の中で、自然学校推進事業について伺います。
+　今</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.35</font></td><td><input type="checkbox" name="downloadPos" value="26914" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/26914/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span35" style="color:#808080;display:none;">　教育部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.36</font></td><td><input type="checkbox" name="downloadPos" value="26950" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/26950/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育委員会教育部長（木田匠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span36" style="color:#808080;display:none;">　まず、この委託料の算定でございますけれども、先ほど議員がお</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.37</font></td><td><input type="checkbox" name="downloadPos" value="27722" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/27722/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span37" style="color:#808080;display:none;">　１９番、北野議員。
+<PAGE="144"></div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.38</font></td><td><input type="checkbox" name="downloadPos" value="27778" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/144/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.144</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/27778/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">北野誠一郎君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span38" style="color:#808080;display:none;">　自然学校というのが、もう３０年以上継続して実施されています</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.39</font></td><td><input type="checkbox" name="downloadPos" value="29164" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/29164/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span39" style="color:#808080;display:none;">　教育部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.40</font></td><td><input type="checkbox" name="downloadPos" value="29200" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/29200/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育委員会教育部長（木田匠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span40" style="color:#808080;display:none;">　まず、この県の補助金ですけれども、議員がおっしゃられた定額</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.41</font></td><td><input type="checkbox" name="downloadPos" value="29846" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/29846/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span41" style="color:#808080;display:none;">　１９番、北野議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.42</font></td><td><input type="checkbox" name="downloadPos" value="29890" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/29890/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">北野誠一郎君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span42" style="color:#808080;display:none;">　たしか、議長も出席される、県知事が出席されて、東播地域の懇</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.43</font></td><td><input type="checkbox" name="downloadPos" value="30072" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/145/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.145</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/30072/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span43" style="color:#808080;display:none;">　今、私はこの１年は出席しておりません。兵庫県の諸事情で。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.44</font></td><td><input type="checkbox" name="downloadPos" value="30154" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/30154/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">北野誠一郎君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span44" style="color:#808080;display:none;">　そうですか。そういう場で、それぞれ、こういう形でのイレギュ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.45</font></td><td><input type="checkbox" name="downloadPos" value="31110" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/31110/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span45" style="color:#808080;display:none;">　市長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.46</font></td><td><input type="checkbox" name="downloadPos" value="31142" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/31142/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">市長（都倉達殊君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span46" style="color:#808080;display:none;">　今、議員がおっしゃられましたように、東播磨地域で、兵庫県知</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.47</font></td><td><input type="checkbox" name="downloadPos" value="31780" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/31780/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span47" style="color:#808080;display:none;">　他にありませんか。
+　　　　　　　　　　　　　　　　（「な</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.48</font></td><td><input type="checkbox" name="downloadPos" value="31878" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/31878/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span48" style="color:#808080;display:none;">　ご質疑ありませんので、歳出の質疑を終わり、引き続きまして、</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.49</font></td><td><input type="checkbox" name="downloadPos" value="32144" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/146/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.146</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/32144/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">横田英樹君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span49" style="color:#808080;display:none;">　参考資料の３６ページに基づいて質疑をさせていただきます。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.50</font></td><td><input type="checkbox" name="downloadPos" value="32614" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/32614/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span50" style="color:#808080;display:none;">　財務部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.51</font></td><td><input type="checkbox" name="downloadPos" value="32650" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/32650/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">財務部長（月嶹真君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span51" style="color:#808080;display:none;">　定例会参考資料の３６ページのほうに、今回、工業公園土地売払</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.52</font></td><td><input type="checkbox" name="downloadPos" value="33874" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/33874/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span52" style="color:#808080;display:none;">　１７番、横田議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.53</font></td><td><input type="checkbox" name="downloadPos" value="33918" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/33918/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">横田英樹君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span53" style="color:#808080;display:none;">　理解しました。どちらも、減債基金も、どちらかというと特目基</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.54</font></td><td><input type="checkbox" name="downloadPos" value="34852" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/147/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.147</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/34852/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span54" style="color:#808080;display:none;">　財務部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.55</font></td><td><input type="checkbox" name="downloadPos" value="34888" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/34888/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">財務部長（月嶹真君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span55" style="color:#808080;display:none;">　今、ご指摘のあった点でございますけれども、繰上げ償還という</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.56</font></td><td><input type="checkbox" name="downloadPos" value="36888" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/148/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.148</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/36888/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span56" style="color:#808080;display:none;">　他にありませんか。
+　１８番、鈴木議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.57</font></td><td><input type="checkbox" name="downloadPos" value="36954" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/36954/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">鈴木利信君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span57" style="color:#808080;display:none;">　コミュニティ助成事業のことでお聞かせいただきたいと思います</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.58</font></td><td><input type="checkbox" name="downloadPos" value="37950" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/37950/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span58" style="color:#808080;display:none;">　市民部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.59</font></td><td><input type="checkbox" name="downloadPos" value="37986" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/37986/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">市民部長（田川真紀さん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span59" style="color:#808080;display:none;">　令和７年度の採択に向けての募集を昨年度、行ったわけですが、</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.60</font></td><td><input type="checkbox" name="downloadPos" value="38132" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/38132/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span60" style="color:#808080;display:none;">　１８番、鈴木議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.61</font></td><td><input type="checkbox" name="downloadPos" value="38176" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/38176/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">鈴木利信君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span61" style="color:#808080;display:none;">　七つあったけども、結局、一つも当たらなかったというのが現状</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.62</font></td><td><input type="checkbox" name="downloadPos" value="38954" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/149/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.149</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/38954/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span62" style="color:#808080;display:none;">　市民部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.63</font></td><td><input type="checkbox" name="downloadPos" value="38990" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/38990/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">市民部長（田川真紀さん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span63" style="color:#808080;display:none;">　今回、不採択、初めて高砂市では、平成２４年から毎年、１団体</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.64</font></td><td><input type="checkbox" name="downloadPos" value="40270" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/40270/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span64" style="color:#808080;display:none;">　他にありませんか。
+　１６番、大西議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.65</font></td><td><input type="checkbox" name="downloadPos" value="40336" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/40336/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">大西由紀さん<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span65" style="color:#808080;display:none;">　私のほうからは、１４款の国庫支出金についてお伺いします。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.66</font></td><td><input type="checkbox" name="downloadPos" value="41024" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/41024/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span66" style="color:#808080;display:none;">　政策部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.67</font></td><td><input type="checkbox" name="downloadPos" value="41060" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/41060/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">政策部長（水田ことみさん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span67" style="color:#808080;display:none;">　追加参考資料の５ページをお願いいたします。
+　ご質問のあり</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.68</font></td><td><input type="checkbox" name="downloadPos" value="42012" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/150/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.150</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/42012/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span68" style="color:#808080;display:none;">　１６番、大西議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.69</font></td><td><input type="checkbox" name="downloadPos" value="42056" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/42056/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">大西由紀さん<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span69" style="color:#808080;display:none;">　あくまでも、本当に市民の生活に根差した交付金ではないと私は</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.70</font></td><td><input type="checkbox" name="downloadPos" value="43000" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/43000/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span70" style="color:#808080;display:none;">　政策部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.71</font></td><td><input type="checkbox" name="downloadPos" value="43036" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/43036/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">政策部長（水田ことみさん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span71" style="color:#808080;display:none;">　今回はデジタル実装型ということで申請いたしましたが、過去に</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.72</font></td><td><input type="checkbox" name="downloadPos" value="43686" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/151/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.151</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/43686/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span72" style="color:#808080;display:none;">　１６番、大西議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.73</font></td><td><input type="checkbox" name="downloadPos" value="43730" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/43730/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">大西由紀さん<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span73" style="color:#808080;display:none;">　お答えいただきました。いずれにしましても、おくやみコーナー</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.74</font></td><td><input type="checkbox" name="downloadPos" value="44958" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/44958/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span74" style="color:#808080;display:none;">　政策部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.75</font></td><td><input type="checkbox" name="downloadPos" value="44994" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/44994/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">政策部長（水田ことみさん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span75" style="color:#808080;display:none;">　昨今の物価高騰につきましては、市民の皆様でお困りの方に対し</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.76</font></td><td><input type="checkbox" name="downloadPos" value="45312" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/45312/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span76" style="color:#808080;display:none;">　他にありませんか。
+　１９番、北野議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.77</font></td><td><input type="checkbox" name="downloadPos" value="45378" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/45378/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">北野誠一郎君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span77" style="color:#808080;display:none;">　歳入、市債の教育債、小学校施設整備事業債２億５，０１０万円</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.78</font></td><td><input type="checkbox" name="downloadPos" value="45752" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/152/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.152</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/45752/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span78" style="color:#808080;display:none;">　教育部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.79</font></td><td><input type="checkbox" name="downloadPos" value="45788" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/45788/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">教育委員会教育部長（木田匠君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span79" style="color:#808080;display:none;">　この市債の償還期間につきましては、減価償却資産の耐用年数等</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.80</font></td><td><input type="checkbox" name="downloadPos" value="46086" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/46086/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span80" style="color:#808080;display:none;">　１９番、北野議員。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.81</font></td><td><input type="checkbox" name="downloadPos" value="46130" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/46130/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">北野誠一郎君<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span81" style="color:#808080;display:none;">　これは１３年なんですけど、エアコンってそんなに本当にもつの</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.82</font></td><td><input type="checkbox" name="downloadPos" value="46498" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/46498/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span82" style="color:#808080;display:none;">　財務部長。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.83</font></td><td><input type="checkbox" name="downloadPos" value="46534" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/46534/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">財務部長（月嶹真君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span83" style="color:#808080;display:none;">　今、ご質問のございました耐用年数と償還期間の関係性の部分で</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.84</font></td><td><input type="checkbox" name="downloadPos" value="47212" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/47212/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span84" style="color:#808080;display:none;">　他にありませんか。
+　　　　　　　　　　　　　　　　（「な</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.85</font></td><td><input type="checkbox" name="downloadPos" value="47310" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/47310/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span85" style="color:#808080;display:none;">　ご質疑ありませんので、歳入の質疑を終わり、次に進みます。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.86</font></td><td><input type="checkbox" name="downloadPos" value="47556" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/153/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.153</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/47556/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span86" style="color:#808080;display:none;">　ご質疑ありませんので、本案の質疑を終わり、次に進みます。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.87</font></td><td><input type="checkbox" name="downloadPos" value="47798" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/47798/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span87" style="color:#808080;display:none;">　ご質疑ありませんので、高予第１８号、第２回令和７年度高砂市</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.88</font></td><td><input type="checkbox" name="downloadPos" value="48118" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/48118/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span88" style="color:#808080;display:none;">　再開いたします。
+　休憩前に引き続き議事を進めます。
+　日程</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.89</font></td><td><input type="checkbox" name="downloadPos" value="48338" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/48338/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">市民部長（田川真紀さん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span89" style="color:#808080;display:none;">　議案書２０９ページをお願いいたします。
+　高予第１９号、第</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.90</font></td><td><input type="checkbox" name="downloadPos" value="49436" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/154/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.154</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/49436/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span90" style="color:#808080;display:none;">　説明は終わりました。
+　本案に対し、ご質疑ありませんか。
+　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.91</font></td><td><input type="checkbox" name="downloadPos" value="49572" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/49572/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span91" style="color:#808080;display:none;">　ご質疑ありませんので、本案の質疑を終わり、次に進みます。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.92</font></td><td><input type="checkbox" name="downloadPos" value="49792" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/49792/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">市民部長（田川真紀さん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span92" style="color:#808080;display:none;">　議案書２２５ページをお願いいたします。
+　高予第２０号、第</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.93</font></td><td><input type="checkbox" name="downloadPos" value="50820" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/50820/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span93" style="color:#808080;display:none;">　説明は終わりました。
+　本案に対し、ご質疑ありませんか。
+　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.94</font></td><td><input type="checkbox" name="downloadPos" value="50968" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R070616A/155/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.155</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/50968/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span94" style="color:#808080;display:none;">　ご質疑ありませんので、本案の質疑を終わります。
+　それでは</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.95</font></td><td><input type="checkbox" name="downloadPos" value="51502" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/51502/0//10/1/1359//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（迫川高行君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span95" style="color:#808080;display:none;">　ご異議なしと認めます。
+　したがって、明１７日は休会とする</div>
+</td></tr>
+</TABLE>
+<A href="javascript:downloadcheck()">
+<IMG src="/takasago/image/button06.gif" alt="ダウンロード" border=0></a><br><br>
+</FORM>
+<script language="javascript">
+<!--
+parent.TEXTW.location.href='/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R070616A/0/0//10/1/1359//0/0/0';
+//-->
+</script>
+<A HREF="/takasago/sapphire.html" target="_top"><IMG src="/takasago/image/button21.gif" alt="ホームへ戻る" border=0></a><br>
+<A HREF="javascript:history.back()" target="_top"><IMG src="/takasago/image/button31.gif" alt="前へ戻る" border=0></a><br>
+</BODY>
+</HTML>
