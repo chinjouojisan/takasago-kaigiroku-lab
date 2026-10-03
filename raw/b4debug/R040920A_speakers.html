@@ -1,0 +1,622 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<TITLE>会議録の閲覧と検索</TITLE>
+<script language="javaScript" src="/takasago/style2.js?"></script>
+<script language="javascript">
+<!--
+function goList(){
+	if( parent.opener!=null ){
+		parent.opener.top.location.href='/takasago/cgi-bin2/ResultFrame.exe?Code=h52lmgenyzsjmkcxck';
+		window.top.close();
+	}
+	else{
+		window.top.location.href='/takasago/cgi-bin2/ResultFrame.exe?Code=h52lmgenyzsjmkcxck';
+	}
+}
+function checkall(){
+  var chen = -1;
+	for (var i=0;i<document.download.elements.length;i++){
+	    var e = document.download.elements[i];
+	    if (e.name == 'downloadPos'){
+	      if( chen<0 ){
+	        e.checked = ! e.checked;
+	        chen = i;
+	      }
+	      else{
+	        e.checked = document.download.elements[chen].checked;
+	      }
+      }
+    }
+}
+function checkalltarget(){
+	for (var i=0;i<document.viewtree.elements.length;i++){
+	    var e = document.viewtree.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.viewtree.alltarget.checked;
+  }
+}
+var view=0;
+function viewTop(){
+  browserName = navigator.appName;
+  browserVer = parseInt(navigator.appVersion);
+  
+  if( browserName == "Microsoft Internet Explorer" ){
+  	n = navigator.appVersion.indexOf("MSIE",0);
+  	browserVer = parseInt(navigator.appVersion.substring(n+4));	
+  }
+  if( browserVer<5 ){
+		return;
+  }
+  var v;
+  if( view ){
+    v = 'none';
+    view = 0;
+    document.swbutton.src='/takasago/image/button34.gif';
+  }
+  else{
+    v = 'block';
+    view = 1;
+    document.swbutton.src='/takasago/image/button35.gif';
+  }
+  for (var i=1;i<37;i++){
+	  setVisible(document.getElementById('span'+i),v);
+  }
+}
+function setVisible(obj,v){
+  if(obj){
+    obj.style.display = v;
+  }
+}
+function downloadcheck(){
+  var ret = 0;
+	for (var i=0;i<document.download.elements.length;i++){
+	    var e = document.download.elements[i];
+	    if (e.name == 'downloadPos' && e.checked )
+	      ret = 1;
+  }
+  if( ret ){
+    document.download.submit();
+  }
+  else{
+    alert("ダウンロード対象を選択してください。");
+  }
+}
+//-->
+</script>
+</HEAD>
+<BODY bgColor=#ffffff>
+<table width=100%><tr>
+<td nowrap></td>
+<td nowrap align=right><A href="/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck" target="_top"><IMG src="/takasago/image/button02.gif" alt="検索画面へ" border=0></a></td>
+</tr></table>
+<FORM NAME="download" ACTION="/takasago/cgi-bin2/GetPerson.exe" METHOD="POST" target="_top">
+<INPUT type="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT type="hidden" name="fileName" value="R040920A">
+<A href="javascript:downloadcheck()">
+<IMG src="/takasago/image/button06.gif" alt="ダウンロード" border=0></a>
+<A href="javascript:checkall()">
+<IMG src="/takasago/image/button22.gif" alt="すべてチェック" border=0></a>
+<br>
+<a href="javascript:viewTop()"><img name="swbutton" src="/takasago/image/button34.gif" alt="冒頭表示切替" border=0></a><br>
+<table>
+<tr><td nowrap>
+<IMG src="/takasago/image/point.gif" border=0></td>
+<td nowrap colspan=3><A href="/takasago/cgi-bin2/r_Speakers.exe?Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0&treedepth=%97%DF%98%61%20%34%94%4E">
+<font class="TEXT5">令和 4年</font></a></td></tr>
+<tr><td></td><td nowrap>
+<IMG src="/takasago/image/point2.gif" border=0></td>
+<td nowrap colspan=2><A href="/takasago/cgi-bin2/r_Speakers.exe?Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0&treedepth=%97%DF%98%61%20%34%94%4E%20%97%DF%98%61%20%34%94%4E%20%39%8C%8E%92%E8%97%E1%89%EF%20">
+<font class="TEXT5"> 9月定例会</font></a><tr><td colspan=2></td><td nowrap>
+<IMG src="/takasago/image/point2.gif" border=0></td>
+<td nowrap><A href="/takasago/cgi-bin2/r_Speakers.exe?h52lmgenyzsjmkcxck/R040920A/0/0//10/1/1023:0/943/1//0/0/0">
+<font class="TEXT5">（第 1日 9月20日）</font></a><br></td></tr>
+</table>
+<table>
+<tr>
+<td></td>
+<td><input type="checkbox" name="downloadPos" value="172" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R040920A/1/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.1</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/172/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議事日程<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr>
+<td nowrap><font class="TEXT5">No.1</font></td><td><input type="checkbox" name="downloadPos" value="8606" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R040920A/5/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.5</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/8606/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span1" style="color:#808080;display:none;">　ただいまから９月定例市議会を開会いたします。
+　直ちに日程</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.2</font></td><td><input type="checkbox" name="downloadPos" value="9220" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/9220/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span2" style="color:#808080;display:none;">　ご異議なしと認めます。
+　したがって、会期は１６日間と決定</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.3</font></td><td><input type="checkbox" name="downloadPos" value="9692" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/9692/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span3" style="color:#808080;display:none;">　再開いたします。
+　休憩前に引き続き議事を進めます。
+　日程</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.4</font></td><td><input type="checkbox" name="downloadPos" value="10004" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/10004/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span4" style="color:#808080;display:none;">　ご異議なしと認め、直ちに選挙を行います。
+　議場の閉鎖を命</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.5</font></td><td><input type="checkbox" name="downloadPos" value="10150" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/10150/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span5" style="color:#808080;display:none;">　ただいまの出席議員数は１９名です。
+　投票用紙を配付させま</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.6</font></td><td><input type="checkbox" name="downloadPos" value="10304" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R040920A/6/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.6</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/10304/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span6" style="color:#808080;display:none;">　投票用紙の配付漏れはありませんか。
+　　　　　　　　　　　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.7</font></td><td><input type="checkbox" name="downloadPos" value="10422" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/10422/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span7" style="color:#808080;display:none;">　配付漏れなしと認めます。
+　投票箱を改めさせます。
+　　　　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.8</font></td><td><input type="checkbox" name="downloadPos" value="10552" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/10552/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span8" style="color:#808080;display:none;">　異常なしと認めます。
+　ご記入願ったら、順次投票願います。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.9</font></td><td><input type="checkbox" name="downloadPos" value="10688" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/10688/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span9" style="color:#808080;display:none;">　投票漏れはありませんか。
+　　　　　　　　　　　　　　　　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.10</font></td><td><input type="checkbox" name="downloadPos" value="10796" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/10796/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span10" style="color:#808080;display:none;">　投票漏れなしと認めます。
+　投票を終了いたします。
+　議場の</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.11</font></td><td><input type="checkbox" name="downloadPos" value="10954" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/10954/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span11" style="color:#808080;display:none;">　では直ちに開票を行います。
+　開票立会人に１番、石﨑　徹議</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.12</font></td><td><input type="checkbox" name="downloadPos" value="11132" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/11132/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">臨時議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span12" style="color:#808080;display:none;">　選挙の結果を報告いたします。
+　投票総数１９票、有効投票１</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.13</font></td><td><input type="checkbox" name="downloadPos" value="11488" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/11488/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">新議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span13" style="color:#808080;display:none;">　先ほど所信表明をさせていただきまして、大勢の皆さんに投票を</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.14</font></td><td><input type="checkbox" name="downloadPos" value="12472" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R040920A/7/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.7</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/12472/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span14" style="color:#808080;display:none;">　再開いたします。
+　休憩前に引き続き議事を進めます。
+　日程</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.15</font></td><td><input type="checkbox" name="downloadPos" value="12784" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/12784/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span15" style="color:#808080;display:none;">　ご異議なしと認め、直ちに選挙を行います。
+　議場の閉鎖を命</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.16</font></td><td><input type="checkbox" name="downloadPos" value="12926" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/12926/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span16" style="color:#808080;display:none;">　ただいまの出席議員数は１９名です。
+　投票用紙を配付させま</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.17</font></td><td><input type="checkbox" name="downloadPos" value="13066" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/13066/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span17" style="color:#808080;display:none;">　投票用紙の配付漏れはありませんか。
+　　　　　　　　　　　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.18</font></td><td><input type="checkbox" name="downloadPos" value="13180" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/13180/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span18" style="color:#808080;display:none;">　配付漏れなしと認めます。
+　投票箱を改めさせます。
+　　　　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.19</font></td><td><input type="checkbox" name="downloadPos" value="13316" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R040920A/8/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.8</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/13316/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span19" style="color:#808080;display:none;">　異常なしと認めます。
+　ご記入願ったら、順次投票願います。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.20</font></td><td><input type="checkbox" name="downloadPos" value="13448" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/13448/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span20" style="color:#808080;display:none;">　投票漏れはありませんか。
+　　　　　　　　　　　　　　　　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.21</font></td><td><input type="checkbox" name="downloadPos" value="13552" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/13552/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span21" style="color:#808080;display:none;">　投票漏れなしと認めます。
+　投票を終了いたします。
+　議場の</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.22</font></td><td><input type="checkbox" name="downloadPos" value="13706" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/13706/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span22" style="color:#808080;display:none;">　では、直ちに開票を行います。
+　開票立会人に３番、入江啓太</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.23</font></td><td><input type="checkbox" name="downloadPos" value="13884" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/13884/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span23" style="color:#808080;display:none;">　選挙結果を報告いたします。
+　投票総数１９票、有効投票１７</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.24</font></td><td><input type="checkbox" name="downloadPos" value="14264" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/14264/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">新副議長（鷹尾治久君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span24" style="color:#808080;display:none;">　失礼いたします。
+　先ほど副議長選挙で選んでいただきました</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.25</font></td><td><input type="checkbox" name="downloadPos" value="14526" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/14526/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span25" style="color:#808080;display:none;">　しばらく休憩いたします。
+　　　　　　　　　　　　　　（午</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.26</font></td><td><input type="checkbox" name="downloadPos" value="14758" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R040920A/9/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.9</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/14758/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span26" style="color:#808080;display:none;">　再開いたします。
+　休憩前に引き続き議事を進めます。
+　日程</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.27</font></td><td><input type="checkbox" name="downloadPos" value="15178" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/15178/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span27" style="color:#808080;display:none;">　ご異議なしと認めます。
+　それでは、各常任委員会委員を事務</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.28</font></td><td><input type="checkbox" name="downloadPos" value="15302" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/15302/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議会事務局次長（三浦清見さん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span28" style="color:#808080;display:none;">　総務常任委員会委員、山田光昭議員、鷹尾治久議員、川端宏明議</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.29</font></td><td><input type="checkbox" name="downloadPos" value="15688" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/15688/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span29" style="color:#808080;display:none;">　以上、報告のとおり指名決定いたしました。
+　日程第８、高議</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.30</font></td><td><input type="checkbox" name="downloadPos" value="16058" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/16058/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span30" style="color:#808080;display:none;">　ご異議なしと認めます。
+　それでは、議会運営委員会委員の定</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.31</font></td><td><input type="checkbox" name="downloadPos" value="16206" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/16206/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議会事務局次長（三浦清見さん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span31" style="color:#808080;display:none;">　議会運営委員会委員、山田光昭議員、石﨑　徹議員、川端宏明議</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.32</font></td><td><input type="checkbox" name="downloadPos" value="16364" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/16364/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span32" style="color:#808080;display:none;">　以上、報告のとおり指名決定いたしました。
+　各委員会の正副</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.33</font></td><td><input type="checkbox" name="downloadPos" value="16673" ></td>
+<td nowrap>
+<A HREF="r_PageFrame.exe?h52lmgenyzsjmkcxck/R040920A/10/10/1/0/0/0" TARGET="TEXTW"><font class="TEXT5">P.10</font></A>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/16673/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span33" style="color:#808080;display:none;">　再開いたします。
+　休憩前に引き続き議事を進めます。
+　各委</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.34</font></td><td><input type="checkbox" name="downloadPos" value="16831" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/16831/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議会事務局次長（三浦清見さん）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span34" style="color:#808080;display:none;">　総務常任委員会委員長、島津明香議員、副委員長、山田光昭議員</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.35</font></td><td><input type="checkbox" name="downloadPos" value="17133" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/17133/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span35" style="color:#808080;display:none;">　報告は終わりました。
+　お諮りいたします。
+　議事の都合によ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.36</font></td><td><input type="checkbox" name="downloadPos" value="17339" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/17339/0//10/1/943//0/0/0" TARGET="TEXTW"><font class="TEXT5">議長（今竹大祐君）<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span36" style="color:#808080;display:none;">　ご異議なしと認めます。
+　したがって、明２１日は休会とする</div>
+</td></tr>
+</TABLE>
+<A href="javascript:downloadcheck()">
+<IMG src="/takasago/image/button06.gif" alt="ダウンロード" border=0></a><br><br>
+</FORM>
+<script language="javascript">
+<!--
+parent.TEXTW.location.href='/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R040920A/0/0//10/1/943//0/0/0';
+//-->
+</script>
+<A HREF="/takasago/sapphire.html" target="_top"><IMG src="/takasago/image/button21.gif" alt="ホームへ戻る" border=0></a><br>
+<A HREF="javascript:history.back()" target="_top"><IMG src="/takasago/image/button31.gif" alt="前へ戻る" border=0></a><br>
+</BODY>
+</HTML>

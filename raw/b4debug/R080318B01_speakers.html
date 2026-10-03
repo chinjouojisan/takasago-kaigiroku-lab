@@ -1,0 +1,857 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<TITLE>会議録の閲覧と検索</TITLE>
+<script language="javaScript" src="/takasago/style2.js?"></script>
+<script language="javascript">
+<!--
+function goList(){
+	if( parent.opener!=null ){
+		parent.opener.top.location.href='/takasago/cgi-bin2/ResultFrame.exe?Code=h52lmgenyzsjmkcxck';
+		window.top.close();
+	}
+	else{
+		window.top.location.href='/takasago/cgi-bin2/ResultFrame.exe?Code=h52lmgenyzsjmkcxck';
+	}
+}
+function checkall(){
+  var chen = -1;
+	for (var i=0;i<document.download.elements.length;i++){
+	    var e = document.download.elements[i];
+	    if (e.name == 'downloadPos'){
+	      if( chen<0 ){
+	        e.checked = ! e.checked;
+	        chen = i;
+	      }
+	      else{
+	        e.checked = document.download.elements[chen].checked;
+	      }
+      }
+    }
+}
+function checkalltarget(){
+	for (var i=0;i<document.viewtree.elements.length;i++){
+	    var e = document.viewtree.elements[i];
+	    if (e.name == 'eTarget')
+	      e.checked = document.viewtree.alltarget.checked;
+  }
+}
+var view=0;
+function viewTop(){
+  browserName = navigator.appName;
+  browserVer = parseInt(navigator.appVersion);
+  
+  if( browserName == "Microsoft Internet Explorer" ){
+  	n = navigator.appVersion.indexOf("MSIE",0);
+  	browserVer = parseInt(navigator.appVersion.substring(n+4));	
+  }
+  if( browserVer<5 ){
+		return;
+  }
+  var v;
+  if( view ){
+    v = 'none';
+    view = 0;
+    document.swbutton.src='/takasago/image/button34.gif';
+  }
+  else{
+    v = 'block';
+    view = 1;
+    document.swbutton.src='/takasago/image/button35.gif';
+  }
+  for (var i=1;i<58;i++){
+	  setVisible(document.getElementById('span'+i),v);
+  }
+}
+function setVisible(obj,v){
+  if(obj){
+    obj.style.display = v;
+  }
+}
+function downloadcheck(){
+  var ret = 0;
+	for (var i=0;i<document.download.elements.length;i++){
+	    var e = document.download.elements[i];
+	    if (e.name == 'downloadPos' && e.checked )
+	      ret = 1;
+  }
+  if( ret ){
+    document.download.submit();
+  }
+  else{
+    alert("ダウンロード対象を選択してください。");
+  }
+}
+//-->
+</script>
+</HEAD>
+<BODY bgColor=#ffffff>
+<table width=100%><tr>
+<td nowrap></td>
+<td nowrap align=right><A href="/takasago/cgi-bin2/Search2.exe?Code=h52lmgenyzsjmkcxck" target="_top"><IMG src="/takasago/image/button02.gif" alt="検索画面へ" border=0></a></td>
+</tr></table>
+<FORM NAME="download" ACTION="/takasago/cgi-bin2/GetPerson.exe" METHOD="POST" target="_top">
+<INPUT type="hidden" name="Code" value="h52lmgenyzsjmkcxck">
+<INPUT type="hidden" name="fileName" value="R080318B01">
+<A href="javascript:downloadcheck()">
+<IMG src="/takasago/image/button06.gif" alt="ダウンロード" border=0></a>
+<A href="javascript:checkall()">
+<IMG src="/takasago/image/button22.gif" alt="すべてチェック" border=0></a>
+<br>
+<a href="javascript:viewTop()"><img name="swbutton" src="/takasago/image/button34.gif" alt="冒頭表示切替" border=0></a><br>
+<table>
+<tr><td nowrap>
+<IMG src="/takasago/image/point.gif" border=0></td>
+<td nowrap colspan=3><A href="/takasago/cgi-bin2/r_Speakers.exe?Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0&treedepth=%97%DF%98%61%20%38%94%4E">
+<font class="TEXT5">令和 8年</font></a></td></tr>
+<tr><td></td><td nowrap>
+<IMG src="/takasago/image/point2.gif" border=0></td>
+<td nowrap colspan=2><A href="/takasago/cgi-bin2/r_Speakers.exe?Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0Code=h52lmgenyzsjmkcxck&speaker=&keyMode=10&searchMode=1&dMode=4&speakerMode=1&sTarget=1023:0&treedepth=%97%DF%98%61%20%38%94%4E%20%97%DF%98%61%20%38%94%4E%91%8D%96%B1%8F%ED%94%43%88%CF%88%F5%89%EF%20">
+<font class="TEXT5">総務常任委員会</font></a><tr><td colspan=2></td><td nowrap>
+<IMG src="/takasago/image/point2.gif" border=0></td>
+<td nowrap><A href="/takasago/cgi-bin2/r_Speakers.exe?h52lmgenyzsjmkcxck/R080318B01/0/0//10/1/1023:0/1510/1//0/0/0">
+<font class="TEXT5">（ 3月18日）</font></a><br></td></tr>
+</table>
+<table>
+<tr>
+<td></td>
+<td><input type="checkbox" name="downloadPos" value="0" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/0/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">議事日程<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr>
+<td nowrap><font class="TEXT5">No.1</font></td><td><input type="checkbox" name="downloadPos" value="1804" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/1804/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span1" style="color:#808080;display:none;">　総務常任委員会を開会いたします。
+　まず、議会事務局の審査</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.2</font></td><td><input type="checkbox" name="downloadPos" value="1926" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/1926/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">柏原議会事務局総務課長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span2" style="color:#808080;display:none;">　令和８年度高砂市一般会計予算書の１１０ページ、１１１ページ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.3</font></td><td><input type="checkbox" name="downloadPos" value="2670" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/2670/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span3" style="color:#808080;display:none;">　説明は終わりました。
+　この件、ご質問、ご意見ありませんで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.4</font></td><td><input type="checkbox" name="downloadPos" value="2828" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/2828/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span4" style="color:#808080;display:none;">　ありませんので、議会事務局の審査を終わります。
+　休憩いた</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.5</font></td><td><input type="checkbox" name="downloadPos" value="3086" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/3086/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span5" style="color:#808080;display:none;">　再開いたします。
+　次に、会計課と工事検査室の審査を行いた</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.6</font></td><td><input type="checkbox" name="downloadPos" value="3208" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/3208/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">長江会計課長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span6" style="color:#808080;display:none;">　まず、令和８年度高砂市一般会計予算、一般会計の歳出から説明</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.7</font></td><td><input type="checkbox" name="downloadPos" value="3960" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/3960/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span7" style="color:#808080;display:none;">　令和８年度一般会計予算、１２２、１２３ページをお願いします</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.8</font></td><td><input type="checkbox" name="downloadPos" value="4336" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/4336/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">長江会計課長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span8" style="color:#808080;display:none;">　次に、歳入について説明させていただきます。
+　予算書、戻っ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.9</font></td><td><input type="checkbox" name="downloadPos" value="4970" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/4970/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span9" style="color:#808080;display:none;">　予算書１００ページ、１０１ページをお願いします。中段、工事</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.10</font></td><td><input type="checkbox" name="downloadPos" value="5210" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/5210/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span10" style="color:#808080;display:none;">　報告は終わりました。
+　この件、ご質問、ご意見ありませんで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.11</font></td><td><input type="checkbox" name="downloadPos" value="5352" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/5352/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span11" style="color:#808080;display:none;">　ありませんので、そしたら、次に、報告事項ですね。はい、お願</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.12</font></td><td><input type="checkbox" name="downloadPos" value="5440" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/5440/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span12" style="color:#808080;display:none;">　１ページをお願いします。高砂市優良工事業者の公表要領の一部</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.13</font></td><td><input type="checkbox" name="downloadPos" value="5844" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/5844/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span13" style="color:#808080;display:none;">　報告は終わりました。
+　この件、ご質問、ご意見ありませんで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.14</font></td><td><input type="checkbox" name="downloadPos" value="5932" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/5932/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">芝本委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span14" style="color:#808080;display:none;">　今回、優良公表評定点の見直しということで、これは今年度の決</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.15</font></td><td><input type="checkbox" name="downloadPos" value="6636" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/6636/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span15" style="color:#808080;display:none;">　今回の決算特別委員会等で指摘がありまして、近隣自治体の公表</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.16</font></td><td><input type="checkbox" name="downloadPos" value="6916" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/6916/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">芝本委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span16" style="color:#808080;display:none;">　ちなみにね、これまで８０点から８４点ぐらいっていうところの</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.17</font></td><td><input type="checkbox" name="downloadPos" value="7202" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/7202/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span17" style="color:#808080;display:none;">　８０点以上の業者については、直近でいいますと、市内業者がこ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.18</font></td><td><input type="checkbox" name="downloadPos" value="7456" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/7456/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">砂川会計管理者<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span18" style="color:#808080;display:none;">　ちょっと補足させていただきます。
+　令和５年度になるんです</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.19</font></td><td><input type="checkbox" name="downloadPos" value="7794" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/7794/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">芝本委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span19" style="color:#808080;display:none;">　ちなみにね、点数だけを見れば下げたということなんですけど、</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.20</font></td><td><input type="checkbox" name="downloadPos" value="8076" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/8076/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span20" style="color:#808080;display:none;">　チェックポイントについては、県のチェックポイントのやつをベ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.21</font></td><td><input type="checkbox" name="downloadPos" value="8292" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/8292/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">芝本委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span21" style="color:#808080;display:none;">　県のデータを元にね。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.22</font></td><td><input type="checkbox" name="downloadPos" value="8330" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/8330/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span22" style="color:#808080;display:none;">　はい、そうです。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.23</font></td><td><input type="checkbox" name="downloadPos" value="8372" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/8372/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">芝本委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span23" style="color:#808080;display:none;">　できるだけ優良な企業さんにはそれなりの、頑張ったでしょうで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.24</font></td><td><input type="checkbox" name="downloadPos" value="8684" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/8684/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span24" style="color:#808080;display:none;">　本制度の趣旨としましては、建設業者の技術力及び施工意欲の向</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.25</font></td><td><input type="checkbox" name="downloadPos" value="8896" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/8896/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">砂川会計管理者<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span25" style="color:#808080;display:none;">　ちょっと補足させていただきます。
+　インセンティブになるん</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.26</font></td><td><input type="checkbox" name="downloadPos" value="9250" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/9250/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span26" style="color:#808080;display:none;">　ほか、この件。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.27</font></td><td><input type="checkbox" name="downloadPos" value="9284" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/9284/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">今竹委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span27" style="color:#808080;display:none;">　私、聞いとって、全く分かんないんですけども、理解できないで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.28</font></td><td><input type="checkbox" name="downloadPos" value="10646" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/10646/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span28" style="color:#808080;display:none;">　休憩いたします。
+　　　　　　　　　　　　　　（午後　１時</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.29</font></td><td><input type="checkbox" name="downloadPos" value="10854" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/10854/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span29" style="color:#808080;display:none;">　そしたら、再開いたします。
+　基準点をどうやって決めたかと</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.30</font></td><td><input type="checkbox" name="downloadPos" value="11142" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/11142/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">今竹委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span30" style="color:#808080;display:none;">　今、そこまで委員長言うてくれたから、このことはこのこととし</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.31</font></td><td><input type="checkbox" name="downloadPos" value="11916" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/11916/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span31" style="color:#808080;display:none;">　ご指摘のありました、検査室のみならず入札検討委員会所属の技</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.32</font></td><td><input type="checkbox" name="downloadPos" value="12054" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/12054/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span32" style="color:#808080;display:none;">　ほかは。
+　　　　　　　　　　　　　　　　（「休憩」の声あ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.33</font></td><td><input type="checkbox" name="downloadPos" value="12136" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/12136/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span33" style="color:#808080;display:none;">　休憩いたします。
+　　　　　　　　　　　　　　（午後　１時</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.34</font></td><td><input type="checkbox" name="downloadPos" value="12344" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/12344/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span34" style="color:#808080;display:none;">　再開いたします。
+　そしたら、ほか、ご質問、ご意見ありませ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.35</font></td><td><input type="checkbox" name="downloadPos" value="12490" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/12490/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span35" style="color:#808080;display:none;">　なければ、会計課及び工事検査室の審査を終わります。
+　休憩</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.36</font></td><td><input type="checkbox" name="downloadPos" value="12752" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/12752/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span36" style="color:#808080;display:none;">　再開いたします。
+　会計課と工事検査室の審査の中で、ちょっ</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.37</font></td><td><input type="checkbox" name="downloadPos" value="12928" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/12928/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span37" style="color:#808080;display:none;">　先ほどの答弁、ちょっと訂正させていただきます。
+　今回、８</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.38</font></td><td><input type="checkbox" name="downloadPos" value="13218" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/13218/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span38" style="color:#808080;display:none;">　よろしいでしょうか。
+</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.39</font></td><td><input type="checkbox" name="downloadPos" value="13258" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/13258/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">砂川会計管理者<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span39" style="color:#808080;display:none;">　毎年になるんですけども、年度当初に工事の担当部署の職員を呼</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.40</font></td><td><input type="checkbox" name="downloadPos" value="13820" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/13820/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">今竹委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span40" style="color:#808080;display:none;">　そういうことですので、今回は８０点でやってみて、この１年や</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.41</font></td><td><input type="checkbox" name="downloadPos" value="14254" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/14254/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">濵田工事検査室長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span41" style="color:#808080;display:none;">　今さっきの今竹委員からの指摘を受けまして、今年度、委員会等</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.42</font></td><td><input type="checkbox" name="downloadPos" value="14380" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/14380/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span42" style="color:#808080;display:none;">　そしたら、これで会計課・工事検査室の審査を終わります。
+　</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.43</font></td><td><input type="checkbox" name="downloadPos" value="14646" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/14646/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span43" style="color:#808080;display:none;">　再開いたします。
+　次に、監査委員・公平委員会事務局の審査</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.44</font></td><td><input type="checkbox" name="downloadPos" value="14766" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/14766/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">中西監査委員・公平委員会事務局主幹<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span44" style="color:#808080;display:none;">　それでは、３月定例会議案書の０６、令和８年度高砂市一般会計</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.45</font></td><td><input type="checkbox" name="downloadPos" value="15628" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/15628/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span45" style="color:#808080;display:none;">　説明は終わりました。
+　この件、ご質問、ご意見ありませんで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.46</font></td><td><input type="checkbox" name="downloadPos" value="15770" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/15770/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span46" style="color:#808080;display:none;">　ないですね。
+　そしたら、これでほかも報告ないですね。はい</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.47</font></td><td><input type="checkbox" name="downloadPos" value="16102" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/16102/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span47" style="color:#808080;display:none;">　それでは、再開いたします。
+　次に、選挙管理委員会事務局の</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.48</font></td><td><input type="checkbox" name="downloadPos" value="16226" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/16226/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">山下選挙管理委員会事務局主幹<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span48" style="color:#808080;display:none;">　当初予算について、歳出から説明させていただきます。
+　０６</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.49</font></td><td><input type="checkbox" name="downloadPos" value="17394" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/17394/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span49" style="color:#808080;display:none;">　説明は終わりました。
+　この件、ご質問、ご意見ありませんで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.50</font></td><td><input type="checkbox" name="downloadPos" value="17558" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/17558/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">山下選挙管理委員会事務局主幹<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span50" style="color:#808080;display:none;">　選挙管理委員会事務局の総務常任委員会報告資料１ページをお願</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.51</font></td><td><input type="checkbox" name="downloadPos" value="19130" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/19130/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span51" style="color:#808080;display:none;">　説明は終わりました。
+　この件、ご質問、ご意見ありませんで</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.52</font></td><td><input type="checkbox" name="downloadPos" value="19232" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/19232/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">澤田総務部総務室参事兼選挙管理委員会事務局長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span52" style="color:#808080;display:none;">　今ご覧いただきました年齢別の投票率でございますけれども、今</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.53</font></td><td><input type="checkbox" name="downloadPos" value="20554" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/20554/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span53" style="color:#808080;display:none;">　ありがとうございます。
+　説明は終わりました。
+　この件、ご</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.54</font></td><td><input type="checkbox" name="downloadPos" value="20668" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/20668/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">坂本委員<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span54" style="color:#808080;display:none;">　すみません、ちょっと傾向として教えていただきたいなと思うん</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.55</font></td><td><input type="checkbox" name="downloadPos" value="21472" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/21472/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">澤田総務部総務室参事兼選挙管理委員会事務局長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span55" style="color:#808080;display:none;">　このたびはそういう傾向でしたけれども、令和６年の衆議院選挙</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.56</font></td><td><input type="checkbox" name="downloadPos" value="21860" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/21860/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span56" style="color:#808080;display:none;">　休憩いたします。
+　　　　　　　　　　　　　　（午後　２時</div>
+</td></tr>
+<tr>
+<td nowrap><font class="TEXT5">No.57</font></td><td><input type="checkbox" name="downloadPos" value="22068" ></td>
+<td nowrap>
+</td>
+<td nowrap>
+<A HREF="/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/22068/0//10/1/1510//0/0/0" TARGET="TEXTW"><font class="TEXT5">岩見委員長<font></A>
+</td>
+<td></td>
+<td width=100%>&nbsp;</td>
+</tr>
+<tr><td colspan=3></td><td nowrap colspan=3><div id="span57" style="color:#808080;display:none;">　再開いたします。
+　そしたら、これで選挙管理委員会事務局の</div>
+</td></tr>
+</TABLE>
+<A href="javascript:downloadcheck()">
+<IMG src="/takasago/image/button06.gif" alt="ダウンロード" border=0></a><br><br>
+</FORM>
+<script language="javascript">
+<!--
+parent.TEXTW.location.href='/takasago/cgi-bin2/r_TextFrame.exe?h52lmgenyzsjmkcxck/R080318B01/0/0//10/1/1510//0/0/0';
+//-->
+</script>
+<A HREF="/takasago/sapphire.html" target="_top"><IMG src="/takasago/image/button21.gif" alt="ホームへ戻る" border=0></a><br>
+<A HREF="javascript:history.back()" target="_top"><IMG src="/takasago/image/button31.gif" alt="前へ戻る" border=0></a><br>
+</BODY>
+</HTML>
