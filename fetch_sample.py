@@ -399,7 +399,7 @@ def write_faction():
                 out.write("%s %s: %s(最後の名乗り %s)→ %s(最初の名乗り %s)\n" % (k[0], k[1], cur, last_fn, f, r["fileName"]))
                 cur = f
             last_fn = r["fileName"]
-    (OUT / "summary_faction.txt").write_text(out.getvalue(), encoding="utf-8")
+    (OUT / "summary_faction_v2.txt").write_text(out.getvalue(), encoding="utf-8")
 
     # 名乗りが見つからなかった質問と、坂本まりさんの全質問の冒頭を、確認用に書き出す
     o2 = io.StringIO()
@@ -411,7 +411,7 @@ def write_faction():
     o2.write("--- 坂本まりさんの全質問(日付順) ---\n")
     for r in sorted((r for r in rows if r["議員ID"] == "M008"), key=lambda r: r["fileName"]):
         o2.write("%s %s [%s] | %s\n" % (r["blockID"], r["開催日"], r["自己申告の会派"] or "未", r["冒頭80字"]))
-    (OUT / "summary_unclaimed.txt").write_text(o2.getvalue(), encoding="utf-8")
+    (OUT / "summary_unclaimed_v2.txt").write_text(o2.getvalue(), encoding="utf-8")
 
 
 main()
