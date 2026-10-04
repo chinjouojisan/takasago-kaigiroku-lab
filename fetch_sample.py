@@ -137,14 +137,34 @@ CALL = re.compile(r"(\d+)番目、\s*(\d+)番、\s*([^、。]+?)議員")
 END = re.compile(r"(質問を終|質問は終|質問を終了)|散会|閉会|延会|日程第\s*[2-9]")
 
 
+STOP = re.compile(r"(ございます|こんにちは|こんばんは|ありがとう|皆様|皆さん|よろしく|議長|番$|^\d+番|通告|質問)")
+
+
+def norm_faction(f):
+    f = re.sub(r"(高砂市議団|市議団|議員団|議員)$", "", f)
+    return f
+
+
 def claimed_faction(body, name):
-    head = nfkc(body)[:160]
-    sur = name[:2]
-    m = re.search(r"([^\s、。「」（）]{2,12})の" + re.escape(sur), head)
-    if m:
-        return m.group(1)
-    m = re.search(r"番、\s*([^、。\s]{2,12})、\s*" + re.escape(sur), head)
-    return m.group(1) if m else ""
+    """冒頭200字から、本人が名乗った会派を取り出す。見つからなければ空。name は空白なしの氏名。"""
+    head = squash(body)[:200]
+    # 1) 氏名の直前の語(「新政会の川端宏明」「民主クラブ山田光昭」「2番、新政会、坂本まり」)
+    k = head.find(name)
+    if k < 0:
+        k = head.find(name[:2])
+    if k > 0:
+        seg = re.split(r"[。！!？?]", head[:k])[-1]
+        seg = re.split(r"、", seg)
+        piece = seg[-1] if seg[-1] else (seg[-2] if len(seg) > 1 else "")
+        piece = re.sub(r"の$", "", piece)
+        piece = re.sub(r"^\d+番", "", piece)
+        if 2 <= len(piece) <= 14 and not STOP.search(piece) and piece not in ("会派", "当会派"):
+            return norm_faction(piece)
+    # 2) 「○○を代表し(て)」
+    m = re.search(r"([^、。！!？?\s]{2,14}?)を代表", head)
+    if m and not STOP.search(m.group(1)) and m.group(1) not in ("会派", "当会派", "各会派"):
+        return norm_faction(m.group(1))
+    return ""
 
 
 def topic_hints(body):
@@ -300,6 +320,7 @@ def main():
     log("本会議 %d日 / 委員会 %d日 / エラー %d" % (nplen, ncom, nerr))
     (OUT / "log_parse.txt").write_text("\n".join(LOG) + "\n", encoding="utf-8")
     write_summary()
+    write_faction()
 
 
 def write_summary():
@@ -331,6 +352,35 @@ def write_summary():
     for r in un:
         out.write("%s %s %s\n" % (r["fileName"], r["理由"], r["詳細"][:40]))
     (OUT / "summary_b10c.txt").write_text(out.getvalue(), encoding="utf-8")
+
+
+
+
+def write_faction():
+    rows = list(csv.DictReader(open(OUT / "blocks.csv", encoding="utf-8-sig", newline="")))
+    import io
+    from collections import defaultdict
+    out = io.StringIO()
+    out.write("生成 %s / blocks %d行\n" % (datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), len(rows)))
+    names = Counter(r["自己申告の会派"] for r in rows)
+    out.write("--- 会派名の出現数 ---\n")
+    for k, v in names.most_common():
+        out.write("%s %d\n" % (k or "(未検出)", v))
+    out.write("--- 議員別の流れ(日付順。同じ会派が続く間は1つにまとめる)。(未)=名乗り未検出 ---\n")
+    by = defaultdict(list)
+    for r in rows:
+        by[(r["議員ID"], r["議員名(正規化)"])].append(r)
+    for k in sorted(by):
+        rs = sorted(by[k], key=lambda r: r["fileName"])
+        runs = []
+        for r in rs:
+            f = r["自己申告の会派"] or "(未)"
+            if runs and runs[-1][0] == f:
+                runs[-1][2] = r["fileName"]; runs[-1][3] += 1
+            else:
+                runs.append([f, r["fileName"], r["fileName"], 1])
+        out.write("%s %s: %s\n" % (k[0], k[1], " / ".join("%s %s~%s(%d)" % tuple(x) for x in runs)))
+    (OUT / "summary_faction.txt").write_text(out.getvalue(), encoding="utf-8")
 
 
 main()
