@@ -299,6 +299,38 @@ def main():
     (OUT / "labels_sample.txt").write_text("\n".join("%6d  %s" % (c, k) for k, c in labels.most_common(60)) + "\n", encoding="utf-8")
     log("本会議 %d日 / 委員会 %d日 / エラー %d" % (nplen, ncom, nerr))
     (OUT / "log_parse.txt").write_text("\n".join(LOG) + "\n", encoding="utf-8")
+    write_summary()
+
+
+def write_summary():
+    """読み取りの確認用に、短い要約を新しい名前のファイルに書く(キャッシュで古い内容が返るのを避けるため)。"""
+    import io
+    rows = list(csv.DictReader(open(OUT / "blocks.csv", encoding="utf-8-sig", newline="")))
+    out = io.StringIO()
+    out.write("生成 %s / blocks %d行\n" % (datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), len(rows)))
+    cnt = {}
+    for r in rows:
+        k = (r["議員ID"], r["議員名(正規化)"])
+        d = cnt.setdefault(k, [0, 0])
+        d[1 if r["種別"].startswith("代表") else 0] += 1
+    out.write("--- 議員別 (ID 氏名 一般 代表) ---\n")
+    for k in sorted(cnt):
+        out.write("%s %s 一般%d 代表%d\n" % (k[0] or "(空)", k[1], cnt[k][0], cnt[k][1]))
+    out.write("一般計 %d / 代表計 %d\n" % (sum(v[0] for v in cnt.values()), sum(v[1] for v in cnt.values())))
+    low = [r for r in rows if r["議員ID"] == "" or float(r["確信度"] or 0) < 0.9]
+    out.write("--- 確信度0.9未満・ID空欄: %d件 ---\n" % len(low))
+    for r in low:
+        out.write("%s %s %s %s\n" % (r["blockID"], r["議員名(正規化)"], r["確信度"], r["注意"]))
+    out.write("--- 日ごとの質問数 ---\n")
+    per = {}
+    for r in rows:
+        per[r["fileName"]] = per.get(r["fileName"], 0) + 1
+    out.write(" ".join("%s:%d" % (k, v) for k, v in sorted(per.items())) + "\n")
+    un = list(csv.DictReader(open(OUT / "unmatched.csv", encoding="utf-8-sig", newline="")))
+    out.write("--- unmatched %d件 ---\n" % len(un))
+    for r in un:
+        out.write("%s %s %s\n" % (r["fileName"], r["理由"], r["詳細"][:40]))
+    (OUT / "summary_b10c.txt").write_text(out.getvalue(), encoding="utf-8")
 
 
 main()
