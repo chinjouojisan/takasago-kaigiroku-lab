@@ -1,4 +1,4 @@
-# 高砂市議会 会議録の解析 B6(通信は行わない。取得済みの raw/minutes/*.txt を読んで、CSVを作る)
+# 高砂市議会 会議録の解析 B10(B6の修正版)(通信は行わない。取得済みの raw/minutes/*.txt を読んで、CSVを作る)
 # 出力: raw/analysis/ 以下
 #   days.csv            本会議の日ごと(議事日程、質問の種別、見つかった質問数、議席表の人数)
 #   seats.csv           日ごとの議席番号と議員名(議員IDつき)
@@ -77,7 +77,10 @@ def split_speeches(text):
             if cur:
                 speeches.append(cur)
             rest = ln[1:]
-            m = re.match(r"^(\S+)[ 　]?(.*)$", rest)
+            # 氏名の間に空白がある表記(「岩見 明さん」「副議長（森 秀樹君）」)も1つの発言者表記として扱う
+            m = re.match(r"^(\S*[（(][^）)]*[）)])[ 　]?(.*)$", rest) \
+                or re.match(r"^(\S{1,4}[ 　]\S{1,4}(?:さん|君))[ 　]?(.*)$", rest) \
+                or re.match(r"^(\S+)[ 　]?(.*)$", rest)
             label = m.group(1) if m else rest.strip()
             first = m.group(2) if m else ""
             cur = {"label": label, "lines": [first] if first.strip() else []}
@@ -181,7 +184,7 @@ def analyze_plenary(fn, text, meta, w_days, w_seats, w_blocks, w_unm, labels):
         last_of[st[1]] = pos
     starts = [st for pos, st in enumerate(starts) if last_of[st[1]] == pos]
     orders = sorted(st[1] for st in starts)
-    if orders and orders != list(range(1, len(orders) + 1)):
+    if orders and orders != list(range(orders[0], orders[0] + len(orders))):
         w_unm.writerow([fn, head.get("開催日", ""), "質問の順番が連続していない(取りこぼしの疑い)", ",".join(map(str, orders))])
     date = head.get("開催日", "")
     nblocks = 0
