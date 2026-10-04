@@ -1,6 +1,6 @@
-# 高砂市議会 会議録検索システム B4: 本会議の会議日ごとに、発言の索引と本文テキストを取得する
-# 入力: raw/meeting_days.csv(B3で作成)。出力: raw/index/<fileName>.csv、raw/minutes/<fileName>.txt、raw/b4_status.csv
-# 守ること: 1件ごとに5秒空ける / 1回の実行は最大50日 / robots.txtで禁止なら停止 / CAPTCHAがあれば停止
+# 高砂市議会 会議録検索システム B5: 委員会の会議日ごとに、発言の索引と本文テキストを取得する
+# 入力: raw/meeting_days.csv(B3で作成)。出力: raw/index/<fileName>.csv、raw/minutes/<fileName>.txt、raw/b5_status.csv
+# 守ること: 1件ごとに5秒空ける / 1回の実行は最大100日 / robots.txtで禁止なら停止 / CAPTCHAがあれば停止
 #          3回続けて失敗したら停止 / 取得済みの日は飛ばす(何回か実行すれば続きから進む)
 import csv
 import datetime
@@ -20,9 +20,9 @@ CGI = BASE + "cgi-bin2/"
 ROBOTS = "http://www.kensakusystem.jp/robots.txt"
 UA = "takasago-giin-map-research/0.5 (civic data research, low rate)"
 WAIT = 5
-MAX_DAYS = 50
-MAX_REQUESTS = 175
-PROBE = ["R080318B01"]  # 委員会の形式を確認するための1日(令和8年3月18日 総務常任委員会)
+MAX_DAYS = 100
+MAX_REQUESTS = 330
+PROBE = []  # 確認用の1日(R080318B01)はB4で取得済み
 OUT = pathlib.Path("raw")
 MIN = OUT / "minutes"
 IDX = OUT / "index"
@@ -37,12 +37,12 @@ DEBUG_SAVED = 0
 
 def log(msg):
     line = datetime.datetime.utcnow().isoformat() + "Z " + msg
-    print(line)
+    print(line, flush=True)
     LOG.append(line)
 
 
 def finish(code):
-    (OUT / "log_b4.txt").write_text("\n".join(LOG) + "\n", encoding="utf-8")
+    (OUT / "log_b5.txt").write_text("\n".join(LOG) + "\n", encoding="utf-8")
     sys.exit(code)
 
 
@@ -158,7 +158,7 @@ def download(code, fn, positions):
 
 def process_day(code, fn, meta):
     global DEBUG_SAVED
-    dbg = DEBUG_SAVED < 2
+    dbg = False
     frame = request(CGI + "ResultFrame.exe?Code=%s&fileName=%s&startPos=0" % (code, fn),
                     debug_name=("%s_frame.html" % fn) if dbg else None)
     if frame is None:
@@ -186,7 +186,7 @@ def process_day(code, fn, meta):
     if text is None:
         return False
     (MIN / (fn + ".txt")).write_text(text, encoding="utf-8")
-    status_path = OUT / "b4_status.csv"
+    status_path = OUT / "b5_status.csv"
     new = not status_path.exists()
     with open(status_path, "a", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
@@ -201,11 +201,11 @@ def process_day(code, fn, meta):
 days = []
 with open(OUT / "meeting_days.csv", encoding="utf-8-sig") as f:
     for r in csv.DictReader(f):
-        if r["区分"] == "本会議" and r["前任期内"] == "Y":
+        if r["区分"] == "委員会" and r["前任期内"] == "Y":
             days.append((r["日付"], r["fileName"], r["会議名"]))
 days.sort()
 todo = [d for d in days if not (MIN / (d[1] + ".txt")).exists()]
-log("本会議の会議日 %d日、取得済み %d日、未取得 %d日" % (len(days), len(days) - len(todo), len(todo)))
+log("委員会の会議日 %d日、取得済み %d日、未取得 %d日" % (len(days), len(days) - len(todo), len(todo)))
 
 idx = request(INDEX)
 if idx is None:
@@ -227,11 +227,13 @@ done = 0
 for date, fn, name in todo:
     if done >= MAX_DAYS:
         break
+    t0 = time.time()
     log("取得: %s %s" % (date, name))
     if process_day(CODE, fn, (date, name)):
         done += 1
+    log("  所要 %d秒" % (time.time() - t0))
 
 remaining = len([d for d in days if not (MIN / (d[1] + ".txt")).exists()])
-log("今回の取得 %d日 / 取得回数 %d / 本会議の未取得 %d日(残りがあれば、もう一度実行すると続きから進みます)" % (done, REQUESTS, remaining))
+log("今回の取得 %d日 / 取得回数 %d / 委員会の未取得 %d日(残りがあれば、もう一度実行すると続きから進みます)" % (done, REQUESTS, remaining))
 log("完了")
 finish(0)
