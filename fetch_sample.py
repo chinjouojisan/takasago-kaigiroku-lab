@@ -148,6 +148,11 @@ def norm_faction(f):
 def claimed_faction(body, name):
     """冒頭200字から、本人が名乗った会派を取り出す。見つからなければ空。name は空白なしの氏名。"""
     head = squash(body)[:200]
+    # 0) 「無所属会派まつかぜ」のように、質問の途中で会派名を述べる場合(冒頭400字)
+    h4 = squash(body)[:400]
+    m = re.search(r"無所属会派([^\s、。]{2,8}?)(?:の|、|。|です|に|で|と|から|$)", h4)
+    if m and m.group(1) not in ("の", "として"):
+        return "無所属会派" + m.group(1)
     # 1) 氏名の直前の語(「新政会の川端宏明」「民主クラブ山田光昭」「2番、新政会、坂本まり」)
     k = head.find(name)
     if k < 0:
@@ -380,6 +385,20 @@ def write_faction():
             else:
                 runs.append([f, r["fileName"], r["fileName"], 1])
         out.write("%s %s: %s\n" % (k[0], k[1], " / ".join("%s %s~%s(%d)" % tuple(x) for x in runs)))
+    out.write("--- 会派の変わり目(名乗りがない質問は直前の名乗りを引き継ぐ。変わり目=前の最後の名乗り日と次の最初の名乗り日の間) ---\n")
+    for k in sorted(by):
+        rs = sorted(by[k], key=lambda r: r["fileName"])
+        cur, last_fn, pend = None, "", ""
+        for r in rs:
+            f = r["自己申告の会派"]
+            if not f:
+                continue
+            if cur is None:
+                cur = f
+            elif f != cur:
+                out.write("%s %s: %s(最後の名乗り %s)→ %s(最初の名乗り %s)\n" % (k[0], k[1], cur, last_fn, f, r["fileName"]))
+                cur = f
+            last_fn = r["fileName"]
     (OUT / "summary_faction.txt").write_text(out.getvalue(), encoding="utf-8")
 
     # 名乗りが見つからなかった質問と、坂本まりさんの全質問の冒頭を、確認用に書き出す
