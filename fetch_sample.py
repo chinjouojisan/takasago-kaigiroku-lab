@@ -382,5 +382,17 @@ def write_faction():
         out.write("%s %s: %s\n" % (k[0], k[1], " / ".join("%s %s~%s(%d)" % tuple(x) for x in runs)))
     (OUT / "summary_faction.txt").write_text(out.getvalue(), encoding="utf-8")
 
+    # 名乗りが見つからなかった質問と、坂本まりさんの全質問の冒頭を、確認用に書き出す
+    o2 = io.StringIO()
+    o2.write("生成 %s\n" % datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    o2.write("--- 名乗り未検出の質問 ---\n")
+    for r in rows:
+        if not r["自己申告の会派"]:
+            o2.write("%s %s %s | %s\n" % (r["blockID"], r["開催日"], r["議員名(正規化)"], r["冒頭80字"]))
+    o2.write("--- 坂本まりさんの全質問(日付順) ---\n")
+    for r in sorted((r for r in rows if r["議員ID"] == "M008"), key=lambda r: r["fileName"]):
+        o2.write("%s %s [%s] | %s\n" % (r["blockID"], r["開催日"], r["自己申告の会派"] or "未", r["冒頭80字"]))
+    (OUT / "summary_unclaimed.txt").write_text(o2.getvalue(), encoding="utf-8")
+
 
 main()
