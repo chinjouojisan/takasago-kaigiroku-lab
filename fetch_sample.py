@@ -103,7 +103,7 @@ def expand(t):
         m = re.match(r"^(高[議予])", part)
         if m: pre = m.group(1)
         nums = re.findall(r"(\d+)", part)
-        if "～" in part and len(nums) >= 2:
+        if re.search(r"[～~〜]", part) and len(nums) >= 2:
             a, b = int(nums[0]), int(nums[1])
             out |= {(pre, n) for n in range(a, b + 1)}
         else:
