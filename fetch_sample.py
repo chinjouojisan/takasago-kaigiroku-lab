@@ -1,98 +1,71 @@
-# B14: ネットワークなし。raw/dayori/D*.txt(議会だより)から「議案ごとの議員別の賛否」を取り出す
-# 出力: raw/analysis/votes_dayori.csv(1議員×1議案), raw/analysis/summary_votes_dayori_v5.txt(確認用の短い要約)
-import csv, glob, os, re, datetime, unicodedata, io
+# B15: ネットワークなし。本会議の議事録から「議案の全件リスト」と「採決結果の語句」を取り出す
+# 出力: raw/analysis/bills_minutes.csv, raw/analysis/summary_bills_v1.txt
+import csv, glob, os, re, io, datetime, unicodedata
 from collections import Counter, defaultdict
-ROSTER = {"石崎徹":"M001","入江啓太":"M002","今竹大祐":"M003","岩見明":"M004","大西由紀":"M005","川端宏明":"M006","北野誠一郎":"M007","坂本まり":"M008","迫川高行":"M009","芝本鎮彰":"M010","島津明香":"M011","鈴木利信":"M012","鷹尾治久":"M013","春増勝利":"M014","藤森誠":"M015","松野優也":"M016","森秀樹":"M017","山田光昭":"M018","横田英樹":"M019"}
-def sq(s):
-    s = unicodedata.normalize("NFKC", s).replace("﨑", "崎").replace("髙", "高").replace("石埼", "石崎")
-    return re.sub(r"\s+", "", s)
-VOTE = re.compile(r"^[-・●\s]*(\S+(?:[ \u3000]+\S+)?)[ \u3000\t]*(?:[ \u3000\t](賛成|反対|欠席|棄権|退席|除斥|-|－|ー)|[（(]\s*(注釈\s*\d*|欠席|退席|棄権|除斥)\s*[）)]|[ \u3000\t](注釈\s*\d*))\s*$")
-RESULT = re.compile(r"^(原案可決|修正可決|可決|否決|同意|不同意|承認|不承認|採択|不採択|趣旨採択|継続審査|継続審議|継続|撤回|認定|不認定|廃案|意見書案可決|決議案可決|.{0,10}可決.{0,10}|.{0,10}否決.{0,10}|.{0,6}採択.{0,6}|.{0,6}審議.{0,6})$")
-rows = []; per = {}; NOTES = {}
-for p in sorted(glob.glob("raw/dayori/D*.txt")):
-    did = os.path.basename(p)[:-4]
-    lines = [l.strip() for l in open(p, encoding="utf-8", errors="replace").read().split("\n")]
-    lines = [l for l in lines if l]
-    NOTES.setdefault(did, {})
-    for l in lines:
-        mm = re.match(r"^[（(]注釈\s*(\d+)[）)](.+)$", l)
-        if mm: NOTES[did][mm.group(1)] = mm.group(2).strip()
-    recent = []      # 直近の「票でない行」
-    bill = None; seq = 0; last_was_vote = False; faction = ""
-    for l in lines:
-        m = VOTE.match(l)
-        if m and (sq(m.group(1)) in ROSTER or re.match(r"^[一-鿿々ぁ-んァ-ヶー]{1,6}[ 　]?[一-鿿々ぁ-んァ-ヶー]{1,6}$", m.group(1))):
-            if not last_was_vote:
-                # 新しい議案の最初の票: 直前の行から結果と件名を探す
-                res_i = None
-                for j in range(len(recent) - 1, -1, -1):
-                    if RESULT.match(recent[j]): res_i = j; break
-                if res_i is not None:
-                    seq += 1
-                    title = recent[res_i - 1] if res_i >= 1 else ""
-                    # 件名が見出し的に短すぎる/括弧だけなら、その前の行も足す
-                    if res_i >= 2 and (len(title) < 8 or re.match(r"^[（(].*[)）]$", title)):
-                        title = recent[res_i - 2] + " " + title
-                    bill = {"seq": seq, "title": title, "result": recent[res_i]}
-                    faction = recent[-1] if recent[-1] != recent[res_i] else ""
-                elif bill is not None:
-                    faction = recent[-1] if recent else faction
-            else:
-                faction = faction
-            name = sq(m.group(1))
-            if bill is not None:
-                rows.append([did, bill["seq"], bill["title"], bill["result"], faction, m.group(1), ROSTER.get(name, ""), (m.group(2) or m.group(3) or m.group(4) or "").replace(" ", "").replace("\u3000", ""), NOTES.get(did, {}).get(re.sub(r"\D", "", (m.group(2) or m.group(3) or m.group(4) or "")), "")[:40]])
-            last_was_vote = True
-            recent_after_vote = []
-        else:
-            if last_was_vote:
-                recent = []   # 票の並びが終わった
-            last_was_vote = False
-            recent.append(l)
-            recent = recent[-8:]
-with open("raw/analysis/votes_dayori.csv", "w", encoding="utf-8-sig", newline="") as f:
-    w = csv.writer(f); w.writerow(["号ID","議案の通し番号","件名","結果","会派見出し","議員名(原文)","議員ID","賛否","注釈の内容"]); w.writerows(rows)
-# 要約
-out = io.StringIO(); out.write("生成 %s / 行 %d\n" % (datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), len(rows)))
-by = defaultdict(lambda: defaultdict(list))
-for r in rows: by[r[0]][r[1]].append(r)
-for did in sorted(by):
-    bills = by[did]; cnt = Counter(len(v) for v in bills.values())
-    vals = Counter(r[7] for v in bills.values() for r in v)
-    out.write("%s 議案%d件 / 1議案あたりの人数 %s / 賛否 %s\n" % (did, len(bills), dict(sorted(cnt.items())), dict(vals)))
-una = {}
-for did in by:
-    una[did] = sum(1 for v in by[did].values() if all(r[7] in ("賛成",) or r[7].startswith("注釈") for r in v))
-out.write("--- 号ごとの、反対・欠席が一人もいない議案の数 --- %s\n" % dict(sorted(una.items())))
-resc = Counter(r[3] for k in by for v in by[k].values() for r in v[:1])
-out.write("--- 結果の種類(議案数) --- %s\n" % dict(resc.most_common()))
-miss = Counter(); allbills = 0
-for did in by:
-    for k, v in by[did].items():
-        allbills += 1
-        ids = {r[6] for r in v}
-        for mid in ROSTER.values():
-            if mid not in ids: miss[mid] += 1
-out.write("--- 議案全体 %d件のうち、各議員の票が載っていない議案数 --- %s\n" % (allbills, dict(sorted(miss.items()))))
-only = [os.path.basename(p)[:-4] for p in sorted(glob.glob("raw/dayori/D*.txt")) if "賛否の分かれた議案を掲載" in open(p, encoding="utf-8", errors="replace").read()]
-out.write("--- 「賛否の分かれた議案を掲載」と書かれた号 --- %s\n" % only)
-un = Counter(r[5] for r in rows if not r[6])
-out.write("--- ID未対応の氏名 --- %s\n" % dict(un))
-out.write("--- 議案の例(各号の最初の2件の件名と結果) ---\n")
-for did in sorted(by):
-    for k in sorted(by[did])[:2]:
-        r = by[did][k][0]; out.write("%s #%d %s | %s | %d人\n" % (did, k, r[2][:50], r[3], len(by[did][k])))
-open("raw/analysis/summary_votes_dayori_v5.txt", "w", encoding="utf-8").write(out.getvalue())
-# 生の行の確認用(形式が号ごとに違う疑いがあるため): 各号の最初の票の前後を、そのまま書き出す
-dump = io.StringIO(); dump.write("生成 %s\n" % datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-for did in ("D02", "D05", "D06", "D10", "D16"):
-    pth = "raw/dayori/%s.txt" % did
-    if not os.path.exists(pth): continue
-    ls = [l.strip() for l in open(pth, encoding="utf-8", errors="replace").read().split("\n") if l.strip()]
-    first = next((i for i, l in enumerate(ls) if VOTE.match(l)), None)
-    if first is None: dump.write("== %s: 票の行なし\n" % did); continue
-    dump.write("== %s (最初の票は %d 行目) ==\n" % (did, first))
-    for i in range(max(0, first - 8), min(len(ls), first + 30)):
-        dump.write("%d| %s\n" % (i, ls[i][:60]))
-open("raw/analysis/summary_votes_raw_v5.txt", "w", encoding="utf-8").write(dump.getvalue())
+def nf(s): return unicodedata.normalize("NFKC", s)
+def one(s): return re.sub(r"\s+", " ", nf(s)).strip()
+KIND = r"高[議予報認請陳諮願]"
+NUM = re.compile(r"(%s第\s*\d+号)" % KIND)
+RES = r"(全会一致|賛成多数|賛成少数|異議なし|異議ありません|原案可決|修正可決|可決|否決|承認|不承認|同意|不同意|認定|不認定|不採択|採択|継続審査|継続審議|撤回|了承|起立)"
+def split_speeches(t):
+    return [x for x in re.split(r"(?m)^(?=○)", t.replace("\r\n", "\n")) if x.startswith("○")]
+def head_of(t):
+    h = {}
+    for l in t.split("\n")[:6]:
+        m = re.match(r"^(開催日|会議名)：(.*)$", l)
+        if m: h[m.group(1)] = m.group(2).strip()
+    return h
+bills = {}        # (session, 号) -> dict
+days_by_session = defaultdict(list)
+for p in sorted(glob.glob("raw/minutes/R*A.txt")):
+    fn = os.path.basename(p)[:-4]
+    t = open(p, encoding="utf-8", errors="replace").read()
+    h = head_of(t)
+    mn = one(h.get("会議名", ""))
+    m = re.match(r"(令和\s*\d+年\s*\d+月(?:定例会|臨時会)|令和\s*\d+年\s*\d+月第\d+回臨時会|令和\s*\d+年第\d+回臨時会)", mn.replace(" ", ""))
+    sess = re.sub(r"\s+", "", (m.group(1) if m else mn.split("（")[0]))
+    days_by_session[sess].append(fn)
+    sp = split_speeches(t)
+    if not sp: continue
+    # 議事日程(先頭の発言)から議案の件名を取る
+    agenda = one(sp[0])
+    parts = re.split(r"(?=%s第\s*\d+号)|(?=日程第\s*\d+)" % KIND, agenda)
+    for part in parts:
+        mm = NUM.match(part)
+        if not mm: continue
+        no = re.sub(r"\s+", "", mm.group(1))
+        title = part[mm.end():].strip()
+        title = re.sub(r"^[\s　]+", "", title)[:80]
+        key = (sess, no)
+        b = bills.setdefault(key, {"session": sess, "no": no, "title": title, "days": []})
+        if len(title) > len(b["title"]): b["title"] = title
+        b["days"].append(fn)
+    # 結果の語句: 各日の本文で、議案番号の直後300字以内の語句
+    body = nf(t)
+    for key, b in bills.items():
+        if key[0] != sess: continue
+        no_pat = re.escape(key[1][:-1]).replace(r"\ ", r"\s*") + r"号"
+        no_pat = re.sub(r"第", r"第\\s*", re.escape(key[1][1:].replace("第", "第"))) if False else None
+        for mt in re.finditer(re.escape(key[1][:2]) + r"第\s*" + re.escape(re.search(r"第(\d+)号", key[1]).group(1)) + "号", body):
+            seg = body[mt.end(): mt.end() + 300]
+            r = re.search(RES, seg)
+            if r: b.setdefault("res", Counter())[r.group(1)] += 1
+rows = []
+for k in sorted(bills, key=lambda k: (min(bills[k]["days"]), k[1])):
+    b = bills[k]
+    res = b.get("res", Counter())
+    rows.append([b["session"], b["no"], b["title"], min(b["days"]), max(b["days"]), len(set(b["days"])), "/".join("%s%d" % (w, c) for w, c in res.most_common(4))])
+with open("raw/analysis/bills_minutes.csv", "w", encoding="utf-8-sig", newline="") as f:
+    w = csv.writer(f); w.writerow(["会議", "議案番号", "件名(議事日程)", "最初の日", "最後の日", "登場した日数", "近くの結果語(上位)"]); w.writerows(rows)
+out = io.StringIO(); out.write("生成 %s / 議案 %d件\n" % (datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), len(rows)))
+per = Counter(r[0] for r in rows)
+out.write("--- 会議ごとの議案数 ---\n")
+for s in sorted(per, key=lambda s: min(days_by_session[s]) if days_by_session[s] else ""): out.write("%s %d件(日数%d)\n" % (s, per[s], len(days_by_session[s])))
+pre = Counter(re.match(KIND, r[1]).group(0) for r in rows)
+out.write("--- 種別 --- %s\n" % dict(pre))
+nores = sum(1 for r in rows if not r[6])
+out.write("--- 結果語が見つからない議案 --- %d件\n" % nores)
+out.write("--- 例(最初の10件) ---\n")
+for r in rows[:10]: out.write("%s | %s | %s | %s\n" % (r[0], r[1], r[2][:40], r[6]))
+open("raw/analysis/summary_bills_v1.txt", "w", encoding="utf-8").write(out.getvalue())
 print("done")
