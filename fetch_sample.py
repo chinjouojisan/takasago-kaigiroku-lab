@@ -1,5 +1,5 @@
 # B14: ネットワークなし。raw/dayori/D*.txt(議会だより)から「議案ごとの議員別の賛否」を取り出す
-# 出力: raw/analysis/votes_dayori.csv(1議員×1議案), raw/analysis/summary_votes_dayori.txt(確認用の短い要約)
+# 出力: raw/analysis/votes_dayori.csv(1議員×1議案), raw/analysis/summary_votes_dayori_v2.txt(確認用の短い要約)
 import csv, glob, os, re, datetime, unicodedata, io
 from collections import Counter, defaultdict
 ROSTER = {"石崎徹":"M001","入江啓太":"M002","今竹大祐":"M003","岩見明":"M004","大西由紀":"M005","川端宏明":"M006","北野誠一郎":"M007","坂本まり":"M008","迫川高行":"M009","芝本鎮彰":"M010","島津明香":"M011","鈴木利信":"M012","鷹尾治久":"M013","春増勝利":"M014","藤森誠":"M015","松野優也":"M016","森秀樹":"M017","山田光昭":"M018","横田英樹":"M019"}
@@ -76,5 +76,5 @@ out.write("--- 議案の例(各号の最初の2件の件名と結果) ---\n")
 for did in sorted(by):
     for k in sorted(by[did])[:2]:
         r = by[did][k][0]; out.write("%s #%d %s | %s | %d人\n" % (did, k, r[2][:50], r[3], len(by[did][k])))
-open("raw/analysis/summary_votes_dayori.txt", "w", encoding="utf-8").write(out.getvalue())
+open("raw/analysis/summary_votes_dayori_v2.txt", "w", encoding="utf-8").write(out.getvalue())
 print("done")
