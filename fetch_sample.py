@@ -1,5 +1,5 @@
 # B14: ネットワークなし。raw/dayori/D*.txt(議会だより)から「議案ごとの議員別の賛否」を取り出す
-# 出力: raw/analysis/votes_dayori.csv(1議員×1議案), raw/analysis/summary_votes_dayori_v2.txt(確認用の短い要約)
+# 出力: raw/analysis/votes_dayori.csv(1議員×1議案), raw/analysis/summary_votes_dayori_v3.txt(確認用の短い要約)
 import csv, glob, os, re, datetime, unicodedata, io
 from collections import Counter, defaultdict
 ROSTER = {"石崎徹":"M001","入江啓太":"M002","今竹大祐":"M003","岩見明":"M004","大西由紀":"M005","川端宏明":"M006","北野誠一郎":"M007","坂本まり":"M008","迫川高行":"M009","芝本鎮彰":"M010","島津明香":"M011","鈴木利信":"M012","鷹尾治久":"M013","春増勝利":"M014","藤森誠":"M015","松野優也":"M016","森秀樹":"M017","山田光昭":"M018","横田英樹":"M019"}
@@ -76,5 +76,17 @@ out.write("--- 議案の例(各号の最初の2件の件名と結果) ---\n")
 for did in sorted(by):
     for k in sorted(by[did])[:2]:
         r = by[did][k][0]; out.write("%s #%d %s | %s | %d人\n" % (did, k, r[2][:50], r[3], len(by[did][k])))
-open("raw/analysis/summary_votes_dayori_v2.txt", "w", encoding="utf-8").write(out.getvalue())
+open("raw/analysis/summary_votes_dayori_v3.txt", "w", encoding="utf-8").write(out.getvalue())
+# 生の行の確認用(形式が号ごとに違う疑いがあるため): 各号の最初の票の前後を、そのまま書き出す
+dump = io.StringIO(); dump.write("生成 %s\n" % datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+for did in ("D02", "D05", "D06", "D10", "D16"):
+    pth = "raw/dayori/%s.txt" % did
+    if not os.path.exists(pth): continue
+    ls = [l.strip() for l in open(pth, encoding="utf-8", errors="replace").read().split("\n") if l.strip()]
+    first = next((i for i, l in enumerate(ls) if VOTE.match(l)), None)
+    if first is None: dump.write("== %s: 票の行なし\n" % did); continue
+    dump.write("== %s (最初の票は %d 行目) ==\n" % (did, first))
+    for i in range(max(0, first - 8), min(len(ls), first + 30)):
+        dump.write("%d| %s\n" % (i, ls[i][:60]))
+open("raw/analysis/summary_votes_raw_v3.txt", "w", encoding="utf-8").write(dump.getvalue())
 print("done")
