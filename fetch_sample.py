@@ -4,10 +4,10 @@ import csv, glob, os, re, datetime, unicodedata, io
 from collections import Counter, defaultdict
 ROSTER = {"石崎徹":"M001","入江啓太":"M002","今竹大祐":"M003","岩見明":"M004","大西由紀":"M005","川端宏明":"M006","北野誠一郎":"M007","坂本まり":"M008","迫川高行":"M009","芝本鎮彰":"M010","島津明香":"M011","鈴木利信":"M012","鷹尾治久":"M013","春増勝利":"M014","藤森誠":"M015","松野優也":"M016","森秀樹":"M017","山田光昭":"M018","横田英樹":"M019"}
 def sq(s):
-    s = unicodedata.normalize("NFKC", s).replace("﨑", "崎").replace("髙", "高")
+    s = unicodedata.normalize("NFKC", s).replace("﨑", "崎").replace("髙", "高").replace("石埼", "石崎")
     return re.sub(r"\s+", "", s)
 VOTE = re.compile(r"^[-・●\s]*(\S+(?:[ 　]\S+)?)[ 　\t]+(賛成|反対|注釈\s*\d*|欠席|棄権|退席|除斥|-|－|ー)\s*$")
-RESULT = re.compile(r"^(原案可決|修正可決|可決|否決|同意|承認|不承認|採択|不採択|継続審査|撤回|認定|不認定|意見書案可決|決議案可決|.{0,10}可決.{0,10}|.{0,10}否決.{0,10})$")
+RESULT = re.compile(r"^(原案可決|修正可決|可決|否決|同意|不同意|承認|不承認|採択|不採択|趣旨採択|継続審査|継続審議|継続|撤回|認定|不認定|廃案|意見書案可決|決議案可決|.{0,10}可決.{0,10}|.{0,10}否決.{0,10}|.{0,6}採択.{0,6}|.{0,6}審議.{0,6})$")
 rows = []; per = {}
 for p in sorted(glob.glob("raw/dayori/D*.txt")):
     did = os.path.basename(p)[:-4]
@@ -31,6 +31,10 @@ for p in sorted(glob.glob("raw/dayori/D*.txt")):
                         title = recent[res_i - 2] + " " + title
                     bill = {"seq": seq, "title": title, "result": recent[res_i]}
                     faction = recent[-1] if recent[-1] != recent[res_i] else ""
+                elif bill is not None and len(recent) >= 2:
+                    seq += 1
+                    bill = {"seq": seq, "title": recent[-2], "result": "(結果行なし)"}
+                    faction = recent[-1]
                 elif bill is not None:
                     faction = recent[-1] if recent else faction
             else:
@@ -56,6 +60,16 @@ for did in sorted(by):
     bills = by[did]; cnt = Counter(len(v) for v in bills.values())
     vals = Counter(r[7] for v in bills.values() for r in v)
     out.write("%s 議案%d件 / 1議案あたりの人数 %s / 賛否 %s\n" % (did, len(bills), dict(sorted(cnt.items())), dict(vals)))
+resc = Counter(r[3] for k in by for v in by[k].values() for r in v[:1])
+out.write("--- 結果の種類(議案数) --- %s\n" % dict(resc.most_common()))
+miss = Counter(); allbills = 0
+for did in by:
+    for k, v in by[did].items():
+        allbills += 1
+        ids = {r[6] for r in v}
+        for mid in ROSTER.values():
+            if mid not in ids: miss[mid] += 1
+out.write("--- 議案全体 %d件のうち、各議員の票が載っていない議案数 --- %s\n" % (allbills, dict(sorted(miss.items()))))
 un = Counter(r[5] for r in rows if not r[6])
 out.write("--- ID未対応の氏名 --- %s\n" % dict(un))
 out.write("--- 議案の例(各号の最初の2件の件名と結果) ---\n")
