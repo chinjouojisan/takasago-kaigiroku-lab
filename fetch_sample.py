@@ -162,7 +162,7 @@ for r in final:
 open("raw/analysis/summary_gaiyo_match_v1.txt", "w", encoding="utf-8").write("\n".join(S))
 print("done")
 
-# ===== ここから B17 部分 =====
+# ===== B17 =====
 # B17: ネットワークなし。会議録(raw/minutes)の議題ごとに「採決のようす」を分類し、議案概要(bills_final.csv)の議案と対応づける
 # 出力: raw/analysis/minutes_votes.csv, bills_final2.csv, summary_minutes_vote_v1.txt
 import csv, re, unicodedata, collections, os
@@ -297,3 +297,82 @@ S2.append("--- 会議録で未発見 ---")
 for o in out:
     if o["最終判定"].startswith("会議録で未発見"): S2.append("%s %s %s %s" % (o["号ID"], o["種別"], o["結果(議会だより)"], o["件名"][:34]))
 open("raw/analysis/summary_minutes_vote_v2.txt", "w", encoding="utf-8").write("\n".join(S2))
+
+# ===== B18: 議員ごとの賛否の数え上げ(評価ではなく事実の集計) =====
+import csv, re, collections, glob, os
+ID = {"M001":"石崎徹","M002":"入江啓太","M003":"今竹大祐","M004":"岩見明","M005":"大西由紀","M006":"川端宏明","M007":"北野誠一郎","M008":"坂本まり","M009":"迫川高行","M010":"芝本鎮彰","M011":"島津明香","M012":"鈴木利信","M013":"鷹尾治久","M014":"春増勝利","M015":"藤森誠","M016":"松野優也","M017":"森秀樹","M018":"山田光昭","M019":"横田英樹"}
+URL = {"D01":"reiwa4/8294","D02":"reiwa4/8522","D03":"reiwa5/9012","D04":"reiwa5/9303","D05":"reiwa5/9646","D06":"reiwa5/10028","D07":"reiwa6/11097","D08":"reiwa6/11439","D09":"reiwa6/11599","D10":"reiwa6/12385","D11":"reiwa6_1/12432","D12":"reiwa6_1/12623","D13":"reiwa6_1/13005","D14":"reiwa6_1/13745","D15":"reiwa8/13902","D16":"reiwa8/14106"}
+BASE = "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/"
+FACT = {"新政会","明風会","公明党","未来ネット","民主クラブ","日本維新の会","日本共産党","まつかぜ","無所属会派まつかぜ"}
+V = list(csv.DictReader(open("raw/analysis/votes_dayori.csv", encoding="utf-8-sig")))
+B = list(csv.DictReader(open("raw/analysis/bills_final2.csv", encoding="utf-8-sig")))
+# 注釈の意味(号ごと)
+NOTE = {}
+for p in glob.glob("raw/dayori/D*.txt"):
+    did = os.path.basename(p)[:-4]
+    for l in open(p, encoding="utf-8", errors="replace").read().split("\n"):
+        m = re.match(r"^\s*[（(]?注釈?\s*(\d*)[）)]?\s*[：:）)]?\s*(.+)$", l.strip())
+        if m and re.search(r"議長|退場|退席|除斥", m.group(2)) and len(m.group(2)) < 40:
+            NOTE[(did, m.group(1))] = m.group(2)
+def kind(r):
+    v = r["賛否"]
+    if v in ("賛成", "反対", "欠席"): return v
+    n = v.replace("注釈", "")
+    t = NOTE.get((r["号ID"], n), "") or NOTE.get((r["号ID"], ""), "")
+    if "議長" in t: return "議長(表決に加わらず)"
+    if "退場" in t or "退席" in t: return "退場"
+    if "除斥" in t: return "除斥"
+    return "その他(" + v + ")"
+# 会派: 見出しが会派名ならそれ、そうでなければ同じ号の他の議案での会派
+fac_by = collections.defaultdict(collections.Counter)
+for r in V:
+    if r["会派見出し"] in FACT: fac_by[(r["号ID"], r["議員ID"])][r["会派見出し"].replace("無所属会派", "")] += 1
+def faction(r):
+    f = r["会派見出し"].replace("無所属会派", "")
+    if f in FACT: return f
+    c = fac_by.get((r["号ID"], r["議員ID"]))
+    return c.most_common(1)[0][0] if c else ""
+bykey = collections.defaultdict(list)
+for r in V: bykey[(r["号ID"], r["議案の通し番号"])].append(r)
+# 議員別の賛否がある議案(まとめ表示は、含まれる議案の数だけ数える)
+bills = [b for b in B if b["最終判定"] == "議員別の賛否あり" and (b["号ID"], b["賛否表の通し番号"]) in bykey]
+seen_note = set(); cnt = {i: collections.Counter() for i in ID}; dev = {i: [] for i in ID}; opp = []
+for b in bills:
+    rs = bykey[(b["号ID"], b["賛否表の通し番号"])]
+    fac = collections.defaultdict(list)
+    have = set(r["議員ID"] for r in rs)
+    for r in rs:
+        h = r["会派見出し"]
+        if re.search(r"[（(]\s*注", h) or re.search(r"\s注\d*$", h):
+            nm_ = re.sub(r"[\s\u3000]+", "", re.sub(r"[\s\u3000（(]*注.*$", "", h)).replace("﨑", "崎").replace("髙", "高")
+            for i_, n_ in ID.items():
+                if n_ == nm_ and i_ not in have and (b["号ID"], b["賛否表の通し番号"], i_) not in seen_note:
+                    seen_note.add((b["号ID"], b["賛否表の通し番号"], i_)); cnt[i_]["議長(表決に加わらず)"] += 1
+    for r in rs:
+        k = kind(r)
+        if r["議員ID"] in cnt: cnt[r["議員ID"]][k] += 1
+        if k in ("賛成", "反対"): fac[faction(r)].append((r["議員ID"], k))
+        if k == "反対": opp.append({"議員ID":r["議員ID"],"議員":ID.get(r["議員ID"], ""),"号":b["号ID"],"議会だより":BASE + URL[b["号ID"]] + ".html","会議":b["会議"] or b["号の月"],"種別":b["種別"],"件名":b["件名"],"議会だよりの結果":b["結果(議会だより)"]})
+    for f, lst in fac.items():
+        if len(lst) >= 2:
+            c = collections.Counter(k for _, k in lst)
+            if len(c) == 2 and c["賛成"] != c["反対"]:
+                maj = c.most_common(1)[0][0]
+                for i, k in lst:
+                    if k != maj: dev[i].append(b)
+            elif len(c) == 2:
+                for i, k in lst: dev[i].append(b)
+conf = collections.Counter(o["最終判定"] for o in B)
+rows = []
+for i, nm in ID.items():
+    c = cnt[i]
+    rows.append({"議員ID":i,"議員":nm,"議員別の賛否がある議案":sum(c.values()),"賛成":c["賛成"],"反対":c["反対"],"欠席":c["欠席"],"議長(表決に加わらず)":c["議長(表決に加わらず)"],"退場・除斥など":sum(v for k, v in c.items() if k not in ("賛成","反対","欠席","議長(表決に加わらず)")),"会派内で少数側だった議案":len(dev[i])})
+with open("raw/analysis/member_vote_summary.csv", "w", encoding="utf-8-sig", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
+with open("raw/analysis/member_opposed_list.csv", "w", encoding="utf-8-sig", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(opp[0].keys())); w.writeheader(); w.writerows(opp)
+S = ["議員別の賛否がある議案: %d件 / 全会一致が確定: %d件 / 同名議案の数から確定: %d件 / 要確認: %d件 / 会議録で未発見: %d件" % (len(bills), conf["全会一致(会議録で確定)"], conf["全会一致(同名議案の数から確定)"], sum(v for k, v in conf.items() if k.startswith("要確認")), sum(v for k, v in conf.items() if k.startswith("会議録で未発見"))),
+     "注意: 議会だよりは『賛否の分かれた議案』のみ掲載。議員別の数は、その議案の中の集計です。", "注釈の意味: %s" % {k: v[:20] for k, v in sorted(NOTE.items())}, ""]
+S.append("議員 | 掲載議案 | 賛成 | 反対 | 欠席 | 議長 | 退場等 | 会派内少数")
+for r in rows: S.append("%s | %d | %d | %d | %d | %d | %d | %d" % (r["議員"], r["議員別の賛否がある議案"], r["賛成"], r["反対"], r["欠席"], r["議長(表決に加わらず)"], r["退場・除斥など"], r["会派内で少数側だった議案"]))
+open("raw/analysis/summary_member_votes_v1.txt", "w", encoding="utf-8").write("\n".join(S))
