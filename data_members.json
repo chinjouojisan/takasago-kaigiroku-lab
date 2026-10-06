@@ -1,0 +1,724 @@
+[
+ {
+  "id": "M001",
+  "name": "石崎徹",
+  "yomi": "いしざき とおる",
+  "area_text": "高砂市美保里",
+  "map_region": {
+   "value": "米田町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "自治会名で一致",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 16,
+   "votes": 1231,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": null,
+   "src": "S-koho",
+   "certainty": "空欄"
+  },
+  "age": {
+   "koho": "61",
+   "calc": null,
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M002",
+  "name": "入江啓太",
+  "yomi": "いりえ けいた",
+  "area_text": " 高砂市高砂町",
+  "map_region": {
+   "value": "高砂町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "推定"
+  },
+  "election2022": {
+   "rank": 15,
+   "votes": 1251,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": null,
+   "src": "S-koho",
+   "certainty": "空欄"
+  },
+  "age": {
+   "koho": "49",
+   "calc": null,
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M003",
+  "name": "今竹大祐",
+  "yomi": "いまたけ だいすけ",
+  "area_text": "高砂市米田町",
+  "map_region": {
+   "value": "米田町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 8,
+   "votes": 1676,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1951-04-02",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": null,
+   "calc": "71",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": "現在9期目",
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": "役職の回数の記載あり(要照合)"
+ },
+ {
+  "id": "M004",
+  "name": "岩見明",
+  "yomi": "いわみ あきら",
+  "area_text": "高砂市北浜町",
+  "map_region": {
+   "value": "北浜町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 19,
+   "votes": 1083,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1959-10-23",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": null,
+   "calc": "62",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M005",
+  "name": "大西由紀",
+  "yomi": "おおにし ゆき",
+  "area_text": "高砂市伊保崎",
+  "map_region": {
+   "value": "伊保連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "推定"
+  },
+  "election2022": {
+   "rank": 17,
+   "votes": 1193,
+   "party": "日本共産党",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1966",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": null,
+   "calc": null,
+   "go2senkyo": "56"
+  },
+  "terms_note": {
+   "value": "現在、高砂市議1期",
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": "生まれ年のみ"
+ },
+ {
+  "id": "M006",
+  "name": "川端宏明",
+  "yomi": "かわばた ひろあき",
+  "area_text": "高砂市阿弥陀町",
+  "map_region": {
+   "value": "阿弥陀町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 2,
+   "votes": 2169,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1957-10-31",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": "64",
+   "calc": "64",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": "市議会議員(7期)",
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": "現職"
+ },
+ {
+  "id": "M007",
+  "name": "北野誠一郎",
+  "yomi": "きたの せいいちろう",
+  "area_text": "高砂市中島",
+  "map_region": {
+   "value": "伊保連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "自治会名で一致",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 1,
+   "votes": 2204,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1961",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": null,
+   "calc": null,
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": "市議会議員7期25年",
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": "生まれ年のみ。2020年に辞職、市長選に立候補し落選と記載。初当選年は本文から要照合"
+ },
+ {
+  "id": "M008",
+  "name": "坂本まり",
+  "yomi": "さかもと まり",
+  "area_text": "高砂市高砂町",
+  "map_region": {
+   "value": "高砂町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "推定"
+  },
+  "election2022": {
+   "rank": 11,
+   "votes": 1497,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": null,
+   "src": "S-koho",
+   "certainty": "空欄"
+  },
+  "age": {
+   "koho": null,
+   "calc": null,
+   "go2senkyo": "44"
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M009",
+  "name": "迫川高行",
+  "yomi": "さこがわ たかゆき",
+  "area_text": "高砂市高砂町",
+  "map_region": {
+   "value": "高砂町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "推定"
+  },
+  "election2022": {
+   "rank": 6,
+   "votes": 1829,
+   "party": "公明党",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1968-02-19",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": "54",
+   "calc": "54",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": "市議会議員(3期)",
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M010",
+  "name": "芝本鎮彰",
+  "yomi": "しばもと やすあき",
+  "area_text": "高砂市米田町",
+  "map_region": {
+   "value": "米田町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 14,
+   "votes": 1313,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1974-04-16",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": "48",
+   "calc": "48",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M011",
+  "name": "島津明香",
+  "yomi": "しまづ はるか",
+  "area_text": "高砂市伊保東",
+  "map_region": {
+   "value": "伊保連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "自治会名で一致",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 3,
+   "votes": 2095,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": null,
+   "src": "S-koho",
+   "certainty": "空欄"
+  },
+  "age": {
+   "koho": "34",
+   "calc": null,
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": "2期8年の実績から3期目へ",
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M012",
+  "name": "鈴木利信",
+  "yomi": "すずき としのぶ",
+  "area_text": "高砂市阿弥陀町",
+  "map_region": {
+   "value": "阿弥陀町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 12,
+   "votes": 1386,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": null,
+   "src": "S-koho",
+   "certainty": "空欄"
+  },
+  "age": {
+   "koho": "62",
+   "calc": null,
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M013",
+  "name": "鷹尾治久",
+  "yomi": "たかお はるひさ",
+  "area_text": "高砂市阿弥陀町",
+  "map_region": {
+   "value": "阿弥陀町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 5,
+   "votes": 1859,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1964-10-21",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": null,
+   "calc": "57",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M014",
+  "name": "春増勝利",
+  "yomi": "はるまし かつとし",
+  "area_text": "高砂市神爪",
+  "map_region": {
+   "value": "米田町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "自治会名で一致",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 7,
+   "votes": 1736,
+   "party": "公明党",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1961-11-04",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": "60",
+   "calc": "60",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M015",
+  "name": "藤森誠",
+  "yomi": "ふじもり まこと",
+  "area_text": "高砂市曽根町",
+  "map_region": {
+   "value": "曽根町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 18,
+   "votes": 1097,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1951-09",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": "70",
+   "calc": null,
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": "平成18年9月初当選以降、4期連続当選",
+   "src": "S-koho"
+  },
+  "first_elected": "2006",
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M016",
+  "name": "松野優也",
+  "yomi": "まつの ゆうや",
+  "area_text": "高砂市曽根町",
+  "map_region": {
+   "value": "曽根町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 9,
+   "votes": 1652,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1979-06-06",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": "43",
+   "calc": "43",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M017",
+  "name": "森秀樹",
+  "yomi": "もり ひでき",
+  "area_text": "高砂市伊保",
+  "map_region": {
+   "value": "伊保連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 4,
+   "votes": 1965,
+   "party": "公明党",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1963-12-01",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": "58",
+   "calc": "58",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": "市議会議員(3期)",
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M018",
+  "name": "山田光昭",
+  "yomi": "やまだ みつあき",
+  "area_text": "高砂市梅井",
+  "map_region": {
+   "value": "伊保連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "自治会名で一致",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 13,
+   "votes": 1340,
+   "party": "無所属",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": null,
+   "src": "S-koho",
+   "certainty": "空欄"
+  },
+  "age": {
+   "koho": null,
+   "calc": null,
+   "go2senkyo": "53"
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": null,
+  "gender": null,
+  "status_2022": null,
+  "note": null
+ },
+ {
+  "id": "M019",
+  "name": "横田英樹",
+  "yomi": "よこた ひでき",
+  "area_text": "高砂市阿弥陀町",
+  "map_region": {
+   "value": "阿弥陀町連合自治会",
+   "basis": "Excelの地区(町名)を高砂市の連合自治会一覧に照合",
+   "match": "連合名と町名が同じ(または町名から推定)",
+   "src": "S-jichikai",
+   "certainty": "確定"
+  },
+  "election2022": {
+   "rank": 10,
+   "votes": 1609,
+   "party": "日本維新の会",
+   "result": "当選",
+   "src": "S-senkyo"
+  },
+  "birth": {
+   "value": "1957-12-14",
+   "src": "S-koho",
+   "certainty": "確定"
+  },
+  "age": {
+   "koho": null,
+   "calc": "64",
+   "go2senkyo": null
+  },
+  "terms_note": {
+   "value": null,
+   "src": "S-koho"
+  },
+  "first_elected": "2018",
+  "gender": null,
+  "status_2022": null,
+  "note": "平成30年9月に初出馬・初当選と記載"
+ }
+]

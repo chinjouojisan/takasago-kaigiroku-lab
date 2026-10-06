@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>高砂市議会議員マップ(前任期)</title>
+<meta property="og:title" content="高砂市議会議員マップ(前任期 2022.9〜2026.9)">
+<meta property="og:description" content="出典つきで、議員の質問・委員会・議案の賛否を調べられます。">
+<meta property="og:image" content="ogp.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e3f6ea;--surface:#fff;--surface2:#eef9f1;--border:#a8dcb8;--accent:#1f9d57;--al:rgba(31,157,87,.1);--text:#123528;--muted:#5a8a72;--red:#d04040;--amber:#b8860b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;line-height:1.6;font-size:15px}
+#app{max-width:560px;margin:0 auto;min-height:100vh;background:var(--bg)}
+header{background:var(--accent);color:#fff;padding:12px 16px;position:sticky;top:0;z-index:5}
+header a{color:#fff;text-decoration:none}
+header h1{font-family:'Noto Serif JP',serif;font-size:1.05rem}
+header small{opacity:.9;font-size:.7rem}
+nav{display:flex;gap:6px;padding:8px 12px;background:var(--surface2);border-bottom:1px solid var(--border);overflow-x:auto;position:sticky;top:56px;z-index:4}
+nav a,.chip{flex:none;font-size:.78rem;border:1px solid var(--border);border-radius:99px;padding:3px 12px;background:#fff;color:var(--muted);text-decoration:none;cursor:pointer}
+nav a.on,.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+main{padding:12px 16px 40px}
+h2{font-family:'Noto Serif JP',serif;font-size:1rem;color:var(--accent);margin:14px 0 6px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.mem{display:flex;gap:10px;align-items:center;padding:10px 12px;background:#fff;border:1px solid var(--border);border-radius:12px;margin-bottom:8px;text-decoration:none;color:var(--text)}
+.pho{width:42px;height:42px;border-radius:50%;background:#cfe9d8;flex:none}
+.mem b{display:block}.mem small{color:var(--muted);font-size:.72rem}
+.tag{display:inline-block;font-size:.62rem;border-radius:4px;padding:0 6px;margin-left:4px;border:1px solid var(--border);color:var(--muted);background:var(--surface2);vertical-align:middle}
+.tag.ai{border-color:var(--amber);color:var(--amber);background:#fff8e6}
+.tag.blank{border-color:#bbb;color:#888;background:#f1f1f1}
+.row{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid var(--surface2);font-size:.85rem}
+.row span:first-child{color:var(--muted);flex:none}
+.v{display:inline-block;min-width:22px;text-align:center;border-radius:5px;font-size:.7rem;color:#fff;padding:1px 4px}
+.y{background:var(--accent)}.n{background:var(--red)}.c{background:#999}.k{background:#6b8ea8}
+.muted{color:var(--muted);font-size:.75rem}
+.note{font-size:.72rem;color:var(--muted);background:var(--surface2);border-radius:8px;padding:8px 10px;margin:8px 0}
+.bill{display:block;background:#fff;border:1px solid var(--border);border-radius:10px;padding:9px 12px;margin-bottom:6px;text-decoration:none;color:var(--text);font-size:.85rem}
+.bill small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 10px}
+.vg{display:flex;align-items:center;gap:6px;font-size:.8rem;padding:3px 0}
+input.q{width:100%;padding:8px 14px;border-radius:99px;border:1.5px solid var(--border);font-size:16px;background:#fff;margin-bottom:10px}
+details{margin-top:6px}summary{font-size:.75rem;color:var(--accent);cursor:pointer}
+.map-area{cursor:pointer}.map-area.active rect{stroke:var(--accent);stroke-width:3}
+a.src{color:var(--accent);font-size:.75rem;word-break:break-all}
+.more{display:block;width:100%;padding:8px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--accent);font-size:.8rem;margin-top:6px}
+</style></head><body><div id="app">
+<header><a href="#/"><h1>高砂市議会議員マップ</h1><small>前任期 2022.9〜2026.9 ／ 出典つきで事実を整理</small></a></header>
+<nav id="nav"></nav><main id="main">読み込み中…</main></div>
+<script>
+const D={};const NAMES=['members','bills','votes','questions','committees','factions','sources'];
+const REG={'高砂町':'高砂','荒井町':'荒井','伊保':'伊保','中筋校区':'中筋','曽根町':'曽根','米田町':'米田','阿弥陀町':'阿弥陀','北浜町':'北浜'};
+const MAPPOS={北浜:[35,150],阿弥陀:[250,110],中筋:[230,250],米田:[400,300],曽根:[90,330],伊保:[180,380],荒井:[370,420],高砂:[380,540]};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const regionOf=m=>{const v=m.map_region&&m.map_region.value;if(!v)return null;const k=v.replace('連合自治会','');return REG[k]||k};
+const certTag=c=>c==='確定'?'':c==='推定'?'<span class="tag ai">推定</span>':c==='要確認'?'<span class="tag ai">要確認</span>':'<span class="tag blank">空欄</span>';
+const SRC=(D.sources&&D.sources.kinds)||{};
+function srcLink(id){const k=D.sources.kinds;const key=id.startsWith('S-kaigiroku-')?'S-kaigiroku':id;const s=k[key];if(!s)return esc(id);const extra=id.startsWith('S-kaigiroku-')?'(会議録ファイル '+esc(id.replace('S-kaigiroku-',''))+')':'';return s.url?`<a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a> ${extra}`:esc(s.label)+extra}
+function srcBox(ids){return `<details><summary>出典を見る</summary><div class="muted" style="margin-top:4px">${[...new Set(ids)].map(srcLink).join('<br>')}</div></details>`}
+const member=id=>D.members.find(m=>m.id===id);
+const lastFaction=id=>{const f=D.factions.by_member[id];if(!f)return null;const ks=Object.keys(f).sort().filter(k=>f[k]);return ks.length?f[ks[ks.length-1]]:null};
+async function load(){for(const n of NAMES)D[n]=await (await fetch('data_'+n+'.json')).json();D.members.sort((a,b)=>(a.yomi||'').localeCompare(b.yomi||'','ja'));route()}
+function nav(cur){document.getElementById('nav').innerHTML=[['#/','議員'],['#/bills','議案'],['#/about','出典・見方']].map(([h,t])=>`<a href="${h}" class="${cur===h?'on':''}">${t}</a>`).join('')}
+function route(){const h=location.hash||'#/';const m=document.getElementById('main');window.scrollTo(0,0);
+ if(h.startsWith('#/m/'))return memberPage(h.slice(4));
+ if(h.startsWith('#/b/'))return billPage(h.slice(4));
+ if(h==='#/bills')return billsPage();
+ if(h==='#/about')return aboutPage();
+ return home()}
+let regionSel=null;
+function home(){nav('#/');const cnt={};D.members.forEach(x=>{const r=regionOf(x);if(r)cnt[r]=(cnt[r]||0)+1});
+ let svg=`<svg viewBox="0 0 560 740" style="width:100%;max-width:420px;display:block;margin:0 auto 10px"><image href="https://raw.githubusercontent.com/chinjouojisan/giin_photo/ba847150b6ef6d5355d975d784f34b58e3063ff6/A458B034-B255-4245-8B0F-7B587024E9BA.PNG" x="0" y="0" width="560" height="740" preserveAspectRatio="xMidYMid meet"/>`;
+ for(const [r,[x,y]] of Object.entries(MAPPOS))svg+=`<g class="map-area ${regionSel===r?'active':''}" onclick="selRegion('${r}')"><rect x="${x}" y="${y}" width="108" height="50" rx="7" fill="#ffee58" fill-opacity=".95" stroke="#e07800" stroke-width="1.8"/><text x="${x+54}" y="${y+24}" text-anchor="middle" font-size="16" fill="#7a3d00" font-weight="700">${r}</text><text x="${x+54}" y="${y+41}" text-anchor="middle" font-size="13" fill="#e07800">${cnt[r]||0}名</text></g>`;
+ svg+='</svg>';
+ const list=D.members.filter(x=>!regionSel||regionOf(x)===regionSel);
+ document.getElementById('main').innerHTML=`<div class="note">前任期の議員${D.members.length}人。地区は連合自治会の区分で、五十音順に並べています。点数や順位はつけていません。</div>${svg}
+ <input class="q" id="q" placeholder="名前で探す" oninput="filt()">
+ ${regionSel?`<div class="muted" style="margin-bottom:6px">${regionSel}地区(${list.length}人) <a class="chip" onclick="selRegion(null)">解除</a></div>`:''}
+ <div id="list">${list.map(card).join('')}</div>`}
+const card=x=>`<a class="mem" href="#/m/${x.id}" data-n="${esc(x.name+(x.yomi||''))}"><div class="pho"></div><div><b>${esc(x.name)}</b><small>${esc(x.yomi||'')} ・ ${esc(regionOf(x)||'地区未設定')} ・ ${esc(lastFaction(x.id)||'')}</small></div></a>`;
+function selRegion(r){regionSel=regionSel===r?null:r;home()}
+function filt(){const q=document.getElementById('q').value.replace(/\s/g,'');document.querySelectorAll('#list .mem').forEach(e=>{e.style.display=e.dataset.n.replace(/\s/g,'').includes(q)?'':'none'})}
+function row(l,v,t,c){return `<div class="row"><span>${l}</span><span style="text-align:right">${v?esc(v):'<span class="tag blank">空欄</span>'}${t?`<span class="tag">${t}</span>`:''}${c?certTag(c):''}</span></div>`}
+function memberPage(id){nav('');const m=member(id);if(!m){document.getElementById('main').innerHTML='議員が見つかりません';return}
+ const e=m.election2022;const age=m.age.koho||m.age.calc||m.age.go2senkyo;const ageTag=m.age.koho?'公報':m.age.calc?'公報の生年月日から計算':m.age.go2senkyo?'選挙ドットコム(民間・要確認)':'';
+ const f0=D.factions.by_member[id]||{};const keys=Object.keys(f0).sort();const f={};keys.forEach(k=>{f[k]=f0[k]||'(読み取れず)'});const inf=(D.factions.inferred||{})[id]||[];const runs=[];keys.forEach(k=>{const l=runs[runs.length-1];if(l&&l.f===f[k])l.to=k;else runs.push({f:f[k],from:k,to:k})});
+ const ct=D.committees.terms.filter(t=>t['議員ID']===id);const periods=[...new Set(ct.map(t=>t['期']))];
+ const qs=D.questions.filter(q=>q.member===id);
+ const vs=D.votes.filter(v=>v.member===id);const billByKey={};D.bills.forEach(b=>{if(b.vote_table_no)billByKey[b.issue+'|'+b.vote_table_no]=b});
+ const opp=vs.filter(v=>v.vote==='反対'),sup=vs.filter(v=>v.vote==='賛成'),oth=vs.filter(v=>!['賛成','反対'].includes(v.vote));
+ const bl=(arr,cls,lab)=>arr.slice(0,12).map(v=>{const b=billByKey[v.issue+'|'+v.table_no];return b?`<a class="bill" href="#/b/${b.id}"><span class="v ${cls}">${lab}</span> ${esc(b.title)}<br><small>${esc(b.month||b.issue)} ・ ${esc(b.kind)} ・ ${esc(b.result||'')}</small></a>`:''}).join('');
+ document.getElementById('main').innerHTML=`<a class="chip" href="#/">← 一覧</a>
+ <div class="card" style="margin-top:10px"><div style="display:flex;gap:12px;align-items:center"><div class="pho" style="width:64px;height:64px"></div><div><div style="font-family:'Noto Serif JP',serif;font-size:1.3rem">${esc(m.name)}</div><div class="muted">${esc(m.yomi||'')}</div></div></div></div>
+ <h2>基本情報</h2><div class="card">
+ ${row('地区',regionOf(m)?regionOf(m)+'(連合自治会)':'','自治会一覧',m.map_region&&m.map_region.certainty)}
+ ${row('得票数(2022年選挙)',e.votes.toLocaleString()+'票('+e.rank+'位・'+e.result+')','選管')}
+ ${row('党派',e.party,'選管')}
+ ${row('生年月日',m.birth.value,'公報')}
+ ${row('年齢(2022年選挙時)',age?age+'歳':'',ageTag)}
+ ${row('当選回数(公報の記載)',m.terms_note.value,'公報')}
+ ${row('初当選年',m.first_elected,'公報')}
+ ${row('性別',m.gender,'')}
+ ${m.note?`<div class="muted" style="margin-top:6px">備考: ${esc(m.note)}</div>`:''}
+ ${srcBox(['S-senkyo','S-koho','S-jichikai'])}</div>
+ <h2>会派</h2><div class="card">${runs.map(r=>`<div class="row"><span>${r.from}〜${r.to}</span><span>${esc(r.f)}</span></div>`).join('')||'<span class="tag blank">空欄</span>'}
+ <div class="muted">議会だより各号(D01〜D16)の賛否表の会派見出し。変更日は未確定です。${inf.length?'議長の注釈と混ざった号('+inf.map(x=>x[0]).join('・')+')は、前後が同じ会派なら補っています。':''}</div>${srcBox(keys.map(k=>'S-dayori-'+k))}</div>
+ <h2>委員会(期ごと)</h2><div class="card">${periods.map(p=>`<div style="font-weight:700;font-size:.8rem;margin-top:6px">${esc(p)}</div>${ct.filter(t=>t['期']===p).map(t=>`<div class="row"><span>${esc(t['委員会'])}</span><span>${esc(t['役職(最多)'])}</span></div>`).join('')}`).join('')||'<span class="tag blank">空欄</span>'}
+ <div class="muted">会議録の出席委員から作成。出席のない委員会は出ません。</div>${srcBox(['S-kaigiroku'])}</div>
+ <h2>一般質問・代表質問(${qs.length}件)</h2><div class="card">${qs.map(q=>`<div class="row"><span>${esc(q.date.replace(/\s/g,''))}</span><span style="text-align:right">${esc(q.type)}${q.declared_faction?'('+esc(q.declared_faction)+')':''}<br><small class="muted">${esc((q.title_hint||'').slice(0,60))}</small></span></div>`).join('')||'<span class="tag blank">空欄</span>'}
+ <div class="muted">件名は会議録から機械で取り出した手がかりです。正確な件名は会議録で確認してください。</div>${srcBox(['S-kaigiroku'].concat(qs.slice(0,3).map(q=>q.src)))}</div>
+ <h2>議案の賛否</h2><div class="card">
+ <div class="row"><span>議員別の賛否がある議案</span><span>${vs.length}件(賛成${sup.length}・反対${opp.length}・その他${oth.length})</span></div>
+ <div class="note">議会だよりが載せた「賛否の分かれた議案」の中の数え上げです。全議案の賛成率ではありません。点数や順位には使いません。</div>
+ <div style="font-weight:700;font-size:.8rem">反対した議案(${opp.length}件)</div>${bl(opp,'n','反')}${opp.length>12?`<div class="muted">ほか${opp.length-12}件は「議案」から検索できます</div>`:''}
+ ${oth.length?`<div style="font-weight:700;font-size:.8rem;margin-top:8px">欠席・退場など(${oth.length}件)</div>${bl(oth,'c','他')}`:''}
+ ${srcBox(['S-dayori-D01','S-dayori-D16'])}</div>`}
+function billsPage(){nav('#/bills');const kinds=['すべて',...new Set(D.bills.map(b=>b.kind))];window._bk=window._bk||'すべて';
+ document.getElementById('main').innerHTML=`<div class="note">議会だより「議案概要」を基準にした全${D.bills.length}件です。議員別の賛否は、議会だよりの賛否表がある議案(約207件)に出ます。</div>
+ <input class="q" id="bq" placeholder="件名で探す" oninput="bfilt()"><div style="display:flex;gap:6px;overflow-x:auto;margin-bottom:8px">${kinds.map(k=>`<a class="chip ${window._bk===k?'on':''}" onclick="window._bk='${k}';billsPage()">${k}</a>`).join('')}</div>
+ <div id="bl"></div>`;bfilt()}
+function bfilt(){const q=(document.getElementById('bq')||{value:''}).value.replace(/\s/g,'');let a=D.bills.filter(b=>(window._bk==='すべて'||b.kind===window._bk)&&b.title.replace(/\s/g,'').includes(q));
+ document.getElementById('bl').innerHTML=a.slice(0,80).map(b=>`<a class="bill" href="#/b/${b.id}">${esc(b.title)}${certTag(b.certainty)}<br><small>${esc(b.month||b.issue)} ・ ${esc(b.kind)} ・ ${esc(b.result||'')}${b.vote_table_no?' ・ 議員別の賛否あり':''}</small></a>`).join('')+(a.length>80?`<div class="muted">${a.length}件中80件を表示。絞り込んでください。</div>`:'')}
+function billPage(id){nav('#/bills');const b=D.bills.find(x=>x.id===id);if(!b){document.getElementById('main').innerHTML='議案が見つかりません';return}
+ let body='';
+ if(b.vote_table_no){const vs=D.votes.filter(v=>v.issue===b.issue&&v.table_no===b.vote_table_no);const by={};vs.forEach(v=>by[v.member]=v);
+  body=`<h2>議員別の賛否</h2><div class="card"><div class="grid">${D.members.map(m=>{const v=by[m.id];let cls='k',lab='議',t='表に記載なし(議長)';if(v){if(v.vote==='賛成'){cls='y';lab='賛';t=''}else if(v.vote==='反対'){cls='n';lab='反';t=''}else if(v.vote==='欠席'){cls='c';lab='欠';t=''}else if((v.note||'').includes('議長')){cls='k';lab='議';t='議長のため採決に加わらず'}else{cls='c';lab='注';t=v.note||v.vote}}return `<div class="vg"><span class="v ${cls}">${lab}</span><a href="#/m/${m.id}" style="color:inherit;text-decoration:none">${esc(m.name)}</a>${t?`<span class="muted">${esc(t)}</span>`:''}</div>`}).join('')}</div>
+  <div class="muted">賛=賛成 反=反対 欠=欠席 議=賛否表に名前がない議員(議長。会議録で確認済み)。注=注釈つき</div></div>`}
+ else body=`<div class="card"><div class="row"><span>議員別の賛否</span><span>${b.basis.startsWith('全会一致')?'全会一致':'記載なし'}${certTag(b.certainty)}</span></div><div class="muted">${esc(b.basis)}</div></div>`;
+ document.getElementById('main').innerHTML=`<a class="chip" href="#/bills">← 議案一覧</a><div class="card" style="margin-top:10px"><b>${esc(b.title)}</b><div class="muted">${esc(b.month||b.issue)} ・ ${esc(b.kind)} ・ 結果: ${esc(b.result||'未確認')}</div><div class="row"><span>会議録の採決</span><span>${esc(b.minutes_vote||'確認できず')}</span></div>${srcBox(b.src)}</div>${body}`}
+function aboutPage(){nav('#/about');const k=D.sources.kinds;document.getElementById('main').innerHTML=`<h2>この地図について</h2><div class="card"><p>高砂市議会の前任期(2022年9月〜2026年9月)の議員について、公開資料から事実を整理したものです。点数・順位・AIによる評価はつけていません。</p></div>
+ <h2>表示の見方</h2><div class="card"><div class="row"><span>(印なし)</span><span>資料から確定</span></div><div class="row"><span><span class="tag ai">推定</span></span><span>資料から確定できず、推定したもの</span></div><div class="row"><span><span class="tag blank">空欄</span></span><span>未確認(出典を確認でき次第、追記)</span></div></div>
+ <h2>出典</h2><div class="card">${Object.keys(k).map(i=>`<div style="margin-bottom:6px">${srcLink(i)}</div>`).join('')}</div>`}
+window.addEventListener('hashchange',route);load();
+</script></body></html>

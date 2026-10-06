@@ -1,0 +1,96 @@
+{
+ "kinds": {
+  "S-senkyo": {
+   "label": "選挙管理委員会",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/senkyokanriiinkaijimukyoku/2/1/12717.html"
+  },
+  "S-koho": {
+   "label": "2022年選挙公報(seijiyama.jp掲載の画像から転記)",
+   "url": "https://seijiyama.jp/pdf/koho/20220904_282162_2.pdf",
+   "note": "第三者サイトの複製。要照合"
+  },
+  "S-go2senkyo": {
+   "label": "選挙ドットコム(民間サイト)",
+   "url": "https://go2senkyo.com/local/senkyo/22230"
+  },
+  "S-jichikai": {
+   "label": "高砂市の単位自治会・町内会一覧(122団体、連合自治会別)",
+   "url": null,
+   "note": "画像から転記。URL未確認"
+  },
+  "S-dayori-D01": {
+   "label": "高砂市議会だより(テキスト版) D01",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa4/8294.html"
+  },
+  "S-dayori-D02": {
+   "label": "高砂市議会だより(テキスト版) D02",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa4/8522.html"
+  },
+  "S-dayori-D03": {
+   "label": "高砂市議会だより(テキスト版) D03",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa5/9012.html"
+  },
+  "S-dayori-D04": {
+   "label": "高砂市議会だより(テキスト版) D04",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa5/9303.html"
+  },
+  "S-dayori-D05": {
+   "label": "高砂市議会だより(テキスト版) D05",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa5/9646.html"
+  },
+  "S-dayori-D06": {
+   "label": "高砂市議会だより(テキスト版) D06",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa5/10028.html"
+  },
+  "S-dayori-D07": {
+   "label": "高砂市議会だより(テキスト版) D07",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa6/11097.html"
+  },
+  "S-dayori-D08": {
+   "label": "高砂市議会だより(テキスト版) D08",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa6/11439.html"
+  },
+  "S-dayori-D09": {
+   "label": "高砂市議会だより(テキスト版) D09",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa6/11599.html"
+  },
+  "S-dayori-D10": {
+   "label": "高砂市議会だより(テキスト版) D10",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa6/12385.html"
+  },
+  "S-dayori-D11": {
+   "label": "高砂市議会だより(テキスト版) D11",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa6_1/12432.html"
+  },
+  "S-dayori-D12": {
+   "label": "高砂市議会だより(テキスト版) D12",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa6_1/12623.html"
+  },
+  "S-dayori-D13": {
+   "label": "高砂市議会だより(テキスト版) D13",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa6_1/13005.html"
+  },
+  "S-dayori-D14": {
+   "label": "高砂市議会だより(テキスト版) D14",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa6_1/13745.html"
+  },
+  "S-dayori-D15": {
+   "label": "高砂市議会だより(テキスト版) D15",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa8/13902.html"
+  },
+  "S-dayori-D16": {
+   "label": "高砂市議会だより(テキスト版) D16",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa8/14106.html"
+  },
+  "S-dayori-newyear-R4": {
+   "label": "議会だより 令和4年 新年号(テキスト版)",
+   "url": "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasagoshigikai/2/reiwa4/6763.html",
+   "note": "会派などの参考。D01〜D16とは別"
+  },
+  "S-kaigiroku": {
+   "label": "高砂市議会 会議録検索システム",
+   "url": "http://www.kensakusystem.jp/takasago/index.html",
+   "note": "個別の会議録に固定のURLはない(検索フォームの送信で表示)。出典は、検索システムのURLに、会議名・開催日・会議録ファイル名(例 R040920A)・発言者を添えて示す"
+  }
+ }
+}
