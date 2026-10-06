@@ -306,6 +306,27 @@ BASE = "https://www.city.takasago.lg.jp/soshikikarasagasu/gikaijimukyoku/takasag
 FACT = {"新政会","明風会","公明党","未来ネット","民主クラブ","日本維新の会","日本共産党","まつかぜ","無所属会派まつかぜ"}
 V = list(csv.DictReader(open("raw/analysis/votes_dayori.csv", encoding="utf-8-sig")))
 B = list(csv.DictReader(open("raw/analysis/bills_final2.csv", encoding="utf-8-sig")))
+import unicodedata
+CH = {}; VC = {}
+for r_ in csv.DictReader(open("raw/analysis/days.csv", encoding="utf-8-sig")):
+    t_ = unicodedata.normalize("NFKC", open("raw/minutes/%s.txt" % r_["fileName"], encoding="utf-8", errors="replace").read())
+    c_ = collections.Counter(re.sub(r"\s", "", m).replace("﨑", "崎") for m in re.findall(r"○議長\(([^)]+?)君\)", t_))
+    v_ = collections.Counter(re.sub(r"\s", "", m).replace("﨑", "崎") for m in re.findall(r"○副議長\(([^)]+?)君\)", t_))
+    CH[r_["fileName"]] = c_.most_common(1)[0][0] if c_ else ""
+    VC[r_["fileName"]] = v_.most_common(1)[0][0] if v_ else ""
+NAME2ID = {v: k for k, v in {"M001":"石崎徹","M002":"入江啓太","M003":"今竹大祐","M004":"岩見明","M005":"大西由紀","M006":"川端宏明","M007":"北野誠一郎","M008":"坂本まり","M009":"迫川高行","M010":"芝本鎮彰","M011":"島津明香","M012":"鈴木利信","M013":"鷹尾治久","M014":"春増勝利","M015":"藤森誠","M016":"松野優也","M017":"森秀樹","M018":"山田光昭","M019":"横田英樹"}.items()}
+with open("raw/analysis/chair_terms.csv", "w", encoding="utf-8-sig", newline="") as f_:
+    w_ = csv.writer(f_); w_.writerow(["最初の会議録", "最後の会議録", "議長", "副議長"])
+    cur = None
+    for fn_ in sorted(CH):
+        k_ = (CH[fn_], VC[fn_] or (cur[3] if cur else ""))
+        if cur is None or (CH[fn_] != cur[2]):
+            if cur: w_.writerow(cur)
+            cur = [fn_, fn_, CH[fn_], VC[fn_]]
+        else:
+            cur[1] = fn_
+            if VC[fn_]: cur[3] = VC[fn_]
+    if cur: w_.writerow(cur)
 # 注釈の意味(号ごと)
 NOTE = {}
 for p in glob.glob("raw/dayori/D*.txt"):
@@ -346,8 +367,15 @@ for b in bills:
         if re.search(r"[（(]\s*注", h) or re.search(r"\s注\d*$", h):
             nm_ = re.sub(r"[\s\u3000]+", "", re.sub(r"[\s\u3000（(]*注.*$", "", h)).replace("﨑", "崎").replace("髙", "高")
             for i_, n_ in ID.items():
-                if n_ == nm_ and i_ not in have and (b["号ID"], b["賛否表の通し番号"], i_) not in seen_note:
-                    seen_note.add((b["号ID"], b["賛否表の通し番号"], i_)); cnt[i_]["議長(表決に加わらず)"] += 1
+                if n_ == nm_ and i_ not in have and (b["号ID"], b["件名"], i_) not in seen_note:
+                    seen_note.add((b["号ID"], b["件名"], i_)); cnt[i_]["議長(表決に加わらず)"] += 1
+    files_ = [x for x in b["会議録ファイル"].split("|") if x]
+    chair_id = NAME2ID.get(CH.get(files_[-1], "")) if files_ else None
+    for i_ in ID:
+        if i_ not in have and (b["号ID"], b["件名"], i_) not in seen_note:
+            if chair_id == i_: cnt[i_]["議長(会議録で確認、表に記載なし)"] += 1
+            elif not files_: cnt[i_]["議長(会議録の日付なし、記載なしから推定)"] += 1
+            else: cnt[i_]["記載なし(原因不明)"] += 1
     for r in rs:
         k = kind(r)
         if r["議員ID"] in cnt: cnt[r["議員ID"]][k] += 1
@@ -366,13 +394,13 @@ conf = collections.Counter(o["最終判定"] for o in B)
 rows = []
 for i, nm in ID.items():
     c = cnt[i]
-    rows.append({"議員ID":i,"議員":nm,"議員別の賛否がある議案":sum(c.values()),"賛成":c["賛成"],"反対":c["反対"],"欠席":c["欠席"],"議長(表決に加わらず)":c["議長(表決に加わらず)"],"退場・除斥など":sum(v for k, v in c.items() if k not in ("賛成","反対","欠席","議長(表決に加わらず)")),"会派内で少数側だった議案":len(dev[i])})
+    rows.append({"議員ID":i,"議員":nm,"議員別の賛否がある議案":sum(c.values()),"賛成":c["賛成"],"反対":c["反対"],"欠席":c["欠席"],"議長(表決に加わらず)":c["議長(表決に加わらず)"],"議長(会議録で確認)":c["議長(会議録で確認、表に記載なし)"],"議長(推定)":c["議長(会議録の日付なし、記載なしから推定)"],"記載なし(原因不明)":c["記載なし(原因不明)"],"退場・除斥など":sum(v for k, v in c.items() if k.startswith("その他") or k in ("退場","除斥")),"会派内で少数側だった議案":len(dev[i])})
 with open("raw/analysis/member_vote_summary.csv", "w", encoding="utf-8-sig", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
 with open("raw/analysis/member_opposed_list.csv", "w", encoding="utf-8-sig", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(opp[0].keys())); w.writeheader(); w.writerows(opp)
 S = ["議員別の賛否がある議案: %d件 / 全会一致が確定: %d件 / 同名議案の数から確定: %d件 / 要確認: %d件 / 会議録で未発見: %d件" % (len(bills), conf["全会一致(会議録で確定)"], conf["全会一致(同名議案の数から確定)"], sum(v for k, v in conf.items() if k.startswith("要確認")), sum(v for k, v in conf.items() if k.startswith("会議録で未発見"))),
      "注意: 議会だよりは『賛否の分かれた議案』のみ掲載。議員別の数は、その議案の中の集計です。", "注釈の意味: %s" % {k: v[:20] for k, v in sorted(NOTE.items())}, ""]
-S.append("議員 | 掲載議案 | 賛成 | 反対 | 欠席 | 議長 | 退場等 | 会派内少数")
-for r in rows: S.append("%s | %d | %d | %d | %d | %d | %d | %d" % (r["議員"], r["議員別の賛否がある議案"], r["賛成"], r["反対"], r["欠席"], r["議長(表決に加わらず)"], r["退場・除斥など"], r["会派内で少数側だった議案"]))
+S.append("議員 | 掲載議案 | 賛成 | 反対 | 欠席 | 議長(注記) | 議長(会議録確認) | 議長(推定) | 原因不明 | 退場等 | 会派内少数")
+for r in rows: S.append("%s | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d" % (r["議員"], r["議員別の賛否がある議案"], r["賛成"], r["反対"], r["欠席"], r["議長(表決に加わらず)"], r["議長(会議録で確認)"], r["議長(推定)"], r["記載なし(原因不明)"], r["退場・除斥など"], r["会派内で少数側だった議案"]))
 open("raw/analysis/summary_member_votes_v1.txt", "w", encoding="utf-8").write("\n".join(S))
