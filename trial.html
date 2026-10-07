@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>通信簿 試作(一般質問)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e3f6ea;--surface:#fff;--s2:#eef9f1;--border:#a8dcb8;--accent:#1f9d57;--text:#123528;--muted:#5a8a72;--amber:#b8860b}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;line-height:1.6;font-size:15px}
+#app{max-width:560px;margin:0 auto;padding:0 0 40px}header{background:var(--accent);color:#fff;padding:12px 16px}header h1{font-family:'Noto Serif JP',serif;font-size:1.05rem}header small{font-size:.7rem;opacity:.9}
+main{padding:12px 16px}h2{font-family:'Noto Serif JP',serif;font-size:1rem;color:var(--accent);margin:16px 0 6px}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.tag{display:inline-block;font-size:.62rem;border-radius:4px;padding:0 6px;margin-left:4px;border:1px solid var(--border);color:var(--muted);background:var(--s2);vertical-align:middle}.tag.ai{border-color:var(--amber);color:var(--amber);background:#fff8e6}
+.chip{display:inline-block;font-size:.78rem;border:1px solid var(--border);border-radius:99px;padding:3px 12px;background:#fff;color:var(--muted);margin:0 6px 6px 0;cursor:pointer}.chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.bar{height:8px;border-radius:4px;background:var(--s2);overflow:hidden}.bar i{display:block;height:100%;background:var(--accent)}
+.row{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid var(--s2);font-size:.85rem}.muted{color:var(--muted);font-size:.74rem}
+details{background:#fff;border:1px solid var(--border);border-radius:12px;margin-bottom:8px}summary{padding:10px 14px;cursor:pointer;font-size:.85rem;font-weight:500;list-style:none}summary::-webkit-details-marker{display:none}summary::after{content:'＋';float:right;color:var(--accent)}details[open] summary::after{content:'−'}
+.in{padding:0 14px 12px}.sc{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.sc span{font-size:.7rem;background:var(--s2);border-radius:6px;padding:1px 8px}
+blockquote{border-left:3px solid var(--border);padding:4px 10px;margin:6px 0;font-size:.78rem;color:#355}
+.note{font-size:.72rem;color:var(--muted);background:var(--s2);border-radius:8px;padding:8px 10px;margin:8px 0}
+</style></head><body><div id="app"><header><h1>通信簿 試作(一般質問)</h1><small>AIによる要約・採点の試作。大西・森・坂本の3人のみ</small></header><main id="m">読み込み中…</main></div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let QA,PL,sel='M005';const NM={M005:'大西由紀',M017:'森秀樹',M008:'坂本まり'};
+(async()=>{QA=await (await fetch('data_qa_trial.json')).json();PL=await (await fetch('data_pledges2022.json')).json();draw()})();
+function draw(){const q=QA.filter(b=>b.member===sel).sort((a,b)=>a.date.localeCompare(b.date));const P=PL[sel];
+ const cnt={};q.forEach(b=>b.topics.forEach(t=>(t.pledge_ids||[]).forEach(p=>cnt[p]=(cnt[p]||0)+1)));
+ const ax=['具体性','論点の明確さ','提案性','追及','根拠'];const avg=ax.map(k=>q.reduce((s,b)=>s+b.scores[k].score,0)/q.length);
+ document.getElementById('m').innerHTML=`<div>${Object.keys(NM).map(k=>`<span class="chip ${k===sel?'on':''}" onclick="sel='${k}';draw()">${NM[k]}</span>`).join('')}</div>
+ <div class="note">公約は2022年の選挙公報の記載です。「取り上げた」は、一般質問で公約に当たる話題を問うたかどうかをAIが判断したもので、人の確認前です。公約が実現したか、質問の良し悪しを断定するものではありません。</div>
+ <h2>公約と一般質問の対応<span class="tag ai">AI判定</span></h2><div class="card">${P.map(p=>{const id=p.split(' ')[0];const n=cnt[id]||0;return `<div class="row"><span style="flex:1">${esc(p.slice(id.length+1))}</span><span style="white-space:nowrap">${n?n+'回取り上げ':'質問なし'}</span></div>`}).join('')}<div class="muted" style="margin-top:6px">一般質問${q.length}回のうち。委員会での質疑・賛否は別に見ます(未実装)。</div></div>
+ <h2>質問の傾向(5つの軸・各0〜2点の平均)<span class="tag ai">AI採点</span></h2><div class="card">${ax.map((k,i)=>`<div style="margin:6px 0"><div class="row" style="border:0;padding:0"><span>${k}</span><span>${avg[i].toFixed(1)} / 2</span></div><div class="bar"><i style="width:${avg[i]*50}%"></i></div></div>`).join('')}<div class="muted">基準は公開します。政策の良し悪しは評価せず、質問の作り方だけを見ます。</div></div>
+ <h2>一般質問ごとの要約(${q.length}回)</h2>${q.map(b=>`<details><summary>${esc(b.date)}　${b.topics.map(t=>esc(t.title_plain)).slice(0,2).join(' / ')}${b.topics.length>2?' ほか':''}<br><span class="muted">${b.topics.length}項目 ・ ${b.total}/10点</span></summary><div class="in">
+ ${b.topics.map(t=>`<div style="margin:8px 0"><b style="font-size:.85rem">${esc(t.title_plain)}</b>${(t.pledge_ids||[]).map(p=>`<span class="tag">公約${p}</span>`).join('')}<div style="font-size:.82rem"><b>議員:</b> ${esc(t.asked_plain)}</div>${t.answered_plain?`<div style="font-size:.82rem"><b>市:</b> ${esc(t.answered_plain)}</div>`:''}<blockquote>${esc(t.quote)}</blockquote></div>`).join('')}
+ <div class="sc">${ax.map(k=>`<span>${k} ${b.scores[k].score}</span>`).join('')}</div>${ax.map(k=>`<div class="muted">${k}: ${esc(b.scores[k].reason)}</div>`).join('')}${b.uncertain?`<div class="note">AIの自信がない点: ${esc(b.uncertain)}</div>`:''}
+ <div class="muted" style="margin-top:6px">出典: 会議録(${esc(b.blockID.split('-')[0])})。<span class="tag ai">AI要約</span></div></div></details>`).join('')}`}
+</script></body></html>
