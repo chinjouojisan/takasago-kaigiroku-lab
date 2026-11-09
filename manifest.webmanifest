@@ -1,0 +1,29 @@
+{
+ "name": "高砂市議会議員マップ 市民目線の通信簿",
+ "short_name": "高砂市議会マップ",
+ "description": "高砂市議会(2022年9月〜2026年9月)の議員19人を、会議録などの公開資料から整理した通信簿。一般質問・委員会の発言、陳情・議案の賛否、選挙公報を、原文とあわせて見られます。",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "lang": "ja",
+ "theme_color": "#1f9d57",
+ "background_color": "#e3f6ea",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
